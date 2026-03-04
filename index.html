@@ -60,8 +60,8 @@
         .hamburger div { width: 22px; height: 2px; background-color: white; transition: 0.3s; }
 
         /* --- LOGO HEADER SECTION --- */
-        .logo-header { padding: 30px 5% 10px; text-align: center; background-color: #000; }
-        .main-logo { max-width: 280px; width: 100%; height: auto; }
+        .logo-header { padding: 40px 5% 10px; text-align: center; background-color: #000; }
+        .main-logo { max-width: 350px; width: 100%; height: auto; }
 
         /* --- HERO SECTION --- */
         .hero { padding: 40px 5% 60px; text-align: center; background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%); }
@@ -79,6 +79,7 @@
             transition: 0.3s;
             font-size: 0.9rem;
         }
+        .cta-btn-main:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(10, 88, 202, 0.4); }
 
         /* --- TRANSPARENCY SECTION --- */
         .transparency-section { padding: 40px 5%; background: #000; text-align: center; }
@@ -105,7 +106,7 @@
         .service-card {
             background: var(--card-bg);
             backdrop-filter: blur(10px);
-            padding: 25px; /* Reduced padding for space conservation */
+            padding: 25px;
             border-radius: 15px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             text-align: left;
@@ -123,7 +124,7 @@
         .chat-btn {
             display: flex;
             align-items: center;
-            padding: 12px 20px; /* Slimmer buttons */
+            padding: 12px 20px;
             border-radius: 10px;
             text-decoration: none;
             color: white;
@@ -148,10 +149,15 @@
             .nav-links li { width: 100%; margin: 0; }
             .nav-links a { padding: 15px 30px; display: block; border-bottom: 1px solid #111; }
             .nav-active { transform: translateX(0%); }
-            .main-logo { max-width: 200px; }
+            .toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
+            .toggle .line2 { opacity: 0; }
+            .toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
+            .main-logo { max-width: 280px; }
         }
 
-        footer { padding: 30px 5%; text-align: center; border-top: 1px solid #222; color: #555; font-size: 0.75rem; }
+        footer { padding: 40px 5% 30px; text-align: center; border-top: 1px solid #222; color: #555; font-size: 0.75rem; background-color: #000; }
+        footer a { color: #888; text-decoration: none; margin: 0 10px; transition: 0.3s; }
+        footer a:hover { color: var(--accent-orange); }
     </style>
 </head>
 <body>
@@ -188,8 +194,6 @@
         </div>
     </section>
 
-    
-
     <section class="services-section" id="services">
         <h2>Expertise <span style="color: var(--accent-orange);">&</span> Strategy</h2>
         <div class="services-grid">
@@ -210,20 +214,34 @@
 
     <section class="chat-hub" id="contact">
         <h2>Direct <span style="color: var(--accent-orange);">Transaction</span> Hub</h2>
-        <p>Direct communication for your convenience. Tap below to chat instantly.</p>
+        <p>Direct communication for your convenience.</p>
+
+        <div style="max-width: 400px; margin: 0 auto 20px; text-align: left; background: rgba(255,255,255,0.03); padding: 15px; border-radius: 10px; border: 1px solid #222;">
+            <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-size: 0.85rem; color: var(--muted-text);">
+                <input type="checkbox" id="terms-check" style="margin-top: 4px; accent-color: var(--accent-orange);">
+                <span>I agree to the <a href="legal.html" style="color: var(--accent-orange); text-decoration: none;">Terms of Service</a> (50% GCash advance / 50% Cash on Hand handover).</span>
+            </label>
+        </div>
         
-        <div class="chat-container">
+        <div class="chat-container" id="chat-wrapper" style="opacity: 0.4; pointer-events: none; transition: 0.4s;">
             <a href="https://wa.me/639310410733" class="chat-btn whatsapp">WhatsApp Chat</a>
             <a href="viber://chat?number=639310410733" class="chat-btn viber">Viber Chat</a>
         </div>
+        <p id="check-reminder" style="font-size: 0.75rem; color: var(--accent-orange); margin-top: 10px;">Please check the box above to enable chat links.</p>
     </section>
 
     <footer>
         <p>&copy; 2026 JDR CORP. All Rights Reserved.</p>
-        <p>Custom HTML | Real-Time GitHub Monitoring | Professional Domains</p>
+        <p>
+            <a href="index.html">Home</a> | 
+            <a href="about.html">About</a> | 
+            <a href="legal.html">Legal & Privacy</a>
+        </p>
+        <p style="margin-top: 10px; opacity: 0.5;">Custom HTML | GitHub Workflows | GCash Verified</p>
     </footer>
 
     <script>
+        // NAVIGATION SCRIPT
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('nav-menu');
 
@@ -242,6 +260,23 @@
             if(navMenu.classList.contains('nav-active')) {
                 navMenu.classList.remove('nav-active');
                 hamburger.classList.remove('toggle');
+            }
+        });
+
+        // TERMS AGREEMENT SCRIPT
+        const termsCheck = document.getElementById('terms-check');
+        const chatWrapper = document.getElementById('chat-wrapper');
+        const checkReminder = document.getElementById('check-reminder');
+
+        termsCheck.addEventListener('change', function() {
+            if (this.checked) {
+                chatWrapper.style.opacity = "1";
+                chatWrapper.style.pointerEvents = "auto";
+                checkReminder.style.display = "none";
+            } else {
+                chatWrapper.style.opacity = "0.4";
+                chatWrapper.style.pointerEvents = "none";
+                checkReminder.style.display = "block";
             }
         });
     </script>

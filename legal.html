@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | JDR CORP.</title>
+    <title>Legal & Privacy | JDR CORP.</title>
     <style>
         /* --- BRAND VARIABLES --- */
         :root {
@@ -21,7 +21,7 @@
             margin: 0;
             background-color: var(--dark-bg);
             color: var(--light-text);
-            line-height: 1.5;
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
@@ -52,7 +52,7 @@
         .nav-links { display: flex; list-style: none; margin: 0; padding: 0; }
         .nav-links li { margin-left: 25px; }
         .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.8rem; }
-        .nav-links a:hover, .active-link { color: var(--accent-orange) !important; }
+        .nav-links a:hover { color: var(--accent-orange); }
 
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
         .hamburger div { width: 22px; height: 2px; background-color: white; transition: 0.3s; }
@@ -61,39 +61,25 @@
         .logo-header { padding: 40px 5% 10px; text-align: center; background-color: #000; }
         .main-logo { max-width: 350px; width: 100%; height: auto; }
 
-        /* --- ABOUT CONTENT --- */
-        .about-hero {
-            padding: 40px 5% 20px;
-            text-align: center;
-            background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%);
-        }
-
-        .container {
+        /* --- CONTENT --- */
+        .legal-container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 0 5% 60px;
+            padding: 40px 5% 80px;
         }
 
-        h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); margin-bottom: 10px; font-weight: 800; }
-        h2 { color: var(--primary-blue); margin-top: 30px; font-size: 1.4rem; }
+        h1 { font-size: 2.2rem; color: var(--primary-blue); margin-bottom: 30px; }
+        h2 { color: var(--accent-orange); font-size: 1.3rem; margin-top: 40px; border-bottom: 1px solid #222; padding-bottom: 10px; }
+        p, li { font-size: 0.95rem; color: var(--muted-text); }
+        strong { color: var(--light-text); }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; }
 
-        .highlight-text {
-            font-size: 1.05rem;
-            color: var(--accent-orange);
-            font-weight: 600;
-            border-left: 3px solid var(--accent-orange);
-            padding-left: 20px;
-            margin: 30px 0;
-            font-style: italic;
-        }
-
-        .philosophy-card {
+        .legal-box {
             background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            padding: 25px;
+            padding: 30px;
             border-radius: 15px;
             border: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: 30px;
         }
 
         /* --- MOBILE VIEW --- */
@@ -113,9 +99,10 @@
             .main-logo { max-width: 280px; }
         }
 
-        /* --- FOOTER --- */
-        footer { padding: 40px 5% 30px; text-align: center; border-top: 1px solid #222; color: #555; font-size: 0.75rem; background-color: #000; }
-        footer a { color: #888; text-decoration: none; margin: 0 10px; transition: 0.3s; }
+        /* --- FIXED FOOTER (Corrected font-sizes) --- */
+        footer { padding: 40px 5% 30px; text-align: center; border-top: 1px solid #222; color: #555; background-color: #000; }
+        footer p { font-size: 0.75rem; margin: 8px 0; }
+        footer a { color: #888; text-decoration: none; margin: 0 10px; transition: 0.3s; font-size: 0.75rem; }
         footer a:hover { color: var(--accent-orange); }
     </style>
 </head>
@@ -125,14 +112,12 @@
         <a href="index.html" class="nav-brand">JDR <span>Corporation</span></a>
         <ul class="nav-links" id="nav-menu">
             <li><a href="index.html">Home</a></li>
-            <li><a href="about.html" class="active-link">About Us</a></li>
+            <li><a href="about.html">About Us</a></li>
             <li><a href="index.html#services">Services</a></li>
             <li><a href="tel:+639310410733" style="color: var(--accent-orange);">Call Now</a></li>
         </ul>
         <div class="hamburger" id="hamburger">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
+            <div class="line1"></div><div class="line2"></div><div class="line3"></div>
         </div>
     </nav>
 
@@ -140,28 +125,26 @@
         <img src="image_0.png" alt="JDR CORPORATION Logo" class="main-logo">
     </header>
 
-    <section class="about-hero">
-        <h1>Our <span style="color: var(--primary-blue);">Mission</span></h1>
-        <p style="color: var(--muted-text); font-size: 0.95rem;">Building your custom digital identity with precision.</p>
-    </section>
+    <div class="legal-container">
+        <h1>Legal & <span style="color: var(--light-text);">Privacy</span></h1>
+        
+        <div class="legal-box">
+            <h2>1. Service Transparency</h2>
+            <p>JDR Corporation operates on a "Live Build" model. By engaging our services, you acknowledge that project progress is monitored via private GitHub repositories. Access is granted exclusively to the client and authorized JDR Corporation developers for real-time review.</p>
 
-    <div class="container">
-        <p style="font-size: 0.95rem;">
-            At <strong>JDR Corporation</strong>, we specialize in high-performance HTML5 excellence. We believe that your website should be as unique as your business vision.
-        </p>
+            <h2>2. Payment Terms & Intellectual Property</h2>
+            <p>To ensure project commitment and resource allocation, JDR Corporation utilizes a 50/50 payment structure:</p>
+            <ul>
+                <li><strong>50% Advance Payment:</strong> Required via <strong>GCash</strong> to officially kickoff the project, secure the repository, and begin architectural development.</li>
+                <li><strong>50% Final Payment:</strong> Required via <strong>Cash on Hand</strong> (or agreed method) upon the completion of the build and prior to the transfer of the full website account.</li>
+            </ul>
+            <p><strong>Ownership Transfer:</strong> Full intellectual property rights and code ownership are formally transferred to the client only after the final 50% payment has been settled. JDR Corporation retains the right to display the project in our professional portfolio unless a Non-Disclosure Agreement (NDA) is in place.</p>
 
-        <div class="highlight-text">
-            "Transparency through code. Watch your vision come to life in real-time."
-        </div>
+            <h2>3. Data Privacy</h2>
+            <p>We prioritize your privacy. Any information shared via WhatsApp, Viber, or Direct Call—including phone numbers, personal identity, and project specifications—is used strictly for business transactions and is never shared with third parties.</p>
 
-        <h2>Real-Time Collaboration</h2>
-        <p style="font-size: 0.95rem;">
-            We grant you access to your <strong>Private GitHub Link</strong> from day one. Monitor every update and provide feedback instantly as we build your vision.
-        </p>
-
-        <div class="philosophy-card">
-            <h3 style="margin-top: 0; color: var(--accent-orange); font-size: 1.1rem;">Direct & Personal</h3>
-            <p style="margin-bottom: 0; font-size: 0.9rem;">No red tape. We prioritize direct communication via WhatsApp and Viber, keeping you in total control of the project's timeline and payment milestones.</p>
+            <h2>4. Project Handover</h2>
+            <p>JDR Corporation provides a seamless "handshake" service, ensuring your website is live on your chosen domain. Once the final account transfer is complete, the client assumes full responsibility for the security, hosting renewals, and maintenance of their digital assets.</p>
         </div>
     </div>
 
@@ -172,7 +155,7 @@
             <a href="about.html">About</a> | 
             <a href="legal.html">Legal & Privacy</a>
         </p>
-        <p style="margin-top: 10px; opacity: 0.5;">Custom HTML | GitHub Workflows | GCash Verified</p>
+        <p style="opacity: 0.5;">Custom HTML | GitHub Workflows | GCash Verified Business</p>
     </footer>
 
     <script>
@@ -185,13 +168,11 @@
             hamburger.classList.toggle('toggle');
         });
 
-        // Close menu when links are clicked
         document.querySelectorAll('.nav-links li').forEach(n => n.addEventListener('click', () => {
             navMenu.classList.remove('nav-active');
             hamburger.classList.remove('toggle');
         }));
 
-        // Close menu on scroll for better UX
         window.addEventListener('scroll', () => {
             if(navMenu.classList.contains('nav-active')) {
                 navMenu.classList.remove('nav-active');
