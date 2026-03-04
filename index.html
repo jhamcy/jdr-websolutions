@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JDR CORP. | Real-Time Custom Web Development</title>
+    <style>
+        /* --- BRAND VARIABLES --- */
+        :root {
+            --primary-blue: #0A58CA;
+            --accent-orange: #F98C15;
+            --dark-bg: #0C0D11;
+            --card-bg: rgba(23, 25, 30, 0.6);
+            --light-text: #F4F4F4;
+            --muted-text: #A0A0A0;
+            --header-bg: #000000;
+        }
+
+        /* --- GLOBAL STYLES --- */
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.5;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background: var(--header-bg);
+            padding: 0.6rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #222;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-brand {
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            color: var(--light-text);
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .nav-brand span { color: var(--accent-orange); }
+
+        .nav-links { display: flex; list-style: none; margin: 0; padding: 0; }
+        .nav-links li { margin-left: 25px; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.8rem; }
+        .nav-links a:hover { color: var(--accent-orange); }
+
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+        .hamburger div { width: 22px; height: 2px; background-color: white; transition: 0.3s; }
+
+        /* --- LOGO HEADER SECTION --- */
+        .logo-header { padding: 30px 5% 10px; text-align: center; background-color: #000; }
+        .main-logo { max-width: 280px; width: 100%; height: auto; }
+
+        /* --- HERO SECTION --- */
+        .hero { padding: 40px 5% 60px; text-align: center; background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%); }
+        .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 15px; font-weight: 800; }
+        .hero p { font-size: 1rem; color: var(--muted-text); max-width: 650px; margin: 0 auto 30px; }
+        
+        .cta-btn-main {
+            background: var(--primary-blue);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+
+        /* --- TRANSPARENCY SECTION --- */
+        .transparency-section { padding: 40px 5%; background: #000; text-align: center; }
+        .monitor-box {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 25px;
+            background: rgba(10, 88, 202, 0.05);
+            border: 1px dashed var(--primary-blue);
+            border-radius: 15px;
+        }
+        .monitor-box h2 { font-size: 1.5rem; color: var(--accent-orange); margin-top: 0; }
+        .monitor-box p { font-size: 0.95rem; margin-bottom: 0; }
+
+        /* --- COMPACT SERVICES GRID --- */
+        .services-section { padding: 60px 5%; text-align: center; }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: 40px auto 0;
+        }
+        .service-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 25px; /* Reduced padding for space conservation */
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: left;
+            transition: 0.3s;
+        }
+        .service-card h3 { font-size: 1.2rem; margin-top: 0; color: var(--primary-blue); }
+        .service-card p { font-size: 0.9rem; color: var(--muted-text); margin-bottom: 0; }
+        .service-card:hover { transform: translateY(-5px); border-color: var(--primary-blue); }
+
+        /* --- COMPACT CHAT HUB --- */
+        .chat-hub { padding: 60px 5%; text-align: center; background: radial-gradient(circle at top, #1E3A5F 0%, #000 100%); }
+        .chat-hub h2 { font-size: 1.8rem; }
+        .chat-container { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 30px; }
+        
+        .chat-btn {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px; /* Slimmer buttons */
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: 0.3s;
+            min-width: 180px;
+            justify-content: center;
+            font-size: 0.85rem;
+        }
+        .whatsapp { background-color: #25D366; }
+        .viber { background-color: #7360f2; }
+        .chat-btn:hover { transform: scale(1.03); filter: brightness(1.1); }
+
+        /* --- MOBILE VIEW --- */
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav-links {
+                position: fixed; right: 0; top: 0; height: 100vh; background-color: #000;
+                flex-direction: column; width: 240px; transform: translateX(100%); transition: 0.4s;
+                padding-top: 80px; border-left: 1px solid #222;
+            }
+            .nav-links li { width: 100%; margin: 0; }
+            .nav-links a { padding: 15px 30px; display: block; border-bottom: 1px solid #111; }
+            .nav-active { transform: translateX(0%); }
+            .main-logo { max-width: 200px; }
+        }
+
+        footer { padding: 30px 5%; text-align: center; border-top: 1px solid #222; color: #555; font-size: 0.75rem; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="nav-brand">JDR <span>Corporation</span></a>
+        <ul class="nav-links" id="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="tel:+639310410733" style="color: var(--accent-orange);">Call Now</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <header class="logo-header">
+        <img src="image_0.png" alt="JDR CORPORATION Logo" class="main-logo">
+    </header>
+
+    <section class="hero">
+        <h1>Your Concept. <br><span style="color: var(--accent-orange);">Our Code.</span></h1>
+        <p>Expert HTML architecture with real-time transparency. Watch your vision come to life through your private GitHub repository.</p>
+        <a href="tel:+639310410733" class="cta-btn-main">Connect with JDR Corporation</a>
+    </section>
+
+    <section class="transparency-section">
+        <div class="monitor-box">
+            <h2>Live Build Monitoring</h2>
+            <p>Get a <strong>Private GitHub Link</strong> immediately. Monitor updates and provide feedback in real-time as we build.</p>
+        </div>
+    </section>
+
+    
+
+    <section class="services-section" id="services">
+        <h2>Expertise <span style="color: var(--accent-orange);">&</span> Strategy</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>01. Custom Code</h3>
+                <p>Pure HTML5/CSS3. Fast, clean, and unique builds from scratch.</p>
+            </div>
+            <div class="service-card">
+                <h3>02. GitHub Logic</h3>
+                <p>Industry-standard version control and transparent infrastructure.</p>
+            </div>
+            <div class="service-card">
+                <h3>03. Launch Ready</h3>
+                <p>Full DNS and domain management for a flawless live rollout.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="chat-hub" id="contact">
+        <h2>Direct <span style="color: var(--accent-orange);">Transaction</span> Hub</h2>
+        <p>Direct communication for your convenience. Tap below to chat instantly.</p>
+        
+        <div class="chat-container">
+            <a href="https://wa.me/639310410733" class="chat-btn whatsapp">WhatsApp Chat</a>
+            <a href="viber://chat?number=639310410733" class="chat-btn viber">Viber Chat</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 JDR CORP. All Rights Reserved.</p>
+        <p>Custom HTML | Real-Time GitHub Monitoring | Professional Domains</p>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navMenu.classList.toggle('nav-active');
+            hamburger.classList.toggle('toggle');
+        });
+
+        document.querySelectorAll('.nav-links li').forEach(n => n.addEventListener('click', () => {
+            navMenu.classList.remove('nav-active');
+            hamburger.classList.remove('toggle');
+        }));
+
+        window.addEventListener('scroll', () => {
+            if(navMenu.classList.contains('nav-active')) {
+                navMenu.classList.remove('nav-active');
+                hamburger.classList.remove('toggle');
+            }
+        });
+    </script>
+</body>
+</html>

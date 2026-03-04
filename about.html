@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | JDR CORP.</title>
+    <style>
+        /* --- BRAND VARIABLES --- */
+        :root {
+            --primary-blue: #0A58CA;
+            --accent-orange: #F98C15;
+            --dark-bg: #0C0D11;
+            --card-bg: rgba(23, 25, 30, 0.6);
+            --light-text: #F4F4F4;
+            --muted-text: #A0A0A0;
+            --header-bg: #000000;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION (Copied from Index) --- */
+        nav {
+            background: var(--header-bg);
+            padding: 0.6rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #222;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-brand {
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            color: var(--light-text);
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .nav-brand span { color: var(--accent-orange); }
+
+        .nav-links { display: flex; list-style: none; margin: 0; padding: 0; }
+        .nav-links li { margin-left: 25px; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.8rem; }
+        .nav-links a:hover, .active-link { color: var(--accent-orange) !important; }
+
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+        .hamburger div { width: 22px; height: 2px; background-color: white; transition: 0.3s; }
+
+        /* --- LOGO HEADER (Compact) --- */
+        .logo-header { padding: 30px 5% 10px; text-align: center; background-color: #000; }
+        .main-logo { max-width: 250px; width: 100%; height: auto; }
+
+        /* --- ABOUT CONTENT --- */
+        .about-hero {
+            padding: 40px 5% 20px;
+            text-align: center;
+            background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+        }
+
+        h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); margin-bottom: 10px; font-weight: 800; }
+        h2 { color: var(--primary-blue); margin-top: 30px; font-size: 1.4rem; }
+
+        .highlight-text {
+            font-size: 1.05rem;
+            color: var(--accent-orange);
+            font-weight: 600;
+            border-left: 3px solid var(--accent-orange);
+            padding-left: 20px;
+            margin: 30px 0;
+            font-style: italic;
+        }
+
+        .philosophy-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 30px;
+        }
+
+        /* --- MOBILE VIEW (Copied from Index) --- */
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav-links {
+                position: fixed; right: 0; top: 0; height: 100vh; background-color: #000;
+                flex-direction: column; width: 240px; transform: translateX(100%); transition: 0.4s;
+                padding-top: 80px; border-left: 1px solid #222;
+            }
+            .nav-links li { width: 100%; margin: 0; }
+            .nav-links a { padding: 15px 30px; display: block; border-bottom: 1px solid #111; }
+            .nav-active { transform: translateX(0%); }
+            .toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
+            .toggle .line2 { opacity: 0; }
+            .toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
+        }
+
+        footer { padding: 30px 5%; text-align: center; border-top: 1px solid #222; color: #555; font-size: 0.75rem; background-color: #000; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="nav-brand">JDR <span>Corporation</span></a>
+        <ul class="nav-links" id="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" class="active-link">About Us</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="tel:+639310410733" style="color: var(--accent-orange);">Call Now</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <header class="logo-header">
+        <img src="image_0.png" alt="JDR CORPORATION Logo" class="main-logo">
+    </header>
+
+    <section class="about-hero">
+        <h1>Our <span style="color: var(--primary-blue);">Mission</span></h1>
+        <p style="color: var(--muted-text); font-size: 0.95rem;">Building your custom digital identity with precision.</p>
+    </section>
+
+    <div class="container">
+        <p style="font-size: 0.95rem;">
+            At <strong>JDR Corporation</strong>, we specialize in high-performance HTML5 excellence. We believe that your website should be as unique as your business vision.
+        </p>
+
+        <div class="highlight-text">
+            "Transparency through code. Watch your vision come to life in real-time."
+        </div>
+
+        <h2>Real-Time Collaboration</h2>
+        <p style="font-size: 0.95rem;">
+            We grant you access to your <strong>Private GitHub Link</strong> from day one. Monitor every update and provide feedback instantly as we build your vision.
+        </p>
+
+        <div class="philosophy-card">
+            <h3 style="margin-top: 0; color: var(--accent-orange); font-size: 1.1rem;">Direct & Personal</h3>
+            <p style="margin-bottom: 0; font-size: 0.9rem;">No red tape. We prioritize direct communication via WhatsApp and Viber, keeping you in total control of the project's timeline.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 JDR CORP. All Rights Reserved.</p>
+        <p>Custom HTML | Real-Time GitHub Monitoring | Professional Domains</p>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('nav-active');
+            hamburger.classList.toggle('toggle');
+        });
+
+        document.querySelectorAll('.nav-links li').forEach(n => n.addEventListener('click', () => {
+            navMenu.classList.remove('nav-active');
+            hamburger.classList.remove('toggle');
+        }));
+    </script>
+</body>
+</html>
