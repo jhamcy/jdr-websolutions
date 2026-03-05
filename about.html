@@ -16,18 +16,29 @@
             --header-bg: #000000;
         }
 
-        /* --- GLOBAL STYLES --- */
+        /* --- GLOBAL STYLES (STICKY FOOTER FIX) --- */
+        html, body {
+            height: 100%; /* Required for sticky footer */
+            margin: 0;
+        }
+
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
             background-color: var(--dark-bg);
             color: var(--light-text);
             line-height: 1.4;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            /* Flexbox layout to push footer down */
+            display: flex;
+            flex-direction: column;
         }
 
-        /* --- NAVIGATION (Synced with index.html) --- */
+        .main-content {
+            flex: 1 0 auto; /* This pushes the footer to the bottom */
+        }
+
+        /* --- NAVIGATION --- */
         nav {
             background: var(--header-bg);
             padding: 0.5rem 5%;
@@ -39,7 +50,6 @@
             top: 0;
             z-index: 1000;
         }
-
         .nav-brand {
             font-size: 0.9rem;
             font-weight: 800;
@@ -49,19 +59,16 @@
             text-decoration: none;
         }
         .nav-brand span { color: var(--accent-orange); }
-
         .nav-links { display: flex; list-style: none; margin: 0; padding: 0; align-items: center; }
         .nav-links li { margin-left: 20px; }
         .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; display: inline-block; }
         .nav-links a:hover, .active-link { color: var(--accent-orange) !important; }
-
         .nav-quote-btn {
             border: 1px solid var(--accent-orange);
             padding: 5px 12px;
             border-radius: 4px;
             color: var(--accent-orange) !important;
         }
-
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
 
@@ -76,15 +83,12 @@
             background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%);
         }
         .about-hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 10px; font-weight: 800; }
-
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 40px 5% 80px;
         }
-
         h2 { color: var(--primary-blue); margin-top: 40px; font-size: 1.4rem; font-weight: 800; }
-
         .highlight-text {
             font-size: 1.05rem;
             color: var(--accent-orange);
@@ -95,7 +99,6 @@
             font-style: italic;
             line-height: 1.6;
         }
-
         .philosophy-card {
             background: rgba(10, 88, 202, 0.05);
             padding: 30px;
@@ -104,7 +107,7 @@
             margin-top: 40px;
         }
 
-        /* --- MOBILE OVERRIDES (Synced) --- */
+        /* --- MOBILE OVERRIDES --- */
         @media (max-width: 850px) {
             .hamburger { display: flex; }
             .nav-links {
@@ -116,14 +119,21 @@
             .nav-links li { width: 100%; margin: 0; }
             .nav-links a { display: block; width: 100%; padding: 20px 30px; font-size: 0.95rem; border-bottom: 1px solid #111; box-sizing: border-box; }
             .nav-active { transform: translateX(0%); }
-            
             .toggle .line1 { transform: rotate(-45deg) translate(-4px, 5px); }
             .toggle .line2 { opacity: 0; }
             .toggle .line3 { transform: rotate(45deg) translate(-4px, -5px); }
         }
 
-        /* --- FOOTER (Synced) --- */
-        footer { padding: 40px 5% 30px; text-align: center; border-top: 1px solid #222; color: #555; font-size: 0.75rem; background-color: #000; }
+        /* --- FOOTER (PUSHED TO BOTTOM) --- */
+        footer { 
+            flex-shrink: 0; /* Prevents footer from shrinking */
+            padding: 40px 5% 30px; 
+            text-align: center; 
+            border-top: 1px solid #222; 
+            color: #555; 
+            font-size: 0.75rem; 
+            background-color: #000; 
+        }
         footer a { color: #888; text-decoration: none; margin: 0 10px; transition: 0.3s; }
         footer a:hover { color: var(--accent-orange); }
         .footer-nav { margin-bottom: 15px; }
@@ -132,58 +142,54 @@
 </head>
 <body>
 
-    <nav>
-        <a href="index.html" class="nav-brand">JDR <span>Corporation</span></a>
-        <ul class="nav-links" id="nav-menu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html" class="active-link">About Us</a></li>
-            <li><a href="service.html">Services</a></li>
-            <li><a href="quote.html" class="nav-quote-btn">Get a Quote</a></li>
-        </ul>
-        <div class="hamburger" id="hamburger">
-            <div class="line1"></div><div class="line2"></div><div class="line3"></div>
+    <div class="main-content">
+        <nav>
+            <a href="index.html" class="nav-brand">JDR <span>Corporation</span></a>
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active-link">About Us</a></li>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="quote.html" class="nav-quote-btn">Get a Quote</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <div class="line1"></div><div class="line2"></div><div class="line3"></div>
+            </div>
+        </nav>
+
+        <header class="logo-header">
+            <img src="image_0.png" alt="JDR CORPORATION Logo" class="main-logo">
+        </header>
+
+        <section class="about-hero">
+            <h1>Our <span style="color: var(--primary-blue);">Mission</span></h1>
+            <p style="color: var(--muted-text); font-size: 0.9rem; max-width: 500px; margin: 0 auto;">Building your custom digital identity with precision and absolute transparency.</p>
+        </section>
+
+        <div class="container">
+            <p style="font-size: 0.95rem; color: var(--light-text);">
+                At <strong>JDR Corporation</strong>, we specialize in high-performance HTML architecture. We believe that your website should be as unique as your business vision, built without the bloat of generic templates.
+            </p>
+            <div class="highlight-text">
+                "Transparency through code. Watch your vision come to life in real-time, one deployment at a time."
+            </div>
+            <h2>Real-Time Collaboration</h2>
+            <p style="font-size: 0.95rem; color: var(--muted-text);">
+                We grant you access to your <strong>Private GitHub Link</strong> from day one. Monitor every update and provide feedback instantly as we build your vision. This process ensures that "ghosting" is impossible—our work is visible 24/7.
+            </p>
+            <h2>The Asset Transfer</h2>
+            <p style="font-size: 0.95rem; color: var(--muted-text);">
+                Our workflow begins by securing your digital real estate. By collecting the <strong>Domain Cost</strong> upfront alongside the service advance, we ensure your brand name is locked in your name immediately. Upon final settlement, 100% of the code and master accounts are transferred to you.
+            </p>
+            <div class="philosophy-card">
+                <h3 style="margin-top: 0; color: var(--accent-orange); font-size: 1.1rem; font-weight: 800;">Direct & Personal</h3>
+                <p style="margin-bottom: 0; font-size: 0.9rem; color: var(--light-text); line-height: 1.6;">No red tape. We prioritize direct communication via WhatsApp and Viber, keeping you in total control of the project's timeline and payment milestones.</p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="service.html" style="color: var(--primary-blue); text-decoration: none; font-weight: bold; font-size: 0.85rem; letter-spacing: 1px;">VIEW DETAILED SERVICES &rarr;</a>
+            </div>
         </div>
-    </nav>
-
-    <header class="logo-header">
-        <img src="image_0.png" alt="JDR CORPORATION Logo" class="main-logo">
-    </header>
-
-    <section class="about-hero">
-        <h1>Our <span style="color: var(--primary-blue);">Mission</span></h1>
-        <p style="color: var(--muted-text); font-size: 0.9rem; max-width: 500px; margin: 0 auto;">Building your custom digital identity with precision and absolute transparency.</p>
-    </section>
-
-    <div class="container">
-        <p style="font-size: 0.95rem; color: var(--light-text);">
-            At <strong>JDR Corporation</strong>, we specialize in high-performance HTML architecture. We believe that your website should be as unique as your business vision, built without the bloat of generic templates.
-        </p>
-
-        <div class="highlight-text">
-            "Transparency through code. Watch your vision come to life in real-time, one deployment at a time."
-        </div>
-
-        <h2>Real-Time Collaboration</h2>
-        <p style="font-size: 0.95rem; color: var(--muted-text);">
-            We grant you access to your <strong>Private GitHub Link</strong> from day one. Monitor every update and provide feedback instantly as we build your vision. This process ensures that "ghosting" is impossible—our work is visible 24/7.
-        </p>
-
-        <h2>The Asset Transfer</h2>
-        <p style="font-size: 0.95rem; color: var(--muted-text);">
-            Our workflow begins by securing your digital real estate. By collecting the <strong>Domain Cost</strong> upfront alongside the service advance, we ensure your brand name is locked in your name immediately. Upon final settlement, 100% of the code and master accounts are transferred to you.
-        </p>
-
-        <div class="philosophy-card">
-            <h3 style="margin-top: 0; color: var(--accent-orange); font-size: 1.1rem; font-weight: 800;">Direct & Personal</h3>
-            <p style="margin-bottom: 0; font-size: 0.9rem; color: var(--light-text); line-height: 1.6;">No red tape. We prioritize direct communication via WhatsApp and Viber, keeping you in total control of the project's timeline and payment milestones.</p>
-        </div>
-        
-        <div style="text-align: center; margin-top: 50px;">
-            <a href="service.html" style="color: var(--primary-blue); text-decoration: none; font-weight: bold; font-size: 0.85rem; letter-spacing: 1px;">VIEW DETAILED SERVICES &rarr;</a>
-        </div>
-    </div>
-
-    <footer>
+    </div> <footer>
         <div class="footer-nav">
             <a href="index.html">Home</a> | <a href="about.html">About</a> | <a href="service.html">Services</a> | <a href="legal.html">Legal & Privacy</a>
         </div>
@@ -201,25 +207,16 @@
             navMenu.classList.remove('nav-active');
             hamburger.classList.remove('toggle');
         };
-
         hamburger.addEventListener('click', (e) => {
             e.stopPropagation();
             navMenu.classList.toggle('nav-active');
             hamburger.classList.toggle('toggle');
         });
-
-        // Close menu on scroll
         window.addEventListener('scroll', () => {
-            if (navMenu.classList.contains('nav-active')) {
-                closeMenu();
-            }
+            if (navMenu.classList.contains('nav-active')) closeMenu();
         });
-
-        // Close menu when clicking outside
         document.addEventListener('click', (e) => {
-            if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-                closeMenu();
-            }
+            if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) closeMenu();
         });
     </script>
 </body>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instant Quote Builder | JDR CORP.</title>
     <style>
-        /* --- BRAND VARIABLES (Synced Across All Pages) --- */
+        /* --- BRAND VARIABLES --- */
         :root {
             --primary-blue: #0A58CA;
             --accent-orange: #F98C15;
@@ -17,18 +17,29 @@
             --success-green: #28a745;
         }
 
-        /* --- GLOBAL STYLES --- */
+        /* --- GLOBAL STYLES (Sticky Footer Fix) --- */
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
             background-color: var(--dark-bg);
             color: var(--light-text);
             line-height: 1.4;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            /* Flexbox layout */
+            display: flex;
+            flex-direction: column;
         }
 
-        /* --- NAVIGATION (Synced) --- */
+        .main-content {
+            flex: 1 0 auto; /* Pushes footer down */
+        }
+
+        /* --- NAVIGATION --- */
         nav {
             background: var(--header-bg);
             padding: 0.5rem 5%;
@@ -62,16 +73,13 @@
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
 
-        /* --- QUOTE HERO & BACKGROUND --- */
+        /* --- QUOTE HERO & BUILDER --- */
         .quote-section {
             padding: 40px 5% 80px;
-            /* Same Background as About/Services */
             background: radial-gradient(circle at top, #1E3A5F 0%, #0C0D11 100%);
             text-align: center;
         }
         .quote-section h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 10px; font-weight: 800; }
-
-        /* --- BUILDER LAYOUT --- */
         .builder-container {
             max-width: 950px;
             margin: 30px auto;
@@ -117,7 +125,6 @@
         summary::before { content: 'ⓘ '; font-style: normal; }
         .detail-content { font-size: 0.8rem; color: var(--muted-text); padding: 10px 0 0 0; line-height: 1.4; animation: slideDown 0.3s ease; }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
-        
         .option-item select { width: 100%; padding: 12px; margin-top: 10px; background: #1a1c23; color: white; border: 1px solid #444; border-radius: 6px; }
         .option-item input[type="checkbox"] { accent-color: var(--accent-orange); scale: 1.4; margin-top: 5px; }
         
@@ -138,7 +145,7 @@
         }
         .btn-quote:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(10, 88, 202, 0.4); background: #0b66eb; }
 
-        /* --- MOBILE OVERRIDES (Synced) --- */
+        /* --- MOBILE OVERRIDES --- */
         @media (max-width: 850px) {
             .builder-container { grid-template-columns: 1fr; padding: 20px; }
             .summary-box { position: static; margin-top: 20px; }
@@ -157,8 +164,16 @@
             .toggle .line3 { transform: rotate(45deg) translate(-4px, -5px); }
         }
 
-        /* --- FOOTER (Synced) --- */
-        footer { padding: 40px 5% 30px; text-align: center; border-top: 1px solid #222; color: #555; font-size: 0.75rem; background-color: #000; }
+        /* --- FOOTER --- */
+        footer { 
+            flex-shrink: 0; 
+            padding: 40px 5% 30px; 
+            text-align: center; 
+            border-top: 1px solid #222; 
+            color: #555; 
+            font-size: 0.75rem; 
+            background-color: #000; 
+        }
         footer a { color: #888; text-decoration: none; margin: 0 10px; transition: 0.3s; }
         footer a:hover { color: var(--accent-orange); }
         .footer-nav { margin-bottom: 15px; }
@@ -166,150 +181,151 @@
     </style>
 </head>
 <body>
-    <nav>
-        <a href="index.html" class="nav-brand">JDR <span>Corporation</span></a>
-        <ul class="nav-links" id="nav-menu">
-            <li><a href="index.html" class="active-link">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="service.html">Services</a></li>
-            <li><a href="quote.html" class="nav-quote-btn">Get a Quote</a></li>
-        </ul>
-        <div class="hamburger" id="hamburger">
-            <div class="line1"></div><div class="line2"></div><div class="line3"></div>
-        </div>
-    </nav>
 
-    <section class="quote-section">
-        <h1>Instant <span style="color: var(--accent-orange);">Quote</span> Builder</h1>
-        <p style="color: var(--muted-text); font-size: 1rem;">Setup your digital infrastructure with full Google Business & SEO integration.</p>
-        
-        <div class="builder-container">
-            <div class="options">
-                <h3>1. Infrastructure</h3>
-                <div class="option-item selected">
-                    <div style="width: 100%;">
-                        <strong>Domain Selection (1 Year Min.)</strong>
-                        <p style="margin:0; font-size: 0.8rem; color: var(--muted-text);">Secure registration & DNS setup.</p>
-                        <select id="domain-select">
-                            <option value="1200" data-name=".com Domain">Standard .com (₱1,200/yr)</option>
-                            <option value="3500" data-name=".ph Domain">Premium .ph (₱3,500/yr)</option>
-                            <option value="0" data-name="Existing Domain">I already have a domain (₱0)</option>
-                        </select>
-                    </div>
-                </div>
-
-                <h3>2. Core Development & Google Setup</h3>
-                <label class="option-item">
-                    <input type="checkbox" class="price-trigger" data-price="9000" data-name="Growth Engine (1-Page)">
-                    <div style="width: 100%;">
-                        <strong>Single-Page Growth Engine</strong>
-                        <p style="margin:0; font-size: 0.8rem; color: var(--muted-text);">1-Page Site + GMB Setup + Ads Config + Live Code Access.</p>
-                        <details>
-                            <summary>What exactly do I get?</summary>
-                            <div class="detail-content">
-                                • <strong>Custom Site:</strong> Fully responsive, high-speed single-page site.<br>
-                                • <strong>GMB:</strong> Google Business Profile verification for Maps.<br>
-                                • <strong>Ads Config:</strong> Technical setup of your Google Ads account.<br>
-                                • <strong>Live Access:</strong> Includes GitHub Dev Hub access to monitor progress 24/7.<br>
-                                <span style="color: var(--accent-orange); font-weight: bold;">⚠️ NOTE: Setup fee does NOT include Ad Funds.</span>
-                            </div>
-                        </details>
-                    </div>
-                </label>
-                
-                <label class="option-item">
-                    <input type="checkbox" class="price-trigger" data-price="16500" data-name="Business Suite (Multi-Page)">
-                    <div style="width: 100%;">
-                        <strong>Multi-Page Business Suite</strong>
-                        <p style="margin:0; font-size: 0.8rem; color: var(--muted-text);">Full Corporate Site + Full Google Ecosystem + Live Code Access.</p>
-                        <details>
-                            <summary>View breakdown</summary>
-                            <div class="detail-content">
-                                Includes 4-5 pages, advanced Schema Markup, and full Google Ads account configuration. Comes with standard GitHub Dev Hub transparency.
-                            </div>
-                        </details>
-                    </div>
-                </label>
-
-                <h3>3. Monthly Growth & Maintenance</h3>
-                <label class="option-item">
-                    <input type="checkbox" class="price-trigger monthly-check" id="mgmt-check" data-price="1500" data-name="Maintenance & Ads Mgmt">
-                    <div style="width: 100%;">
-                        <strong>Ads Management & SEO Maintenance</strong>
-                        <p style="margin:0; font-size: 0.8rem; color: var(--muted-text);">Weekly updates & Ads monitoring (₱1,500/mo).</p>
-                        <details id="ads-calculator-details">
-                            <summary>Estimate your Google Ad Spend & Reach</summary>
-                            <div class="detail-content">
-                                <label style="font-size: 0.75rem;">Daily Ad Budget: <strong>₱<span id="daily-val">200</span></strong></label>
-                                <input type="range" id="ad-slider" min="100" max="2000" step="50" value="200" style="width: 100%; margin: 10px 0; accent-color: var(--accent-orange);">
-                                <div style="text-align: center; background: rgba(10, 88, 202, 0.2); padding: 10px; border-radius: 8px; margin-bottom: 10px; border: 1px dashed var(--primary-blue);">
-                                    <span style="font-size: 0.7rem; color: var(--muted-text); display: block; text-transform: uppercase;">Estimated Monthly Traffic</span>
-                                    <strong style="font-size: 1.2rem; color: #fff;"><span id="est-clicks">300</span> New Visitors</strong>
-                                </div>
-                                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; font-size: 0.75rem;">
-                                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                                        <span>Est. Google Spend <div class="tooltip">ⓘ<span class="tooltiptext">Paid directly to Google. JDR Corp does not take a cut.</span></div></span> 
-                                        <span>₱<span id="google-spend-val">6,000</span></span>
-                                    </div>
-                                    <div style="display: flex; justify-content: space-between; align-items: center; color: var(--primary-blue); margin-top: 5px;">
-                                        <span>JDR Mgmt Fee <div class="tooltip">ⓘ<span class="tooltiptext">Covers professional monitoring and optimization.</span></div></span> 
-                                        <span>₱1,500</span>
-                                    </div>
-                                    <hr style="border: 0; border-top: 1px solid #444; margin: 10px 0;">
-                                    <div style="display: flex; justify-content: space-between; font-weight: bold; color: white;"><span>Monthly Investment:</span> <span>₱<span id="total-monthly-val">7,500</span></span></div>
-                                </div>
-                            </div>
-                        </details>
-                    </div>
-                </label>
-
-                <label class="option-item" id="no-mgmt-label">
-                    <input type="checkbox" id="no-mgmt-check">
-                    <div style="width: 100%;">
-                        <strong>No Maintenance (Self-Managed)</strong>
-                        <p style="margin:0; font-size: 0.8rem; color: var(--muted-text);">One-time setup only. You handle all future updates and ad monitoring.</p>
-                        <details id="no-mgmt-details">
-                            <summary>Remind: What does self-managed involve?</summary>
-                            <div class="detail-content">
-                                Without professional maintenance, you will be responsible for security updates, hosting renewals, and monitoring your search rankings over time.
-                            </div>
-                        </details>
-                    </div>
-                </label>
+    <div class="main-content">
+        <nav>
+            <a href="index.html" class="nav-brand">JDR <span>Corporation</span></a>
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="quote.html" class="nav-quote-btn">Get a Quote</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <div class="line1"></div><div class="line2"></div><div class="line3"></div>
             </div>
+        </nav>
 
-            <div class="summary-box">
-                <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--primary-blue); font-weight: bold;">Setup Total (100%)</div>
-                <div class="total-price">₱<span id="display-total">1,200</span></div>
-                <div class="price-breakdown">
-                    <div class="payment-row">
-                        <span class="payment-label" style="color: var(--accent-orange);">Initial Advance</span>
-                        <span class="payment-value">₱<span id="display-advance">1,200</span></span>
-                    </div>
-                    <p style="font-size: 0.7rem; margin: 0 0 12px 0; opacity: 0.7;">To start (Domain + 50% Labor)</p>
-                    <div class="payment-row" style="border-top: 1px solid #222; padding-top: 10px;">
-                        <span class="payment-label" style="color: var(--muted-text);">Final Balance</span>
-                        <span class="payment-value" style="color: var(--muted-text);">₱<span id="display-balance">0</span></span>
-                    </div>
-                    <p style="font-size: 0.7rem; margin: 0; opacity: 0.7;">Due upon project turnover</p>
-                </div>
-                <div id="monthly-summary" style="display: none;" class="monthly-notice">
-                    <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-orange); font-weight: 900; margin-bottom: 5px;">Monthly Commitment</div>
-                    <div style="font-size: 1.8rem; color: #fff; font-weight: 800; margin-bottom: 10px;">₱<span id="display-combined-monthly">0</span></div>
-                    <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px; font-size: 0.75rem; color: var(--muted-text);">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span>Mgmt: ₱<span id="display-monthly">0</span></span>
-                            <span>Ads: ₱<span id="display-google">0</span></span>
+        <section class="quote-section">
+            <h1>Instant <span style="color: var(--accent-orange);">Quote</span> Builder</h1>
+            <p style="color: var(--muted-text); font-size: 1rem;">Setup your digital infrastructure with full Google Business & SEO integration.</p>
+            
+            <div class="builder-container">
+                <div class="options">
+                    <h3>1. Infrastructure</h3>
+                    <div class="option-item selected">
+                        <div style="width: 100%;">
+                            <strong>Domain Selection (1 Year Min.)</strong>
+                            <p style="margin:0; font-size: 0.8rem; color: var(--muted-text);">Secure registration & DNS setup.</p>
+                            <select id="domain-select">
+                                <option value="1200" data-name=".com Domain">Standard .com (₱1,200/yr)</option>
+                                <option value="3500" data-name=".ph Domain">Premium .ph (₱3,500/yr)</option>
+                                <option value="0" data-name="Existing Domain">I already have a domain (₱0)</option>
+                            </select>
                         </div>
                     </div>
-                </div>
-                <a href="#" id="quote-btn" target="_blank" class="btn-quote" style="margin-top: 20px;">Lock in this Price</a>
-                <p style="font-size: 0.65rem; color: #555; text-align: center; margin-top: 10px;">Price valid for 7 days.</p>
-            </div>
-        </div>
-    </section>
 
-    <footer>
+                    <h3>2. Core Development & Google Setup</h3>
+                    <label class="option-item">
+                        <input type="checkbox" class="price-trigger" data-price="9000" data-name="Growth Engine (1-Page)">
+                        <div style="width: 100%;">
+                            <strong>Single-Page Growth Engine</strong>
+                            <p style="margin:0; font-size: 0.8rem; color: var(--muted-text);">1-Page Site + GMB Setup + Ads Config + Live Code Access.</p>
+                            <details>
+                                <summary>What exactly do I get?</summary>
+                                <div class="detail-content">
+                                    • <strong>Custom Site:</strong> Fully responsive, high-speed single-page site.<br>
+                                    • <strong>GMB:</strong> Google Business Profile verification for Maps.<br>
+                                    • <strong>Ads Config:</strong> Technical setup of your Google Ads account.<br>
+                                    • <strong>Live Access:</strong> Includes GitHub Dev Hub access to monitor progress 24/7.<br>
+                                    <span style="color: var(--accent-orange); font-weight: bold;">⚠️ NOTE: Setup fee does NOT include Ad Funds.</span>
+                                </div>
+                            </details>
+                        </div>
+                    </label>
+                    
+                    <label class="option-item">
+                        <input type="checkbox" class="price-trigger" data-price="16500" data-name="Business Suite (Multi-Page)">
+                        <div style="width: 100%;">
+                            <strong>Multi-Page Business Suite</strong>
+                            <p style="margin:0; font-size: 0.8rem; color: var(--muted-text);">Full Corporate Site + Full Google Ecosystem + Live Code Access.</p>
+                            <details>
+                                <summary>View breakdown</summary>
+                                <div class="detail-content">
+                                    Includes 4-5 pages, advanced Schema Markup, and full Google Ads account configuration. Comes with standard GitHub Dev Hub transparency.
+                                </div>
+                            </details>
+                        </div>
+                    </label>
+
+                    <h3>3. Monthly Growth & Maintenance</h3>
+                    <label class="option-item">
+                        <input type="checkbox" class="price-trigger monthly-check" id="mgmt-check" data-price="1500" data-name="Maintenance & Ads Mgmt">
+                        <div style="width: 100%;">
+                            <strong>Ads Management & SEO Maintenance</strong>
+                            <p style="margin:0; font-size: 0.8rem; color: var(--muted-text);">Weekly updates & Ads monitoring (₱1,500/mo).</p>
+                            <details id="ads-calculator-details">
+                                <summary>Estimate your Google Ad Spend & Reach</summary>
+                                <div class="detail-content">
+                                    <label style="font-size: 0.75rem;">Daily Ad Budget: <strong>₱<span id="daily-val">200</span></strong></label>
+                                    <input type="range" id="ad-slider" min="100" max="2000" step="50" value="200" style="width: 100%; margin: 10px 0; accent-color: var(--accent-orange);">
+                                    <div style="text-align: center; background: rgba(10, 88, 202, 0.2); padding: 10px; border-radius: 8px; margin-bottom: 10px; border: 1px dashed var(--primary-blue);">
+                                        <span style="font-size: 0.7rem; color: var(--muted-text); display: block; text-transform: uppercase;">Estimated Monthly Traffic</span>
+                                        <strong style="font-size: 1.2rem; color: #fff;"><span id="est-clicks">300</span> New Visitors</strong>
+                                    </div>
+                                    <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; font-size: 0.75rem;">
+                                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                                            <span>Est. Google Spend <div class="tooltip">ⓘ<span class="tooltiptext">Paid directly to Google. JDR Corp does not take a cut.</span></div></span> 
+                                            <span>₱<span id="google-spend-val">6,000</span></span>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between; align-items: center; color: var(--primary-blue); margin-top: 5px;">
+                                            <span>JDR Mgmt Fee <div class="tooltip">ⓘ<span class="tooltiptext">Covers professional monitoring and optimization.</span></div></span> 
+                                            <span>₱1,500</span>
+                                        </div>
+                                        <hr style="border: 0; border-top: 1px solid #444; margin: 10px 0;">
+                                        <div style="display: flex; justify-content: space-between; font-weight: bold; color: white;"><span>Monthly Investment:</span> <span>₱<span id="total-monthly-val">7,500</span></span></div>
+                                    </div>
+                                </div>
+                            </details>
+                        </div>
+                    </label>
+                    <label class="option-item" id="no-mgmt-label">
+                        <input type="checkbox" id="no-mgmt-check">
+                        <div style="width: 100%;">
+                            <strong>No Maintenance (Self-Managed)</strong>
+                            <p style="margin:0; font-size: 0.8rem; color: var(--muted-text);">One-time setup only. You handle all future updates and ad monitoring.</p>
+                            <details id="no-mgmt-details">
+                                <summary>Remind: What does self-managed involve?</summary>
+                                <div class="detail-content">
+                                    Without professional maintenance, you will be responsible for security updates, hosting renewals, and monitoring your search rankings over time.
+                                </div>
+                            </details>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="summary-box">
+                    <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--primary-blue); font-weight: bold;">Setup Total (100%)</div>
+                    <div class="total-price">₱<span id="display-total">1,200</span></div>
+                    <div class="price-breakdown">
+                        <div class="payment-row">
+                            <span class="payment-label" style="color: var(--accent-orange);">Initial Advance</span>
+                            <span class="payment-value">₱<span id="display-advance">1,200</span></span>
+                        </div>
+                        <p style="font-size: 0.7rem; margin: 0 0 12px 0; opacity: 0.7;">To start (Domain + 50% Labor)</p>
+                        <div class="payment-row" style="border-top: 1px solid #222; padding-top: 10px;">
+                            <span class="payment-label" style="color: var(--muted-text);">Final Balance</span>
+                            <span class="payment-value" style="color: var(--muted-text);">₱<span id="display-balance">0</span></span>
+                        </div>
+                        <p style="font-size: 0.7rem; margin: 0; opacity: 0.7;">Due upon project turnover</p>
+                    </div>
+
+                    <div id="monthly-summary" style="display: none;" class="monthly-notice">
+                        <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-orange); font-weight: 900; margin-bottom: 5px;">Monthly Commitment</div>
+                        <div style="font-size: 1.8rem; color: #fff; font-weight: 800; margin-bottom: 10px;">₱<span id="display-combined-monthly">0</span></div>
+                        <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px; font-size: 0.75rem; color: var(--muted-text);">
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>Mgmt: ₱<span id="display-monthly">0</span></span>
+                                <span>Ads: ₱<span id="display-google">0</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" id="quote-btn" target="_blank" class="btn-quote" style="margin-top: 20px;">Lock in this Price</a>
+                    <p style="font-size: 0.65rem; color: #555; text-align: center; margin-top: 10px;">Price valid for 7 days.</p>
+                </div>
+            </div>
+        </section>
+    </div> <footer>
         <div class="footer-nav">
             <a href="index.html">Home</a> | <a href="about.html">About</a> | <a href="service.html">Services</a> | <a href="legal.html">Legal & Privacy</a>
         </div>
@@ -374,7 +390,7 @@
             let domainName = domainSelect.options[domainSelect.selectedIndex].getAttribute('data-name');
             setupTotal += domainCost;
             let selectedItems = [domainName];
-
+            
             triggers.forEach(t => {
                 const parentLabel = t.closest('.option-item');
                 let price = parseInt(t.getAttribute('data-price'));
