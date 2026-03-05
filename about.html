@@ -16,19 +16,21 @@
             --header-bg: #000000;
         }
 
+        /* --- GLOBAL STYLES --- */
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
             background-color: var(--dark-bg);
             color: var(--light-text);
-            line-height: 1.5;
+            line-height: 1.4;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         /* --- NAVIGATION --- */
         nav {
             background: var(--header-bg);
-            padding: 0.6rem 5%;
+            padding: 0.5rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -39,43 +41,49 @@
         }
 
         .nav-brand {
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 800;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             color: var(--light-text);
             text-transform: uppercase;
             text-decoration: none;
         }
-
         .nav-brand span { color: var(--accent-orange); }
 
-        .nav-links { display: flex; list-style: none; margin: 0; padding: 0; }
-        .nav-links li { margin-left: 25px; }
-        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.8rem; }
+        .nav-links { display: flex; list-style: none; margin: 0; padding: 0; align-items: center; }
+        .nav-links li { margin-left: 20px; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; display: inline-block; }
         .nav-links a:hover, .active-link { color: var(--accent-orange) !important; }
 
-        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
-        .hamburger div { width: 22px; height: 2px; background-color: white; transition: 0.3s; }
+        .nav-quote-btn {
+            border: 1px solid var(--accent-orange);
+            padding: 5px 12px;
+            border-radius: 4px;
+            color: var(--accent-orange) !important;
+        }
 
-        /* --- LOGO HEADER (350px) --- */
-        .logo-header { padding: 40px 5% 10px; text-align: center; background-color: #000; }
-        .main-logo { max-width: 350px; width: 100%; height: auto; }
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
+        .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
+
+        /* --- LOGO HEADER --- */
+        .logo-header { padding: 30px 5% 5px; text-align: center; background-color: #000; }
+        .main-logo { max-width: 280px; width: 100%; height: auto; }
 
         /* --- ABOUT CONTENT --- */
         .about-hero {
-            padding: 40px 5% 20px;
+            padding: 40px 5% 40px;
             text-align: center;
             background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%);
         }
+        .about-hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 10px; font-weight: 800; }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 0 5% 60px;
+            padding: 40px 5% 80px;
         }
 
-        h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); margin-bottom: 10px; font-weight: 800; }
-        h2 { color: var(--primary-blue); margin-top: 30px; font-size: 1.4rem; }
+        h2 { color: var(--primary-blue); margin-top: 40px; font-size: 1.4rem; font-weight: 800; }
 
         .highlight-text {
             font-size: 1.05rem;
@@ -83,40 +91,42 @@
             font-weight: 600;
             border-left: 3px solid var(--accent-orange);
             padding-left: 20px;
-            margin: 30px 0;
+            margin: 40px 0;
             font-style: italic;
+            line-height: 1.6;
         }
 
         .philosophy-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            padding: 25px;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: 30px;
+            background: rgba(10, 88, 202, 0.05);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(10, 88, 202, 0.2);
+            margin-top: 40px;
         }
 
-        /* --- MOBILE VIEW --- */
+        /* --- MOBILE OVERRIDES --- */
         @media (max-width: 768px) {
             .hamburger { display: flex; }
             .nav-links {
                 position: fixed; right: 0; top: 0; height: 100vh; background-color: #000;
-                flex-direction: column; width: 240px; transform: translateX(100%); transition: 0.4s;
-                padding-top: 80px; border-left: 1px solid #222;
+                flex-direction: column; width: 260px; transform: translateX(100%); 
+                transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                padding-top: 70px; border-left: 1px solid #222; align-items: flex-start;
             }
             .nav-links li { width: 100%; margin: 0; }
-            .nav-links a { padding: 15px 30px; display: block; border-bottom: 1px solid #111; }
+            .nav-links a { display: block; width: 100%; padding: 20px 30px; font-size: 0.95rem; border-bottom: 1px solid #111; box-sizing: border-box; }
             .nav-active { transform: translateX(0%); }
-            .toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
+            
+            .toggle .line1 { transform: rotate(-45deg) translate(-4px, 5px); }
             .toggle .line2 { opacity: 0; }
-            .toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
-            .main-logo { max-width: 280px; }
+            .toggle .line3 { transform: rotate(45deg) translate(-4px, -5px); }
         }
 
-        /* --- FOOTER --- */
         footer { padding: 40px 5% 30px; text-align: center; border-top: 1px solid #222; color: #555; font-size: 0.75rem; background-color: #000; }
         footer a { color: #888; text-decoration: none; margin: 0 10px; transition: 0.3s; }
         footer a:hover { color: var(--accent-orange); }
+        .footer-nav { margin-bottom: 15px; }
+        .footer-badges { margin-top: 15px; opacity: 0.5; font-size: 0.7rem; letter-spacing: 0.5px; }
     </style>
 </head>
 <body>
@@ -126,13 +136,11 @@
         <ul class="nav-links" id="nav-menu">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html" class="active-link">About Us</a></li>
-            <li><a href="index.html#services">Services</a></li>
-            <li><a href="tel:+639310410733" style="color: var(--accent-orange);">Call Now</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="quote.html" class="nav-quote-btn">Get a Quote</a></li>
         </ul>
         <div class="hamburger" id="hamburger">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
+            <div class="line1"></div><div class="line2"></div><div class="line3"></div>
         </div>
     </nav>
 
@@ -142,42 +150,56 @@
 
     <section class="about-hero">
         <h1>Our <span style="color: var(--primary-blue);">Mission</span></h1>
-        <p style="color: var(--muted-text); font-size: 0.95rem;">Building your custom digital identity with precision.</p>
+        <p style="color: var(--muted-text); font-size: 0.9rem; max-width: 500px; margin: 0 auto;">Building your custom digital identity with precision and absolute transparency.</p>
     </section>
 
     <div class="container">
-        <p style="font-size: 0.95rem;">
-            At <strong>JDR Corporation</strong>, we specialize in high-performance HTML5 excellence. We believe that your website should be as unique as your business vision.
+        <p style="font-size: 0.95rem; color: var(--light-text);">
+            At <strong>JDR Corporation</strong>, we specialize in high-performance HTML architecture. We believe that your website should be as unique as your business vision, built without the bloat of generic templates.
         </p>
 
         <div class="highlight-text">
-            "Transparency through code. Watch your vision come to life in real-time."
+            "Transparency through code. Watch your vision come to life in real-time, one deployment at a time."
         </div>
 
         <h2>Real-Time Collaboration</h2>
-        <p style="font-size: 0.95rem;">
-            We grant you access to your <strong>Private GitHub Link</strong> from day one. Monitor every update and provide feedback instantly as we build your vision.
+        <p style="font-size: 0.95rem; color: var(--muted-text);">
+            We grant you access to your <strong>Private GitHub Link</strong> from day one. Monitor every update and provide feedback instantly as we build your vision. This process ensures that "ghosting" is impossible—our work is visible 24/7.
+        </p>
+
+        <h2>The Asset Transfer</h2>
+        <p style="font-size: 0.95rem; color: var(--muted-text);">
+            Our workflow begins by securing your digital real estate. By collecting the <strong>Domain Cost</strong> upfront alongside the service advance, we ensure your brand name is locked in your name immediately. Upon final settlement, 100% of the code and master accounts are transferred to you.
         </p>
 
         <div class="philosophy-card">
-            <h3 style="margin-top: 0; color: var(--accent-orange); font-size: 1.1rem;">Direct & Personal</h3>
-            <p style="margin-bottom: 0; font-size: 0.9rem;">No red tape. We prioritize direct communication via WhatsApp and Viber, keeping you in total control of the project's timeline and payment milestones.</p>
+            <h3 style="margin-top: 0; color: var(--accent-orange); font-size: 1.1rem; font-weight: 800;">Direct & Personal</h3>
+            <p style="margin-bottom: 0; font-size: 0.9rem; color: var(--light-text); line-height: 1.6;">No red tape. We prioritize direct communication via WhatsApp and Viber, keeping you in total control of the project's timeline and payment milestones.</p>
+        </div>
+        
+        <div style="text-align: center; margin-top: 50px;">
+            <a href="service.html" style="color: var(--primary-blue); text-decoration: none; font-weight: bold; font-size: 0.85rem; letter-spacing: 1px;">VIEW DETAILED SERVICES &rarr;</a>
         </div>
     </div>
 
     <footer>
+        <div class="footer-nav">
+            <a href="index.html">Home</a> | <a href="about.html">About</a> | <a href="service.html">Services</a> | <a href="legal.html">Legal & Privacy</a>
+        </div>
         <p>&copy; 2026 JDR CORP. All Rights Reserved.</p>
-        <p>
-            <a href="index.html">Home</a> | 
-            <a href="about.html">About</a> | 
-            <a href="legal.html">Legal & Privacy</a>
-        </p>
-        <p style="margin-top: 10px; opacity: 0.5;">Custom HTML | GitHub Workflows | GCash Verified</p>
+        <div class="footer-badges">
+            CUSTOM HTML ARCHITECTURE • GITHUB WORKFLOWS • GCASH VERIFIED BUSINESS
+        </div>
     </footer>
 
     <script>
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('nav-menu');
+        
+        const closeMenu = () => {
+            navMenu.classList.remove('nav-active');
+            hamburger.classList.remove('toggle');
+        };
 
         hamburger.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -185,17 +207,17 @@
             hamburger.classList.toggle('toggle');
         });
 
-        // Close menu when links are clicked
-        document.querySelectorAll('.nav-links li').forEach(n => n.addEventListener('click', () => {
-            navMenu.classList.remove('nav-active');
-            hamburger.classList.remove('toggle');
-        }));
-
-        // Close menu on scroll for better UX
+        // Close menu on scroll
         window.addEventListener('scroll', () => {
-            if(navMenu.classList.contains('nav-active')) {
-                navMenu.classList.remove('nav-active');
-                hamburger.classList.remove('toggle');
+            if (navMenu.classList.contains('nav-active')) {
+                closeMenu();
+            }
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                closeMenu();
             }
         });
     </script>

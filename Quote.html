@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instant Quote Builder | JDR CORP.</title>
+    <style>
+        /* --- BRAND VARIABLES --- */
+        :root {
+            --primary-blue: #0A58CA;
+            --accent-orange: #F98C15;
+            --dark-bg: #0C0D11;
+            --card-bg: rgba(23, 25, 30, 0.9);
+            --light-text: #F4F4F4;
+            --muted-text: #A0A0A0;
+            --header-bg: #000000;
+        }
+
+        /* --- GLOBAL STYLES --- */
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
+
+        /* --- SYNCED NAVIGATION (Exactly like Index.html) --- */
+        nav {
+            background: var(--header-bg);
+            padding: 0.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #222;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-brand {
+            font-size: 0.9rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--light-text);
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+        .nav-brand span { color: var(--accent-orange); }
+
+        .nav-links { display: flex; list-style: none; margin: 0; padding: 0; align-items: center; }
+        .nav-links li { margin-left: 20px; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; display: inline-block; }
+        .nav-links a:hover { color: var(--accent-orange); }
+
+        .nav-quote-btn {
+            border: 1px solid var(--accent-orange);
+            padding: 5px 12px;
+            border-radius: 4px;
+            color: var(--accent-orange) !important;
+        }
+
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
+        .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
+
+        /* --- MOBILE OVERRIDES (Synced with Index) --- */
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav-links {
+                position: fixed; right: 0; top: 0; height: 100vh; background-color: #000;
+                flex-direction: column; width: 260px; transform: translateX(100%); 
+                transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                padding-top: 70px; border-left: 1px solid #222; align-items: flex-start;
+            }
+            .nav-links li { width: 100%; margin: 0; }
+            .nav-links a { display: block; width: 100%; padding: 20px 30px; font-size: 0.95rem; border-bottom: 1px solid #111; box-sizing: border-box; }
+            .nav-active { transform: translateX(0%); }
+            
+            .toggle .line1 { transform: rotate(-45deg) translate(-4px, 5px); }
+            .toggle .line2 { opacity: 0; }
+            .toggle .line3 { transform: rotate(45deg) translate(-4px, -5px); }
+        }
+
+        /* --- QUOTE BUILDER UI --- */
+        .quote-hero {
+            padding: 40px 5% 20px;
+            text-align: center;
+            background: radial-gradient(circle at top, #1E3A5F 0%, #0C0D11 100%);
+        }
+        .quote-hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 5px; font-weight: 800; }
+
+        .builder-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px 5% 100px;
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 30px;
+        }
+
+        .options-column h3 { 
+            color: var(--primary-blue); 
+            font-size: 0.85rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; 
+            margin: 30px 0 15px;
+            border-left: 3px solid var(--accent-orange);
+            padding-left: 10px;
+        }
+
+        .option-card {
+            background: var(--card-bg);
+            border: 1px solid #222;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            gap: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .option-card.selected { border-color: var(--primary-blue); background: rgba(10, 88, 202, 0.05); }
+
+        .card-info strong { display: block; font-size: 0.95rem; margin-bottom: 4px; }
+        .card-info p { margin: 0; font-size: 0.8rem; color: var(--muted-text); line-height: 1.4; }
+
+        select {
+            width: 100%; padding: 10px; margin-top: 10px; background: #111; color: white; border: 1px solid #333; border-radius: 5px;
+        }
+
+        /* --- SUMMARY STICKY --- */
+        .summary-sticky { position: sticky; top: 80px; height: fit-content; }
+        .summary-card {
+            background: #000; border: 1px solid var(--primary-blue); border-radius: 12px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .main-total { font-size: 2.2rem; font-weight: 800; color: var(--accent-orange); margin-bottom: 15px; }
+
+        .btn-lock {
+            display: block; text-align: center; background: var(--primary-blue); color: white; text-decoration: none; padding: 15px; border-radius: 6px; font-weight: 700; transition: 0.3s;
+        }
+        .btn-lock:hover { transform: translateY(-2px); background: #0b66eb; }
+
+        /* --- SYNCED FOOTER --- */
+        footer { padding: 40px 5% 30px; text-align: center; border-top: 1px solid #222; color: #555; font-size: 0.75rem; background-color: #000; margin-top: 50px;}
+        footer a { color: #888; text-decoration: none; margin: 0 10px; transition: 0.3s; }
+        footer a:hover { color: var(--accent-orange); }
+        .footer-nav { margin-bottom: 15px; }
+        .footer-badges { margin-top: 15px; opacity: 0.5; font-size: 0.7rem; letter-spacing: 0.5px; text-transform: uppercase;}
+
+        @media (max-width: 850px) {
+            .builder-container { grid-template-columns: 1fr; }
+            .summary-sticky { position: static; margin-top: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="nav-brand">JDR <span>Corporation</span></a>
+        <ul class="nav-links" id="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="quote.html" class="nav-quote-btn">Get a Quote</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <div class="line1"></div><div class="line2"></div><div class="line3"></div>
+        </div>
+    </nav>
+
+    <section class="quote-hero">
+        <h1>Quote <span style="color: var(--primary-blue);">Builder</span></h1>
+        <p style="color: var(--muted-text); font-size: 0.9rem;">Configure your setup and get a professional estimate instantly.</p>
+    </section>
+
+    <div class="builder-container">
+        <div class="options-column">
+            <h3>1. Digital Assets</h3>
+            <div class="option-card selected">
+                <div class="card-info" style="width: 100%;">
+                    <strong>Domain Registration</strong>
+                    <p>Includes DNS configuration and SSL security setup.</p>
+                    <select id="domain-select">
+                        <option value="1200" data-name=".com Domain">Standard .com (₱1,200/yr)</option>
+                        <option value="3500" data-name=".ph Domain">Premium .ph (₱3,500/yr)</option>
+                        <option value="0" data-name="Existing Domain">I already have a domain (₱0)</option>
+                    </select>
+                </div>
+            </div>
+
+            <h3>2. Development Core</h3>
+            <label class="option-card">
+                <input type="checkbox" class="price-trigger" data-price="9000" data-name="Growth Engine (1-Page)">
+                <div class="card-info">
+                    <strong>Single-Page Growth Engine</strong>
+                    <p>High-speed landing page + GMB verification + Ads Technical Setup.</p>
+                </div>
+            </label>
+
+            <label class="option-card">
+                <input type="checkbox" class="price-trigger" data-price="16500" data-name="Business Suite (Multi-Page)">
+                <div class="card-info">
+                    <strong>Multi-Page Business Suite</strong>
+                    <p>Full Corporate Site (4-5 Pages) + Full Google Ecosystem Setup.</p>
+                </div>
+            </label>
+
+            <h3>3. Management & Growth</h3>
+            <label class="option-card">
+                <input type="checkbox" class="price-trigger monthly-check" id="mgmt-check" data-price="1500" data-name="Maintenance & Ads Mgmt">
+                <div class="card-info" style="width: 100%;">
+                    <strong>Ads Management & SEO Support</strong>
+                    <p>Professional weekly monitoring and optimizations (₱1,500/mo).</p>
+                    <div id="ads-calc" style="display:none; margin-top: 15px; padding: 15px; background: rgba(0,0,0,0.3); border-radius: 8px;">
+                        <span style="font-size: 0.75rem;">Daily Ad Budget: <strong>₱<span id="daily-val">200</span></strong></span>
+                        <input type="range" id="ad-slider" min="100" max="2000" step="50" value="200" style="width: 100%; margin: 10px 0; accent-color: var(--accent-orange);">
+                        <p style="font-size: 0.7rem; color: var(--primary-blue); margin: 5px 0;">Est. Monthly Reach: <strong id="est-clicks">300</strong> New Visitors</p>
+                    </div>
+                </div>
+            </label>
+
+            <label class="option-card">
+                <input type="checkbox" id="no-mgmt-check">
+                <div class="card-info">
+                    <strong>Self-Managed (One-Time Setup)</strong>
+                    <p>You handle all future hosting renewals and ad adjustments manually.</p>
+                </div>
+            </label>
+        </div>
+
+        <div class="summary-sticky">
+            <div class="summary-card">
+                <div style="font-size: 0.7rem; text-transform: uppercase; color: var(--muted-text);">Total Setup Cost</div>
+                <div class="main-total">₱<span id="display-total">1,200</span></div>
+
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.85rem;">
+                    <span>Initial Advance</span>
+                    <span style="color: var(--accent-orange);">₱<span id="display-advance">1,200</span></span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.85rem;">
+                    <span>Final Balance</span>
+                    <span>₱<span id="display-balance">0</span></span>
+                </div>
+
+                <div id="monthly-summary" style="display:none; background: rgba(10, 88, 202, 0.1); padding: 15px; border-radius: 8px; margin: 20px 0; border: 1px solid rgba(10, 88, 202, 0.2);">
+                    <div style="font-size: 0.7rem; text-transform: uppercase; color: var(--accent-orange);">Monthly Total</div>
+                    <div style="font-size: 1.5rem; font-weight: 800;">₱<span id="display-combined-monthly">0</span></div>
+                </div>
+
+                <a href="#" id="quote-btn" target="_blank" class="btn-lock">Lock Price via WhatsApp</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-nav">
+            <a href="index.html">Home</a> | <a href="about.html">About</a> | <a href="service.html">Services</a> | <a href="legal.html">Legal & Privacy</a>
+        </div>
+        <p>&copy; 2026 JDR CORP. All Rights Reserved.</p>
+        <div class="footer-badges">
+            CUSTOM HTML ARCHITECTURE • GITHUB WORKFLOWS • GCASH VERIFIED BUSINESS
+        </div>
+    </footer>
+
+    <script>
+        // --- NAVIGATION (SYNCED WITH INDEX.HTML) ---
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        
+        const closeMenu = () => {
+            navMenu.classList.remove('nav-active');
+            hamburger.classList.remove('toggle');
+        };
+
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navMenu.classList.toggle('nav-active');
+            hamburger.classList.toggle('toggle');
+        });
+
+        window.addEventListener('scroll', () => {
+            if (navMenu.classList.contains('nav-active')) closeMenu();
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) closeMenu();
+        });
+
+        // --- QUOTE LOGIC ---
+        const triggers = document.querySelectorAll('.price-trigger');
+        const domainSelect = document.getElementById('domain-select');
+        const displayTotal = document.getElementById('display-total');
+        const displayAdvance = document.getElementById('display-advance');
+        const displayBalance = document.getElementById('display-balance');
+        const displayCombinedMonthly = document.getElementById('display-combined-monthly');
+        const monthlySummary = document.getElementById('monthly-summary');
+        const quoteBtn = document.getElementById('quote-btn');
+        const adSlider = document.getElementById('ad-slider');
+        const dailyVal = document.getElementById('daily-val');
+        const estClicks = document.getElementById('est-clicks');
+        const mgmtCheck = document.getElementById('mgmt-check');
+        const noMgmtCheck = document.getElementById('no-mgmt-check');
+        const adsCalc = document.getElementById('ads-calc');
+
+        mgmtCheck.addEventListener('change', () => {
+            if(mgmtCheck.checked) { noMgmtCheck.checked = false; adsCalc.style.display = 'block'; }
+            else { adsCalc.style.display = 'none'; }
+            calculate();
+        });
+
+        noMgmtCheck.addEventListener('change', () => {
+            if(noMgmtCheck.checked) { mgmtCheck.checked = false; adsCalc.style.display = 'none'; }
+            calculate();
+        });
+
+        function calculate() {
+            let setupTotal = 0, laborTotal = 0, monthlyMgmtFee = 0;
+            let domainCost = parseInt(domainSelect.value);
+            let domainName = domainSelect.options[domainSelect.selectedIndex].getAttribute('data-name');
+            setupTotal += domainCost;
+            let selectedItems = [domainName];
+
+            triggers.forEach(t => {
+                const parent = t.closest('.option-card');
+                if(t.checked) {
+                    let price = parseInt(t.getAttribute('data-price'));
+                    if(t.classList.contains('monthly-check')) { monthlyMgmtFee += price; }
+                    else { setupTotal += price; laborTotal += price; }
+                    selectedItems.push(t.getAttribute('data-name'));
+                    parent.classList.add('selected');
+                } else { parent.classList.remove('selected'); }
+            });
+
+            let dailyBudget = parseInt(adSlider.value);
+            let monthlyGoogleSpend = dailyBudget * 30;
+            let combinedMonthly = monthlyMgmtFee + monthlyGoogleSpend;
+            
+            dailyVal.innerText = dailyBudget.toLocaleString();
+            estClicks.innerText = Math.floor(monthlyGoogleSpend / 20).toLocaleString();
+
+            const advance = domainCost + (laborTotal / 2);
+            const balance = setupTotal - advance;
+
+            displayTotal.innerText = setupTotal.toLocaleString();
+            displayAdvance.innerText = Math.round(advance).toLocaleString();
+            displayBalance.innerText = Math.round(balance).toLocaleString();
+            displayCombinedMonthly.innerText = combinedMonthly.toLocaleString();
+            monthlySummary.style.display = mgmtCheck.checked ? 'block' : 'none';
+
+            const phone = "639310410733";
+            let msg = `Hi JDR Corp! Quote Request:\n\n` +
+                      `Plan: ${selectedItems.join(', ')}\n` +
+                      `Total Setup: ₱${setupTotal.toLocaleString()}\n` +
+                      `Advance: ₱${Math.round(advance).toLocaleString()}`;
+            if(mgmtCheck.checked) msg += `\nMonthly Total: ₱${combinedMonthly.toLocaleString()}`;
+
+            quoteBtn.href = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+        }
+
+        triggers.forEach(t => t.addEventListener('change', calculate));
+        domainSelect.addEventListener('change', calculate);
+        adSlider.addEventListener('input', calculate);
+        calculate();
+    </script>
+</body>
+</html>

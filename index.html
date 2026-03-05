@@ -22,7 +22,7 @@
             margin: 0;
             background-color: var(--dark-bg);
             color: var(--light-text);
-            line-height: 1.5;
+            line-height: 1.4;
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
@@ -30,7 +30,7 @@
         /* --- NAVIGATION --- */
         nav {
             background: var(--header-bg);
-            padding: 0.6rem 5%;
+            padding: 0.5rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -41,123 +41,117 @@
         }
 
         .nav-brand {
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 800;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             color: var(--light-text);
             text-transform: uppercase;
             text-decoration: none;
         }
-
         .nav-brand span { color: var(--accent-orange); }
 
-        .nav-links { display: flex; list-style: none; margin: 0; padding: 0; }
-        .nav-links li { margin-left: 25px; }
-        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.8rem; }
+        .nav-links { display: flex; list-style: none; margin: 0; padding: 0; align-items: center; }
+        .nav-links li { margin-left: 20px; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; display: inline-block; }
         .nav-links a:hover { color: var(--accent-orange); }
 
-        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
-        .hamburger div { width: 22px; height: 2px; background-color: white; transition: 0.3s; }
+        .nav-quote-btn {
+            border: 1px solid var(--accent-orange);
+            padding: 5px 12px;
+            border-radius: 4px;
+            color: var(--accent-orange) !important;
+        }
 
-        /* --- LOGO HEADER SECTION --- */
-        .logo-header { padding: 40px 5% 10px; text-align: center; background-color: #000; }
-        .main-logo { max-width: 350px; width: 100%; height: auto; }
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
+        .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
+
+        /* --- LOGO HEADER --- */
+        .logo-header { padding: 30px 5% 5px; text-align: center; background-color: #000; }
+        .main-logo { max-width: 280px; width: 100%; height: auto; }
 
         /* --- HERO SECTION --- */
-        .hero { padding: 40px 5% 60px; text-align: center; background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%); }
-        .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 15px; font-weight: 800; }
-        .hero p { font-size: 1rem; color: var(--muted-text); max-width: 650px; margin: 0 auto 30px; }
+        .hero { padding: 30px 5% 40px; text-align: center; background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%); }
+        .hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 10px; font-weight: 800; }
+        .hero p { font-size: 0.9rem; color: var(--muted-text); max-width: 500px; margin: 0 auto 20px; }
+        .cta-btn-main { background: var(--primary-blue); color: white; padding: 10px 24px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; transition: 0.3s; font-size: 0.85rem; }
+
+        /* --- MONITORING SECTION --- */
+        .transparency-section { padding: 60px 5%; background: #000; text-align: center; }
+        .monitor-box { max-width: 900px; margin: 0 auto; padding: 40px 30px; background: rgba(10, 88, 202, 0.05); border: 1px solid var(--primary-blue); border-radius: 12px; }
+        .pulse-dot { height: 7px; width: 7px; background-color: #ff4b4b; border-radius: 50%; display: inline-block; box-shadow: 0 0 6px #ff4b4b; animation: pulse-animation 1.5s infinite; }
+
+        @keyframes pulse-animation { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
+
+        .monitor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; text-align: left; margin-top: 30px; }
+        .monitor-card { background: rgba(255,255,255,0.02); padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05); }
+        .monitor-card h4 { color: var(--accent-orange); margin: 0 0 8px; font-size: 1rem; }
+        .monitor-card p { font-size: 0.85rem; color: var(--muted-text); line-height: 1.5; margin: 0; }
+
+        /* --- TRANSACTION HUB --- */
+        .chat-hub { padding: 50px 5%; text-align: center; background: radial-gradient(circle at top, #1E3A5F 0%, #000 100%); }
+        .chat-hub h2 { font-size: 1.5rem; margin-bottom: 5px; }
+        .agreement-card { max-width: 350px; margin: 0 auto 15px; text-align: left; background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px; border: 1px solid #222; }
+        .chat-container { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+        .chat-btn { padding: 10px 18px; border-radius: 8px; text-decoration: none; color: white; font-weight: bold; transition: 0.3s; min-width: 150px; font-size: 0.8rem; }
+        .whatsapp { background-color: #25D366; } .viber { background-color: #7360f2; }
+
+        /* --- RATING & TESTIMONIALS --- */
+        .star-rating label:hover,
+        .star-rating label:hover ~ label,
+        .star-rating input:checked ~ label {
+            color: var(--accent-orange) !important;
+        }
+
+        /* NEW SLIDER STYLES */
+        .testimonial-slider { 
+            width: 100%; 
+            overflow: hidden; 
+            padding: 20px 0; 
+            cursor: grab;
+            user-select: none;
+        }
+        .testimonial-slider:active { cursor: grabbing; }
         
-        .cta-btn-main {
-            background: var(--primary-blue);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            display: inline-block;
-            transition: 0.3s;
-            font-size: 0.9rem;
+        .testimonial-track { 
+            display: flex; 
+            width: max-content; 
+            gap: 15px;
         }
-        .cta-btn-main:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(10, 88, 202, 0.4); }
-
-        /* --- TRANSPARENCY SECTION --- */
-        .transparency-section { padding: 40px 5%; background: #000; text-align: center; }
-        .monitor-box {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 25px;
-            background: rgba(10, 88, 202, 0.05);
-            border: 1px dashed var(--primary-blue);
-            border-radius: 15px;
-        }
-        .monitor-box h2 { font-size: 1.5rem; color: var(--accent-orange); margin-top: 0; }
-        .monitor-box p { font-size: 0.95rem; margin-bottom: 0; }
-
-        /* --- COMPACT SERVICES GRID --- */
-        .services-section { padding: 60px 5%; text-align: center; }
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            max-width: 1100px;
-            margin: 40px auto 0;
-        }
-        .service-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            padding: 25px;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        
+        .testimonial-card-move {
+            width: 220px; 
+            flex-shrink: 0; 
+            background: rgba(10, 88, 202, 0.05); 
+            padding: 15px; 
+            border-radius: 10px; 
+            border-left: 3px solid var(--primary-blue);
+            white-space: normal;
             text-align: left;
-            transition: 0.3s;
         }
-        .service-card h3 { font-size: 1.2rem; margin-top: 0; color: var(--primary-blue); }
-        .service-card p { font-size: 0.9rem; color: var(--muted-text); margin-bottom: 0; }
-        .service-card:hover { transform: translateY(-5px); border-color: var(--primary-blue); }
 
-        /* --- COMPACT CHAT HUB --- */
-        .chat-hub { padding: 60px 5%; text-align: center; background: radial-gradient(circle at top, #1E3A5F 0%, #000 100%); }
-        .chat-hub h2 { font-size: 1.8rem; }
-        .chat-container { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 30px; }
-        
-        .chat-btn {
-            display: flex;
-            align-items: center;
-            padding: 12px 20px;
-            border-radius: 10px;
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            transition: 0.3s;
-            min-width: 180px;
-            justify-content: center;
-            font-size: 0.85rem;
-        }
-        .whatsapp { background-color: #25D366; }
-        .viber { background-color: #7360f2; }
-        .chat-btn:hover { transform: scale(1.03); filter: brightness(1.1); }
-
-        /* --- MOBILE VIEW --- */
+        /* --- MOBILE OVERRIDES --- */
         @media (max-width: 768px) {
             .hamburger { display: flex; }
             .nav-links {
                 position: fixed; right: 0; top: 0; height: 100vh; background-color: #000;
-                flex-direction: column; width: 240px; transform: translateX(100%); transition: 0.4s;
-                padding-top: 80px; border-left: 1px solid #222;
+                flex-direction: column; width: 260px; transform: translateX(100%); 
+                transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                padding-top: 70px; border-left: 1px solid #222; align-items: flex-start;
             }
             .nav-links li { width: 100%; margin: 0; }
-            .nav-links a { padding: 15px 30px; display: block; border-bottom: 1px solid #111; }
+            .nav-links a { display: block; width: 100%; padding: 20px 30px; font-size: 0.95rem; border-bottom: 1px solid #111; box-sizing: border-box; }
             .nav-active { transform: translateX(0%); }
-            .toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
+            
+            .toggle .line1 { transform: rotate(-45deg) translate(-4px, 5px); }
             .toggle .line2 { opacity: 0; }
-            .toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
-            .main-logo { max-width: 280px; }
+            .toggle .line3 { transform: rotate(45deg) translate(-4px, -5px); }
         }
 
         footer { padding: 40px 5% 30px; text-align: center; border-top: 1px solid #222; color: #555; font-size: 0.75rem; background-color: #000; }
         footer a { color: #888; text-decoration: none; margin: 0 10px; transition: 0.3s; }
         footer a:hover { color: var(--accent-orange); }
+        .footer-nav { margin-bottom: 15px; }
+        .footer-badges { margin-top: 15px; opacity: 0.5; font-size: 0.7rem; letter-spacing: 0.5px; }
     </style>
 </head>
 <body>
@@ -167,13 +161,11 @@
         <ul class="nav-links" id="nav-menu">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="tel:+639310410733" style="color: var(--accent-orange);">Call Now</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="quote.html" class="nav-quote-btn">Get a Quote</a></li>
         </ul>
         <div class="hamburger" id="hamburger">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
+            <div class="line1"></div><div class="line2"></div><div class="line3"></div>
         </div>
     </nav>
 
@@ -183,67 +175,124 @@
 
     <section class="hero">
         <h1>Your Concept. <br><span style="color: var(--accent-orange);">Our Code.</span></h1>
-        <p>Expert HTML architecture with real-time transparency. Watch your vision come to life through your private GitHub repository.</p>
-        <a href="tel:+639310410733" class="cta-btn-main">Connect with JDR Corporation</a>
+        <p>Expert HTML architecture with real-time transparency. Watch your vision come to life through your private GitHub preview link.</p>
+        <a href="quote.html" class="cta-btn-main">Build Your Custom Quote</a>
     </section>
 
     <section class="transparency-section">
         <div class="monitor-box">
-            <h2>Live Build Monitoring</h2>
-            <p>Get a <strong>Private GitHub Link</strong> immediately. Monitor updates and provide feedback in real-time as we build.</p>
-        </div>
-    </section>
-
-    <section class="services-section" id="services">
-        <h2>Expertise <span style="color: var(--accent-orange);">&</span> Strategy</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>01. Custom Code</h3>
-                <p>Pure HTML5/CSS3. Fast, clean, and unique builds from scratch.</p>
+            <div style="display: inline-flex; align-items: center; gap: 6px; background: rgba(0,0,0,0.3); padding: 4px 12px; border-radius: 20px; border: 1px solid #333; margin-bottom: 15px;">
+                <span class="pulse-dot"></span>
+                <span style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; color: #eee;">System Status: Active Build</span>
             </div>
-            <div class="service-card">
-                <h3>02. GitHub Logic</h3>
-                <p>Industry-standard version control and transparent infrastructure.</p>
-            </div>
-            <div class="service-card">
-                <h3>03. Launch Ready</h3>
-                <p>Full DNS and domain management for a flawless live rollout.</p>
+            <h2 style="font-size: 1.8rem; margin: 0 0 15px;">Live Build Monitoring</h2>
+            <div class="monitor-grid">
+                <div class="monitor-card">
+                    <h4>Exclusive Preview URL</h4>
+                    <p>Receive a private <strong>GitHub Staging Link</strong> to see new sections as they are deployed.</p>
+                </div>
+                <div class="monitor-card">
+                    <h4>Visual Verification</h4>
+                    <p>Verify the layout on your phone or desktop while we are still in the production phase.</p>
+                </div>
+                <div class="monitor-card">
+                    <h4>Instant Milestone Sync</h4>
+                    <p>Every completed component appears on your preview link instantly. No delays.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <section class="chat-hub" id="contact">
         <h2>Direct <span style="color: var(--accent-orange);">Transaction</span> Hub</h2>
-        <p>Direct communication for your convenience.</p>
-
-        <div style="max-width: 400px; margin: 0 auto 20px; text-align: left; background: rgba(255,255,255,0.03); padding: 15px; border-radius: 10px; border: 1px solid #222;">
-            <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-size: 0.85rem; color: var(--muted-text);">
-                <input type="checkbox" id="terms-check" style="margin-top: 4px; accent-color: var(--accent-orange);">
-                <span>I agree to the <a href="legal.html" style="color: var(--accent-orange); text-decoration: none;">Terms of Service</a> (50% GCash advance / 50% Cash on Hand handover).</span>
+        <div class="agreement-card">
+            <label style="display: flex; align-items: flex-start; gap: 8px; cursor: pointer; font-size: 0.75rem; color: var(--muted-text);">
+                <input type="checkbox" id="terms-check" style="margin-top: 3px; accent-color: var(--accent-orange);">
+                <span>Agree to <a href="legal.html" style="color: var(--accent-orange); text-decoration: none;">Legal Terms</a> (Domain + 50% Advance).</span>
             </label>
         </div>
-        
-        <div class="chat-container" id="chat-wrapper" style="opacity: 0.4; pointer-events: none; transition: 0.4s;">
+        <div class="chat-container" id="chat-wrapper" style="opacity: 0.3; pointer-events: none; transition: 0.4s;">
             <a href="https://wa.me/639310410733" class="chat-btn whatsapp">WhatsApp Chat</a>
             <a href="viber://chat?number=639310410733" class="chat-btn viber">Viber Chat</a>
         </div>
-        <p id="check-reminder" style="font-size: 0.75rem; color: var(--accent-orange); margin-top: 10px;">Please check the box above to enable chat links.</p>
+    </section>
+
+    <section class="rating-section" style="padding: 40px 0; background: #000; text-align: center; border-top: 1px solid #111; overflow: hidden;">
+        <div style="max-width: 800px; margin: 0 auto; padding: 0 5%;">
+            <div style="max-width: 400px; margin: 0 auto 40px; background: rgba(255,255,255,0.02); padding: 20px; border-radius: 12px; border: 1px solid #222;">
+                <h2 style="font-size: 1.2rem; margin-bottom: 5px;">Rate Our <span style="color: var(--accent-orange);">Service</span></h2>
+                <p style="font-size: 0.75rem; color: var(--muted-text); margin-bottom: 15px;">Your feedback drives our standards.</p>
+                
+                <div class="star-rating" style="display: flex; justify-content: center; gap: 5px; margin-bottom: 15px; flex-direction: row-reverse;">
+                    <input type="radio" id="star5" name="rating" value="5" style="display:none;"/><label for="star5" style="cursor:pointer; font-size: 1.5rem; color: #333; transition: 0.2s;">★</label>
+                    <input type="radio" id="star4" name="rating" value="4" style="display:none;"/><label for="star4" style="cursor:pointer; font-size: 1.5rem; color: #333; transition: 0.2s;">★</label>
+                    <input type="radio" id="star3" name="rating" value="3" style="display:none;"/><label for="star3" style="cursor:pointer; font-size: 1.5rem; color: #333; transition: 0.2s;">★</label>
+                    <input type="radio" id="star2" name="rating" value="2" style="display:none;"/><label for="star2" style="cursor:pointer; font-size: 1.5rem; color: #333; transition: 0.2s;">★</label>
+                    <input type="radio" id="star1" name="rating" value="1" style="display:none;"/><label for="star1" style="cursor:pointer; font-size: 1.5rem; color: #333; transition: 0.2s;">★</label>
+                </div>
+
+                <textarea id="client-review" placeholder="Share your experience..." style="width: 100%; background: #111; border: 1px solid #333; color: white; border-radius: 6px; padding: 10px; font-family: inherit; font-size: 0.8rem; resize: none; height: 60px; box-sizing: border-box; margin-bottom: 12px;"></textarea>
+                
+                <button onclick="submitRating()" id="submit-btn" style="background: var(--accent-orange); color: black; border: none; padding: 8px 20px; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 0.8rem; transition: 0.3s; width: 100%;">Submit Review</button>
+                <p id="thank-you-msg" style="display: none; color: var(--accent-orange); font-size: 0.8rem; margin-top: 12px; font-weight: bold;">✔ Sent for verification.</p>
+            </div>
+        </div>
+
+        <div class="testimonial-slider" id="slider-container">
+            <div class="testimonial-track" id="slider-track">
+                <div class="testimonial-card-move">
+                    <div style="color: var(--accent-orange); font-size: 0.8rem; margin-bottom: 5px;">★★★★★</div>
+                    <p style="font-size: 0.75rem; color: var(--light-text); font-style: italic; margin-bottom: 8px;">"The GitHub Live link was a game changer."</p>
+                    <span style="font-size: 0.7rem; color: var(--muted-text); font-weight: bold;">— TechStart <span style="color:var(--primary-blue)">✔</span></span>
+                </div>
+                <div class="testimonial-card-move">
+                    <div style="color: var(--accent-orange); font-size: 0.8rem; margin-bottom: 5px;">★★★★★</div>
+                    <p style="font-size: 0.75rem; color: var(--light-text); font-style: italic; margin-bottom: 8px;">"Fast delivery and very clean code."</p>
+                    <span style="font-size: 0.7rem; color: var(--muted-text); font-weight: bold;">— Creative Agency <span style="color:var(--primary-blue)">✔</span></span>
+                </div>
+                <div class="testimonial-card-move">
+                    <div style="color: var(--accent-orange); font-size: 0.8rem; margin-bottom: 5px;">★★★★★</div>
+                    <p style="font-size: 0.75rem; color: var(--light-text); font-style: italic; margin-bottom: 8px;">"Highly professional architecture."</p>
+                    <span style="font-size: 0.7rem; color: var(--muted-text); font-weight: bold;">— Nexus E-com <span style="color:var(--primary-blue)">✔</span></span>
+                </div>
+                <div class="testimonial-card-move">
+                    <div style="color: var(--accent-orange); font-size: 0.8rem; margin-bottom: 5px;">★★★★★</div>
+                    <p style="font-size: 0.75rem; color: var(--light-text); font-style: italic; margin-bottom: 8px;">"The GitHub Live link was a game changer."</p>
+                    <span style="font-size: 0.7rem; color: var(--muted-text); font-weight: bold;">— TechStart <span style="color:var(--primary-blue)">✔</span></span>
+                </div>
+                <div class="testimonial-card-move">
+                    <div style="color: var(--accent-orange); font-size: 0.8rem; margin-bottom: 5px;">★★★★★</div>
+                    <p style="font-size: 0.75rem; color: var(--light-text); font-style: italic; margin-bottom: 8px;">"Fast delivery and very clean code."</p>
+                    <span style="font-size: 0.7rem; color: var(--muted-text); font-weight: bold;">— Creative Agency <span style="color:var(--primary-blue)">✔</span></span>
+                </div>
+                <div class="testimonial-card-move">
+                    <div style="color: var(--accent-orange); font-size: 0.8rem; margin-bottom: 5px;">★★★★★</div>
+                    <p style="font-size: 0.75rem; color: var(--light-text); font-style: italic; margin-bottom: 8px;">"Highly professional architecture."</p>
+                    <span style="font-size: 0.7rem; color: var(--muted-text); font-weight: bold;">— Nexus E-com <span style="color:var(--primary-blue)">✔</span></span>
+                </div>
+            </div>
+        </div>
     </section>
 
     <footer>
+        <div class="footer-nav">
+            <a href="index.html">Home</a> | <a href="about.html">About</a> | <a href="service.html">Services</a> | <a href="legal.html">Legal & Privacy</a>
+        </div>
         <p>&copy; 2026 JDR CORP. All Rights Reserved.</p>
-        <p>
-            <a href="index.html">Home</a> | 
-            <a href="about.html">About</a> | 
-            <a href="legal.html">Legal & Privacy</a>
-        </p>
-        <p style="margin-top: 10px; opacity: 0.5;">Custom HTML | GitHub Workflows | GCash Verified</p>
+        <div class="footer-badges">
+            CUSTOM HTML ARCHITECTURE • GITHUB WORKFLOWS • GCASH VERIFIED BUSINESS
+        </div>
     </footer>
 
     <script>
-        // NAVIGATION SCRIPT
+        // --- NAVIGATION ---
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('nav-menu');
+        
+        const closeMenu = () => {
+            navMenu.classList.remove('nav-active');
+            hamburger.classList.remove('toggle');
+        };
 
         hamburger.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -251,34 +300,84 @@
             hamburger.classList.toggle('toggle');
         });
 
-        document.querySelectorAll('.nav-links li').forEach(n => n.addEventListener('click', () => {
-            navMenu.classList.remove('nav-active');
-            hamburger.classList.remove('toggle');
-        }));
-
         window.addEventListener('scroll', () => {
-            if(navMenu.classList.contains('nav-active')) {
-                navMenu.classList.remove('nav-active');
-                hamburger.classList.remove('toggle');
-            }
+            if (navMenu.classList.contains('nav-active')) closeMenu();
         });
 
-        // TERMS AGREEMENT SCRIPT
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) closeMenu();
+        });
+
+        // --- TERMS CHECK ---
         const termsCheck = document.getElementById('terms-check');
         const chatWrapper = document.getElementById('chat-wrapper');
-        const checkReminder = document.getElementById('check-reminder');
-
         termsCheck.addEventListener('change', function() {
-            if (this.checked) {
-                chatWrapper.style.opacity = "1";
-                chatWrapper.style.pointerEvents = "auto";
-                checkReminder.style.display = "none";
-            } else {
-                chatWrapper.style.opacity = "0.4";
-                chatWrapper.style.pointerEvents = "none";
-                checkReminder.style.display = "block";
-            }
+            chatWrapper.style.opacity = this.checked ? "1" : "0.3";
+            chatWrapper.style.pointerEvents = this.checked ? "auto" : "none";
         });
+
+        // --- RATING ---
+        function submitRating() {
+            const btn = document.getElementById('submit-btn');
+            const msg = document.getElementById('thank-you-msg');
+            const stars = document.querySelector('input[name="rating"]:checked');
+            if (!stars) { alert("Please select a star rating first!"); return; }
+            btn.style.display = 'none';
+            msg.style.display = 'block';
+            document.getElementById('client-review').disabled = true;
+        }
+
+        // --- FAST INTERACTIVE SLIDER LOGIC ---
+        const slider = document.getElementById('slider-container');
+        const track = document.getElementById('slider-track');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        let scrollSpeed = 1.2; // Set to 1.2 for a faster, noticeable drift
+
+        function autoMove() {
+            if (!isDown) {
+                slider.scrollLeft += scrollSpeed;
+                // Loop back once we've passed the halfway point (first set of cards)
+                if (slider.scrollLeft >= track.scrollWidth / 2) {
+                    slider.scrollLeft = 0;
+                }
+            }
+            requestAnimationFrame(autoMove);
+        }
+
+        // Mouse Events
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+        slider.addEventListener('mouseleave', () => { isDown = false; });
+        slider.addEventListener('mouseup', () => { isDown = false; });
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2; 
+            slider.scrollLeft = scrollLeft - walk;
+        });
+
+        // Touch Events
+        slider.addEventListener('touchstart', (e) => {
+            isDown = true;
+            startX = e.touches[0].pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+        slider.addEventListener('touchend', () => { isDown = false; });
+        slider.addEventListener('touchmove', (e) => {
+            if (!isDown) return;
+            const x = e.touches[0].pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2;
+            slider.scrollLeft = scrollLeft - walk;
+        });
+
+        // Initialize Auto-Move
+        autoMove();
     </script>
 </body>
 </html>
