@@ -70,8 +70,15 @@
             border-radius: 4px;
             color: var(--accent-orange) !important;
         }
+
+        /* HAMBURGER ANIMATION */
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
+        
+        /* Mobile "X" Animation */
+        .toggle .line1 { transform: rotate(-45deg) translate(-4px, 5px); }
+        .toggle .line2 { opacity: 0; }
+        .toggle .line3 { transform: rotate(45deg) translate(-4px, -5px); }
 
         /* --- QUOTE HERO & BUILDER --- */
         .quote-section {
@@ -159,9 +166,6 @@
             .nav-links li { width: 100%; margin: 0; }
             .nav-links a { display: block; width: 100%; padding: 20px 30px; font-size: 0.95rem; border-bottom: 1px solid #111; box-sizing: border-box; }
             .nav-active { transform: translateX(0%); }
-            .toggle .line1 { transform: rotate(-45deg) translate(-4px, 5px); }
-            .toggle .line2 { opacity: 0; }
-            .toggle .line3 { transform: rotate(45deg) translate(-4px, -5px); }
         }
 
         /* --- FOOTER --- */
@@ -217,7 +221,7 @@
 
                     <h3>2. Core Development & Google Setup</h3>
                     <label class="option-item">
-                        <input type="checkbox" class="price-trigger" data-price="9000" data-name="Growth Engine (1-Page)">
+                        <input type="checkbox" class="price-trigger dev-group" data-price="9000" data-name="Growth Engine (1-Page)">
                         <div style="width: 100%;">
                             <strong>Single-Page Growth Engine</strong>
                             <p style="margin:0; font-size: 0.8rem; color: var(--muted-text);">1-Page Site + GMB Setup + Ads Config + Live Code Access.</p>
@@ -235,7 +239,7 @@
                     </label>
                     
                     <label class="option-item">
-                        <input type="checkbox" class="price-trigger" data-price="16500" data-name="Business Suite (Multi-Page)">
+                        <input type="checkbox" class="price-trigger dev-group" data-price="16500" data-name="Business Suite (Multi-Page)">
                         <div style="width: 100%;">
                             <strong>Multi-Page Business Suite</strong>
                             <p style="margin:0; font-size: 0.8rem; color: var(--muted-text);">Full Corporate Site + Full Google Ecosystem + Live Code Access.</p>
@@ -250,7 +254,7 @@
 
                     <h3>3. Monthly Growth & Maintenance</h3>
                     <label class="option-item">
-                        <input type="checkbox" class="price-trigger monthly-check" id="mgmt-check" data-price="1500" data-name="Maintenance & Ads Mgmt">
+                        <input type="checkbox" class="price-trigger monthly-check maint-group" id="mgmt-check" data-price="1500" data-name="Maintenance & Ads Mgmt">
                         <div style="width: 100%;">
                             <strong>Ads Management & SEO Maintenance</strong>
                             <p style="margin:0; font-size: 0.8rem; color: var(--muted-text);">Weekly updates & Ads monitoring (₱1,500/mo).</p>
@@ -280,7 +284,7 @@
                         </div>
                     </label>
                     <label class="option-item" id="no-mgmt-label">
-                        <input type="checkbox" id="no-mgmt-check">
+                        <input type="checkbox" id="no-mgmt-check" class="maint-group">
                         <div style="width: 100%;">
                             <strong>No Maintenance (Self-Managed)</strong>
                             <p style="margin:0; font-size: 0.8rem; color: var(--muted-text);">One-time setup only. You handle all future updates and ad monitoring.</p>
@@ -325,7 +329,9 @@
                 </div>
             </div>
         </section>
-    </div> <footer>
+    </div>
+
+    <footer>
         <div class="footer-nav">
             <a href="index.html">Home</a> | <a href="about.html">About</a> | <a href="service.html">Services</a> | <a href="legal.html">Legal & Privacy</a>
         </div>
@@ -354,6 +360,8 @@
 
         /* --- CALCULATION LOGIC --- */
         const triggers = document.querySelectorAll('.price-trigger');
+        const devChecks = document.querySelectorAll('.dev-group');
+        const maintChecks = document.querySelectorAll('.maint-group');
         const domainSelect = document.getElementById('domain-select');
         const displayTotal = document.getElementById('display-total');
         const displayAdvance = document.getElementById('display-advance');
@@ -373,13 +381,20 @@
         const adsDetails = document.getElementById('ads-calculator-details');
         const noMgmtDetails = document.getElementById('no-mgmt-details');
 
-        mgmtCheck.addEventListener('change', () => {
-            if(mgmtCheck.checked) noMgmtCheck.checked = false;
-            calculate();
+        // Mutual Exclusivity - Core Development
+        devChecks.forEach(c => {
+            c.addEventListener('change', () => {
+                if(c.checked) devChecks.forEach(other => { if(other !== c) other.checked = false; });
+                calculate();
+            });
         });
-        noMgmtCheck.addEventListener('change', () => {
-            if(noMgmtCheck.checked) mgmtCheck.checked = false;
-            calculate();
+
+        // Mutual Exclusivity - Maintenance
+        maintChecks.forEach(c => {
+            c.addEventListener('change', () => {
+                if(c.checked) maintChecks.forEach(other => { if(other !== c) other.checked = false; });
+                calculate();
+            });
         });
 
         function calculate() {
@@ -391,18 +406,20 @@
             setupTotal += domainCost;
             let selectedItems = [domainName];
             
-            triggers.forEach(t => {
+            // Handle standard price triggers (the checkboxes)
+            const allChecks = document.querySelectorAll('.price-trigger, #no-mgmt-check');
+            allChecks.forEach(t => {
                 const parentLabel = t.closest('.option-item');
-                let price = parseInt(t.getAttribute('data-price'));
+                let price = parseInt(t.getAttribute('data-price') || 0);
                 if(t.checked) {
                     if(t.classList.contains('monthly-check')) {
                         monthlyMgmtFee += price;
                         adsDetails.open = true;
-                    } else {
+                    } else if (t.classList.contains('price-trigger')) {
                         setupTotal += price;
                         laborTotal += price;
                     }
-                    selectedItems.push(t.getAttribute('data-name'));
+                    selectedItems.push(t.getAttribute('data-name') || "Self-Managed");
                     parentLabel.classList.add('selected');
                 } else {
                     parentLabel.classList.remove('selected');
@@ -411,11 +428,8 @@
             });
 
             if(noMgmtCheck.checked) {
-                noMgmtCheck.closest('.option-item').classList.add('selected');
                 noMgmtDetails.open = true;
-                selectedItems.push("Self-Managed (No Maintenance)");
             } else {
-                noMgmtCheck.closest('.option-item').classList.remove('selected');
                 noMgmtDetails.open = false;
             }
 
@@ -455,7 +469,6 @@
             quoteBtn.href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(messageBody)}`;
         }
 
-        triggers.forEach(t => t.addEventListener('change', calculate));
         domainSelect.addEventListener('change', calculate);
         adSlider.addEventListener('input', calculate);
         calculate();
