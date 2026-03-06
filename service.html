@@ -32,7 +32,7 @@
         /* --- NAVIGATION --- */
         nav {
             background: var(--header-bg);
-            padding: 0.5rem 5%;
+            padding: 0.7rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -41,11 +41,26 @@
             top: 0;
             z-index: 1000;
         }
-        .nav-brand { font-size: 0.9rem; font-weight: 800; letter-spacing: 1px; color: var(--light-text); text-transform: uppercase; text-decoration: none; }
-        .nav-brand span { color: var(--accent-orange); }
+        .nav-brand {
+            font-size: 0.9rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--light-text);
+            text-transform: uppercase;
+            text-decoration: none;
+            line-height: 1.2;
+            display: inline-block;
+        }
+        .nav-brand span { 
+            color: var(--accent-orange); 
+            font-size: 0.65rem; 
+            display: block; 
+            margin-top: 2px;
+            letter-spacing: 0.5px;
+        }
         .nav-links { display: flex; list-style: none; margin: 0; padding: 0; align-items: center; }
         .nav-links li { margin-left: 20px; }
-        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; display: inline-block; }
         .nav-links a:hover, .active-link { color: var(--accent-orange) !important; }
         .nav-quote-btn { border: 1px solid var(--accent-orange); padding: 5px 12px; border-radius: 4px; color: var(--accent-orange) !important; }
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
@@ -80,7 +95,7 @@
         @media (max-width: 768px) {
             .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; flex-direction: column; width: 260px; transform: translateX(100%); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding-top: 70px; border-left: 1px solid #222; align-items: flex-start; }
             .nav-links li { width: 100%; margin: 0; }
-            .nav-links a { display: block; width: 100%; padding: 20px 30px; font-size: 0.95rem; border-bottom: 1px solid #111; }
+            .nav-links a { display: block; width: 100%; padding: 20px 30px; font-size: 0.95rem; border-bottom: 1px solid #111; box-sizing: border-box; }
             .nav-active { transform: translateX(0%); }
             .toggle .line1 { transform: rotate(-45deg) translate(-4px, 5px); }
             .toggle .line2 { opacity: 0; }
@@ -99,7 +114,9 @@
 <body>
     <div class="main-content">
         <nav>
-            <a href="index.html" class="nav-brand">JDR <span>Corporation</span></a>
+            <a href="index.html" class="nav-brand">
+                JDR Corporation<br><span>Real-Time Custom Web Development</span>
+            </a>
             <ul class="nav-links" id="nav-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
@@ -137,6 +154,8 @@
                     <p>We secure your digital real estate. From .com to .ph, we provide transparent registration and management for all your brand assets.</p>
                 </div>
             </div>
+            
+            
 
             <div class="advantage-box">
                 <h2 style="color: var(--accent-orange); text-align: center; margin-top: 0; font-size: 1.4rem;">The JDR Advantage</h2>
@@ -178,30 +197,21 @@
         document.addEventListener('DOMContentLoaded', () => {
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('nav-menu');
-
-            // Helper to close menu
             const closeMenu = () => {
                 if (navMenu.classList.contains('nav-active')) {
                     navMenu.classList.remove('nav-active');
                     hamburger.classList.remove('toggle');
                 }
             };
-
-            // Toggle on click
             hamburger.addEventListener('click', (e) => {
                 e.stopPropagation();
                 navMenu.classList.toggle('nav-active');
                 hamburger.classList.toggle('toggle');
             });
-
-            // Close on scroll
             window.addEventListener('scroll', closeMenu, { passive: true });
-
-            // Close on click outside OR on link click
             document.addEventListener('click', (e) => {
                 const isClickInsideMenu = navMenu.contains(e.target);
                 const isHamburger = hamburger.contains(e.target);
-
                 if ((!isClickInsideMenu && !isHamburger) || e.target.tagName === 'A') {
                     closeMenu();
                 }

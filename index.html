@@ -15,6 +15,7 @@
             --muted-text: #A0A0A0;
             --header-bg: #000000;
         }
+
         /* --- GLOBAL STYLES --- */
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -25,10 +26,11 @@
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
+
         /* --- NAVIGATION --- */
         nav {
             background: var(--header-bg);
-            padding: 0.5rem 5%;
+            padding: 0.7rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -37,6 +39,7 @@
             top: 0;
             z-index: 1000;
         }
+
         .nav-brand {
             font-size: 0.9rem;
             font-weight: 800;
@@ -44,32 +47,44 @@
             color: var(--light-text);
             text-transform: uppercase;
             text-decoration: none;
+            line-height: 1.2;
+            display: inline-block;
         }
-        .nav-brand span { color: var(--accent-orange); }
+
+        .nav-brand span { 
+            color: var(--accent-orange); 
+            font-size: 0.65rem; 
+            display: block; 
+            margin-top: 2px;
+            letter-spacing: 0.5px;
+        }
+
         .nav-links { display: flex; list-style: none; margin: 0; padding: 0; align-items: center; }
         .nav-links li { margin-left: 20px; }
         .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; display: inline-block; }
         .nav-links a:hover, .active-link { color: var(--accent-orange) !important; }
+
         .nav-quote-btn {
             border: 1px solid var(--accent-orange);
             padding: 5px 12px;
             border-radius: 4px;
             color: var(--accent-orange) !important;
         }
+
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
         @media (max-width: 768px) { .hamburger { display: flex; } }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
-        
+
         /* --- LOGO HEADER --- */
         .logo-header { padding: 30px 5% 5px; text-align: center; background-color: #000; }
         .main-logo { max-width: 280px; width: 100%; height: auto; }
-        
+
         /* --- HERO SECTION --- */
         .hero { padding: 30px 5% 40px; text-align: center; background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%); }
         .hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 10px; font-weight: 800; }
         .hero p { font-size: 0.9rem; color: var(--muted-text); max-width: 500px; margin: 0 auto 20px; }
         .cta-btn-main { background: var(--primary-blue); color: white; padding: 10px 24px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; transition: 0.3s; font-size: 0.85rem; }
-        
+
         /* --- MONITORING SECTION --- */
         .transparency-section { padding: 60px 5%; background: #000; text-align: center; }
         .monitor-box { max-width: 900px; margin: 0 auto; padding: 40px 30px; background: rgba(10, 88, 202, 0.05); border: 1px solid var(--primary-blue); border-radius: 12px; }
@@ -79,7 +94,7 @@
         .monitor-card { background: rgba(255,255,255,0.02); padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05); }
         .monitor-card h4 { color: var(--accent-orange); margin: 0 0 8px; font-size: 1rem; }
         .monitor-card p { font-size: 0.85rem; color: var(--muted-text); line-height: 1.5; margin: 0; }
-        
+
         /* --- TRANSACTION HUB --- */
         .chat-hub { padding: 50px 5%; text-align: center; background: radial-gradient(circle at top, #1E3A5F 0%, #000 100%); }
         .chat-hub h2 { font-size: 1.5rem; margin-bottom: 5px; }
@@ -87,7 +102,7 @@
         .chat-container { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
         .chat-btn { padding: 10px 18px; border-radius: 8px; text-decoration: none; color: white; font-weight: bold; transition: 0.3s; min-width: 150px; font-size: 0.8rem; }
         .whatsapp { background-color: #25D366; } .viber { background-color: #7360f2; }
-        
+
         /* --- RATING & TESTIMONIALS --- */
         .star-rating label:hover,
         .star-rating label:hover ~ label,
@@ -110,6 +125,7 @@
             .toggle .line2 { opacity: 0; }
             .toggle .line3 { transform: rotate(45deg) translate(-4px, -5px); }
         }
+
         footer { padding: 40px 5% 30px; text-align: center; border-top: 1px solid #222; color: #555; font-size: 0.75rem; background-color: #000; }
         footer a { color: #888; text-decoration: none; margin: 0 10px; transition: 0.3s; }
         footer a:hover { color: var(--accent-orange); }
@@ -118,8 +134,11 @@
     </style>
 </head>
 <body>
+
     <nav>
-        <a href="index.html" class="nav-brand">JDR <span>Corporation</span></a>
+        <a href="index.html" class="nav-brand">
+            JDR Corporation<br><span>Real-Time Custom Web Development</span>
+        </a>
         <ul class="nav-links" id="nav-menu">
             <li><a href="index.html" class="active-link">Home</a></li>
             <li><a href="about.html">About Us</a></li>
@@ -132,6 +151,8 @@
             <div class="line1"></div><div class="line2"></div><div class="line3"></div>
         </div>
     </nav>
+
+    
 
     <header class="logo-header">
         <img src="image_0.png" alt="JDR CORPORATION Logo" class="main-logo">
@@ -186,7 +207,6 @@
             <div style="max-width: 400px; margin: 0 auto 40px; background: rgba(255,255,255,0.02); padding: 20px; border-radius: 12px; border: 1px solid #222;">
                 <h2 style="font-size: 1.2rem; margin-bottom: 5px;">Rate Our <span style="color: var(--accent-orange);">Service</span></h2>
                 <p style="font-size: 0.75rem; color: var(--muted-text); margin-bottom: 15px;">Your feedback drives our standards.</p>
-                
                 <div class="star-rating" style="display: flex; justify-content: center; gap: 5px; margin-bottom: 20px; flex-direction: row-reverse;">
                     <input type="radio" id="star5" name="rating" value="5" style="display:none;"/><label for="star5" style="cursor:pointer; font-size: 2rem; color: #333; transition: 0.2s;">★</label>
                     <input type="radio" id="star4" name="rating" value="4" style="display:none;"/><label for="star4" style="cursor:pointer; font-size: 2rem; color: #333; transition: 0.2s;">★</label>
@@ -194,11 +214,11 @@
                     <input type="radio" id="star2" name="rating" value="2" style="display:none;"/><label for="star2" style="cursor:pointer; font-size: 2rem; color: #333; transition: 0.2s;">★</label>
                     <input type="radio" id="star1" name="rating" value="1" style="display:none;"/><label for="star1" style="cursor:pointer; font-size: 2rem; color: #333; transition: 0.2s;">★</label>
                 </div>
-
                 <button onclick="submitRating()" id="submit-btn" style="background: var(--accent-orange); color: black; border: none; padding: 12px 20px; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 0.85rem; transition: 0.3s; width: 100%;">Submit Rating</button>
                 <p id="thank-you-msg" style="display: none; color: var(--accent-orange); font-size: 0.8rem; margin-top: 12px; font-weight: bold;">✔ Sent for verification.</p>
             </div>
         </div>
+
         <div class="testimonial-slider" id="slider-container">
             <div class="testimonial-track" id="slider-track">
                 <div class="testimonial-card-move">
@@ -239,8 +259,6 @@
             // --- NAVIGATION LOGIC ---
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('nav-menu');
-
-            // Helper to close menu
             const closeMenu = () => {
                 if (navMenu.classList.contains('nav-active')) {
                     navMenu.classList.remove('nav-active');
@@ -248,21 +266,17 @@
                 }
             };
 
-            // Toggle on click
             hamburger.addEventListener('click', (e) => {
                 e.stopPropagation();
                 navMenu.classList.toggle('nav-active');
                 hamburger.classList.toggle('toggle');
             });
 
-            // Close on scroll
             window.addEventListener('scroll', closeMenu, { passive: true });
 
-            // Close on click outside OR on link click
             document.addEventListener('click', (e) => {
                 const isClickInsideMenu = navMenu.contains(e.target);
                 const isHamburger = hamburger.contains(e.target);
-
                 if ((!isClickInsideMenu && !isHamburger) || e.target.tagName === 'A') {
                     closeMenu();
                 }
@@ -281,14 +295,12 @@
             // --- SLIDER LOGIC ---
             const slider = document.getElementById('slider-container');
             const track = document.getElementById('slider-track');
-            
             if (slider && track) {
                 const originalCards = track.innerHTML;
                 track.innerHTML += originalCards; 
                 let isDown = false;
                 let startX;
                 let scrollLeft;
-
                 const autoScroll = () => {
                     if (!isDown) {
                         slider.scrollLeft += 1;
@@ -298,22 +310,18 @@
                     }
                     requestAnimationFrame(autoScroll);
                 };
-
                 const startDragging = (e) => {
                     isDown = true;
                     startX = (e.pageX || e.touches[0].pageX) - slider.offsetLeft;
                     scrollLeft = slider.scrollLeft;
                 };
-
                 const stopDragging = () => isDown = false;
-
                 const moveDragging = (e) => {
                     if (!isDown) return;
                     e.preventDefault();
                     const x = (e.pageX || e.touches[0].pageX) - slider.offsetLeft;
                     slider.scrollLeft = scrollLeft - (x - startX) * 2;
                 };
-
                 slider.addEventListener('mousedown', startDragging);
                 slider.addEventListener('touchstart', startDragging);
                 window.addEventListener('mouseup', stopDragging);

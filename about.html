@@ -33,7 +33,7 @@
         /* --- NAVIGATION --- */
         nav {
             background: var(--header-bg);
-            padding: 0.5rem 5%;
+            padding: 0.7rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -42,8 +42,23 @@
             top: 0;
             z-index: 1000;
         }
-        .nav-brand { font-size: 0.9rem; font-weight: 800; letter-spacing: 1px; color: var(--light-text); text-transform: uppercase; text-decoration: none; }
-        .nav-brand span { color: var(--accent-orange); }
+        .nav-brand {
+            font-size: 0.9rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--light-text);
+            text-transform: uppercase;
+            text-decoration: none;
+            line-height: 1.2;
+            display: inline-block;
+        }
+        .nav-brand span { 
+            color: var(--accent-orange); 
+            font-size: 0.65rem; 
+            display: block; 
+            margin-top: 2px;
+            letter-spacing: 0.5px;
+        }
         .nav-links { display: flex; list-style: none; margin: 0; padding: 0; align-items: center; }
         .nav-links li { margin-left: 20px; }
         .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; display: inline-block; }
@@ -77,7 +92,6 @@
             .toggle .line3 { transform: rotate(45deg) translate(-4px, -5px); }
         }
 
-        /* --- FOOTER --- */
         footer { flex-shrink: 0; padding: 40px 5% 30px; text-align: center; border-top: 1px solid #222; color: #555; font-size: 0.75rem; background-color: #000; }
         footer a { color: #888; text-decoration: none; margin: 0 10px; transition: 0.3s; }
         footer a:hover { color: var(--accent-orange); }
@@ -89,7 +103,9 @@
 
     <div class="main-content">
         <nav>
-            <a href="index.html" class="nav-brand">JDR <span>Corporation</span></a>
+            <a href="index.html" class="nav-brand">
+                JDR Corporation<br><span>Real-Time Custom Web Development</span>
+            </a>
             <ul class="nav-links" id="nav-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html" class="active-link">About Us</a></li>
@@ -162,32 +178,21 @@
         document.addEventListener('DOMContentLoaded', () => {
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('nav-menu');
-
-            // --- HELPER FUNCTION TO CLOSE MENU ---
             const closeMenu = () => {
                 if (navMenu.classList.contains('nav-active')) {
                     navMenu.classList.remove('nav-active');
                     hamburger.classList.remove('toggle');
                 }
             };
-
-            // 1. Toggle on click
             hamburger.addEventListener('click', (e) => {
                 e.stopPropagation();
                 navMenu.classList.toggle('nav-active');
                 hamburger.classList.toggle('toggle');
             });
-
-            // 2. Hide on Scroll
-            window.addEventListener('scroll', () => {
-                closeMenu();
-            }, { passive: true });
-
-            // 3. Hide on Click Outside OR on Link Click
+            window.addEventListener('scroll', closeMenu, { passive: true });
             document.addEventListener('click', (e) => {
                 const isClickInsideMenu = navMenu.contains(e.target);
                 const isHamburger = hamburger.contains(e.target);
-
                 if ((!isClickInsideMenu && !isHamburger) || e.target.tagName === 'A') {
                     closeMenu();
                 }

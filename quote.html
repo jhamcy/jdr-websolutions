@@ -40,9 +40,9 @@
         }
 
         /* --- NAVIGATION --- */
-        nav {
+      nav {
             background: var(--header-bg);
-            padding: 0.5rem 5%;
+            padding: 0.7rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -58,31 +58,25 @@
             color: var(--light-text);
             text-transform: uppercase;
             text-decoration: none;
+            line-height: 1.2;
+            display: inline-block;
         }
-        .nav-brand span { color: var(--accent-orange); }
+        .nav-brand span { 
+            color: var(--accent-orange); 
+            font-size: 0.65rem; 
+            display: block; 
+            margin-top: 2px;
+            letter-spacing: 0.5px;
+        }
         .nav-links { display: flex; list-style: none; margin: 0; padding: 0; align-items: center; }
         .nav-links li { margin-left: 20px; }
         .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; display: inline-block; }
-        .nav-links a:hover { color: var(--accent-orange); }
+        .nav-links a:hover, .active-link { color: var(--accent-orange) !important; }
         
-        /* Active State for Quote Button */
-        .nav-quote-btn {
-            border: 1px solid var(--accent-orange);
-            padding: 5px 12px;
-            border-radius: 4px;
-            color: var(--accent-orange) !important;
-            background: rgba(249, 140, 21, 0.05);
-        }
-
-        /* HAMBURGER ANIMATION */
+        .nav-quote-btn { border: 1px solid var(--accent-orange); padding: 5px 12px; border-radius: 4px; color: var(--accent-orange) !important; }
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
+        @media (max-width: 768px) { .hamburger { display: flex; } }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
-        
-        /* Mobile "X" Animation */
-        .toggle .line1 { transform: rotate(-45deg) translate(-4px, 5px); }
-        .toggle .line2 { opacity: 0; }
-        .toggle .line3 { transform: rotate(45deg) translate(-4px, -5px); }
-
         /* --- QUOTE HERO & BUILDER --- */
         .quote-section {
             padding: 40px 5% 80px;
@@ -190,14 +184,16 @@
 <body>
 
     <div class="main-content">
-        <nav>
-            <a href="index.html" class="nav-brand">JDR <span>Corporation</span></a>
+         <nav>
+            <a href="index.html" class="nav-brand">
+                JDR Corporation<br><span>Real-Time Custom Web Development</span>
+            </a>
             <ul class="nav-links" id="nav-menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
+                <li><a href="about.html" class="active-link">About Us</a></li>
                 <li><a href="service.html">Services</a></li>
                 <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="legal.html" class="active-link">Legal & Privacy</a></li>
+                <li><a href="legal.html">Legal & Privacy</a></li>
                 <li><a href="quote.html" class="nav-quote-btn">Get a Quote</a></li>
             </ul>
             <div class="hamburger" id="hamburger">

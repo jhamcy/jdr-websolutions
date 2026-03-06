@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Legal & Privacy | JDR CORP.</title>
     <style>
+        /* --- BRAND VARIABLES --- */
         :root {
             --primary-blue: #0A58CA;
             --accent-orange: #F98C15;
@@ -14,19 +15,24 @@
             --muted-text: #A0A0A0;
             --header-bg: #000000;
         }
+
+        /* --- GLOBAL STYLES --- */
         html, body { height: 100%; margin: 0; }
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--dark-bg);
             color: var(--light-text);
             line-height: 1.4;
+            overflow-x: hidden;
             display: flex;
             flex-direction: column;
         }
         .main-content { flex: 1 0 auto; }
+
+        /* --- NAVIGATION --- */
         nav {
             background: var(--header-bg);
-            padding: 0.5rem 5%;
+            padding: 0.7rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -35,11 +41,26 @@
             top: 0;
             z-index: 1000;
         }
-        .nav-brand { font-size: 0.9rem; font-weight: 800; letter-spacing: 1px; color: var(--light-text); text-transform: uppercase; text-decoration: none; }
-        .nav-brand span { color: var(--accent-orange); }
+        .nav-brand {
+            font-size: 0.9rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--light-text);
+            text-transform: uppercase;
+            text-decoration: none;
+            line-height: 1.2;
+            display: inline-block;
+        }
+        .nav-brand span { 
+            color: var(--accent-orange); 
+            font-size: 0.65rem; 
+            display: block; 
+            margin-top: 2px;
+            letter-spacing: 0.5px;
+        }
         .nav-links { display: flex; list-style: none; margin: 0; padding: 0; align-items: center; }
         .nav-links li { margin-left: 20px; }
-        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; display: inline-block; }
         .nav-links a:hover, .active-link { color: var(--accent-orange) !important; }
         .nav-quote-btn { border: 1px solid var(--accent-orange); padding: 5px 12px; border-radius: 4px; color: var(--accent-orange) !important; }
         
@@ -47,9 +68,11 @@
         @media (max-width: 768px) { .hamburger { display: flex; } }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
         
+        /* --- LOGO HEADER --- */
         .logo-header { padding: 30px 5% 5px; text-align: center; background-color: #000; }
         .main-logo { max-width: 280px; width: 100%; height: auto; }
         
+        /* --- CONTENT --- */
         .legal-hero { padding: 40px 5%; text-align: center; background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%); }
         .legal-hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 10px; font-weight: 800; }
         
@@ -62,6 +85,7 @@
         ul { padding-left: 20px; }
         li { margin-bottom: 12px; }
 
+        /* --- MOBILE NAV --- */
         @media (max-width: 768px) {
             .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; flex-direction: column; width: 260px; transform: translateX(100%); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding-top: 70px; border-left: 1px solid #222; align-items: flex-start; }
             .nav-links li { width: 100%; margin: 0; }
@@ -71,6 +95,8 @@
             .toggle .line2 { opacity: 0; }
             .toggle .line3 { transform: rotate(45deg) translate(-4px, -5px); }
         }
+
+        /* --- FOOTER --- */
         footer { flex-shrink: 0; padding: 40px 5% 30px; text-align: center; border-top: 1px solid #222; color: #555; font-size: 0.75rem; background-color: #000; }
         footer a { color: #888; text-decoration: none; margin: 0 10px; transition: 0.3s; }
         footer a:hover { color: var(--accent-orange); }
@@ -81,7 +107,9 @@
 <body>
     <div class="main-content">
         <nav>
-            <a href="index.html" class="nav-brand">JDR <span>Corporation</span></a>
+            <a href="index.html" class="nav-brand">
+                JDR Corporation<br><span>Real-Time Custom Web Development</span>
+            </a>
             <ul class="nav-links" id="nav-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
