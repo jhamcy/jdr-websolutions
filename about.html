@@ -16,26 +16,19 @@
             --header-bg: #000000;
         }
 
-        /* --- GLOBAL STYLES (STICKY FOOTER FIX) --- */
-        html, body {
-            height: 100%;
-            margin: 0;
-        }
-
+        /* --- GLOBAL STYLES --- */
+        html, body { height: 100%; margin: 0; }
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--dark-bg);
             color: var(--light-text);
             line-height: 1.4;
             overflow-x: hidden;
-            scroll-behavior: smooth;
             display: flex;
             flex-direction: column;
         }
 
-        .main-content {
-            flex: 1 0 auto;
-        }
+        .main-content { flex: 1 0 auto; }
 
         /* --- NAVIGATION --- */
         nav {
@@ -49,27 +42,16 @@
             top: 0;
             z-index: 1000;
         }
-        .nav-brand {
-            font-size: 0.9rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-            color: var(--light-text);
-            text-transform: uppercase;
-            text-decoration: none;
-        }
+        .nav-brand { font-size: 0.9rem; font-weight: 800; letter-spacing: 1px; color: var(--light-text); text-transform: uppercase; text-decoration: none; }
         .nav-brand span { color: var(--accent-orange); }
         .nav-links { display: flex; list-style: none; margin: 0; padding: 0; align-items: center; }
         .nav-links li { margin-left: 20px; }
         .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; display: inline-block; }
         .nav-links a:hover, .active-link { color: var(--accent-orange) !important; }
         
-        .nav-quote-btn {
-            border: 1px solid var(--accent-orange);
-            padding: 5px 12px;
-            border-radius: 4px;
-            color: var(--accent-orange) !important;
-        }
+        .nav-quote-btn { border: 1px solid var(--accent-orange); padding: 5px 12px; border-radius: 4px; color: var(--accent-orange) !important; }
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
+        @media (max-width: 768px) { .hamburger { display: flex; } }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
 
         /* --- LOGO HEADER --- */
@@ -77,46 +59,17 @@
         .main-logo { max-width: 280px; width: 100%; height: auto; }
 
         /* --- ABOUT CONTENT --- */
-        .about-hero {
-            padding: 40px 5% 40px;
-            text-align: center;
-            background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%);
-        }
+        .about-hero { padding: 40px 5%; text-align: center; background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%); }
         .about-hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 10px; font-weight: 800; }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 5% 80px;
-        }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 5% 80px; }
         h2 { color: var(--primary-blue); margin-top: 40px; font-size: 1.4rem; font-weight: 800; }
-        .highlight-text {
-            font-size: 1.05rem;
-            color: var(--accent-orange);
-            font-weight: 600;
-            border-left: 3px solid var(--accent-orange);
-            padding-left: 20px;
-            margin: 40px 0;
-            font-style: italic;
-            line-height: 1.6;
-        }
-        .philosophy-card {
-            background: rgba(10, 88, 202, 0.05);
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid rgba(10, 88, 202, 0.2);
-            margin-top: 40px;
-        }
+        .highlight-text { font-size: 1.05rem; color: var(--accent-orange); font-weight: 600; border-left: 3px solid var(--accent-orange); padding-left: 20px; margin: 40px 0; font-style: italic; line-height: 1.6; }
+        .philosophy-card { background: rgba(10, 88, 202, 0.05); padding: 30px; border-radius: 12px; border: 1px solid rgba(10, 88, 202, 0.2); margin-top: 40px; }
 
         /* --- MOBILE OVERRIDES --- */
         @media (max-width: 768px) {
-            .hamburger { display: flex; }
-            .nav-links {
-                position: fixed; right: 0; top: 0; height: 100vh; background-color: #000;
-                flex-direction: column; width: 260px; transform: translateX(100%); 
-                transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                padding-top: 70px; border-left: 1px solid #222; align-items: flex-start;
-            }
-            .nav-links li { width: 100%; margin: 0; }
+            .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; flex-direction: column; width: 260px; transform: translateX(100%); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding-top: 70px; border-left: 1px solid #222; align-items: flex-start; }
+            .nav-links li { width: 100%; }
             .nav-links a { display: block; width: 100%; padding: 20px 30px; font-size: 0.95rem; border-bottom: 1px solid #111; box-sizing: border-box; }
             .nav-active { transform: translateX(0%); }
             .toggle .line1 { transform: rotate(-45deg) translate(-4px, 5px); }
@@ -125,15 +78,7 @@
         }
 
         /* --- FOOTER --- */
-        footer { 
-            flex-shrink: 0;
-            padding: 40px 5% 30px; 
-            text-align: center; 
-            border-top: 1px solid #222; 
-            color: #555; 
-            font-size: 0.75rem; 
-            background-color: #000; 
-        }
+        footer { flex-shrink: 0; padding: 40px 5% 30px; text-align: center; border-top: 1px solid #222; color: #555; font-size: 0.75rem; background-color: #000; }
         footer a { color: #888; text-decoration: none; margin: 0 10px; transition: 0.3s; }
         footer a:hover { color: var(--accent-orange); }
         .footer-nav { margin-bottom: 15px; }
@@ -167,26 +112,37 @@
         </section>
 
         <div class="container">
-            <p style="font-size: 0.95rem; color: var(--light-text);">
+            <div style="text-align: center; margin-bottom: 50px;">
+                <h2 style="margin-top: 0; color: var(--primary-blue);">Meet the Founder</h2>
+                <p style="font-size: 1.05rem; line-height: 1.6; color: var(--light-text); max-width: 700px; margin: 0 auto;">
+                    Hi, I'm <strong>James Del Rosario</strong>. I founded JDR Corporation to strip away the "black box" of web development. 
+                    I believe your digital presence shouldn't be a mystery—it should be a transparent, collaborative journey.
+                </p>
+            </div>
+
+            
+
+            <p style="font-size: 0.95rem; color: var(--light-text); margin-top: 40px;">
                 At <strong>JDR Corporation</strong>, we specialize in high-performance HTML architecture. We believe that your website should be as unique as your business vision, built without the bloat of generic templates.
             </p>
+            
             <div class="highlight-text">
                 "Transparency through code. Watch your vision come to life in real-time, one deployment at a time."
             </div>
             
-            
-
-            <h2>Real-Time Collaboration</h2>
+            <h2>Live-Preview Protocol</h2>
             <p style="font-size: 0.95rem; color: var(--muted-text);">
-                We grant you access to your <strong>Private GitHub Link</strong> from day one. Monitor every update and provide feedback instantly as we build your vision. This process ensures that "ghosting" is impossible—our work is visible 24/7.
+                We operate on a <strong>Live-Preview Protocol</strong>. From day one, you receive a private GitHub repository link to your evolving project. This allows you to view every update in real-time on any device.
             </p>
+            
             <h2>The Asset Transfer</h2>
             <p style="font-size: 0.95rem; color: var(--muted-text);">
-                Our workflow begins by securing your digital real estate. By collecting the <strong>Domain Cost</strong> upfront alongside the service advance, we ensure your brand name is locked in your name immediately. Upon final settlement, 100% of the code and master accounts are transferred to you.
+                Our workflow begins by securing your digital real estate. Upon final settlement, 100% of the code and master accounts are transferred to you.
             </p>
+            
             <div class="philosophy-card">
                 <h3 style="margin-top: 0; color: var(--accent-orange); font-size: 1.1rem; font-weight: 800;">Direct & Personal</h3>
-                <p style="margin-bottom: 0; font-size: 0.9rem; color: var(--light-text); line-height: 1.6;">No red tape. We prioritize direct communication via WhatsApp and Viber, keeping you in total control of the project's timeline and payment milestones.</p>
+                <p style="margin-bottom: 0; font-size: 0.9rem; color: var(--light-text); line-height: 1.6;">No red tape. We prioritize direct communication via WhatsApp and Viber, keeping you in total control.</p>
             </div>
             
             <div style="text-align: center; margin-top: 50px;">
@@ -197,36 +153,29 @@
 
     <footer>
         <div class="footer-nav">
-            <a href="index.html">Home</a> | 
-            <a href="about.html">About</a> | 
-            <a href="service.html">Services</a> | 
-            <a href="portfolio.html">Portfolio</a> | 
-            <a href="legal.html">Legal & Privacy</a>
+            <a href="index.html">Home</a> | <a href="about.html">About</a> | <a href="service.html">Services</a> | <a href="portfolio.html">Portfolio</a> | <a href="legal.html">Legal & Privacy</a>
         </div>
         <p>&copy; 2026 JDR CORP. All Rights Reserved.</p>
-        <div class="footer-badges">
-            CUSTOM HTML ARCHITECTURE • GITHUB WORKFLOWS • GCASH VERIFIED BUSINESS
-        </div>
+        <div class="footer-badges">CUSTOM HTML ARCHITECTURE • GITHUB WORKFLOWS • GCASH VERIFIED BUSINESS</div>
     </footer>
 
     <script>
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
-        
-        const closeMenu = () => {
-            navMenu.classList.remove('nav-active');
-            hamburger.classList.remove('toggle');
-        };
-        hamburger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            navMenu.classList.toggle('nav-active');
-            hamburger.classList.toggle('toggle');
-        });
-        window.addEventListener('scroll', () => {
-            if (navMenu.classList.contains('nav-active')) closeMenu();
-        });
-        document.addEventListener('click', (e) => {
-            if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) closeMenu();
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            
+            hamburger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                navMenu.classList.toggle('nav-active');
+                hamburger.classList.toggle('toggle');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                    navMenu.classList.remove('nav-active');
+                    hamburger.classList.remove('toggle');
+                }
+            });
         });
     </script>
 </body>

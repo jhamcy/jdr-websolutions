@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Legal & Privacy | JDR CORP.</title>
     <style>
-        /* --- BRAND VARIABLES --- */
         :root {
             --primary-blue: #0A58CA;
             --accent-orange: #F98C15;
@@ -16,19 +15,18 @@
             --header-bg: #000000;
         }
 
-        /* --- GLOBAL STYLES --- */
+        html, body { height: 100%; margin: 0; }
         body {
-            /* Aligned font-family with Index.html */
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
             background-color: var(--dark-bg);
             color: var(--light-text);
             line-height: 1.4;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* --- SYNCED NAVIGATION --- */
+        .main-content { flex: 1 0 auto; }
+
         nav {
             background: var(--header-bg);
             padding: 0.5rem 5%;
@@ -40,98 +38,45 @@
             top: 0;
             z-index: 1000;
         }
-
-        .nav-brand {
-            font-size: 0.9rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-            color: var(--light-text);
-            text-transform: uppercase;
-            text-decoration: none;
-        }
+        .nav-brand { font-size: 0.9rem; font-weight: 800; letter-spacing: 1px; color: var(--light-text); text-transform: uppercase; text-decoration: none; }
         .nav-brand span { color: var(--accent-orange); }
-
         .nav-links { display: flex; list-style: none; margin: 0; padding: 0; align-items: center; }
         .nav-links li { margin-left: 20px; }
-        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; display: inline-block; }
-        .nav-links a:hover { color: var(--accent-orange); }
-
-        .nav-quote-btn {
-            border: 1px solid var(--accent-orange);
-            padding: 5px 12px;
-            border-radius: 4px;
-            color: var(--accent-orange) !important;
-        }
-
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; }
+        .nav-links a:hover, .active-link { color: var(--accent-orange) !important; }
+        .nav-quote-btn { border: 1px solid var(--accent-orange); padding: 5px 12px; border-radius: 4px; color: var(--accent-orange) !important; }
+        
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
+        @media (max-width: 768px) { .hamburger { display: flex; } }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
 
-        /* --- LOGO HEADER --- */
         .logo-header { padding: 30px 5% 5px; text-align: center; background-color: #000; }
         .main-logo { max-width: 280px; width: 100%; height: auto; }
 
-        /* --- HERO SECTION --- */
-        .legal-hero {
-            padding: 40px 5% 40px;
-            text-align: center;
-            background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%);
-        }
+        .legal-hero { padding: 40px 5%; text-align: center; background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%); }
         .legal-hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 10px; font-weight: 800; }
 
-        /* --- LEGAL CONTENT --- */
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 5% 80px;
-        }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 5% 80px; }
+        .legal-box { background: rgba(255, 255, 255, 0.02); padding: 35px; border-radius: 12px; border: 1px solid #222; }
 
-        .legal-box {
-            background: rgba(255, 255, 255, 0.02);
-            padding: 35px;
-            border-radius: 12px;
-            border: 1px solid #222;
-        }
-
-        h2 { 
-            color: var(--accent-orange); 
-            font-size: 1.1rem; /* Slightly smaller to match corporate aesthetic */
-            margin-top: 40px; 
-            border-bottom: 1px solid #222; 
-            padding-bottom: 10px; 
-            font-weight: 800; 
-            letter-spacing: 0.5px;
-        }
+        h2 { color: var(--accent-orange); font-size: 1.1rem; margin-top: 40px; border-bottom: 1px solid #222; padding-bottom: 10px; font-weight: 800; }
         h2:first-of-type { margin-top: 0; }
-        
-        p, li { 
-            font-size: 0.85rem; /* Matched to index body text size */
-            color: var(--muted-text); 
-            line-height: 1.6; 
-        }
+        p, li { font-size: 0.85rem; color: var(--muted-text); line-height: 1.6; }
         strong { color: var(--light-text); font-weight: 600; }
         ul { padding-left: 20px; }
         li { margin-bottom: 12px; }
 
-        /* --- FOOTER --- */
-        footer { padding: 40px 5% 30px; text-align: center; border-top: 1px solid #222; color: #555; font-size: 0.75rem; background-color: #000; }
+        footer { flex-shrink: 0; padding: 40px 5% 30px; text-align: center; border-top: 1px solid #222; color: #555; font-size: 0.75rem; background-color: #000; }
         footer a { color: #888; text-decoration: none; margin: 0 10px; transition: 0.3s; }
         footer a:hover { color: var(--accent-orange); }
         .footer-nav { margin-bottom: 15px; }
         .footer-badges { margin-top: 15px; opacity: 0.5; font-size: 0.7rem; letter-spacing: 0.5px; }
 
-        /* --- MOBILE OVERRIDES --- */
         @media (max-width: 768px) {
-            .hamburger { display: flex; }
-            .nav-links {
-                position: fixed; right: 0; top: 0; height: 100vh; background-color: #000;
-                flex-direction: column; width: 260px; transform: translateX(100%); 
-                transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                padding-top: 70px; border-left: 1px solid #222; align-items: flex-start;
-            }
-            .nav-links li { width: 100%; margin: 0; }
+            .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; flex-direction: column; width: 260px; transform: translateX(100%); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding-top: 70px; border-left: 1px solid #222; align-items: flex-start; }
+            .nav-links li { width: 100%; }
             .nav-links a { display: block; width: 100%; padding: 20px 30px; font-size: 0.95rem; border-bottom: 1px solid #111; box-sizing: border-box; }
             .nav-active { transform: translateX(0%); }
-            
             .toggle .line1 { transform: rotate(-45deg) translate(-4px, 5px); }
             .toggle .line2 { opacity: 0; }
             .toggle .line3 { transform: rotate(45deg) translate(-4px, -5px); }
@@ -140,86 +85,88 @@
 </head>
 <body>
 
-    <nav>
-        <a href="index.html" class="nav-brand">JDR <span>Corporation</span></a>
-        <ul class="nav-links" id="nav-menu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="service.html">Services</a></li>
-            <li><a href="quote.html" class="nav-quote-btn">Get a Quote</a></li>
-        </ul>
-        <div class="hamburger" id="hamburger">
-            <div class="line1"></div><div class="line2"></div><div class="line3"></div>
-        </div>
-    </nav>
-
-    <header class="logo-header">
-        <img src="image_0.png" alt="JDR CORPORATION Logo" class="main-logo">
-    </header>
-
-    <section class="legal-hero">
-        <h1>Legal & <span style="color: var(--primary-blue);">Privacy</span></h1>
-        <p style="color: var(--muted-text); font-size: 0.85rem; max-width: 500px; margin: 0 auto;">Standard operating procedures and data protection compliance.</p>
-    </section>
-
-    <div class="container">
-        <div class="legal-box">
-            <h2>1. Service Transparency</h2>
-            <p>JDR Corporation operates on a <strong>"Live Build"</strong> model. By engaging our services, you acknowledge that project progress is monitored via private GitHub repositories.</p>
-
-            <h2>2. Payment Terms & Project Kickoff</h2>
-            <p>To ensure project commitment and secure necessary digital assets, JDR Corporation utilizes the following payment structure:</p>
-            <ul>
-                <li><strong>Kickoff Payment (Advance):</strong> Includes <strong>100% of the Domain Registration Cost</strong> plus <strong>50% of the Service Labor Quote</strong>.</li>
-                <li><strong>Completion Payment (Balance):</strong> The remaining <strong>50% of the Service Labor Quote</strong> is required upon build completion.</li>
+    <div class="main-content">
+        <nav>
+            <a href="index.html" class="nav-brand">JDR <span>Corporation</span></a>
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="legal.html" class="active-link">Legal & Privacy</a></li>
+                <li><a href="quote.html" class="nav-quote-btn">Get a Quote</a></li>
             </ul>
-            <p><strong>Ownership Transfer:</strong> Full intellectual property rights and code ownership are formally transferred to the client only after the final payment has been settled.</p>
+            <div class="hamburger" id="hamburger">
+                <div class="line1"></div><div class="line2"></div><div class="line3"></div>
+            </div>
+        </nav>
 
-            <h2>3. Data Privacy (RA 10173)</h2>
-            <p>In compliance with the <strong>Data Privacy Act of 2012</strong>, we prioritize the protection of your personal information. Any data shared is used strictly for project fulfillment.</p>
+        <header class="logo-header">
+            <img src="image_0.png" alt="JDR CORPORATION Logo" class="main-logo">
+        </header>
 
-            <h2>4. Domain & Asset Responsibility</h2>
-            <p>Domain registration prices are determined by the chosen extension and are billed at current market rates. The client assumes full responsibility for hosting renewals once transferred.</p>
+        <section class="legal-hero">
+            <h1>Legal & <span style="color: var(--primary-blue);">Privacy</span></h1>
+            <p style="color: var(--muted-text); font-size: 0.85rem; max-width: 500px; margin: 0 auto;">Standard operating procedures and data protection compliance.</p>
+        </section>
 
-            <h2>5. Liability & Technical Support</h2>
-            <p>JDR Corporation provides <strong>30 days of complimentary technical support</strong> post-handover to ensure your transition to the live environment is successful.</p>
+        <div class="container">
+            
+            <div class="legal-box">
+                <h2>1. Service Transparency & Project Abandonment</h2>
+                <p>JDR Corporation operates on a <strong>"Live Build"</strong> model. Project progress is monitored via private GitHub repositories to ensure total transparency. <strong>Project Abandonment:</strong> Projects inactive for more than <strong>30 consecutive days</strong> due to client non-responsiveness will be deemed "On Hold." Reactivation may be subject to a rescheduling fee.</p>
+
+                <h2>2. Payment, IP & Portfolio Attribution</h2>
+                <ul>
+                    <li><strong>Setup Phase:</strong> 100% of Domain Costs + 50% Service Labor is required to initiate. <strong>Domain registration fees are non-refundable</strong> once initiated.</li>
+                    <li><strong>Final Phase:</strong> The remaining 50% is due upon project sign-off.</li>
+                </ul>
+                <p><strong>Intellectual Property:</strong> Upon final payment, JDR Corp grants the client a perpetual, exclusive license to the final website code. JDR Corp retains the right to reuse non-proprietary code snippets and architectural patterns. <strong>Portfolio Showcase:</strong> The Client consents to JDR Corporation featuring the project URL, screenshots, and associated Google Business reviews within our official Portfolio and marketing materials to demonstrate development capabilities.</p>
+
+                <h2>3. Digital Asset Governance & Hosting</h2>
+                <p><strong>Concierge Hosting:</strong> If JDR Corp is contracted for hosting, we act as the administrative custodian to ensure uptime and security. <br>
+                   <strong>Management Transfer:</strong> The client may request a full "Management Transfer" at any time. We will transmit all master credentials (GitHub, Domain, Google Business/Ads) to the client within 48 hours of a verified written request.</p>
+
+                <h2>4. Data Privacy (RA 10173)</h2>
+                <p>In accordance with the <strong>Philippine Data Privacy Act of 2012</strong>, we implement strict measures to ensure business credentials and customer data remain confidential. All temporary development access is revoked and destroyed post-handover.</p>
+
+                <h2>5. Liability & Dispute Resolution</h2>
+                <p>Post-transfer, JDR Corporation is released from liability regarding hosting uptime, server-side configurations, or security breaches resulting from client-managed credentials. Any disputes arising shall be settled through friendly negotiations. If unresolved, the venue for legal action shall be the courts of <strong>Manila, Philippines</strong>.</p>
+            </div>
         </div>
     </div>
 
     <footer>
         <div class="footer-nav">
-            <a href="index.html">Home</a> | 
-            <a href="about.html">About</a> | 
-            <a href="service.html">Services</a> | 
-            <a href="legal.html">Legal & Privacy</a>
+            <a href="index.html">Home</a> | <a href="about.html">About</a> | <a href="service.html">Services</a> | <a href="portfolio.html">Portfolio</a> | <a href="legal.html">Legal & Privacy</a>
         </div>
         <p>&copy; 2026 JDR CORP. All Rights Reserved.</p>
-        <div class="footer-badges">
-            CUSTOM HTML ARCHITECTURE • GITHUB WORKFLOWS • GCASH VERIFIED BUSINESS
-        </div>
+        <div class="footer-badges">CUSTOM HTML ARCHITECTURE • GITHUB WORKFLOWS • GCASH VERIFIED BUSINESS</div>
     </footer>
 
     <script>
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
-        
-        const closeMenu = () => {
-            navMenu.classList.remove('nav-active');
-            hamburger.classList.remove('toggle');
-        };
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            
+            const closeMenu = () => {
+                navMenu.classList.remove('nav-active');
+                hamburger.classList.remove('toggle');
+            };
 
-        hamburger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            navMenu.classList.toggle('nav-active');
-            hamburger.classList.toggle('toggle');
-        });
+            hamburger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                navMenu.classList.toggle('nav-active');
+                hamburger.classList.toggle('toggle');
+            });
 
-        window.addEventListener('scroll', () => {
-            if (navMenu.classList.contains('nav-active')) closeMenu();
-        });
+            document.addEventListener('click', (e) => {
+                if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) closeMenu();
+            });
 
-        document.addEventListener('click', (e) => {
-            if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) closeMenu();
+            window.addEventListener('scroll', () => {
+                if (navMenu.classList.contains('nav-active')) closeMenu();
+            });
         });
     </script>
 </body>

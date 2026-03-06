@@ -62,7 +62,8 @@
             color: var(--accent-orange) !important;
         }
 
-        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
+        .hamburger { display: flex; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
+        @media (min-width: 769px) { .hamburger { display: none; } }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
 
         /* --- LOGO HEADER --- */
@@ -98,9 +99,7 @@
         /* --- RATING & TESTIMONIALS --- */
         .star-rating label:hover,
         .star-rating label:hover ~ label,
-        .star-rating input:checked ~ label {
-            color: var(--accent-orange) !important;
-        }
+        .star-rating input:checked ~ label { color: var(--accent-orange) !important; }
 
         .testimonial-slider { 
             width: 100%; 
@@ -111,29 +110,15 @@
             position: relative;
         }
         .testimonial-slider:active { cursor: grabbing; }
-        
-        .testimonial-track { 
-            display: flex; 
-            width: max-content; 
-            gap: 15px;
-            will-change: transform;
-        }
-        
+        .testimonial-track { display: flex; width: max-content; gap: 15px; will-change: transform; }
         .testimonial-card-move {
-            width: 220px; 
-            flex-shrink: 0; 
-            background: rgba(10, 88, 202, 0.05); 
-            padding: 15px; 
-            border-radius: 10px; 
-            border-left: 3px solid var(--primary-blue);
-            white-space: normal;
-            text-align: left;
-            pointer-events: none; /* Allows drag to work without clicking text */
+            width: 220px; flex-shrink: 0; background: rgba(10, 88, 202, 0.05); 
+            padding: 15px; border-radius: 10px; border-left: 3px solid var(--primary-blue);
+            white-space: normal; text-align: left; pointer-events: none;
         }
 
         /* --- MOBILE OVERRIDES --- */
         @media (max-width: 768px) {
-            .hamburger { display: flex; }
             .nav-links {
                 position: fixed; right: 0; top: 0; height: 100vh; background-color: #000;
                 flex-direction: column; width: 260px; transform: translateX(100%); 
@@ -143,7 +128,6 @@
             .nav-links li { width: 100%; margin: 0; }
             .nav-links a { display: block; width: 100%; padding: 20px 30px; font-size: 0.95rem; border-bottom: 1px solid #111; box-sizing: border-box; }
             .nav-active { transform: translateX(0%); }
-            
             .toggle .line1 { transform: rotate(-45deg) translate(-4px, 5px); }
             .toggle .line2 { opacity: 0; }
             .toggle .line3 { transform: rotate(45deg) translate(-4px, -5px); }
@@ -182,6 +166,7 @@
         <a href="quote.html" class="cta-btn-main">Build Your Custom Quote</a>
     </section>
 
+    
     <section class="transparency-section">
         <div class="monitor-box">
             <div style="display: inline-flex; align-items: center; gap: 6px; background: rgba(0,0,0,0.3); padding: 4px 12px; border-radius: 20px; border: 1px solid #333; margin-bottom: 15px;">
@@ -277,38 +262,81 @@
     </footer>
 
     <script>
-        // --- NAVIGATION ---
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
-        
-        const closeMenu = () => {
-            navMenu.classList.remove('nav-active');
-            hamburger.classList.remove('toggle');
-        };
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- NAVIGATION ---
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            
+            hamburger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                navMenu.classList.toggle('nav-active');
+                hamburger.classList.toggle('toggle');
+            });
 
-        hamburger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            navMenu.classList.toggle('nav-active');
-            hamburger.classList.toggle('toggle');
+            document.addEventListener('click', (e) => {
+                if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                    navMenu.classList.remove('nav-active');
+                    hamburger.classList.remove('toggle');
+                }
+            });
+
+            // --- TERMS CHECK ---
+            const termsCheck = document.getElementById('terms-check');
+            const chatWrapper = document.getElementById('chat-wrapper');
+            termsCheck.addEventListener('change', function() {
+                chatWrapper.style.opacity = this.checked ? "1" : "0.3";
+                chatWrapper.style.pointerEvents = this.checked ? "auto" : "none";
+            });
+
+            // --- SLIDER LOGIC ---
+            const slider = document.getElementById('slider-container');
+            const track = document.getElementById('slider-track');
+            
+            if (slider && track) {
+                const originalCards = track.innerHTML;
+                track.innerHTML += originalCards; 
+
+                let isDown = false;
+                let startX;
+                let scrollLeft;
+
+                const autoScroll = () => {
+                    if (!isDown) {
+                        slider.scrollLeft += 1;
+                        if (slider.scrollLeft >= track.scrollWidth / 2) {
+                            slider.scrollLeft = 0;
+                        }
+                    }
+                    requestAnimationFrame(autoScroll);
+                };
+
+                const startDragging = (e) => {
+                    isDown = true;
+                    startX = (e.pageX || e.touches[0].pageX) - slider.offsetLeft;
+                    scrollLeft = slider.scrollLeft;
+                };
+
+                const stopDragging = () => isDown = false;
+
+                const moveDragging = (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = (e.pageX || e.touches[0].pageX) - slider.offsetLeft;
+                    slider.scrollLeft = scrollLeft - (x - startX) * 2;
+                };
+
+                slider.addEventListener('mousedown', startDragging);
+                slider.addEventListener('touchstart', startDragging);
+                window.addEventListener('mouseup', stopDragging);
+                window.addEventListener('touchend', stopDragging);
+                slider.addEventListener('mousemove', moveDragging);
+                slider.addEventListener('touchmove', moveDragging);
+
+                autoScroll();
+            }
         });
 
-        window.addEventListener('scroll', () => {
-            if (navMenu.classList.contains('nav-active')) closeMenu();
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) closeMenu();
-        });
-
-        // --- TERMS CHECK ---
-        const termsCheck = document.getElementById('terms-check');
-        const chatWrapper = document.getElementById('chat-wrapper');
-        termsCheck.addEventListener('change', function() {
-            chatWrapper.style.opacity = this.checked ? "1" : "0.3";
-            chatWrapper.style.pointerEvents = this.checked ? "auto" : "none";
-        });
-
-        // --- RATING ---
+        // --- RATING FUNCTION (Outside DOMContentLoaded for HTML access) ---
         function submitRating() {
             const btn = document.getElementById('submit-btn');
             const msg = document.getElementById('thank-you-msg');
@@ -318,64 +346,6 @@
             msg.style.display = 'block';
             document.getElementById('client-review').disabled = true;
         }
-
-        // --- SLIDER LOGIC ---
-        const slider = document.getElementById('slider-container');
-        const track = document.getElementById('slider-track');
-        
-        // 1. Clone cards for seamless infinite loop
-        const originalCards = track.innerHTML;
-        track.innerHTML += originalCards; // Double the content
-
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-        let animationId;
-
-        // Auto-scroll speed
-        const autoScroll = () => {
-            if (!isDown) {
-                slider.scrollLeft += 1;
-                // Reset to middle when reaching the end of the clone
-                if (slider.scrollLeft >= track.scrollWidth / 2) {
-                    slider.scrollLeft = 0;
-                }
-            }
-            animationId = requestAnimationFrame(autoScroll);
-        };
-
-        // Interaction Events
-        const startDragging = (e) => {
-            isDown = true;
-            startX = (e.pageX || e.touches[0].pageX) - slider.offsetLeft;
-            scrollLeft = slider.scrollLeft;
-        };
-
-        const stopDragging = () => {
-            isDown = false;
-        };
-
-        const moveDragging = (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = (e.pageX || e.touches[0].pageX) - slider.offsetLeft;
-            const walk = (x - startX) * 2; // Scroll speed multiplier
-            slider.scrollLeft = scrollLeft - walk;
-        };
-
-        // Desktop Events
-        slider.addEventListener('mousedown', startDragging);
-        slider.addEventListener('mouseleave', stopDragging);
-        slider.addEventListener('mouseup', stopDragging);
-        slider.addEventListener('mousemove', moveDragging);
-
-        // Mobile Events
-        slider.addEventListener('touchstart', startDragging);
-        slider.addEventListener('touchend', stopDragging);
-        slider.addEventListener('touchmove', moveDragging);
-
-        // Start animation
-        autoScroll();
     </script>
 </body>
 </html>

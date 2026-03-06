@@ -17,20 +17,17 @@
         }
 
         /* --- GLOBAL STYLES --- */
+        html, body { height: 100%; margin: 0; }
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
             background-color: var(--dark-bg);
             color: var(--light-text);
             line-height: 1.4;
             overflow-x: hidden;
-            scroll-behavior: smooth;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
         }
-
-        main { flex: 1; }
+        main { flex: 1 0 auto; }
 
         /* --- NAVIGATION --- */
         nav {
@@ -44,30 +41,15 @@
             top: 0;
             z-index: 1000;
         }
-
-        .nav-brand {
-            font-size: 0.9rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-            color: var(--light-text);
-            text-transform: uppercase;
-            text-decoration: none;
-        }
+        .nav-brand { font-size: 0.9rem; font-weight: 800; letter-spacing: 1px; color: var(--light-text); text-transform: uppercase; text-decoration: none; }
         .nav-brand span { color: var(--accent-orange); }
-
         .nav-links { display: flex; list-style: none; margin: 0; padding: 0; align-items: center; }
         .nav-links li { margin-left: 20px; }
-        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; display: inline-block; }
-        .nav-links a:hover { color: var(--accent-orange); }
-
-        .nav-quote-btn {
-            border: 1px solid var(--accent-orange);
-            padding: 5px 12px;
-            border-radius: 4px;
-            color: var(--accent-orange) !important;
-        }
-
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; }
+        .nav-links a:hover, .active-link { color: var(--accent-orange) !important; }
+        .nav-quote-btn { border: 1px solid var(--accent-orange); padding: 5px 12px; border-radius: 4px; color: var(--accent-orange) !important; }
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
+        @media (max-width: 768px) { .hamburger { display: flex; } }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
 
         /* --- LOGO HEADER --- */
@@ -75,146 +57,66 @@
         .main-logo { max-width: 280px; width: 100%; height: auto; }
 
         /* --- PORTFOLIO CONTENT --- */
-        .portfolio-hero { 
-            padding: 50px 5% 40px; 
-            text-align: center; 
-            background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%); 
-        }
+        .portfolio-hero { padding: 50px 5% 40px; text-align: center; background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%); }
         .portfolio-hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 10px; font-weight: 800; }
-        .portfolio-hero p { font-size: 0.9rem; color: var(--muted-text); max-width: 600px; margin: 0 auto; }
-
-        .portfolio-grid {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 60px 5% 100px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 30px;
-        }
-
-        .portfolio-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .portfolio-card:hover { 
-            border-color: var(--primary-blue); 
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-        }
-
-        .preview-area {
-            height: 220px;
-            background-color: #111;
-            background-size: cover;
-            background-position: top center;
-            border-bottom: 1px solid #222;
-            position: relative;
-        }
-
-        .status-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(0,0,0,0.8);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.65rem;
-            font-weight: bold;
-            color: #28a745;
-            border: 1px solid #333;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
+        .portfolio-hero p { font-size: 0.95rem; color: var(--muted-text); max-width: 600px; margin: 0 auto; line-height: 1.6; }
+        .portfolio-grid { max-width: 1100px; margin: 0 auto; padding: 60px 5% 100px; display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px; }
+        .portfolio-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.05); border-radius: 15px; overflow: hidden; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; flex-direction: column; }
+        .portfolio-card:hover { border-color: var(--primary-blue); transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
+        .preview-area { height: 220px; background-color: #111; background-size: cover; background-position: top center; border-bottom: 1px solid #222; position: relative; }
+        .status-badge { position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.8); padding: 5px 12px; border-radius: 20px; font-size: 0.65rem; font-weight: bold; color: #28a745; border: 1px solid #333; display: flex; align-items: center; gap: 6px; }
         .status-dot { height: 6px; width: 6px; background-color: #28a745; border-radius: 50%; box-shadow: 0 0 5px #28a745; }
-
         .card-body { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
         .card-body h3 { color: var(--accent-orange); margin: 0 0 12px; font-size: 1.4rem; }
         .card-body p { font-size: 0.85rem; color: var(--muted-text); margin-bottom: 20px; line-height: 1.6; }
-        
         .tag-list { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 25px; }
-        .tag { 
-            font-size: 0.6rem; 
-            background: rgba(10, 88, 202, 0.15); 
-            color: #8bb9ff; 
-            padding: 4px 10px; 
-            border-radius: 4px; 
-            font-weight: bold; 
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border: 1px solid rgba(10, 88, 202, 0.3);
-        }
-
-        .btn-live {
-            text-decoration: none;
-            padding: 14px;
-            border-radius: 6px;
-            font-weight: bold;
-            font-size: 0.85rem;
-            text-align: center;
-            transition: 0.3s;
-            background: var(--primary-blue);
-            color: white;
-            margin-top: auto;
-        }
+        .tag { font-size: 0.6rem; background: rgba(10, 88, 202, 0.15); color: #8bb9ff; padding: 4px 10px; border-radius: 4px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid rgba(10, 88, 202, 0.3); }
+        .btn-live { text-decoration: none; padding: 14px; border-radius: 6px; font-weight: bold; font-size: 0.85rem; text-align: center; transition: 0.3s; background: var(--primary-blue); color: white; margin-top: auto; }
         .btn-live:hover { background: #0849aa; transform: scale(1.02); }
 
-        /* --- MOBILE NAVIGATION --- */
+        /* --- MOBILE NAV --- */
         @media (max-width: 768px) {
-            .hamburger { display: flex; }
-            .nav-links {
-                position: fixed; right: 0; top: 0; height: 100vh; background-color: #000;
-                flex-direction: column; width: 260px; transform: translateX(100%); 
-                transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                padding-top: 70px; border-left: 1px solid #222; align-items: flex-start;
-            }
+            .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; flex-direction: column; width: 260px; transform: translateX(100%); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding-top: 70px; border-left: 1px solid #222; align-items: flex-start; }
             .nav-links li { width: 100%; margin: 0; }
-            .nav-links a { display: block; width: 100%; padding: 20px 30px; font-size: 0.95rem; border-bottom: 1px solid #111; box-sizing: border-box; }
+            .nav-links a { display: block; width: 100%; padding: 20px 30px; font-size: 0.95rem; border-bottom: 1px solid #111; }
             .nav-active { transform: translateX(0%); }
-            
             .toggle .line1 { transform: rotate(-45deg) translate(-4px, 5px); }
             .toggle .line2 { opacity: 0; }
             .toggle .line3 { transform: rotate(45deg) translate(-4px, -5px); }
         }
 
-        /* --- FOOTER SYNC --- */
+        /* --- FOOTER --- */
         footer { padding: 60px 5% 40px; text-align: center; border-top: 1px solid #222; color: #555; font-size: 0.75rem; background-color: #000; }
-        footer a { color: #888; text-decoration: none; margin: 0 10px; transition: 0.3s; }
+        footer a { color: #888; text-decoration: none; margin: 0 10px; }
         footer a:hover { color: var(--accent-orange); }
         .footer-nav { margin-bottom: 20px; }
-        .footer-badges { margin-top: 20px; opacity: 0.5; font-size: 0.7rem; letter-spacing: 1px; line-height: 2; }
+        .footer-badges { margin-top: 20px; opacity: 0.5; font-size: 0.7rem; letter-spacing: 1px; }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a href="index.html" class="nav-brand">JDR <span>Corporation</span></a>
-        <ul class="nav-links" id="nav-menu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="service.html">Services</a></li>
-            <li><a href="portfolio.html" style="color: var(--accent-orange);">Portfolio</a></li>
-            <li><a href="quote.html" class="nav-quote-btn">Get a Quote</a></li>
-        </ul>
-        <div class="hamburger" id="hamburger">
-            <div class="line1"></div><div class="line2"></div><div class="line3"></div>
-        </div>
-    </nav>
-
-    <header class="logo-header">
-        <img src="image_0.png" alt="JDR CORPORATION Logo" class="main-logo">
-    </header>
-
     <main>
+        <nav>
+            <a href="index.html" class="nav-brand">JDR <span>Corporation</span></a>
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="portfolio.html" class="active-link">Portfolio</a></li>
+                <li><a href="quote.html" class="nav-quote-btn">Get a Quote</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <div class="line1"></div><div class="line2"></div><div class="line3"></div>
+            </div>
+        </nav>
+
+        <header class="logo-header">
+            <img src="image_0.png" alt="JDR CORPORATION Logo" class="main-logo">
+        </header>
+
         <section class="portfolio-hero">
             <h1>Live Build <span style="color: var(--accent-orange);">Showcase</span></h1>
-            <p>Explore the architecture behind our service models. Verified deployment and clean HTML architecture.</p>
+            <p>Every project below was developed using our signature <strong>Live-Preview Protocol</strong>. By utilizing real-time GitHub integration, our clients maintain total oversight.</p>
         </section>
 
         <section class="portfolio-grid">
@@ -226,7 +128,6 @@
                     <div class="tag-list">
                         <span class="tag">Growth Engine</span>
                         <span class="tag">GMB Verified</span>
-                        <span class="tag">Ads Optimized</span>
                     </div>
                     <h3>Famous Touch</h3>
                     <p>A premium 24/7 service landing page. Engineered for high-speed mobile performance and full Google Business Profile verification.</p>
@@ -241,7 +142,6 @@
                 <div class="card-body">
                     <div class="tag-list">
                         <span class="tag">Business Suite</span>
-                        <span class="tag">Multi-Page</span>
                         <span class="tag">Schema SEO</span>
                     </div>
                     <h3>Brew & Bean</h3>
@@ -254,32 +154,29 @@
 
     <footer>
         <div class="footer-nav">
-            <a href="index.html">Home</a> | 
-            <a href="about.html">About</a> | 
-            <a href="service.html">Services</a> | 
-            <a href="portfolio.html">Portfolio</a> | 
-            <a href="legal.html">Legal & Privacy</a>
+            <a href="index.html">Home</a> | <a href="about.html">About</a> | <a href="service.html">Services</a> | <a href="portfolio.html">Portfolio</a> | <a href="legal.html">Legal & Privacy</a>
         </div>
         <p>&copy; 2026 JDR CORP. All Rights Reserved.</p>
-        <div class="footer-badges">
-            CUSTOM HTML ARCHITECTURE • GITHUB WORKFLOWS • GCASH VERIFIED BUSINESS
-        </div>
+        <div class="footer-badges">CUSTOM HTML ARCHITECTURE • GITHUB WORKFLOWS • GCASH VERIFIED BUSINESS</div>
     </footer>
 
     <script>
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
-        
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('nav-active');
-            hamburger.classList.toggle('toggle');
-        });
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            
+            hamburger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                navMenu.classList.toggle('nav-active');
+                hamburger.classList.toggle('toggle');
+            });
 
-        document.addEventListener('click', (e) => {
-            if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-                navMenu.classList.remove('nav-active');
-                hamburger.classList.remove('toggle');
-            }
+            document.addEventListener('click', (e) => {
+                if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                    navMenu.classList.remove('nav-active');
+                    hamburger.classList.remove('toggle');
+                }
+            });
         });
     </script>
 </body>
