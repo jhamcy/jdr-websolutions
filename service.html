@@ -105,7 +105,7 @@
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="service.html" class="active-link">Services</a></li>
                 <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="legal.html" class="active-link">Legal & Privacy</a></li>
+                <li><a href="legal.html">Legal & Privacy</a></li>
                 <li><a href="quote.html" class="nav-quote-btn">Get a Quote</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
@@ -178,17 +178,32 @@
         document.addEventListener('DOMContentLoaded', () => {
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('nav-menu');
-            
+
+            // Helper to close menu
+            const closeMenu = () => {
+                if (navMenu.classList.contains('nav-active')) {
+                    navMenu.classList.remove('nav-active');
+                    hamburger.classList.remove('toggle');
+                }
+            };
+
+            // Toggle on click
             hamburger.addEventListener('click', (e) => {
                 e.stopPropagation();
                 navMenu.classList.toggle('nav-active');
                 hamburger.classList.toggle('toggle');
             });
 
+            // Close on scroll
+            window.addEventListener('scroll', closeMenu, { passive: true });
+
+            // Close on click outside OR on link click
             document.addEventListener('click', (e) => {
-                if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-                    navMenu.classList.remove('nav-active');
-                    hamburger.classList.remove('toggle');
+                const isClickInsideMenu = navMenu.contains(e.target);
+                const isHamburger = hamburger.contains(e.target);
+
+                if ((!isClickInsideMenu && !isHamburger) || e.target.tagName === 'A') {
+                    closeMenu();
                 }
             });
         });
