@@ -15,7 +15,6 @@
             --muted-text: #A0A0A0;
             --header-bg: #000000;
         }
-
         /* --- GLOBAL STYLES --- */
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -26,7 +25,6 @@
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
-
         /* --- NAVIGATION --- */
         nav {
             background: var(--header-bg);
@@ -39,7 +37,6 @@
             top: 0;
             z-index: 1000;
         }
-
         .nav-brand {
             font-size: 0.9rem;
             font-weight: 800;
@@ -49,45 +46,40 @@
             text-decoration: none;
         }
         .nav-brand span { color: var(--accent-orange); }
-
         .nav-links { display: flex; list-style: none; margin: 0; padding: 0; align-items: center; }
         .nav-links li { margin-left: 20px; }
         .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; display: inline-block; }
-        .nav-links a:hover { color: var(--accent-orange); }
-
+        .nav-links a:hover, .active-link { color: var(--accent-orange) !important; }
         .nav-quote-btn {
             border: 1px solid var(--accent-orange);
             padding: 5px 12px;
             border-radius: 4px;
             color: var(--accent-orange) !important;
         }
-
-        .hamburger { display: flex; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
-        @media (min-width: 769px) { .hamburger { display: none; } }
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
+        @media (max-width: 768px) { .hamburger { display: flex; } }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
-
+        
         /* --- LOGO HEADER --- */
         .logo-header { padding: 30px 5% 5px; text-align: center; background-color: #000; }
         .main-logo { max-width: 280px; width: 100%; height: auto; }
-
+        
         /* --- HERO SECTION --- */
         .hero { padding: 30px 5% 40px; text-align: center; background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%); }
         .hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 10px; font-weight: 800; }
         .hero p { font-size: 0.9rem; color: var(--muted-text); max-width: 500px; margin: 0 auto 20px; }
         .cta-btn-main { background: var(--primary-blue); color: white; padding: 10px 24px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; transition: 0.3s; font-size: 0.85rem; }
-
+        
         /* --- MONITORING SECTION --- */
         .transparency-section { padding: 60px 5%; background: #000; text-align: center; }
         .monitor-box { max-width: 900px; margin: 0 auto; padding: 40px 30px; background: rgba(10, 88, 202, 0.05); border: 1px solid var(--primary-blue); border-radius: 12px; }
         .pulse-dot { height: 7px; width: 7px; background-color: #ff4b4b; border-radius: 50%; display: inline-block; box-shadow: 0 0 6px #ff4b4b; animation: pulse-animation 1.5s infinite; }
-
         @keyframes pulse-animation { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
-
         .monitor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; text-align: left; margin-top: 30px; }
         .monitor-card { background: rgba(255,255,255,0.02); padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05); }
         .monitor-card h4 { color: var(--accent-orange); margin: 0 0 8px; font-size: 1rem; }
         .monitor-card p { font-size: 0.85rem; color: var(--muted-text); line-height: 1.5; margin: 0; }
-
+        
         /* --- TRANSACTION HUB --- */
         .chat-hub { padding: 50px 5%; text-align: center; background: radial-gradient(circle at top, #1E3A5F 0%, #000 100%); }
         .chat-hub h2 { font-size: 1.5rem; margin-bottom: 5px; }
@@ -95,21 +87,12 @@
         .chat-container { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
         .chat-btn { padding: 10px 18px; border-radius: 8px; text-decoration: none; color: white; font-weight: bold; transition: 0.3s; min-width: 150px; font-size: 0.8rem; }
         .whatsapp { background-color: #25D366; } .viber { background-color: #7360f2; }
-
+        
         /* --- RATING & TESTIMONIALS --- */
         .star-rating label:hover,
         .star-rating label:hover ~ label,
         .star-rating input:checked ~ label { color: var(--accent-orange) !important; }
-
-        .testimonial-slider { 
-            width: 100%; 
-            overflow: hidden; 
-            padding: 20px 0; 
-            cursor: grab;
-            user-select: none;
-            position: relative;
-        }
-        .testimonial-slider:active { cursor: grabbing; }
+        .testimonial-slider { width: 100%; overflow: hidden; padding: 20px 0; cursor: grab; user-select: none; position: relative; }
         .testimonial-track { display: flex; width: max-content; gap: 15px; will-change: transform; }
         .testimonial-card-move {
             width: 220px; flex-shrink: 0; background: rgba(10, 88, 202, 0.05); 
@@ -117,14 +100,9 @@
             white-space: normal; text-align: left; pointer-events: none;
         }
 
-        /* --- MOBILE OVERRIDES --- */
+        /* --- MOBILE NAV --- */
         @media (max-width: 768px) {
-            .nav-links {
-                position: fixed; right: 0; top: 0; height: 100vh; background-color: #000;
-                flex-direction: column; width: 260px; transform: translateX(100%); 
-                transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                padding-top: 70px; border-left: 1px solid #222; align-items: flex-start;
-            }
+            .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; flex-direction: column; width: 260px; transform: translateX(100%); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding-top: 70px; border-left: 1px solid #222; align-items: flex-start; }
             .nav-links li { width: 100%; margin: 0; }
             .nav-links a { display: block; width: 100%; padding: 20px 30px; font-size: 0.95rem; border-bottom: 1px solid #111; box-sizing: border-box; }
             .nav-active { transform: translateX(0%); }
@@ -132,7 +110,6 @@
             .toggle .line2 { opacity: 0; }
             .toggle .line3 { transform: rotate(45deg) translate(-4px, -5px); }
         }
-
         footer { padding: 40px 5% 30px; text-align: center; border-top: 1px solid #222; color: #555; font-size: 0.75rem; background-color: #000; }
         footer a { color: #888; text-decoration: none; margin: 0 10px; transition: 0.3s; }
         footer a:hover { color: var(--accent-orange); }
@@ -141,15 +118,14 @@
     </style>
 </head>
 <body>
-
     <nav>
         <a href="index.html" class="nav-brand">JDR <span>Corporation</span></a>
         <ul class="nav-links" id="nav-menu">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html" class="active-link">Home</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="service.html">Services</a></li>
             <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="legal.html" class="active-link">Legal & Privacy</a></li>
+            <li><a href="legal.html">Legal & Privacy</a></li>
             <li><a href="quote.html" class="nav-quote-btn">Get a Quote</a></li>
         </ul>
         <div class="hamburger" id="hamburger">
@@ -167,7 +143,6 @@
         <a href="quote.html" class="cta-btn-main">Build Your Custom Quote</a>
     </section>
 
-    
     <section class="transparency-section">
         <div class="monitor-box">
             <div style="display: inline-flex; align-items: center; gap: 6px; background: rgba(0,0,0,0.3); padding: 4px 12px; border-radius: 20px; border: 1px solid #333; margin-bottom: 15px;">
@@ -212,21 +187,18 @@
                 <h2 style="font-size: 1.2rem; margin-bottom: 5px;">Rate Our <span style="color: var(--accent-orange);">Service</span></h2>
                 <p style="font-size: 0.75rem; color: var(--muted-text); margin-bottom: 15px;">Your feedback drives our standards.</p>
                 
-                <div class="star-rating" style="display: flex; justify-content: center; gap: 5px; margin-bottom: 15px; flex-direction: row-reverse;">
-                    <input type="radio" id="star5" name="rating" value="5" style="display:none;"/><label for="star5" style="cursor:pointer; font-size: 1.5rem; color: #333; transition: 0.2s;">★</label>
-                    <input type="radio" id="star4" name="rating" value="4" style="display:none;"/><label for="star4" style="cursor:pointer; font-size: 1.5rem; color: #333; transition: 0.2s;">★</label>
-                    <input type="radio" id="star3" name="rating" value="3" style="display:none;"/><label for="star3" style="cursor:pointer; font-size: 1.5rem; color: #333; transition: 0.2s;">★</label>
-                    <input type="radio" id="star2" name="rating" value="2" style="display:none;"/><label for="star2" style="cursor:pointer; font-size: 1.5rem; color: #333; transition: 0.2s;">★</label>
-                    <input type="radio" id="star1" name="rating" value="1" style="display:none;"/><label for="star1" style="cursor:pointer; font-size: 1.5rem; color: #333; transition: 0.2s;">★</label>
+                <div class="star-rating" style="display: flex; justify-content: center; gap: 5px; margin-bottom: 20px; flex-direction: row-reverse;">
+                    <input type="radio" id="star5" name="rating" value="5" style="display:none;"/><label for="star5" style="cursor:pointer; font-size: 2rem; color: #333; transition: 0.2s;">★</label>
+                    <input type="radio" id="star4" name="rating" value="4" style="display:none;"/><label for="star4" style="cursor:pointer; font-size: 2rem; color: #333; transition: 0.2s;">★</label>
+                    <input type="radio" id="star3" name="rating" value="3" style="display:none;"/><label for="star3" style="cursor:pointer; font-size: 2rem; color: #333; transition: 0.2s;">★</label>
+                    <input type="radio" id="star2" name="rating" value="2" style="display:none;"/><label for="star2" style="cursor:pointer; font-size: 2rem; color: #333; transition: 0.2s;">★</label>
+                    <input type="radio" id="star1" name="rating" value="1" style="display:none;"/><label for="star1" style="cursor:pointer; font-size: 2rem; color: #333; transition: 0.2s;">★</label>
                 </div>
 
-                <textarea id="client-review" placeholder="Share your experience..." style="width: 100%; background: #111; border: 1px solid #333; color: white; border-radius: 6px; padding: 10px; font-family: inherit; font-size: 0.8rem; resize: none; height: 60px; box-sizing: border-box; margin-bottom: 12px;"></textarea>
-                
-                <button onclick="submitRating()" id="submit-btn" style="background: var(--accent-orange); color: black; border: none; padding: 8px 20px; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 0.8rem; transition: 0.3s; width: 100%;">Submit Review</button>
+                <button onclick="submitRating()" id="submit-btn" style="background: var(--accent-orange); color: black; border: none; padding: 12px 20px; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 0.85rem; transition: 0.3s; width: 100%;">Submit Rating</button>
                 <p id="thank-you-msg" style="display: none; color: var(--accent-orange); font-size: 0.8rem; margin-top: 12px; font-weight: bold;">✔ Sent for verification.</p>
             </div>
         </div>
-
         <div class="testimonial-slider" id="slider-container">
             <div class="testimonial-track" id="slider-track">
                 <div class="testimonial-card-move">
@@ -264,30 +236,47 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- NAVIGATION ---
+            // --- NAVIGATION LOGIC ---
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('nav-menu');
-            
+
+            // Helper to close menu
+            const closeMenu = () => {
+                if (navMenu.classList.contains('nav-active')) {
+                    navMenu.classList.remove('nav-active');
+                    hamburger.classList.remove('toggle');
+                }
+            };
+
+            // Toggle on click
             hamburger.addEventListener('click', (e) => {
                 e.stopPropagation();
                 navMenu.classList.toggle('nav-active');
                 hamburger.classList.toggle('toggle');
             });
 
+            // Close on scroll
+            window.addEventListener('scroll', closeMenu, { passive: true });
+
+            // Close on click outside OR on link click
             document.addEventListener('click', (e) => {
-                if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-                    navMenu.classList.remove('nav-active');
-                    hamburger.classList.remove('toggle');
+                const isClickInsideMenu = navMenu.contains(e.target);
+                const isHamburger = hamburger.contains(e.target);
+
+                if ((!isClickInsideMenu && !isHamburger) || e.target.tagName === 'A') {
+                    closeMenu();
                 }
             });
 
             // --- TERMS CHECK ---
             const termsCheck = document.getElementById('terms-check');
             const chatWrapper = document.getElementById('chat-wrapper');
-            termsCheck.addEventListener('change', function() {
-                chatWrapper.style.opacity = this.checked ? "1" : "0.3";
-                chatWrapper.style.pointerEvents = this.checked ? "auto" : "none";
-            });
+            if (termsCheck) {
+                termsCheck.addEventListener('change', function() {
+                    chatWrapper.style.opacity = this.checked ? "1" : "0.3";
+                    chatWrapper.style.pointerEvents = this.checked ? "auto" : "none";
+                });
+            }
 
             // --- SLIDER LOGIC ---
             const slider = document.getElementById('slider-container');
@@ -296,7 +285,6 @@
             if (slider && track) {
                 const originalCards = track.innerHTML;
                 track.innerHTML += originalCards; 
-
                 let isDown = false;
                 let startX;
                 let scrollLeft;
@@ -332,12 +320,11 @@
                 window.addEventListener('touchend', stopDragging);
                 slider.addEventListener('mousemove', moveDragging);
                 slider.addEventListener('touchmove', moveDragging);
-
                 autoScroll();
             }
         });
 
-        // --- RATING FUNCTION (Outside DOMContentLoaded for HTML access) ---
+        // --- RATING FUNCTION ---
         function submitRating() {
             const btn = document.getElementById('submit-btn');
             const msg = document.getElementById('thank-you-msg');
@@ -345,7 +332,6 @@
             if (!stars) { alert("Please select a star rating first!"); return; }
             btn.style.display = 'none';
             msg.style.display = 'block';
-            document.getElementById('client-review').disabled = true;
         }
     </script>
 </body>

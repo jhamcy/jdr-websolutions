@@ -14,7 +14,6 @@
             --muted-text: #A0A0A0;
             --header-bg: #000000;
         }
-
         html, body { height: 100%; margin: 0; }
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -24,9 +23,7 @@
             display: flex;
             flex-direction: column;
         }
-
         .main-content { flex: 1 0 auto; }
-
         nav {
             background: var(--header-bg);
             padding: 0.5rem 5%;
@@ -49,16 +46,15 @@
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
         @media (max-width: 768px) { .hamburger { display: flex; } }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
-
+        
         .logo-header { padding: 30px 5% 5px; text-align: center; background-color: #000; }
         .main-logo { max-width: 280px; width: 100%; height: auto; }
-
+        
         .legal-hero { padding: 40px 5%; text-align: center; background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%); }
         .legal-hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 10px; font-weight: 800; }
-
+        
         .container { max-width: 800px; margin: 0 auto; padding: 40px 5% 80px; }
         .legal-box { background: rgba(255, 255, 255, 0.02); padding: 35px; border-radius: 12px; border: 1px solid #222; }
-
         h2 { color: var(--accent-orange); font-size: 1.1rem; margin-top: 40px; border-bottom: 1px solid #222; padding-bottom: 10px; font-weight: 800; }
         h2:first-of-type { margin-top: 0; }
         p, li { font-size: 0.85rem; color: var(--muted-text); line-height: 1.6; }
@@ -66,25 +62,23 @@
         ul { padding-left: 20px; }
         li { margin-bottom: 12px; }
 
-        footer { flex-shrink: 0; padding: 40px 5% 30px; text-align: center; border-top: 1px solid #222; color: #555; font-size: 0.75rem; background-color: #000; }
-        footer a { color: #888; text-decoration: none; margin: 0 10px; transition: 0.3s; }
-        footer a:hover { color: var(--accent-orange); }
-        .footer-nav { margin-bottom: 15px; }
-        .footer-badges { margin-top: 15px; opacity: 0.5; font-size: 0.7rem; letter-spacing: 0.5px; }
-
         @media (max-width: 768px) {
             .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; flex-direction: column; width: 260px; transform: translateX(100%); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding-top: 70px; border-left: 1px solid #222; align-items: flex-start; }
-            .nav-links li { width: 100%; }
+            .nav-links li { width: 100%; margin: 0; }
             .nav-links a { display: block; width: 100%; padding: 20px 30px; font-size: 0.95rem; border-bottom: 1px solid #111; box-sizing: border-box; }
             .nav-active { transform: translateX(0%); }
             .toggle .line1 { transform: rotate(-45deg) translate(-4px, 5px); }
             .toggle .line2 { opacity: 0; }
             .toggle .line3 { transform: rotate(45deg) translate(-4px, -5px); }
         }
+        footer { flex-shrink: 0; padding: 40px 5% 30px; text-align: center; border-top: 1px solid #222; color: #555; font-size: 0.75rem; background-color: #000; }
+        footer a { color: #888; text-decoration: none; margin: 0 10px; transition: 0.3s; }
+        footer a:hover { color: var(--accent-orange); }
+        .footer-nav { margin-bottom: 15px; }
+        .footer-badges { margin-top: 15px; opacity: 0.5; font-size: 0.7rem; letter-spacing: 0.5px; }
     </style>
 </head>
 <body>
-
     <div class="main-content">
         <nav>
             <a href="index.html" class="nav-brand">JDR <span>Corporation</span></a>
@@ -111,25 +105,24 @@
         </section>
 
         <div class="container">
-            
             <div class="legal-box">
                 <h2>1. Service Transparency & Project Abandonment</h2>
                 <p>JDR Corporation operates on a <strong>"Live Build"</strong> model. Project progress is monitored via private GitHub repositories to ensure total transparency. <strong>Project Abandonment:</strong> Projects inactive for more than <strong>30 consecutive days</strong> due to client non-responsiveness will be deemed "On Hold." Reactivation may be subject to a rescheduling fee.</p>
-
+                
                 <h2>2. Payment, IP & Portfolio Attribution</h2>
                 <ul>
                     <li><strong>Setup Phase:</strong> 100% of Domain Costs + 50% Service Labor is required to initiate. <strong>Domain registration fees are non-refundable</strong> once initiated.</li>
                     <li><strong>Final Phase:</strong> The remaining 50% is due upon project sign-off.</li>
                 </ul>
                 <p><strong>Intellectual Property:</strong> Upon final payment, JDR Corp grants the client a perpetual, exclusive license to the final website code. JDR Corp retains the right to reuse non-proprietary code snippets and architectural patterns. <strong>Portfolio Showcase:</strong> The Client consents to JDR Corporation featuring the project URL, screenshots, and associated Google Business reviews within our official Portfolio and marketing materials to demonstrate development capabilities.</p>
-
+                
                 <h2>3. Digital Asset Governance & Hosting</h2>
                 <p><strong>Concierge Hosting:</strong> If JDR Corp is contracted for hosting, we act as the administrative custodian to ensure uptime and security. <br>
-                   <strong>Management Transfer:</strong> The client may request a full "Management Transfer" at any time. We will transmit all master credentials (GitHub, Domain, Google Business/Ads) to the client within 48 hours of a verified written request.</p>
-
+                <strong>Management Transfer:</strong> The client may request a full "Management Transfer" at any time. We will transmit all master credentials (GitHub, Domain, Google Business/Ads) to the client within 48 hours of a verified written request.</p>
+                
                 <h2>4. Data Privacy (RA 10173)</h2>
                 <p>In accordance with the <strong>Philippine Data Privacy Act of 2012</strong>, we implement strict measures to ensure business credentials and customer data remain confidential. All temporary development access is revoked and destroyed post-handover.</p>
-
+                
                 <h2>5. Liability & Dispute Resolution</h2>
                 <p>Post-transfer, JDR Corporation is released from liability regarding hosting uptime, server-side configurations, or security breaches resulting from client-managed credentials. Any disputes arising shall be settled through friendly negotiations. If unresolved, the venue for legal action shall be the courts of <strong>Manila, Philippines</strong>.</p>
             </div>
@@ -150,8 +143,10 @@
             const navMenu = document.getElementById('nav-menu');
             
             const closeMenu = () => {
-                navMenu.classList.remove('nav-active');
-                hamburger.classList.remove('toggle');
+                if (navMenu.classList.contains('nav-active')) {
+                    navMenu.classList.remove('nav-active');
+                    hamburger.classList.remove('toggle');
+                }
             };
 
             hamburger.addEventListener('click', (e) => {
@@ -160,12 +155,14 @@
                 hamburger.classList.toggle('toggle');
             });
 
-            document.addEventListener('click', (e) => {
-                if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) closeMenu();
-            });
+            window.addEventListener('scroll', closeMenu, { passive: true });
 
-            window.addEventListener('scroll', () => {
-                if (navMenu.classList.contains('nav-active')) closeMenu();
+            document.addEventListener('click', (e) => {
+                const isClickInsideMenu = navMenu.contains(e.target);
+                const isHamburger = hamburger.contains(e.target);
+                if ((!isClickInsideMenu && !isHamburger) || e.target.tagName === 'A') {
+                    closeMenu();
+                }
             });
         });
     </script>
