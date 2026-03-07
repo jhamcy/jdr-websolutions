@@ -532,7 +532,7 @@
         btn.innerText = "PROCESSING...";
         status.style.display = "block"; 
         status.style.background = "#30363d"; 
-        status.innerText = "Uploading data...";
+        status.innerText = "Processing request...";
 
         try {
             const fileInput = document.getElementById('brand-assets');
@@ -540,15 +540,14 @@
             
             // 1. File Upload Logic
             if (fileInput.files.length > 0) {
-                status.innerText = "Uploading attachment...";
                 const file = fileInput.files[0];
-                const fileName = `${Date.now()}-${file.name}`;
+                const fileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
                 const { error: upErr } = await _supabase.storage.from('project-files').upload(fileName, file);
-                if (upErr) throw upErr;
+                if (upErr) throw new Error("Upload failed: " + upErr.message);
                 publicImageUrl = _supabase.storage.from('project-files').getPublicUrl(fileName).data.publicUrl;
             }
 
-            // 2. Data Preparation (Matches EmailJS Template variables)
+            // 2. Data Preparation
             const formData = {
                 name: document.getElementById('full-name').value,
                 email: document.getElementById('email-address').value,
@@ -561,29 +560,28 @@
             };
 
             // 3. Database Save
-            status.innerText = "Saving to database...";
             const { error: dbError } = await _supabase.from('inquiries').insert([formData]);
-            if (dbError) throw dbError;
+            if (dbError) throw new Error("DB Error: " + dbError.message);
 
-            // 4. Send Email Alert
-            status.innerText = "Sending email alert...";
-            await emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, formData);
+            // 4. Send Email Alert (Run independently)
+            emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, formData)
+                .then(() => console.log("Email sent"))
+                .catch(err => console.error("Email failed", err));
 
             // 5. Success Flow
             document.getElementById('thx-modal').style.display = 'block';
             status.style.display = "none";
-            btn.innerText = "SUBMIT INQUIRY";
-            btn.disabled = false;
             document.getElementById('inquiry-form').reset();
             calculate();
 
         } catch (err) {
             status.style.background = "#ff4d4d";
             status.style.color = "#fff";
-            status.innerText = "Error: " + (err.message || "Failed to submit");
-            console.error(err);
+            status.innerText = "Submission Failed: " + err.message;
+            console.error("Critical Error:", err);
+        } finally {
+            btn.innerText = "SUBMIT INQUIRY";
             btn.disabled = false;
-            btn.innerText = "RETRY SUBMISSION";
         }
     });
 
