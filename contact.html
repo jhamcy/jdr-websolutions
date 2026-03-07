@@ -539,7 +539,7 @@
             const fileInput = document.getElementById('brand-assets');
             let publicImageUrl = "No Attachment";
             
-            // 1. File Upload Logic
+            // 1. File Upload
             if (fileInput.files.length > 0) {
                 const file = fileInput.files[0];
                 const fileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
@@ -550,26 +550,28 @@
 
             // 2. Data Preparation
             const formData = {
-    name: document.getElementById('full-name').value,
-    email: document.getElementById('email-address').value,
-    phone: document.getElementById('phone-input').value,
-    web_name: document.getElementById('web-name').value,
-    contact_method: document.getElementById('contact-method').value,
-    description: document.getElementById('project-desc').value,
-    total_cost: document.getElementById('display-total').innerText,
-    // Add this logic: if no file, send a friendly message instead of a broken URL
-    attachment: publicImageUrl === "No Attachment" ? "No file was uploaded by the client." : publicImageUrl
-};
+                name: document.getElementById('full-name').value,
+                email: document.getElementById('email-address').value,
+                phone: document.getElementById('phone-input').value,
+                web_name: document.getElementById('web-name').value,
+                contact_method: document.getElementById('contact-method').value,
+                description: document.getElementById('project-desc').value,
+                total_cost: document.getElementById('display-total').innerText,
+                attachment: publicImageUrl === "No Attachment" ? "None provided" : publicImageUrl
+            };
 
             // 3. Database Save
             const { error: dbError } = await _supabase.from('inquiries').insert([formData]);
             if (dbError) throw new Error("Database error: " + dbError.message);
 
-            // 4. Send Email Alert (Handled with specific error check)
+            // 4. Send Email (Enhanced Error Logging)
             try {
-                await emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, formData);
+                const ejsResult = await emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, formData);
+                console.log("EmailJS Success:", ejsResult);
             } catch (emailErr) {
-                console.warn("Email alert failed, but data was saved:", emailErr);
+                console.error("EmailJS Failed:", emailErr);
+                // On mobile, show the error alert to find why it fails
+                alert("Notice: Data saved, but email notification failed. Reason: " + (emailErr.text || emailErr.message));
             }
 
             // 5. Success Flow
@@ -581,10 +583,9 @@
         } catch (err) {
             status.style.background = "#ff4d4d";
             status.style.color = "#fff";
-            // Check if error has a message or just use the object string
-            const errorMsg = err.message ? err.message : "Internal Error (check console)";
-            status.innerText = "Submission Failed: " + errorMsg;
-            console.error("Critical Error Details:", err);
+            const errDisplay = err.message || err.text || "Submission failed";
+            status.innerText = "Error: " + errDisplay;
+            console.error("Submission Error:", err);
         } finally {
             btn.innerText = "SUBMIT INQUIRY";
             btn.disabled = false;
