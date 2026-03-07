@@ -180,6 +180,60 @@
             font-size: 0.9rem; 
         }
 
+        /* --- MULTIPLE FILE STYLES --- */
+        .file-upload-container {
+            margin-bottom: 15px;
+        }
+        .file-input-wrapper {
+            position: relative;
+            width: 100%;
+            height: 45px;
+            background: #0d1117;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .file-input-wrapper input[type="file"] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        .file-input-label {
+            font-size: 0.85rem;
+            color: #8b949e;
+        }
+        .file-preview-list {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .file-preview-item {
+            background: #1c2128;
+            border: 1px solid var(--border);
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+        .file-remove-btn {
+            color: #ff4d4d;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 0 5px;
+            font-size: 1rem;
+        }
+
         .option-card { 
             flex: 1; 
             background: var(--card-bg); 
@@ -265,7 +319,6 @@
         .terms-text { font-size: 0.75rem; line-height: 1.4; color: #8b949e; }
         .terms-text span { color: var(--accent-orange); text-decoration: underline; cursor: pointer; font-weight: 600; }
 
-        /* --- MODALS --- */
         .modal { 
             display: none; 
             position: fixed; 
@@ -300,7 +353,12 @@
         .thx-icon { font-size: 3rem; color: #25D366; margin-bottom: 15px; display: block; }
         .btn-close-thx { background: var(--primary-blue); color: white; border: none; padding: 12px 25px; border-radius: 6px; cursor: pointer; font-weight: 700; margin-top: 20px; width: 100%; }
 
+        /* --- UPDATED FOOTER --- */
         footer { flex-shrink: 0; padding: 40px 5% 30px; text-align: center; border-top: 1px solid #222; color: #555; font-size: 0.75rem; background-color: #000; }
+        footer a { color: #888; text-decoration: none; margin: 0 10px; }
+        footer a:hover { color: var(--accent-orange); }
+        .footer-nav { margin-bottom: 15px; }
+        .footer-badges { margin-top: 15px; opacity: 0.5; font-size: 0.7rem; letter-spacing: 0.5px; }
 
         @media (max-width: 768px) {
             .hamburger { display: flex; }
@@ -376,8 +434,14 @@
                     </select>
                 </div>
                 <div class="flex-item">
-                    <label for="brand-assets">Brand Assets (Logo/Refs)</label>
-                    <input type="file" id="brand-assets" accept="image/*, .pdf, .zip">
+                    <label>Brand Assets (Logo/Items)</label>
+                    <div class="file-upload-container">
+                        <div class="file-input-wrapper">
+                            <span class="file-input-label" id="file-label">+ Add images/files...</span>
+                            <input type="file" id="brand-assets" multiple accept="image/*, .pdf, .zip">
+                        </div>
+                        <div id="file-preview-list" class="file-preview-list"></div>
+                    </div>
                 </div>
             </div>
             
@@ -447,6 +511,191 @@
     </div>
 </div>
 
+<footer>
+    <div class="footer-nav">
+        <a href="index.html">Home</a> | 
+        <a href="about.html">About</a> | 
+        <a href="service.html">Services</a> | 
+        <a href="portfolio.html">Portfolio</a> | 
+        <a href="quote.html">Projects / Pricing</a> | 
+        <a href="contact.html">Get Started</a> | 
+        <a href="legal.html">Legal & Privacy</a>
+    </div>
+    <p>&copy; 2026 JDR CORP. All Rights Reserved.</p>
+    <div class="footer-badges">
+        CUSTOM HTML ARCHITECTURE • GITHUB WORKFLOWS • GCASH VERIFIED BUSINESS
+    </div>
+</footer>
+
+<script>
+    // --- NAVIGATION LOGIC ---
+    document.addEventListener('DOMContentLoaded', () => {
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        
+        const closeMenu = () => {
+            navMenu.classList.remove('nav-active');
+            hamburger.classList.remove('toggle');
+        };
+
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navMenu.classList.toggle('nav-active');
+            hamburger.classList.toggle('toggle');
+        });
+
+        window.addEventListener('scroll', closeMenu, { passive: true });
+
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                closeMenu();
+            }
+        });
+    });
+
+    // --- CONFIGURATION ---
+    const SUPABASE_URL = 'https://yphtlcsgicbzjrcyxybp.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlwaHRsY3NnaWNiempyY3l4eWJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI3Njk0NDAsImV4cCI6MjA4ODM0NTQ0MH0.Bb6ShJPt1be2VwcOMG_CKziYwjIBaoDGgs9B2DEYpm0';
+    const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    const EJS_SERVICE_ID = 'service_9azfmgp';
+    const EJS_TEMPLATE_ID = 'template_rug054q';
+    const EJS_PUBLIC_KEY = '9HgNOjgLcMRk-oJgf';
+    
+    emailjs.init(EJS_PUBLIC_KEY);
+
+    // --- MULTIPLE FILE ATTACHMENT LOGIC ---
+    let uploadedFilesArray = [];
+
+    document.getElementById('brand-assets').addEventListener('change', function(e) {
+        const previewList = document.getElementById('file-preview-list');
+        const newFiles = Array.from(e.target.files);
+        
+        newFiles.forEach(file => {
+            // Add to internal tracking array
+            uploadedFilesArray.push(file);
+            
+            // Add to UI
+            const fileItem = document.createElement('div');
+            fileItem.className = 'file-preview-item';
+            fileItem.innerHTML = `
+                <span>${file.name}</span>
+                <span class="file-remove-btn" onclick="removeFile('${file.name}', this)">×</span>
+            `;
+            previewList.appendChild(fileItem);
+        });
+        
+        // Clear input so same file can be re-added if needed
+        this.value = "";
+    });
+
+    function removeFile(fileName, element) {
+        // Remove from UI
+        element.parentElement.remove();
+        // Remove from tracking array
+        uploadedFilesArray = uploadedFilesArray.filter(f => f.name !== fileName);
+    }
+
+    function openTerms() { document.getElementById('terms-modal').style.display = 'block'; }
+    function closeTerms() { document.getElementById('terms-modal').style.display = 'none'; }
+    function closeThx() { document.getElementById('thx-modal').style.display = 'none'; }
+
+    function selectRadio(id) { document.getElementById(id).checked = true; calculate(); }
+    
+    function calculate() {
+        let setup = parseInt(document.getElementById('domain-select').value);
+        document.querySelectorAll('input[name="dev_package"]').forEach(opt => {
+            const card = document.getElementById('card-' + opt.id);
+            if(opt.checked) { setup += parseInt(opt.getAttribute('data-price')); card.classList.add('selected'); }
+            else card.classList.remove('selected');
+        });
+        const isSelf = document.getElementById('maint2').checked;
+        document.getElementById('monthly-section').style.display = isSelf ? 'none' : 'block';
+        document.getElementById('monthly-title').style.display = isSelf ? 'none' : 'block';
+        document.getElementById('display-total').innerText = "₱" + setup.toLocaleString();
+        document.getElementById('display-advance').innerText = "₱" + (setup * 0.5).toLocaleString();
+        updateAds();
+    }
+    
+    function updateAds() {
+        const slider = document.getElementById('ad-slider');
+        const daily = parseInt(slider.value);
+        const adSpend = daily * 30;
+        const mgmt = document.getElementById('maint1').checked ? 1500 : 0;
+        document.getElementById('daily-val').innerText = daily;
+        document.getElementById('ad-spend-val').innerText = adSpend.toLocaleString();
+        document.getElementById('display-monthly-total').innerText = (adSpend + mgmt).toLocaleString();
+        document.getElementById('display-traffic').innerText = Math.floor(adSpend / 20).toLocaleString() + " visitors/mo";
+    }
+    
+    function toggleSubmit() { document.getElementById('submit-btn').disabled = !document.getElementById('terms-check').checked; }
+
+    document.getElementById('inquiry-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById('submit-btn');
+        const status = document.getElementById('status-msg');
+        
+        btn.disabled = true; 
+        btn.innerText = "PROCESSING...";
+        status.style.display = "block"; 
+        status.style.background = "#30363d"; 
+        status.style.color = "#c9d1d9";
+        status.innerText = "Uploading files and processing request...";
+
+        try {
+            let publicUrls = [];
+            
+            // Upload multiple files to Supabase
+            if (uploadedFilesArray.length > 0) {
+                for (const file of uploadedFilesArray) {
+                    const fileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
+                    const { error: upErr } = await _supabase.storage.from('project-files').upload(fileName, file);
+                    if (upErr) throw new Error("Upload failed: " + upErr.message);
+                    const url = _supabase.storage.from('project-files').getPublicUrl(fileName).data.publicUrl;
+                    publicUrls.push(url);
+                }
+            }
+
+            const formData = {
+                name: document.getElementById('full-name').value,
+                email: document.getElementById('email-address').value,
+                phone: document.getElementById('phone-input').value,
+                web_name: document.getElementById('web-name').value,
+                contact_method: document.getElementById('contact-method').value,
+                description: document.getElementById('project-desc').value,
+                total_cost: document.getElementById('display-total').innerText,
+                attachment: publicUrls.length > 0 ? publicUrls.join(", ") : "None provided"
+            };
+
+            const { error: dbError } = await _supabase.from('inquiries').insert([formData]);
+            if (dbError) throw new Error("Database error: " + dbError.message);
+
+            try {
+                await emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, formData);
+            } catch (emailErr) {
+                console.error("EmailJS Failed:", emailErr);
+            }
+
+            status.style.display = "none";
+            document.getElementById('thx-modal').style.display = 'block';
+            document.getElementById('inquiry-form').reset();
+            document.getElementById('file-preview-list').innerHTML = "";
+            uploadedFilesArray = [];
+            calculate();
+
+        } catch (err) {
+            status.style.background = "#ff4d4d";
+            status.style.color = "#fff";
+            status.innerText = "Error: " + (err.message || "Submission failed");
+        } finally {
+            btn.innerText = "SUBMIT INQUIRY";
+            btn.disabled = false;
+        }
+    });
+
+    calculate();
+</script>
+
 <div id="terms-modal" class="modal">
     <div class="modal-content">
         <span class="close-modal" onclick="closeTerms()">&times;</span>
@@ -465,134 +714,5 @@
     </div>
 </div>
 
-<footer>
-    <p>&copy; 2026 JDR CORP. All Rights Reserved.</p>
-</footer>
-
-<script>
-    // --- CONFIGURATION ---
-    const SUPABASE_URL = 'https://yphtlcsgicbzjrcyxybp.supabase.co';
-    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlwaHRsY3NnaWNiempyY3l4eWJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI3Njk0NDAsImV4cCI6MjA4ODM0NTQ0MH0.Bb6ShJPt1be2VwcOMG_CKziYwjIBaoDGgs9B2DEYpm0';
-    const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-    const EJS_SERVICE_ID = 'service_9azfmgp';
-    const EJS_TEMPLATE_ID = 'template_rug054q';
-    const EJS_PUBLIC_KEY = '9HgNOjgLcMRk-oJgf';
-    
-    emailjs.init(EJS_PUBLIC_KEY);
-
-    // Modal Controls
-    function openTerms() { document.getElementById('terms-modal').style.display = 'block'; }
-    function closeTerms() { document.getElementById('terms-modal').style.display = 'none'; }
-    function closeThx() { document.getElementById('thx-modal').style.display = 'none'; }
-
-    // Navigation
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('nav-menu');
-    hamburger.addEventListener('click', () => {
-        navMenu.classList.toggle('nav-active');
-        hamburger.classList.toggle('toggle');
-    });
-
-    // Calculator Logic
-    function selectRadio(id) { document.getElementById(id).checked = true; calculate(); }
-    function calculate() {
-        let setup = parseInt(document.getElementById('domain-select').value);
-        document.querySelectorAll('input[name="dev_package"]').forEach(opt => {
-            const card = document.getElementById('card-' + opt.id);
-            if(opt.checked) { setup += parseInt(opt.getAttribute('data-price')); card.classList.add('selected'); }
-            else card.classList.remove('selected');
-        });
-        const isSelf = document.getElementById('maint2').checked;
-        document.getElementById('monthly-section').style.display = isSelf ? 'none' : 'block';
-        document.getElementById('monthly-title').style.display = isSelf ? 'none' : 'block';
-        document.getElementById('display-total').innerText = "₱" + setup.toLocaleString();
-        document.getElementById('display-advance').innerText = "₱" + (setup * 0.5).toLocaleString();
-        updateAds();
-    }
-    function updateAds() {
-        const slider = document.getElementById('ad-slider');
-        const daily = parseInt(slider.value);
-        const adSpend = daily * 30;
-        const mgmt = document.getElementById('maint1').checked ? 1500 : 0;
-        document.getElementById('daily-val').innerText = daily;
-        document.getElementById('ad-spend-val').innerText = adSpend.toLocaleString();
-        document.getElementById('display-monthly-total').innerText = (adSpend + mgmt).toLocaleString();
-        document.getElementById('display-traffic').innerText = Math.floor(adSpend / 20).toLocaleString() + " visitors/mo";
-    }
-    function toggleSubmit() { document.getElementById('submit-btn').disabled = !document.getElementById('terms-check').checked; }
-
-    // Submission Logic
-    document.getElementById('inquiry-form').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const btn = document.getElementById('submit-btn');
-        const status = document.getElementById('status-msg');
-        
-        btn.disabled = true; 
-        btn.innerText = "PROCESSING...";
-        status.style.display = "block"; 
-        status.style.background = "#30363d"; 
-        status.style.color = "#c9d1d9";
-        status.innerText = "Processing request...";
-
-        try {
-            const fileInput = document.getElementById('brand-assets');
-            let publicImageUrl = "No Attachment";
-            
-            // 1. File Upload
-            if (fileInput.files.length > 0) {
-                const file = fileInput.files[0];
-                const fileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
-                const { error: upErr } = await _supabase.storage.from('project-files').upload(fileName, file);
-                if (upErr) throw new Error("Upload failed: " + upErr.message);
-                publicImageUrl = _supabase.storage.from('project-files').getPublicUrl(fileName).data.publicUrl;
-            }
-
-            // 2. Data Preparation
-            const formData = {
-                name: document.getElementById('full-name').value,
-                email: document.getElementById('email-address').value,
-                phone: document.getElementById('phone-input').value,
-                web_name: document.getElementById('web-name').value,
-                contact_method: document.getElementById('contact-method').value,
-                description: document.getElementById('project-desc').value,
-                total_cost: document.getElementById('display-total').innerText,
-                attachment: publicImageUrl === "No Attachment" ? "None provided" : publicImageUrl
-            };
-
-            // 3. Database Save
-            const { error: dbError } = await _supabase.from('inquiries').insert([formData]);
-            if (dbError) throw new Error("Database error: " + dbError.message);
-
-            // 4. Send Email (Enhanced Error Logging)
-            try {
-                const ejsResult = await emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, formData);
-                console.log("EmailJS Success:", ejsResult);
-            } catch (emailErr) {
-                console.error("EmailJS Failed:", emailErr);
-                // On mobile, show the error alert to find why it fails
-                alert("Notice: Data saved, but email notification failed. Reason: " + (emailErr.text || emailErr.message));
-            }
-
-            // 5. Success Flow
-            status.style.display = "none";
-            document.getElementById('thx-modal').style.display = 'block';
-            document.getElementById('inquiry-form').reset();
-            calculate();
-
-        } catch (err) {
-            status.style.background = "#ff4d4d";
-            status.style.color = "#fff";
-            const errDisplay = err.message || err.text || "Submission failed";
-            status.innerText = "Error: " + errDisplay;
-            console.error("Submission Error:", err);
-        } finally {
-            btn.innerText = "SUBMIT INQUIRY";
-            btn.disabled = false;
-        }
-    });
-
-    calculate();
-</script>
 </body>
 </html>
