@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: 100%;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,23 +16,33 @@
             --header-bg: #000000;
         }
         /* --- GLOBAL STYLES --- */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
             background-color: var(--dark-bg);
             color: var(--light-text);
             line-height: 1.4;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-            /* Updated for Sticky Footer */
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
         }
         
-        /* Ensure the main content area takes up available space */
+        /* Forces the middle content to fill the remaining space */
         main {
-            flex: 1;
+            flex: 1 0 auto;
+        }
+        
+        footer {
+            flex-shrink: 0;
+            padding: 40px 5% 30px;
+            text-align: center;
+            border-top: 1px solid #222;
+            color: #555;
+            font-size: 0.75rem;
+            background-color: #000;
         }
 
         /* --- NAVIGATION --- */
@@ -78,15 +88,14 @@
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
         @media (max-width: 768px) { .hamburger { display: flex; } }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
-        /* --- LOGO HEADER --- */
+        
+        /* --- REMAINING SECTIONS --- */
         .logo-header { padding: 30px 5% 5px; text-align: center; background-color: #000; }
         .main-logo { max-width: 280px; width: 100%; height: auto; }
-        /* --- HERO SECTION --- */
         .hero { padding: 30px 5% 40px; text-align: center; background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%); }
         .hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 10px; font-weight: 800; }
         .hero p { font-size: 0.9rem; color: var(--muted-text); max-width: 500px; margin: 0 auto 20px; }
         .cta-btn-main { background: var(--primary-blue); color: white; padding: 10px 24px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; transition: 0.3s; font-size: 0.85rem; }
-        /* --- MONITORING SECTION --- */
         .transparency-section { padding: 60px 5%; background: #000; text-align: center; }
         .monitor-box { max-width: 900px; margin: 0 auto; padding: 40px 30px; background: rgba(10, 88, 202, 0.05); border: 1px solid var(--primary-blue); border-radius: 12px; }
         .pulse-dot { height: 7px; width: 7px; background-color: #ff4b4b; border-radius: 50%; display: inline-block; box-shadow: 0 0 6px #ff4b4b; animation: pulse-animation 1.5s infinite; }
@@ -95,7 +104,6 @@
         .monitor-card { background: rgba(255,255,255,0.02); padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05); }
         .monitor-card h4 { color: var(--accent-orange); margin: 0 0 8px; font-size: 1rem; }
         .monitor-card p { font-size: 0.85rem; color: var(--muted-text); line-height: 1.5; margin: 0; }
-        /* --- FLOATING BUTTONS --- */
         .floating-contact-wrap { position: fixed; bottom: 30px; right: 20px; display: flex; flex-direction: column; gap: 12px; z-index: 9999; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease; }
         body.is-scrolling .floating-contact-wrap { transform: translateX(80px); opacity: 0; pointer-events: none; }
         .float-item { display: flex; flex-direction: column; align-items: center; gap: 2px; }
@@ -105,12 +113,10 @@
         .float-viber { background-color: #7360f2; }
         .float-btn svg { width: 22px; height: 22px; fill: white; }
         .float-label { font-size: 0.55rem; font-weight: bold; color: #ccc; background: rgba(0,0,0,0.4); padding: 1px 5px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.5px; }
-        /* --- RATING & TESTIMONIALS --- */
         .star-rating label:hover, .star-rating label:hover ~ label, .star-rating input:checked ~ label { color: var(--accent-orange) !important; }
         .testimonial-slider { width: 100%; overflow: hidden; padding: 20px 0; cursor: grab; user-select: none; position: relative; }
         .testimonial-track { display: flex; width: max-content; gap: 15px; will-change: transform; }
         .testimonial-card-move { width: 220px; flex-shrink: 0; background: rgba(10, 88, 202, 0.05); padding: 15px; border-radius: 10px; border-left: 3px solid var(--primary-blue); white-space: normal; text-align: left; pointer-events: none; }
-        /* --- MOBILE NAV --- */
         @media (max-width: 768px) {
             .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; flex-direction: column; width: 260px; transform: translateX(100%); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding-top: 70px; border-left: 1px solid #222; align-items: flex-start; }
             .nav-links li { width: 100%; margin: 0; }
@@ -120,8 +126,6 @@
             .toggle .line2 { opacity: 0; }
             .toggle .line3 { transform: rotate(45deg) translate(-4px, -5px); }
         }
-        /* --- FOOTER --- */
-        footer { padding: 40px 5% 30px; text-align: center; border-top: 1px solid #222; color: #555; font-size: 0.75rem; background-color: #000; }
         footer a { color: #888; text-decoration: none; margin: 0 10px; }
         footer a:hover { color: var(--accent-orange); }
         .footer-nav { margin-bottom: 15px; }
@@ -248,8 +252,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('nav-menu');
-            
-            // --- SCROLL DETECTION FOR FLOATING BUTTONS ---
             let scrollTimer;
             window.addEventListener('scroll', () => {
                 document.body.classList.add('is-scrolling');
@@ -258,22 +260,18 @@
                     document.body.classList.remove('is-scrolling');
                 }, 400);
             }, { passive: true });
-            
             const closeMenu = () => {
                 if (navMenu.classList.contains('nav-active')) {
                     navMenu.classList.remove('nav-active');
                     hamburger.classList.remove('toggle');
                 }
             };
-            
             hamburger.addEventListener('click', (e) => {
                 e.stopPropagation();
                 navMenu.classList.toggle('nav-active');
                 hamburger.classList.toggle('toggle');
             });
-            
             window.addEventListener('scroll', closeMenu, { passive: true });
-            
             document.addEventListener('click', (e) => {
                 const isClickInsideMenu = navMenu.contains(e.target);
                 const isHamburger = hamburger.contains(e.target);
@@ -281,17 +279,14 @@
                     closeMenu();
                 }
             });
-            
             const slider = document.getElementById('slider-container');
             const track = document.getElementById('slider-track');
-            
             if (slider && track) {
                 const originalCards = track.innerHTML;
                 track.innerHTML += originalCards; 
                 let isDown = false;
                 let startX;
                 let scrollLeft;
-                
                 const autoScroll = () => {
                     if (!isDown) {
                         slider.scrollLeft += 1;
@@ -299,22 +294,18 @@
                     }
                     requestAnimationFrame(autoScroll);
                 };
-                
                 const startDragging = (e) => {
                     isDown = true;
                     startX = (e.pageX || e.touches[0].pageX) - slider.offsetLeft;
                     scrollLeft = slider.scrollLeft;
                 };
-                
                 const stopDragging = () => isDown = false;
-                
                 const moveDragging = (e) => {
                     if (!isDown) return;
                     e.preventDefault();
                     const x = (e.pageX || e.touches[0].pageX) - slider.offsetLeft;
                     slider.scrollLeft = scrollLeft - (x - startX) * 2;
                 };
-                
                 slider.addEventListener('mousedown', startDragging);
                 slider.addEventListener('touchstart', startDragging);
                 window.addEventListener('mouseup', stopDragging);
@@ -324,7 +315,6 @@
                 autoScroll();
             }
         });
-        
         function submitRating() {
             const btn = document.getElementById('submit-btn');
             const msg = document.getElementById('thank-you-msg');
