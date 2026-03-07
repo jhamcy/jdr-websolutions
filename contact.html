@@ -527,42 +527,52 @@
         e.preventDefault();
         const btn = document.getElementById('submit-btn');
         const status = document.getElementById('status-msg');
-        btn.disabled = true; btn.innerText = "Processing...";
-        status.style.display = "block"; status.style.background = "#30363d"; status.innerText = "Uploading data...";
+        
+        btn.disabled = true; 
+        btn.innerText = "PROCESSING...";
+        status.style.display = "block"; 
+        status.style.background = "#30363d"; 
+        status.innerText = "Uploading data...";
 
         try {
             const fileInput = document.getElementById('brand-assets');
             let publicImageUrl = "No Attachment";
             
+            // 1. File Upload Logic
             if (fileInput.files.length > 0) {
+                status.innerText = "Uploading attachment...";
                 const file = fileInput.files[0];
                 const fileName = `${Date.now()}-${file.name}`;
                 const { error: upErr } = await _supabase.storage.from('project-files').upload(fileName, file);
                 if (upErr) throw upErr;
                 publicImageUrl = _supabase.storage.from('project-files').getPublicUrl(fileName).data.publicUrl;
             }
-const formData = {
-    name: document.getElementById('full-name').value,
-    email: document.getElementById('email-address').value,
-    phone: document.getElementById('phone-input').value,
-    web_name: document.getElementById('web-name').value,
-    contact_method: document.getElementById('contact-method').value,
-    description: document.getElementById('project-desc').value,
-    total_cost: document.getElementById('display-total').innerText,
-    attachment: publicImageUrl
-};
 
+            // 2. Data Preparation (Matches EmailJS Template variables)
+            const formData = {
+                name: document.getElementById('full-name').value,
+                email: document.getElementById('email-address').value,
+                phone: document.getElementById('phone-input').value,
+                web_name: document.getElementById('web-name').value,
+                contact_method: document.getElementById('contact-method').value,
+                description: document.getElementById('project-desc').value,
+                total_cost: document.getElementById('display-total').innerText,
+                attachment: publicImageUrl
+            };
+
+            // 3. Database Save
+            status.innerText = "Saving to database...";
             const { error: dbError } = await _supabase.from('inquiries').insert([formData]);
             if (dbError) throw dbError;
 
-            status.innerText = "Sending Email Alert...";
+            // 4. Send Email Alert
+            status.innerText = "Sending email alert...";
             await emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, formData);
 
-            // SHOW THANK YOU MODAL
+            // 5. Success Flow
             document.getElementById('thx-modal').style.display = 'block';
-            
             status.style.display = "none";
-            btn.innerText = "Submit Inquiry";
+            btn.innerText = "SUBMIT INQUIRY";
             btn.disabled = false;
             document.getElementById('inquiry-form').reset();
             calculate();
@@ -571,8 +581,9 @@ const formData = {
             status.style.background = "#ff4d4d";
             status.style.color = "#fff";
             status.innerText = "Error: " + (err.message || "Failed to submit");
+            console.error(err);
             btn.disabled = false;
-            btn.innerText = "Submit Inquiry";
+            btn.innerText = "RETRY SUBMISSION";
         }
     });
 
