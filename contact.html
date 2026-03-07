@@ -265,9 +265,40 @@
         .terms-text { font-size: 0.75rem; line-height: 1.4; color: #8b949e; }
         .terms-text span { color: var(--accent-orange); text-decoration: underline; cursor: pointer; font-weight: 600; }
 
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); }
-        .modal-content { background-color: var(--card-bg); margin: 10% auto; padding: 25px; border: 1px solid var(--border); width: 80%; max-width: 500px; border-radius: 10px; color: white; font-size: 0.85rem; line-height: 1.6; }
-        .close-modal { color: var(--accent-orange); float: right; font-size: 1.5rem; font-weight: bold; cursor: pointer; }
+        /* --- MODALS --- */
+        .modal { 
+            display: none; 
+            position: fixed; 
+            z-index: 2000; 
+            left: 0; 
+            top: 0; 
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(0,0,0,0.85); 
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content { 
+            background-color: var(--card-bg); 
+            margin: 15vh auto; 
+            padding: 30px; 
+            border: 1px solid var(--border); 
+            width: 85%; 
+            max-width: 450px; 
+            border-radius: 12px; 
+            color: white; 
+            text-align: center; 
+            animation: modalFade 0.3s ease-out;
+        }
+
+        @keyframes modalFade {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .close-modal { color: var(--accent-orange); float: right; font-size: 1.5rem; font-weight: bold; cursor: pointer; margin-top: -10px; }
+        .thx-icon { font-size: 3rem; color: #25D366; margin-bottom: 15px; display: block; }
+        .btn-close-thx { background: var(--primary-blue); color: white; border: none; padding: 12px 25px; border-radius: 6px; cursor: pointer; font-weight: 700; margin-top: 20px; width: 100%; }
 
         footer { flex-shrink: 0; padding: 40px 5% 30px; text-align: center; border-top: 1px solid #222; color: #555; font-size: 0.75rem; background-color: #000; }
 
@@ -405,7 +436,7 @@
                 <div class="terms-container">
                     <input type="checkbox" id="terms-check" onchange="toggleSubmit()">
                     <label for="terms-check" class="terms-text">
-                        I agree to the <span onclick="openModal()">Terms of Service</span> and acknowledge the 50% advance payment.
+                        I agree to the <span onclick="openTerms()">Terms of Service</span> and acknowledge the 50% advance payment.
                     </label>
                 </div>
 
@@ -418,9 +449,19 @@
 
 <div id="terms-modal" class="modal">
     <div class="modal-content">
-        <span class="close-modal" onclick="closeModal()">&times;</span>
-        <h3>Terms of Service</h3>
-        <p>JDR CORP initiates development upon 50% non-refundable advance. Maintenance is monthly.</p>
+        <span class="close-modal" onclick="closeTerms()">&times;</span>
+        <h3 style="color: var(--primary-blue);">Terms of Service</h3>
+        <p style="text-align: left; font-size: 0.8rem;">1. JDR CORP requires a 50% non-refundable advance payment to start development.<br><br>2. Monthly maintenance fees are billed at the start of each month cycle.<br><br>3. Google Ad Spend is paid directly to the platform or managed through our billing system.</p>
+        <button class="btn-close-thx" onclick="closeTerms()">I Understand</button>
+    </div>
+</div>
+
+<div id="thx-modal" class="modal">
+    <div class="modal-content">
+        <span class="thx-icon">✓</span>
+        <h2 style="color: #fff; margin: 0;">Submission Success!</h2>
+        <p style="color: #8b949e; margin-top: 10px;">Thank you for choosing JDR CORP. We have received your inquiry and will contact you via your preferred method shortly.</p>
+        <button class="btn-close-thx" onclick="closeThx()">Continue</button>
     </div>
 </div>
 
@@ -440,9 +481,12 @@
     
     emailjs.init(EJS_PUBLIC_KEY);
 
-    // Navigation and Modals
-    function openModal() { document.getElementById('terms-modal').style.display = 'block'; }
-    function closeModal() { document.getElementById('terms-modal').style.display = 'none'; }
+    // Modal Controls
+    function openTerms() { document.getElementById('terms-modal').style.display = 'block'; }
+    function closeTerms() { document.getElementById('terms-modal').style.display = 'none'; }
+    function closeThx() { document.getElementById('thx-modal').style.display = 'none'; }
+
+    // Navigation
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
     hamburger.addEventListener('click', () => {
@@ -499,6 +543,7 @@
             }
 
             const formData = {
+                title: "New Inquiry: " + document.getElementById('web-name').value,
                 name: document.getElementById('full-name').value,
                 email: document.getElementById('email-address').value,
                 phone: document.getElementById('phone-input').value,
@@ -506,21 +551,31 @@
                 contact_method: document.getElementById('contact-method').value,
                 description: document.getElementById('project-desc').value,
                 total_cost: document.getElementById('display-total').innerText,
+                monthly_ads: document.getElementById('display-monthly-total').innerText,
                 attachment: publicImageUrl
             };
 
-            await _supabase.from('inquiries').insert([formData]);
+            const { error: dbError } = await _supabase.from('inquiries').insert([formData]);
+            if (dbError) throw dbError;
+
             status.innerText = "Sending Email Alert...";
             await emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, formData);
 
-            status.style.background = "#25D366";
-            status.style.color = "#000";
-            status.innerText = "Success! We will contact you soon.";
-            btn.innerText = "Sent!";
+            // SHOW THANK YOU MODAL
+            document.getElementById('thx-modal').style.display = 'block';
+            
+            status.style.display = "none";
+            btn.innerText = "Submit Inquiry";
+            btn.disabled = false;
+            document.getElementById('inquiry-form').reset();
+            calculate();
+
         } catch (err) {
             status.style.background = "#ff4d4d";
-            status.innerText = "Error: " + err.message;
+            status.style.color = "#fff";
+            status.innerText = "Error: " + (err.message || "Failed to submit");
             btn.disabled = false;
+            btn.innerText = "Submit Inquiry";
         }
     });
 
