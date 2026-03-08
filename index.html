@@ -39,7 +39,6 @@
         
         /* --- NAVIGATION --- */
         nav {
-            background: var(--header-bg);
             padding: 0.7rem 5%;
             display: flex;
             justify-content: space-between;
@@ -48,6 +47,10 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            /* Added background image with overlay */
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('footer.jpg');
+            background-size: cover;
+            background-position: center;
         }
         .nav-brand {
             font-size: 0.9rem;
