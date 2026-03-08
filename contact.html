@@ -34,17 +34,47 @@
 
         .main-content { flex: 1 0 auto; }
 
+        /* --- STICKY VIDEO WRAPPER --- */
+        .sticky-wrapper {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            overflow: hidden;
+            border-bottom: 1px solid #222;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .bg-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            object-fit: cover;
+            filter: brightness(0.4);
+        }
+
+        .layer-content {
+            position: relative;
+            z-index: 1;
+        }
+
         /* --- NAVIGATION --- */
         nav { 
-            background: var(--header-bg); 
             padding: 0.7rem 5%; 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            border-bottom: 1px solid #222; 
-            position: sticky; 
-            top: 0; 
-            z-index: 1000; 
         }
 
         .nav-brand { 
@@ -109,6 +139,7 @@
             transition: 0.3s; 
         }
 
+        /* --- HEADER & FORM --- */
         .page-header {
             text-align: center;
             padding: 40px 5% 20px;
@@ -180,10 +211,7 @@
             font-size: 0.9rem; 
         }
 
-        /* --- MULTIPLE FILE STYLES --- */
-        .file-upload-container {
-            margin-bottom: 15px;
-        }
+        .file-upload-container { margin-bottom: 15px; }
         .file-input-wrapper {
             position: relative;
             width: 100%;
@@ -199,119 +227,38 @@
         }
         .file-input-wrapper input[type="file"] {
             position: absolute;
-            left: 0;
-            top: 0;
-            opacity: 0;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
+            left: 0; top: 0; opacity: 0;
+            width: 100%; height: 100%; cursor: pointer;
         }
-        .file-input-label {
-            font-size: 0.85rem;
-            color: #8b949e;
-        }
-        .file-preview-list {
-            margin-top: 10px;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
+        .file-input-label { font-size: 0.85rem; color: #8b949e; }
+        .file-preview-list { margin-top: 10px; display: flex; flex-direction: column; gap: 5px; }
         .file-preview-item {
-            background: #1c2128;
-            border: 1px solid var(--border);
-            padding: 8px 12px;
-            border-radius: 4px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.8rem;
+            background: #1c2128; border: 1px solid var(--border);
+            padding: 8px 12px; border-radius: 4px;
+            display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem;
         }
-        .file-remove-btn {
-            color: #ff4d4d;
-            font-weight: bold;
-            cursor: pointer;
-            padding: 0 5px;
-            font-size: 1rem;
-        }
+        .file-remove-btn { color: #ff4d4d; font-weight: bold; cursor: pointer; padding: 0 5px; font-size: 1rem; }
 
         .option-card { 
-            flex: 1; 
-            background: var(--card-bg); 
-            padding: 12px; 
-            border-radius: 8px; 
-            cursor: pointer; 
-            display: flex; 
-            align-items: center; 
-            flex-direction: row; 
-            gap: 8px; 
-            border: 1px solid var(--border); 
-            min-width: 0; 
-            min-height: 60px; 
+            flex: 1; background: var(--card-bg); padding: 12px; border-radius: 8px; cursor: pointer; 
+            display: flex; align-items: center; flex-direction: row; gap: 8px; border: 1px solid var(--border); 
+            min-width: 0; min-height: 60px; 
         }
-
-        .option-card.selected { 
-            background: rgba(10, 88, 202, 0.2); 
-            border-color: var(--primary-blue); 
-        }
-
-        .option-card input[type="radio"] { 
-            flex-shrink: 0; 
-            accent-color: var(--accent-orange); 
-            margin: 0; 
-            width: 16px; 
-            height: 16px; 
-        }
-        
-        .card-text { 
-            font-size: 0.75rem; 
-            line-height: 1.2; 
-            color: #fff; 
-            flex-grow: 1; 
-            min-width: 0; 
-        }
-
-        .price-tag { 
-            color: var(--accent-orange); 
-            font-weight: 700; 
-            display: block; 
-            margin-top: 2px; 
-            font-size: 0.75rem; 
-        }
+        .option-card.selected { background: rgba(10, 88, 202, 0.2); border-color: var(--primary-blue); }
+        .option-card input[type="radio"] { flex-shrink: 0; accent-color: var(--accent-orange); margin: 0; width: 16px; height: 16px; }
+        .card-text { font-size: 0.75rem; line-height: 1.2; color: #fff; flex-grow: 1; min-width: 0; }
+        .price-tag { color: var(--accent-orange); font-weight: 700; display: block; margin-top: 2px; font-size: 0.75rem; }
 
         .summary-box { 
-            background: #000; 
-            padding: 20px; 
-            border-radius: 10px; 
-            border: 1px solid var(--primary-blue); 
-            margin-top: 15px; 
+            background: #000; padding: 20px; border-radius: 10px; border: 1px solid var(--primary-blue); margin-top: 15px; 
         }
-
-        .total-price { 
-            font-size: 1.8rem; 
-            color: var(--accent-orange); 
-            font-weight: 800; 
-        }
-
+        .total-price { font-size: 1.8rem; color: var(--accent-orange); font-weight: 800; }
         .btn-submit { 
-            width: 100%; 
-            padding: 16px; 
-            background: var(--primary-blue); 
-            color: #fff; 
-            border: none; 
-            border-radius: 6px; 
-            font-weight: 800; 
-            cursor: pointer; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            margin-top: 15px; 
-            font-size: 1rem;
-            text-transform: uppercase;
-            transition: opacity 0.3s, cursor 0.3s;
+            width: 100%; padding: 16px; background: var(--primary-blue); color: #fff; border: none; border-radius: 6px; 
+            font-weight: 800; cursor: pointer; display: flex; justify-content: center; align-items: center; margin-top: 15px; 
+            font-size: 1rem; text-transform: uppercase; transition: opacity 0.3s, cursor 0.3s;
         }
-
         .btn-submit:disabled { opacity: 0.4; cursor: not-allowed; }
-
         #status-msg { margin-top: 15px; padding: 10px; text-align: center; font-size: 0.85rem; border-radius: 6px; display: none; }
 
         .terms-container { display: flex; align-items: flex-start; gap: 10px; margin: 20px 0 10px 0; padding: 0 5px; }
@@ -320,51 +267,40 @@
         .terms-text span { color: var(--accent-orange); text-decoration: underline; cursor: pointer; font-weight: 600; }
 
         .modal { 
-            display: none; 
-            position: fixed; 
-            z-index: 2000; 
-            left: 0; 
-            top: 0; 
-            width: 100%; 
-            height: 100%; 
-            background-color: rgba(0,0,0,0.85); 
-            backdrop-filter: blur(5px);
+            display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; 
+            background-color: rgba(0,0,0,0.85); backdrop-filter: blur(5px);
         }
-        
         .modal-content { 
-            background-color: var(--card-bg); 
-            margin: 15vh auto; 
-            padding: 30px; 
-            border: 1px solid var(--border); 
-            width: 85%; 
-            max-width: 450px; 
-            border-radius: 12px; 
-            color: white; 
-            text-align: center; 
-            animation: modalFade 0.3s ease-out;
+            background-color: var(--card-bg); margin: 15vh auto; padding: 30px; border: 1px solid var(--border); 
+            width: 85%; max-width: 450px; border-radius: 12px; color: white; text-align: center; animation: modalFade 0.3s ease-out;
         }
-
-        @keyframes modalFade {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .close-modal { color: var(--accent-orange); float: right; font-size: 1.5rem; font-weight: bold; cursor: pointer; margin-top: -10px; }
-        .thx-icon { font-size: 3rem; color: #25D366; margin-bottom: 15px; display: block; }
-        .btn-close-thx { background: var(--primary-blue); color: white; border: none; padding: 12px 25px; border-radius: 6px; cursor: pointer; font-weight: 700; margin-top: 20px; width: 100%; }
+        @keyframes modalFade { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        .btn-close-thx { background: var(--primary-blue); border: none; color: white; padding: 10px 20px; border-radius: 4px; margin-top: 20px; cursor: pointer; }
+        .thx-icon { font-size: 3rem; color: var(--accent-orange); display: block; margin-bottom: 10px; }
 
         /* --- FOOTER --- */
-        footer { flex-shrink: 0; padding: 40px 5% 30px; text-align: center; border-top: 1px solid #222; color: #555; font-size: 0.75rem; background-color: #000; }
-        footer a { color: #888; text-decoration: none; margin: 0 10px; }
-        footer a:hover { color: var(--accent-orange); }
-        .footer-nav { margin-bottom: 15px; }
-        .footer-badges { margin-top: 15px; opacity: 0.5; font-size: 0.7rem; letter-spacing: 0.5px; }
+        footer { 
+            padding: 50px 5% 40px; 
+            text-align: center; 
+            border-top: 1px solid #222; 
+            color: #fff; 
+            font-size: 0.75rem; 
+            background: transparent;
+        }
+        footer a { color: #fff !important; text-decoration: none; margin: 0 10px; }
+        footer a:hover { color: #8b949e !important; }
+        .footer-nav { margin-bottom: 20px; }
+        .footer-badges { margin-top: 20px; opacity: 0.7; font-size: 0.7rem; letter-spacing: 1px; line-height: 1.5; }
 
         @media (max-width: 768px) {
             .hamburger { display: flex; }
-            .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; flex-direction: column; width: 260px; transform: translateX(100%); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding-top: 70px; border-left: 1px solid #222; align-items: flex-start; }
+            .nav-links { 
+                position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; flex-direction: column; width: 260px; 
+                transform: translateX(100%); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding-top: 70px; 
+                border-left: 1px solid #222; align-items: flex-start; 
+            }
             .nav-links li { width: 100%; margin: 0; }
-            .nav-links a { display: block; width: 100%; padding: 20px 30px; font-size: 0.95rem; border-bottom: 1px solid #111; box-sizing: border-box; }
+            .nav-links a { display: block; width: 100%; padding: 20px 30px; font-size: 0.95rem; border-bottom: 1px solid #111; }
             .nav-active { transform: translateX(0%); }
             .toggle .line1 { transform: rotate(-45deg) translate(-4px, 5px); }
             .toggle .line2 { opacity: 0; }
@@ -377,23 +313,30 @@
 <body>
 
 <div class="main-content">
-    <nav>
-        <a href="index.html" class="nav-brand">
-            JDR Corporation<br><span>Real-Time Custom Web Development</span>
-        </a>
-        <ul class="nav-links" id="nav-menu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="service.html">Services</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="quote.html">Projects / Pricing</a></li>
-            <li><a href="legal.html">Legal & Privacy</a></li>
-            <li><a href="contact.html" class="active-link nav-quote-btn">Get Started</a></li>
-        </ul>
-        <div class="hamburger" id="hamburger">
-            <div class="line1"></div><div class="line2"></div><div class="line3"></div>
+    <div class="sticky-wrapper">
+        <div class="video-wrapper">
+            <video autoplay muted loop playsinline class="bg-video">
+                <source src="nav-video.mp4" type="video/mp4">
+            </video>
+            <nav class="layer-content">
+                <a href="index.html" class="nav-brand">
+                    JDR Corporation<br><span>Real-Time Custom Web Development</span>
+                </a>
+                <ul class="nav-links" id="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="quote.html">Projects / Pricing</a></li>
+                    <li><a href="legal.html">Legal & Privacy</a></li>
+                    <li><a href="contact.html" class="active-link nav-quote-btn">Get Started</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <div class="line1"></div><div class="line2"></div><div class="line3"></div>
+                </div>
+            </nav>
         </div>
-    </nav>
+    </div>
 
     <header class="page-header">
         <h1>Project Inquiry</h1>
@@ -511,41 +454,41 @@
     </div>
 </div>
 
-<footer>
-    <div class="footer-nav">
-        <a href="index.html">Home</a> | 
-        <a href="about.html">About</a> | 
-        <a href="service.html">Services</a> | 
-        <a href="portfolio.html">Portfolio</a> | 
-        <a href="quote.html">Projects / Pricing</a> | 
-        <a href="contact.html">Get Started</a> | 
-        <a href="legal.html">Legal & Privacy</a>
-    </div>
-    <p>&copy; 2026 JDR CORP. All Rights Reserved.</p>
-    <div class="footer-badges">
-        CUSTOM HTML ARCHITECTURE • GITHUB WORKFLOWS • GCASH VERIFIED BUSINESS
-    </div>
-</footer>
+<div class="video-wrapper">
+    <video autoplay muted loop playsinline class="bg-video">
+        <source src="footer-video.mp4" type="video/mp4">
+    </video>
+    <footer class="layer-content">
+        <div class="footer-nav">
+            <a href="index.html">Home</a> | 
+            <a href="about.html">About</a> | 
+            <a href="service.html">Services</a> | 
+            <a href="portfolio.html">Portfolio</a> | 
+            <a href="quote.html">Projects / Pricing</a> | 
+            <a href="contact.html">Get Started</a> | 
+            <a href="legal.html">Legal & Privacy</a>
+        </div>
+        <p>&copy; 2026 JDR CORP. All Rights Reserved.</p>
+        <div class="footer-badges">
+            CUSTOM HTML ARCHITECTURE • GITHUB WORKFLOWS • GCASH VERIFIED BUSINESS
+        </div>
+    </footer>
+</div>
 
 <script>
-    // --- NAVIGATION LOGIC ---
     document.addEventListener('DOMContentLoaded', () => {
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('nav-menu');
-        
         const closeMenu = () => {
             navMenu.classList.remove('nav-active');
             hamburger.classList.remove('toggle');
         };
-
         hamburger.addEventListener('click', (e) => {
             e.stopPropagation();
             navMenu.classList.toggle('nav-active');
             hamburger.classList.toggle('toggle');
         });
-
         window.addEventListener('scroll', closeMenu, { passive: true });
-
         document.addEventListener('click', (e) => {
             if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
                 closeMenu();
@@ -553,53 +496,36 @@
         });
     });
 
-    // --- CONFIGURATION ---
     const SUPABASE_URL = 'https://yphtlcsgicbzjrcyxybp.supabase.co';
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlwaHRsY3NnaWNiempyY3l4eWJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI3Njk0NDAsImV4cCI6MjA4ODM0NTQ0MH0.Bb6ShJPt1be2VwcOMG_CKziYwjIBaoDGgs9B2DEYpm0';
     const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
     const EJS_SERVICE_ID = 'service_9azfmgp';
     const EJS_TEMPLATE_ID = 'template_rug054q';
     const EJS_PUBLIC_KEY = '9HgNOjgLcMRk-oJgf';
-    
     emailjs.init(EJS_PUBLIC_KEY);
 
-    // --- MULTIPLE FILE ATTACHMENT LOGIC ---
     let uploadedFilesArray = [];
-
     document.getElementById('brand-assets').addEventListener('change', function(e) {
         const previewList = document.getElementById('file-preview-list');
         const newFiles = Array.from(e.target.files);
-        
         newFiles.forEach(file => {
-            // Add to internal tracking array
             uploadedFilesArray.push(file);
-            
-            // Add to UI
             const fileItem = document.createElement('div');
             fileItem.className = 'file-preview-item';
-            fileItem.innerHTML = `
-                <span>${file.name}</span>
-                <span class="file-remove-btn" onclick="removeFile('${file.name}', this)">×</span>
-            `;
+            fileItem.innerHTML = `<span>${file.name}</span><span class="file-remove-btn" onclick="removeFile('${file.name}', this)">×</span>`;
             previewList.appendChild(fileItem);
         });
-        
-        // Clear input so same file can be re-added if needed
         this.value = "";
     });
 
     function removeFile(fileName, element) {
-        // Remove from UI
         element.parentElement.remove();
-        // Remove from tracking array
         uploadedFilesArray = uploadedFilesArray.filter(f => f.name !== fileName);
     }
 
     function openTerms() { document.getElementById('terms-modal').style.display = 'block'; }
     function closeTerms() { document.getElementById('terms-modal').style.display = 'none'; }
     function closeThx() { document.getElementById('thx-modal').style.display = 'none'; }
-
     function selectRadio(id) { document.getElementById(id).checked = true; calculate(); }
     
     function calculate() {
@@ -634,26 +560,21 @@
         e.preventDefault();
         const btn = document.getElementById('submit-btn');
         const status = document.getElementById('status-msg');
-        
         btn.disabled = true; 
         btn.innerText = "PROCESSING...";
         status.style.display = "block"; 
         status.style.background = "#30363d"; 
-        status.style.color = "#c9d1d9";
+        status.style.color = "#fff";
         status.innerText = "Uploading files and processing request...";
 
         try {
             let publicUrls = [];
-            
-            // Upload multiple files to Supabase
-            if (uploadedFilesArray.length > 0) {
-                for (const file of uploadedFilesArray) {
-                    const fileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
-                    const { error: upErr } = await _supabase.storage.from('project-files').upload(fileName, file);
-                    if (upErr) throw new Error("Upload failed: " + upErr.message);
-                    const url = _supabase.storage.from('project-files').getPublicUrl(fileName).data.publicUrl;
-                    publicUrls.push(url);
-                }
+            for (const file of uploadedFilesArray) {
+                const fileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
+                const { error: upErr } = await _supabase.storage.from('project-files').upload(fileName, file);
+                if (upErr) throw upErr;
+                const url = _supabase.storage.from('project-files').getPublicUrl(fileName).data.publicUrl;
+                publicUrls.push(url);
             }
 
             const formData = {
@@ -668,13 +589,9 @@
             };
 
             const { error: dbError } = await _supabase.from('inquiries').insert([formData]);
-            if (dbError) throw new Error("Database error: " + dbError.message);
+            if (dbError) throw dbError;
 
-            try {
-                await emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, formData);
-            } catch (emailErr) {
-                console.error("EmailJS Failed:", emailErr);
-            }
+            await emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, formData);
 
             status.style.display = "none";
             document.getElementById('thx-modal').style.display = 'block';
@@ -685,7 +602,6 @@
 
         } catch (err) {
             status.style.background = "#ff4d4d";
-            status.style.color = "#fff";
             status.innerText = "Error: " + (err.message || "Submission failed");
         } finally {
             btn.innerText = "SUBMIT INQUIRY";
@@ -698,7 +614,7 @@
 
 <div id="terms-modal" class="modal">
     <div class="modal-content">
-        <span class="close-modal" onclick="closeTerms()">&times;</span>
+        <span class="close-modal" onclick="closeTerms()" style="cursor:pointer; float:right;">&times;</span>
         <h3 style="color: var(--primary-blue);">Terms of Service</h3>
         <p style="text-align: left; font-size: 0.8rem;">1. JDR CORP requires a 50% non-refundable advance payment to start development.<br><br>2. Monthly maintenance fees are billed at the start of each month cycle.<br><br>3. Google Ad Spend is paid directly to the platform or managed through our billing system.</p>
         <button class="btn-close-thx" onclick="closeTerms()">I Understand</button>
@@ -709,7 +625,7 @@
     <div class="modal-content">
         <span class="thx-icon">✓</span>
         <h2 style="color: #fff; margin: 0;">Submission Success!</h2>
-        <p style="color: #8b949e; margin-top: 10px;">Thank you for choosing JDR CORP. We have received your inquiry and will contact you via your preferred method shortly.</p>
+        <p style="color: #8b949e; margin-top: 10px;">Thank you for choosing JDR CORP. We have received your inquiry and will contact you shortly.</p>
         <button class="btn-close-thx" onclick="closeThx()">Continue</button>
     </div>
 </div>
