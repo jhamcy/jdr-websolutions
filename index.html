@@ -118,7 +118,6 @@
             border-top: 1px solid #222;
             color: #eee;
             font-size: 0.75rem;
-            /* Added linear-gradient for better text readability */
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('footer.jpg');
             background-size: cover;
             background-position: center;
@@ -128,7 +127,7 @@
         .footer-nav { margin-bottom: 15px; }
         .footer-badges { margin-top: 15px; opacity: 0.8; font-size: 0.7rem; letter-spacing: 0.5px; }
 
-        /* --- MOBILE NAVIGATION --- */
+        /* --- MOBILE ADJUSTMENTS --- */
         @media (max-width: 768px) {
             .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; flex-direction: column; width: 260px; transform: translateX(100%); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding-top: 70px; border-left: 1px solid #222; align-items: flex-start; }
             .nav-links li { width: 100%; margin: 0; }
@@ -137,6 +136,9 @@
             .toggle .line1 { transform: rotate(-45deg) translate(-4px, 5px); }
             .toggle .line2 { opacity: 0; }
             .toggle .line3 { transform: rotate(45deg) translate(-4px, -5px); }
+            
+            /* Smaller footer on mobile */
+            footer { padding: 20px 5% 15px; }
         }
 
         /* --- FLOATING BUTTONS FIX --- */
