@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="height: 100%;">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,10 +16,11 @@
         }
 
         /* --- GLOBAL STYLES --- */
+        /* Removed fixed height from html/body to allow proper sticky behavior */
         html, body {
-            height: 100%;
             margin: 0;
             padding: 0;
+            min-height: 100%;
         }
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -28,11 +29,9 @@
             line-height: 1.4;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
         }
         
         main {
-            flex: 1 0 auto;
             display: flex;
             flex-direction: column;
         }
@@ -57,14 +56,15 @@
 
         /* --- NAVIGATION --- */
         nav {
-            padding: 1.5rem 5%; /* Increased padding for more height */
+            padding: 1.5rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #222;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            position: sticky; 
+            top: 0;           
+            z-index: 1001;
+            background-color: rgba(0, 0, 0, 0.9); /* Changed to solid for better visibility */
         }
         nav .bg-video {
             object-fit: cover;
@@ -99,7 +99,7 @@
             font-weight: 800 !important;
             background: rgba(0,0,0,0.5);
         }
-        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1002; }
         @media (max-width: 768px) { .hamburger { display: flex; } }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; box-shadow: 0 0 3px black; }
         
@@ -121,29 +121,15 @@
         .monitor-card p { font-size: 0.85rem; color: var(--muted-text); line-height: 1.5; margin: 0; }
         
         /* --- TESTIMONIALS SECTION --- */
-        .testimonial-section { 
-            background: #000; 
-            padding: 40px 0 0 0; 
-            border-top: 1px solid #111; 
-            margin-top: auto;
-        }
+        .testimonial-section { background: #000; padding: 40px 0 0 0; border-top: 1px solid #111; }
         .star-rating label:hover, .star-rating label:hover ~ label, .star-rating input:checked ~ label { color: var(--accent-orange) !important; }
         .testimonial-slider { width: 100%; overflow: hidden; padding: 20px 0; cursor: grab; user-select: none; position: relative; }
         .testimonial-track { display: flex; width: max-content; gap: 15px; will-change: transform; }
         .testimonial-card-move { width: 220px; flex-shrink: 0; background: rgba(10, 88, 202, 0.05); padding: 15px; border-radius: 10px; border-left: 3px solid var(--primary-blue); white-space: normal; text-align: left; pointer-events: none; }
         
         /* --- FOOTER --- */
-        footer {
-            flex-shrink: 0;
-            padding: 40px 5% 30px;
-            text-align: center;
-            border-top: 1px solid #222;
-            color: #eee;
-            font-size: 0.75rem;
-        }
-        footer .bg-video {
-            object-fit: fill;
-        }
+        footer { padding: 40px 5% 30px; text-align: center; border-top: 1px solid #222; color: #eee; font-size: 0.75rem; }
+        footer .bg-video { object-fit: fill; }
         footer a { color: #fff; text-decoration: none; margin: 0 10px; text-shadow: 1px 1px 3px black; }
         footer a:hover { color: var(--accent-orange); }
         footer p { text-shadow: 1px 1px 3px black; position: relative; z-index: 1; }
@@ -159,21 +145,11 @@
             .toggle .line1 { transform: rotate(-45deg) translate(-4px, 5px); }
             .toggle .line2 { opacity: 0; }
             .toggle .line3 { transform: rotate(45deg) translate(-4px, -5px); }
-            
             footer { padding: 20px 5% 15px; }
         }
 
-        /* --- FLOATING BUTTONS FIX --- */
-        .floating-contact-wrap { 
-            position: fixed; 
-            bottom: 30px; 
-            right: 20px; 
-            display: flex; 
-            flex-direction: column; 
-            gap: 15px; 
-            z-index: 9999; 
-            transition: transform 0.4s ease, opacity 0.3s ease; 
-        }
+        /* --- FLOATING BUTTONS --- */
+        .floating-contact-wrap { position: fixed; bottom: 30px; right: 20px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; transition: transform 0.4s ease, opacity 0.3s ease; }
         body.is-scrolling .floating-contact-wrap { transform: translateX(100px); opacity: 0; pointer-events: none; }
         .float-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
         .float-btn { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; color: white; box-shadow: 0 6px 16px rgba(0,0,0,0.6); transition: 0.2s; }
@@ -307,7 +283,7 @@
         </div>
         <div class="float-item">
             <a href="whatsapp://send?phone=639310410733" class="float-btn float-whatsapp" title="Chat on WhatsApp">
-                <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.652zm6.599-3.835c1.53.909 3.039 1.389 4.625 1.39 5.25.001 9.522-4.271 9.524-9.521.001-2.544-.992-4.935-2.793-6.738-1.802-1.803-4.195-2.795-6.738-2.796-5.251 0-9.522 4.271-9.524 9.521-.001 1.688.45 3.336 1.306 4.773l-.991 3.618 3.706-.972zm10.165-6.843c-.277-.139-1.641-.809-1.894-.901-.253-.093-.438-.139-.623.139-.185.277-.714.901-.875 1.086-.161.185-.323.208-.6.069-.277-.139-1.171-.432-2.231-1.378-.824-.735-1.38-1.643-1.541-1.921-.162-.277-.017-.427.121-.565.125-.124.277-.323.416-.485.139-.161.185-.277.277-.462.093-.185.046-.347-.023-.485-.069-.139-.623-1.501-.853-2.057-.225-.542-.454-.469-.623-.477-.16-.007-.344-.008-.528-.008s-.485.069-.739.347c-.253.277-.97 0.948-.97 2.311 0 1.363.993 2.679 1.131 2.864.139.185 1.954 2.985 4.733 4.184.661.285 1.177.455 1.579.583.664.211 1.268.181 1.745.11.532-.079 1.641-.671 1.872-1.32.231-.648.231-1.202.161-1.32-.069-.118-.253-.185-.53-.324z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338-11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.652zm6.599-3.835c1.53.909 3.039 1.389 4.625 1.39 5.25.001 9.522-4.271 9.524-9.521.001-2.544-.992-4.935-2.793-6.738-1.802-1.803-4.195-2.795-6.738-2.796-5.251 0-9.522 4.271-9.524 9.521-.001 1.688.45 3.336 1.306 4.773l-.991 3.618 3.706-.972zm10.165-6.843c-.277-.139-1.641-.809-1.894-.901-.253-.093-.438-.139-.623.139-.185.277-.714.901-.875 1.086-.161.185-.323.208-.6.069-.277-.139-1.171-.432-2.231-1.378-.824-.735-1.38-1.643-1.541-1.921-.162-.277-.017-.427.121-.565.125-.124.277-.323.416-.485.139-.161.185-.277.277-.462.093-.185.046-.347-.023-.485-.069-.139-.623-1.501-.853-2.057-.225-.542-.454-.469-.623-.477-.16-.007-.344-.008-.528-.008s-.485.069-.739.347c-.253.277-.97 0.948-.97 2.311 0 1.363.993 2.679 1.131 2.864.139.185 1.954 2.985 4.733 4.184.661.285 1.177.455 1.579.583.664.211 1.268.181 1.745.11.532-.079 1.641-.671 1.872-1.32.231-.648.231-1.202.161-1.32-.069-.118-.253-.185-.53-.324z"/></svg>
             </a>
             <span class="float-label">WhatsApp</span>
         </div>
