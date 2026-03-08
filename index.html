@@ -30,9 +30,10 @@
             flex-direction: column;
         }
         
-        /* Forces the middle content to fill the remaining space */
         main {
             flex: 1 0 auto;
+            display: flex;
+            flex-direction: column;
         }
         
         footer {
@@ -89,7 +90,7 @@
         @media (max-width: 768px) { .hamburger { display: flex; } }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
         
-        /* --- REMAINING SECTIONS --- */
+        /* --- SECTIONS --- */
         .logo-header { padding: 30px 5% 5px; text-align: center; background-color: #000; }
         .main-logo { max-width: 280px; width: 100%; height: auto; }
         .hero { padding: 30px 5% 40px; text-align: center; background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%); }
@@ -104,19 +105,25 @@
         .monitor-card { background: rgba(255,255,255,0.02); padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05); }
         .monitor-card h4 { color: var(--accent-orange); margin: 0 0 8px; font-size: 1rem; }
         .monitor-card p { font-size: 0.85rem; color: var(--muted-text); line-height: 1.5; margin: 0; }
-        .floating-contact-wrap { position: fixed; bottom: 30px; right: 20px; display: flex; flex-direction: column; gap: 12px; z-index: 9999; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease; }
-        body.is-scrolling .floating-contact-wrap { transform: translateX(80px); opacity: 0; pointer-events: none; }
-        .float-item { display: flex; flex-direction: column; align-items: center; gap: 2px; }
-        .float-btn { width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; color: white; box-shadow: 0 4px 12px rgba(0,0,0,0.5); transition: transform 0.2s ease; }
+        
+        /* --- FLOATING BUTTONS --- */
+        .floating-contact-wrap { position: fixed; bottom: 30px; right: 20px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease; }
+        body.is-scrolling .floating-contact-wrap { transform: translateX(100px); opacity: 0; pointer-events: none; }
+        .float-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+        .float-btn { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; color: white; box-shadow: 0 6px 16px rgba(0,0,0,0.6); transition: transform 0.2s ease; }
         .float-btn:hover { transform: scale(1.1); }
         .float-whatsapp { background-color: #25D366; }
         .float-viber { background-color: #7360f2; }
-        .float-btn svg { width: 22px; height: 22px; fill: white; }
-        .float-label { font-size: 0.55rem; font-weight: bold; color: #ccc; background: rgba(0,0,0,0.4); padding: 1px 5px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .float-btn svg { width: 28px; height: 28px; fill: white; }
+        .float-label { font-size: 0.65rem; font-weight: bold; color: #ccc; background: rgba(0,0,0,0.6); padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+        
+        /* --- TESTIMONIALS & RATING --- */
+        .testimonial-section { background: #000; padding: 40px 0; border-top: 1px solid #111; }
         .star-rating label:hover, .star-rating label:hover ~ label, .star-rating input:checked ~ label { color: var(--accent-orange) !important; }
         .testimonial-slider { width: 100%; overflow: hidden; padding: 20px 0; cursor: grab; user-select: none; position: relative; }
         .testimonial-track { display: flex; width: max-content; gap: 15px; will-change: transform; }
         .testimonial-card-move { width: 220px; flex-shrink: 0; background: rgba(10, 88, 202, 0.05); padding: 15px; border-radius: 10px; border-left: 3px solid var(--primary-blue); white-space: normal; text-align: left; pointer-events: none; }
+        
         @media (max-width: 768px) {
             .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; flex-direction: column; width: 260px; transform: translateX(100%); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding-top: 70px; border-left: 1px solid #222; align-items: flex-start; }
             .nav-links li { width: 100%; margin: 0; }
@@ -196,7 +203,8 @@
                 <span class="float-label">WhatsApp</span>
             </div>
         </div>
-        <section class="rating-section" style="padding: 40px 0; background: #000; text-align: center; border-top: 1px solid #111; overflow: hidden;">
+
+        <section class="testimonial-section">
             <div style="max-width: 800px; margin: 0 auto; padding: 0 5%;">
                 <div style="max-width: 400px; margin: 0 auto 40px; background: rgba(255,255,255,0.02); padding: 20px; border-radius: 12px; border: 1px solid #222;">
                     <h2 style="font-size: 1.2rem; margin-bottom: 5px;">Rate Our <span style="color: var(--accent-orange);">Service</span></h2>
