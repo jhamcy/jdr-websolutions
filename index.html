@@ -15,34 +15,37 @@
             --muted-text: #A0A0A0;
             --header-bg: #000000;
         }
+
         /* --- GLOBAL STYLES --- */
         html {
             height: 100%;
+            background-color: #000000;
         }
         body {
             margin: 0;
             padding: 0;
             min-height: 100vh;
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            /* Background applied only to body */
+            background-color: #000000;
+            color: var(--light-text);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* --- BACKGROUND APPLIED ONLY TO MAIN --- */
+        main {
+            flex: 1;
             background-image: url('background.jpg');
             background-size: cover; 
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-color: var(--dark-bg);
-            color: var(--light-text);
-            display: flex;
-            flex-direction: column;
         }
         
-        main {
-            flex: 1;
-        }
-        
-        /* --- NAVIGATION & FOOTER (Opaque to block body background) --- */
+        /* --- NAVIGATION (Solid Black) --- */
         nav {
-            background-color: #000000; 
+            background: #000000;
             padding: 0.7rem 5%;
             display: flex;
             justify-content: space-between;
@@ -53,16 +56,17 @@
             z-index: 1000;
         }
 
+        /* --- FOOTER (Solid Black) --- */
         footer {
             background-color: #000000;
             padding: 40px 5% 30px;
             text-align: center;
             border-top: 1px solid #222;
-            color: #ccc;
+            color: #555;
             font-size: 0.75rem;
         }
 
-        /* --- OTHER STYLES --- */
+        /* --- BRANDING & LINKS --- */
         .nav-brand {
             font-size: 0.9rem;
             font-weight: 800;
@@ -95,6 +99,7 @@
         @media (max-width: 768px) { .hamburger { display: flex; } }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
         
+        /* --- SECTIONS --- */
         .logo-header { padding: 30px 5% 5px; text-align: center; }
         .main-logo { max-width: 280px; width: 100%; height: auto; }
         
