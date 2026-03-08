@@ -63,9 +63,8 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(0,0,0,0.7); /* Fallback/Blend */
+            background: rgba(0,0,0,0.7); 
         }
-        /* Ensure content sits above video */
         nav > * { position: relative; z-index: 1; }
 
         .nav-brand {
@@ -124,23 +123,30 @@
         .testimonial-track { display: flex; width: max-content; gap: 15px; will-change: transform; }
         .testimonial-card-move { width: 220px; flex-shrink: 0; background: rgba(10, 88, 202, 0.05); padding: 15px; border-radius: 10px; border-left: 3px solid var(--primary-blue); white-space: normal; text-align: left; pointer-events: none; }
         
-        /* --- FOOTER --- */
+        /* --- UPDATED FOOTER --- */
         footer {
             flex-shrink: 0;
-            padding: 40px 5% 30px;
+            padding: 20px 5%; /* Reduced vertical padding */
             text-align: center;
-            border-top: 1px solid #222;
-            color: #555;
-            font-size: 0.75rem;
+            border-top: 1px solid #333;
+            color: #ddd; /* Lighter text for readability */
+            font-size: 0.8rem; /* Slightly larger text */
             position: relative;
-            background-color: #000;
+            background-color: rgba(0,0,0,0.85); /* Slightly darker for contrast */
+            overflow: hidden;
         }
-        /* Ensure content sits above video */
         footer > * { position: relative; z-index: 1; }
-        footer a { color: #888; text-decoration: none; margin: 0 10px; }
+        footer a { color: #fff; text-decoration: none; margin: 0 8px; font-weight: 600; }
         footer a:hover { color: var(--accent-orange); }
-        .footer-nav { margin-bottom: 15px; }
-        .footer-badges { margin-top: 15px; opacity: 0.5; font-size: 0.7rem; letter-spacing: 0.5px; }
+        .footer-nav { margin-bottom: 10px; }
+        .footer-badges { 
+            margin-top: 10px; 
+            opacity: 0.8; 
+            font-size: 0.65rem; 
+            letter-spacing: 1px; 
+            color: var(--accent-orange);
+            font-weight: bold;
+        }
 
         /* --- MOBILE NAVIGATION --- */
         @media (max-width: 768px) {
@@ -269,17 +275,17 @@
             </video>
         </div>
         <div class="footer-nav">
-            <a href="index.html">Home</a> | 
-            <a href="about.html">About</a> | 
-            <a href="service.html">Services</a> | 
-            <a href="portfolio.html">Portfolio</a> | 
-            <a href="quote.html">Projects / Pricing</a> | 
-            <a href="contact.html">Get Started</a> | 
-            <a href="legal.html">Legal & Privacy</a>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="service.html">Services</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="quote.html">Pricing</a>
+            <a href="contact.html">Contact</a>
+            <a href="legal.html">Privacy</a>
         </div>
         <p>&copy; 2026 JDR CORP. All Rights Reserved.</p>
         <div class="footer-badges">
-            CUSTOM HTML ARCHITECTURE • GITHUB WORKFLOWS • GCASH VERIFIED BUSINESS
+            CUSTOM HTML ARCHITECTURE • GCASH VERIFIED BUSINESS
         </div>
     </footer>
 
