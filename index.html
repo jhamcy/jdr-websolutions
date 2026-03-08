@@ -37,6 +37,24 @@
             flex-direction: column;
         }
         
+        /* --- VIDEO BACKGROUND UTILITY --- */
+        .video-bg-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .bg-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
         /* --- NAVIGATION --- */
         nav {
             padding: 0.7rem 5%;
@@ -47,10 +65,9 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            /* Overlay removed for full clarity */
-            background: url('navbar.jpg');
-            background-size: cover;
-            background-position: center;
+        }
+        nav .bg-video {
+            object-fit: cover;
         }
         .nav-brand {
             font-size: 0.9rem;
@@ -61,7 +78,7 @@
             text-decoration: none;
             line-height: 1.2;
             display: inline-block;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.8); /* Added shadow since overlay is gone */
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.9);
         }
         .nav-brand span { 
             color: var(--accent-orange); 
@@ -72,7 +89,7 @@
         }
         .nav-links { display: flex; list-style: none; margin: 0; padding: 0; align-items: center; }
         .nav-links li { margin-left: 18px; }
-        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; display: inline-block; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); }
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; display: inline-block; text-shadow: 1px 1px 3px rgba(0,0,0,0.9); }
         .nav-links a:hover, .active-link { color: var(--accent-orange) !important; }
         .nav-quote-btn {
             border: 1px solid var(--accent-orange);
@@ -80,7 +97,7 @@
             border-radius: 4px;
             color: var(--accent-orange) !important;
             font-weight: 800 !important;
-            background: rgba(0,0,0,0.4);
+            background: rgba(0,0,0,0.5);
         }
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
         @media (max-width: 768px) { .hamburger { display: flex; } }
@@ -123,17 +140,15 @@
             border-top: 1px solid #222;
             color: #eee;
             font-size: 0.75rem;
-            /* No overlay, no zoom, whole image forced to fit */
-            background-image: url('footer.jpg');
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-            background-position: center;
         }
-        footer a { color: #fff; text-decoration: none; margin: 0 10px; text-shadow: 1px 1px 2px black; }
+        footer .bg-video {
+            object-fit: fill;
+        }
+        footer a { color: #fff; text-decoration: none; margin: 0 10px; text-shadow: 1px 1px 3px black; }
         footer a:hover { color: var(--accent-orange); }
-        footer p { text-shadow: 1px 1px 2px black; }
-        .footer-nav { margin-bottom: 15px; }
-        .footer-badges { margin-top: 15px; opacity: 0.9; font-size: 0.7rem; letter-spacing: 0.5px; text-shadow: 1px 1px 2px black; }
+        footer p { text-shadow: 1px 1px 3px black; position: relative; z-index: 1; }
+        .footer-nav { margin-bottom: 15px; position: relative; z-index: 1; }
+        .footer-badges { margin-top: 15px; opacity: 0.9; font-size: 0.7rem; letter-spacing: 0.5px; text-shadow: 1px 1px 3px black; position: relative; z-index: 1; }
 
         /* --- MOBILE ADJUSTMENTS --- */
         @media (max-width: 768px) {
@@ -170,7 +185,10 @@
     </style>
 </head>
 <body>
-    <nav>
+    <nav class="video-bg-container">
+        <video autoplay muted loop playsinline poster="abstract-black-background-with-shiny-blue-light-decoration_181182-530.jpg" class="bg-video">
+            <source src="81092-574743664_medium.mp4" type="video/mp4">
+        </video>
         <a href="index.html" class="nav-brand">
             JDR Corporation<br><span>Real-Time Custom Web Development</span>
         </a>
@@ -261,7 +279,10 @@
         </section>
     </main>
 
-    <footer>
+    <footer class="video-bg-container">
+        <video autoplay muted loop playsinline poster="footer.jpg" class="bg-video">
+            <source src="81092-574743664_medium.mp4" type="video/mp4">
+        </video>
         <div class="footer-nav">
             <a href="index.html">Home</a> | 
             <a href="about.html">About</a> | 
