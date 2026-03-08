@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: 100%;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,30 +17,61 @@
         }
 
         /* --- GLOBAL STYLES --- */
-        html, body { height: 100%; margin: 0; }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--dark-bg);
             color: var(--light-text);
             line-height: 1.4;
-            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding-top: 70px; 
+        }
+        
+        main {
+            flex: 1 0 auto;
             display: flex;
             flex-direction: column;
         }
-        .main-content { flex: 1 0 auto; }
+
+        /* --- VIDEO BACKGROUND UTILITY --- */
+        .video-bg-wrap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .video-bg-wrap video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
         /* --- NAVIGATION --- */
         nav {
-            background: var(--header-bg);
             padding: 0.7rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #222;
-            position: sticky;
+            position: fixed; 
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
+            background: rgba(0,0,0,0.85); 
+            overflow: hidden;
         }
+        nav > * { position: relative; z-index: 1; }
+
         .nav-brand {
             font-size: 0.9rem;
             font-weight: 800;
@@ -62,27 +93,33 @@
         .nav-links li { margin-left: 18px; }
         .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; display: inline-block; }
         .nav-links a:hover, .active-link { color: var(--accent-orange) !important; }
-        .nav-quote-btn { border: 1px solid var(--accent-orange); padding: 5px 12px; border-radius: 4px; color: var(--accent-orange) !important; font-weight: 800 !important; }
-        
+        .nav-quote-btn {
+            border: 1px solid var(--accent-orange);
+            padding: 5px 12px;
+            border-radius: 4px;
+            color: var(--accent-orange) !important;
+            font-weight: 800 !important;
+        }
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
         @media (max-width: 768px) { .hamburger { display: flex; } }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
-        
+
         /* --- LOGO HEADER --- */
         .logo-header { padding: 30px 5% 5px; text-align: center; background-color: #000; }
         .main-logo { max-width: 280px; width: 100%; height: auto; }
-        
+
         /* --- CONTENT --- */
         .legal-hero { padding: 40px 5%; text-align: center; background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%); }
         .legal-hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 10px; font-weight: 800; }
         
-        .container { max-width: 800px; margin: 0 auto; padding: 40px 5% 80px; }
-        .legal-box { background: rgba(255, 255, 255, 0.02); padding: 35px; border-radius: 12px; border: 1px solid #222; }
-        h2 { color: var(--accent-orange); font-size: 1.1rem; margin-top: 40px; border-bottom: 1px solid #222; padding-bottom: 10px; font-weight: 800; }
+        .container { max-width: 850px; margin: 0 auto; padding: 40px 5% 80px; width: 100%; box-sizing: border-box; }
+        .legal-box { background: var(--card-bg); padding: 40px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        
+        h2 { color: var(--accent-orange); font-size: 1.1rem; margin-top: 40px; border-bottom: 1px solid #333; padding-bottom: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
         h2:first-of-type { margin-top: 0; }
-        p, li { font-size: 0.85rem; color: var(--muted-text); line-height: 1.6; }
+        p, li { font-size: 0.9rem; color: var(--muted-text); line-height: 1.7; }
         strong { color: var(--light-text); font-weight: 600; }
-        ul { padding-left: 20px; }
+        ul { padding-left: 20px; margin-bottom: 20px; }
         li { margin-bottom: 12px; }
 
         /* --- MOBILE NAV --- */
@@ -97,33 +134,67 @@
         }
 
         /* --- FOOTER --- */
-        footer { flex-shrink: 0; padding: 40px 5% 30px; text-align: center; border-top: 1px solid #222; color: #555; font-size: 0.75rem; background-color: #000; }
-        footer a { color: #888; text-decoration: none; margin: 0 10px; }
+        footer {
+            flex-shrink: 0;
+            padding: 20px 5%;
+            text-align: center;
+            border-top: 1px solid #333;
+            color: #ddd;
+            font-size: 0.8rem;
+            position: relative;
+            background-color: rgba(0,0,0,0.85);
+            overflow: hidden;
+        }
+        footer > * { position: relative; z-index: 1; }
+        footer a { color: #fff; text-decoration: none; margin: 0 8px; font-weight: 600; }
         footer a:hover { color: var(--accent-orange); }
-        .footer-nav { margin-bottom: 15px; }
-        .footer-badges { margin-top: 15px; opacity: 0.5; font-size: 0.7rem; letter-spacing: 0.5px; }
+        .footer-nav { margin-bottom: 10px; }
+        .footer-badges { 
+            margin-top: 10px; 
+            opacity: 0.8; 
+            font-size: 0.65rem; 
+            letter-spacing: 1px; 
+            color: var(--accent-orange);
+            font-weight: bold;
+        }
+
+        /* --- FLOATING CONTACT --- */
+        .floating-contact-wrap { position: fixed; bottom: 30px; right: 20px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; transition: transform 0.4s ease, opacity 0.3s ease; }
+        body.is-scrolling .floating-contact-wrap { transform: translateX(100px); opacity: 0; pointer-events: none; }
+        .float-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+        .float-btn { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; color: white; box-shadow: 0 6px 16px rgba(0,0,0,0.6); transition: 0.2s; }
+        .float-btn:hover { transform: scale(1.1); }
+        .float-whatsapp { background-color: #25D366; }
+        .float-viber { background-color: #7360f2; }
+        .float-btn svg { width: 28px; height: 28px; fill: white; }
+        .float-label { font-size: 0.65rem; font-weight: bold; color: #ccc; background: rgba(0,0,0,0.8); padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
     </style>
 </head>
 <body>
-    <div class="main-content">
-        <nav>
-            <a href="index.html" class="nav-brand">
-                JDR Corporation<br><span>Real-Time Custom Web Development</span>
-            </a>
-            <ul class="nav-links" id="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="service.html">Services</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="quote.html">Projects / Pricing</a></li>
-                <li><a href="legal.html" class="active-link">Legal & Privacy</a></li>
-                <li><a href="contact.html" class="nav-quote-btn">Get Started</a></li>
-            </ul>
-            <div class="hamburger" id="hamburger">
-                <div class="line1"></div><div class="line2"></div><div class="line3"></div>
-            </div>
-        </nav>
+    <nav>
+        <div class="video-bg-wrap">
+            <video autoplay loop muted playsinline>
+                <source src="81092-574743664_medium.mp4" type="video/mp4">
+            </video>
+        </div>
+        <a href="index.html" class="nav-brand">
+            JDR Corporation<br><span>Real-Time Custom Web Development</span>
+        </a>
+        <ul class="nav-links" id="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="quote.html">Projects / Pricing</a></li>
+            <li><a href="legal.html" class="active-link">Legal & Privacy</a></li>
+            <li><a href="contact.html" class="nav-quote-btn">Get Started</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <div class="line1"></div><div class="line2"></div><div class="line3"></div>
+        </div>
+    </nav>
 
+    <main>
         <header class="logo-header">
             <img src="image_0.png" alt="JDR CORPORATION Logo" class="main-logo">
         </header>
@@ -156,27 +227,58 @@
                 <p>Post-transfer, JDR Corporation is released from liability regarding hosting uptime, server-side configurations, or security breaches resulting from client-managed credentials. Any disputes arising shall be settled through friendly negotiations. If unresolved, the venue for legal action shall be the courts of <strong>Manila, Philippines</strong>.</p>
             </div>
         </div>
-    </div>
+    </main>
 
     <footer>
+        <div class="video-bg-wrap">
+            <video autoplay loop muted playsinline>
+                <source src="81092-574743664_medium.mp4" type="video/mp4">
+            </video>
+        </div>
         <div class="footer-nav">
-            <a href="index.html">Home</a> | 
-            <a href="about.html">About</a> | 
-            <a href="service.html">Services</a> | 
-            <a href="portfolio.html">Portfolio</a> | 
-            <a href="quote.html">Projects / Pricing</a> | 
-            <a href="contact.html">Get Started</a> | 
-            <a href="legal.html">Legal & Privacy</a>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="service.html">Services</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="quote.html">Pricing</a>
+            <a href="contact.html">Contact</a>
+            <a href="legal.html">Privacy</a>
         </div>
         <p>&copy; 2026 JDR CORP. All Rights Reserved.</p>
-        <div class="footer-badges">CUSTOM HTML ARCHITECTURE • GITHUB WORKFLOWS • GCASH VERIFIED BUSINESS</div>
+        <div class="footer-badges">
+            CUSTOM HTML ARCHITECTURE • GITHUB WORKFLOWS • GCASH VERIFIED BUSINESS
+        </div>
     </footer>
+
+    <div class="floating-contact-wrap">
+        <div class="float-item">
+            <a href="viber://chat?number=639310410733" class="float-btn float-viber">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10C22 6.477 17.523 2 12 2zm4.5 13.5c-.3 0-.6-.1-.9-.2l-1.5-.9c-.3-.2-.5-.2-.7 0-.3.3-.8.7-1.1 1-.2.2-.4.2-.7 0-.9-.5-1.9-1.2-2.7-2-.8-.8-1.5-1.8-2-2.7-.2-.3-.2-.5 0-.7.3-.3.7-.8 1-1.1.2-.2.2-.4 0-.7l-.9-1.5c-.2-.3-.4-.5-.7-.5-.3 0-.6.1-.8.4-.3.4-.6 1.4-.2 2.3.4 1 1 2 1.7 2.7.8.8 1.8 1.4 2.7 1.7.9.4 1.9.1 2.3-.2.3-.3.4-.6.4-.8z"/></svg>
+            </a>
+            <span class="float-label">Viber</span>
+        </div>
+        <div class="float-item">
+            <a href="whatsapp://send?phone=639310410733" class="float-btn float-whatsapp">
+                <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.652zm6.599-3.835c1.53.909 3.039 1.389 4.625 1.39 5.25.001 9.522-4.271 9.524-9.521.001-2.544-.992-4.935-2.793-6.738-1.802-1.803-4.195-2.795-6.738-2.796-5.251 0-9.522 4.271-9.524 9.521-.001 1.688.45 3.336 1.306 4.773l-.991 3.618 3.706-.972zm10.165-6.843c-.277-.139-1.641-.809-1.894-.901-.253-.093-.438-.139-.623.139-.185.277-.714.901-.875 1.086-.161.185-.323.208-.6.069-.277-.139-1.171-.432-2.231-1.378-.824-.735-1.38-1.643-1.541-1.921-.162-.277-.017-.427.121-.565.125-.124.277-.323.416-.485.139-.161.185-.277.277-.462.093-.185.046-.347-.023-.485-.069-.139-.623-1.501-.853-2.057-.225-.542-.454-.469-.623-.477-.16-.007-.344-.008-.528-.008s-.485.069-.739.347c-.253.277-.97 0.948-.97 2.311 0 1.363.993 2.679 1.131 2.864.139.185 1.954 2.985 4.733 4.184.661.285 1.177.455 1.579.583.664.211 1.268.181 1.745.11.532-.079 1.641-.671 1.872-1.32.231-.648.231-1.202.161-1.32-.069-.118-.253-.185-.53-.324z"/></svg>
+            </a>
+            <span class="float-label">WhatsApp</span>
+        </div>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('nav-menu');
-            
+            let scrollTimer;
+
+            window.addEventListener('scroll', () => {
+                document.body.classList.add('is-scrolling');
+                clearTimeout(scrollTimer);
+                scrollTimer = setTimeout(() => {
+                    document.body.classList.remove('is-scrolling');
+                }, 400);
+            }, { passive: true });
+
             const closeMenu = () => {
                 if (navMenu.classList.contains('nav-active')) {
                     navMenu.classList.remove('nav-active');
@@ -191,7 +293,7 @@
             });
 
             window.addEventListener('scroll', closeMenu, { passive: true });
-
+            
             document.addEventListener('click', (e) => {
                 const isClickInsideMenu = navMenu.contains(e.target);
                 const isHamburger = hamburger.contains(e.target);
