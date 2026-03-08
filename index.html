@@ -63,7 +63,7 @@
             color: var(--accent-orange); 
             font-size: 0.65rem; 
             display: block; 
-            margin-top: 2px; 
+            margin-top: 2px;
             letter-spacing: 0.5px;
         }
         .nav-links { display: flex; list-style: none; margin: 0; padding: 0; align-items: center; }
@@ -84,29 +84,10 @@
         /* --- SECTIONS --- */
         .logo-header { padding: 30px 5% 5px; text-align: center; background-color: #000; }
         .main-logo { max-width: 280px; width: 100%; height: auto; }
-
-        /* --- UPDATED HERO WITH ADJUSTED TRANSPARENCY --- */
-        .hero { 
-            padding: 40px 5%; 
-            text-align: center; 
-            background: #000;
-        }
-        .hero-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 60px 20px;
-            border-radius: 20px;
-            /* Updated transparency from 0.7 to 0.5 */
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('background.jpg');
-            background-size: cover;
-            background-position: center;
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-        .hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 15px; font-weight: 800; color: #fff; }
-        .hero p { font-size: 1rem; color: #ddd; max-width: 600px; margin: 0 auto 25px; line-height: 1.6; }
-        .cta-btn-main { background: var(--primary-blue); color: white; padding: 12px 30px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; transition: 0.3s; font-size: 0.9rem; border: none; cursor: pointer; }
-        .cta-btn-main:hover { background: #0849a3; transform: translateY(-2px); }
+        .hero { padding: 30px 5% 40px; text-align: center; background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%); }
+        .hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 10px; font-weight: 800; }
+        .hero p { font-size: 0.9rem; color: var(--muted-text); max-width: 500px; margin: 0 auto 20px; }
+        .cta-btn-main { background: var(--primary-blue); color: white; padding: 10px 24px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; transition: 0.3s; font-size: 0.85rem; }
         
         .transparency-section { padding: 60px 5%; background: #000; text-align: center; }
         .monitor-box { max-width: 900px; margin: 0 auto; padding: 40px 30px; background: rgba(10, 88, 202, 0.05); border: 1px solid var(--primary-blue); border-radius: 12px; }
@@ -114,7 +95,7 @@
         @keyframes pulse-animation { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
         .monitor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; text-align: left; margin-top: 30px; }
         .monitor-card { background: rgba(255,255,255,0.02); padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05); }
-        .monitor-card h4 { color: #FFFFFF; margin: 0 0 8px; font-size: 1rem; }
+        .monitor-card h4 { color: var(--accent-orange); margin: 0 0 8px; font-size: 1rem; }
         .monitor-card p { font-size: 0.85rem; color: var(--muted-text); line-height: 1.5; margin: 0; }
         
         /* --- TESTIMONIALS SECTION --- */
@@ -135,14 +116,16 @@
             padding: 40px 5% 30px;
             text-align: center;
             border-top: 1px solid #222;
-            color: #555;
+            color: #eee;
             font-size: 0.75rem;
-            background-color: #000;
+            background-image: url('footer.jpg');
+            background-size: cover;
+            background-position: center;
         }
-        footer a { color: #888; text-decoration: none; margin: 0 10px; }
+        footer a { color: #fff; text-decoration: none; margin: 0 10px; text-shadow: 0 0 5px #000; }
         footer a:hover { color: var(--accent-orange); }
         .footer-nav { margin-bottom: 15px; }
-        .footer-badges { margin-top: 15px; opacity: 0.5; font-size: 0.7rem; letter-spacing: 0.5px; }
+        .footer-badges { margin-top: 15px; opacity: 0.8; font-size: 0.7rem; letter-spacing: 0.5px; text-shadow: 0 0 5px #000; }
 
         /* --- MOBILE NAVIGATION --- */
         @media (max-width: 768px) {
@@ -153,11 +136,19 @@
             .toggle .line1 { transform: rotate(-45deg) translate(-4px, 5px); }
             .toggle .line2 { opacity: 0; }
             .toggle .line3 { transform: rotate(45deg) translate(-4px, -5px); }
-            .hero-container { padding: 40px 15px; border-radius: 10px; }
         }
 
-        /* --- FLOATING BUTTONS --- */
-        .floating-contact-wrap { position: fixed; bottom: 30px; right: 20px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; transition: transform 0.4s ease, opacity 0.3s ease; }
+        /* --- FLOATING BUTTONS FIX --- */
+        .floating-contact-wrap { 
+            position: fixed; 
+            bottom: 30px; 
+            right: 20px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
+            z-index: 9999; 
+            transition: transform 0.4s ease, opacity 0.3s ease; 
+        }
         body.is-scrolling .floating-contact-wrap { transform: translateX(100px); opacity: 0; pointer-events: none; }
         .float-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
         .float-btn { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; color: white; box-shadow: 0 6px 16px rgba(0,0,0,0.6); transition: 0.2s; }
@@ -189,15 +180,13 @@
 
     <main>
         <header class="logo-header">
-            <img src="image_1~2.png" alt="JDR CORPORATION Logo" class="main-logo">
+            <img src="image_0.png" alt="JDR CORPORATION Logo" class="main-logo">
         </header>
 
         <section class="hero">
-            <div class="hero-container">
-                <h1>Your Concept. <br><span style="color: var(--accent-orange);">Our Code.</span></h1>
-                <p>Expert HTML architecture with real-time transparency. Watch your vision come to life through your private GitHub preview link.</p>
-                <a href="quote.html" class="cta-btn-main">Build Your Custom Quote</a>
-            </div>
+            <h1>Your Concept. <br><span style="color: var(--accent-orange);">Our Code.</span></h1>
+            <p>Expert HTML architecture with real-time transparency. Watch your vision come to life through your private GitHub preview link.</p>
+            <a href="quote.html" class="cta-btn-main">Build Your Custom Quote</a>
         </section>
 
         <section class="transparency-section">
