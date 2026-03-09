@@ -25,12 +25,12 @@
             line-height: 1.4;
             display: flex;
             flex-direction: column;
-            padding-top: 70px; /* Space for fixed nav */
+            padding-top: 70px;
         }
         
         main { flex: 1 0 auto; }
 
-        /* --- VIDEO BACKGROUND UTILITY --- */
+        /* --- VIDEO BACKGROUND --- */
         .video-bg-wrap {
             position: absolute;
             top: 0;
@@ -128,7 +128,6 @@
         }
         .option-item.selected { background: rgba(10, 88, 202, 0.1); border-color: var(--primary-blue); }
 
-        /* --- TOOLTIPS & DETAILS --- */
         .tooltip { position: relative; display: inline-block; cursor: help; margin-left: 4px; color: var(--primary-blue); font-weight: bold; }
         .tooltip .tooltiptext {
             visibility: hidden; width: 240px; background-color: #16181d; color: #fff; text-align: left; border: 1px solid var(--primary-blue);
@@ -141,6 +140,7 @@
         summary:hover { color: var(--accent-orange); }
         summary::before { content: 'ⓘ '; font-style: normal; }
         .detail-content { font-size: 0.85rem; color: var(--muted-text); padding: 12px 0 0 0; line-height: 1.5; animation: slideDown 0.3s ease; }
+        
         @keyframes slideDown { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
         
         .option-item select { width: 100%; padding: 12px; margin-top: 10px; background: #1a1c23; color: white; border: 1px solid #444; border-radius: 6px; cursor: pointer; }
@@ -158,7 +158,6 @@
         .payment-value { font-weight: 800; color: white; }
         .monthly-notice { background: rgba(10, 88, 202, 0.1); border: 1px solid rgba(10, 88, 202, 0.3); padding: 20px; border-radius: 10px; margin-top: 20px; }
 
-        /* --- MOBILE NAV --- */
         @media (max-width: 850px) {
             .builder-container { grid-template-columns: 1fr; padding: 25px; }
             .summary-box { position: static; margin-top: 30px; }
@@ -171,7 +170,6 @@
             .toggle .line3 { transform: rotate(45deg) translate(-4px, -5px); }
         }
 
-        /* --- FOOTER --- */
         footer {
             flex-shrink: 0;
             padding: 25px 5%;
@@ -213,8 +211,8 @@
             <li><a href="about.html">About Us</a></li>
             <li><a href="service.html">Services</a></li>
             <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="legal.html">Terms & Conditions</a></li>
             <li><a href="quote.html" class="active-link">Projects / Pricing</a></li>
-            <li><a href="legal.html">Legal & Privacy</a></li>
             <li><a href="contact.html" class="nav-quote-btn">Get Started</a></li>
         </ul>
         <div class="hamburger" id="hamburger">
@@ -365,9 +363,9 @@
             <a href="portfolio.html">Portfolio</a>
             <a href="quote.html">Pricing</a>
             <a href="contact.html">Contact</a>
-            <a href="legal.html">Privacy</a>
+            <a href="legal.html">Terms & Conditions</a>
         </div>
-        <p>&copy; 2026 JDR WEN SOLUTIONS. All Rights Reserved.</p>
+        <p>&copy; 2026 JDR WEB SOLUTIONS. All Rights Reserved.</p>
         <div class="footer-badges">
             CUSTOM HTML ARCHITECTURE • GITHUB WORKFLOWS • GCASH VERIFIED BUSINESS
         </div>
@@ -394,9 +392,7 @@
             window.addEventListener('scroll', closeMenu, { passive: true });
             
             document.addEventListener('click', (e) => {
-                const isClickInsideMenu = navMenu.contains(e.target);
-                const isHamburger = hamburger.contains(e.target);
-                if ((!isClickInsideMenu && !isHamburger) || e.target.tagName === 'A') {
+                if ((!navMenu.contains(e.target) && !hamburger.contains(e.target)) || e.target.tagName === 'A') {
                     closeMenu();
                 }
             });
