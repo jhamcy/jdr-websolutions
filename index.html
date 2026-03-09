@@ -29,7 +29,6 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            /* Added padding so the fixed nav doesn't hide the logo header */
             padding-top: 70px; 
         }
         
@@ -62,7 +61,6 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #222;
-            /* Changed to fixed for persistent visibility */
             position: fixed; 
             top: 0;
             left: 0;
@@ -107,7 +105,20 @@
         
         /* --- SECTIONS --- */
         .logo-header { padding: 30px 5% 5px; text-align: center; background-color: #000; }
-        .main-logo { max-width: 280px; width: 100%; height: auto; }
+        
+        /* Animation Added Here */
+        .main-logo { 
+            max-width: 280px; 
+            width: 100%; 
+            height: auto; 
+            animation: fadeInScale 1.5s ease-out forwards;
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
         .hero { padding: 30px 5% 40px; text-align: center; background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%); }
         .hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 10px; font-weight: 800; }
         .hero p { font-size: 0.9rem; color: var(--muted-text); max-width: 500px; margin: 0 auto 20px; }
@@ -337,7 +348,6 @@
                 hamburger.classList.toggle('toggle');
             });
 
-            // Note: Menu auto-closes on scroll to keep the fixed nav tidy
             window.addEventListener('scroll', closeMenu, { passive: true });
             
             document.addEventListener('click', (e) => {
