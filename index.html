@@ -29,7 +29,8 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            padding-top: 70px; 
+            /* Reduced padding to bring content up */
+            padding-top: 60px; 
         }
         
         main {
@@ -56,7 +57,7 @@
         
         /* --- NAVIGATION --- */
         nav {
-            padding: 0.7rem 5%;
+            padding: 0.5rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -104,43 +105,41 @@
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
         
         /* --- SECTIONS --- */
-        .logo-header { padding: 40px 5% 20px; text-align: center; background-color: #000; }
+        /* Moved logo closer to nav */
+        .logo-header { padding: 10px 5% 10px; text-align: center; background-color: #000; }
         
-        /* PROFESSIONAL LOGO STYLING */
+        /* COMPACT LOGO STYLING */
         .main-logo { 
-            max-width: 280px; 
+            max-width: 220px; 
             width: 100%; 
             height: auto; 
-            padding: 20px;
+            padding: 8px; /* Reduced padding */
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(4px);
             transition: all 0.4s ease;
             animation: fadeInScale 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
 
         .main-logo:hover {
-            transform: translateY(-5px) scale(1.03);
+            transform: translateY(-2px) scale(1.02);
             border-color: var(--primary-blue);
-            box-shadow: 0 15px 50px rgba(10, 88, 202, 0.3);
-            background: rgba(10, 88, 202, 0.05);
         }
 
         @keyframes fadeInScale {
-            from { opacity: 0; transform: scale(0.9) translateY(10px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
         }
 
-        .hero { padding: 30px 5% 40px; text-align: center; background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%); }
+        .hero { padding: 20px 5% 40px; text-align: center; background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%); }
         .hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 10px; font-weight: 800; }
         .hero p { font-size: 0.9rem; color: var(--muted-text); max-width: 500px; margin: 0 auto 20px; }
         .cta-btn-main { background: var(--primary-blue); color: white; padding: 10px 24px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; transition: 0.3s; font-size: 0.85rem; }
         
-        .transparency-section { padding: 60px 5%; background: #000; text-align: center; }
-        .monitor-box { max-width: 900px; margin: 0 auto; padding: 40px 30px; background: rgba(10, 88, 202, 0.05); border: 1px solid var(--primary-blue); border-radius: 12px; }
+        .transparency-section { padding: 40px 5%; background: #000; text-align: center; }
+        .monitor-box { max-width: 900px; margin: 0 auto; padding: 30px 20px; background: rgba(10, 88, 202, 0.05); border: 1px solid var(--primary-blue); border-radius: 12px; }
         .pulse-dot { height: 7px; width: 7px; background-color: #ff4b4b; border-radius: 50%; display: inline-block; box-shadow: 0 0 6px #ff4b4b; animation: pulse-animation 1.5s infinite; }
         @keyframes pulse-animation { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
         .monitor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; text-align: left; margin-top: 30px; }
