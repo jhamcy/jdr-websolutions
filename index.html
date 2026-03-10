@@ -157,7 +157,7 @@
             to { opacity: 1; transform: scale(1); }
         }
         .hero { padding: 20px 5% 40px; text-align: center; background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%); }
-        .hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 10px; font-weight: 800; }
+        .hero h1 { font-size: clamp(1.5rem, 3.5vw, 2.2rem); margin-bottom: 10px; font-weight: 800; line-height: 1.2;}
         .hero p { font-size: 0.9rem; color: var(--muted-text); max-width: 500px; margin: 0 auto 20px; }
         .cta-btn-main { background: var(--primary-blue); color: white; padding: 10px 24px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; transition: 0.3s; font-size: 0.85rem; }
         
@@ -165,7 +165,9 @@
         .monitor-box { max-width: 900px; margin: 0 auto; padding: 30px 20px; background: rgba(10, 88, 202, 0.05); border: 1px solid var(--primary-blue); border-radius: 12px; }
         .pulse-dot { height: 7px; width: 7px; background-color: #ff4b4b; border-radius: 50%; display: inline-block; box-shadow: 0 0 6px #ff4b4b; animation: pulse-animation 1.5s infinite; }
         @keyframes pulse-animation { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
-        .monitor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; text-align: left; margin-top: 30px; }
+        
+        .monitor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; text-align: left; margin-top: 30px; }
+        
         .monitor-card { background: rgba(255,255,255,0.02); padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05); }
         .monitor-card h4 { color: var(--accent-orange); margin: 0 0 8px; font-size: 1rem; }
         .monitor-card p { font-size: 0.85rem; color: var(--muted-text); line-height: 1.5; margin: 0; }
@@ -249,11 +251,13 @@
         <header class="logo-header">
             <img src="image_0.png" alt="JMCY WEB SOLUTIONS Logo" class="main-logo">
         </header>
+        
         <section class="hero">
-            <h1>Your Concept. <br><span style="color: var(--accent-orange);">Our Code.</span></h1>
-            <p>Expert HTML architecture with real-time transparency. Watch your vision come to life through your private GitHub preview link.</p>
+            <h1>Custom Websites Built Live <br><span style="color: var(--accent-orange);">Watch Your Site Being Developed in Real Time</span></h1>
+            <p>Through your private GitHub preview link, you see every update as it happens.</p>
             <a href="quote.html" class="cta-btn-main">Build Your Custom Quote</a>
         </section>
+        
         <section class="transparency-section">
             <div class="monitor-box">
                 <div style="display: inline-flex; align-items: center; gap: 6px; background: rgba(0,0,0,0.3); padding: 4px 12px; border-radius: 20px; border: 1px solid #333; margin-bottom: 15px;">
@@ -277,6 +281,36 @@
                 </div>
             </div>
         </section>
+
+        <section style="padding:60px 5%; background:#000; text-align:center; border-top: 1px solid #111;">
+            <h2 style="font-size:1.8rem; margin-bottom:15px;">Our Development Process</h2>
+            <p style="color:var(--muted-text); font-size:0.9rem; max-width:550px; margin:0 auto 40px;">
+                A transparent workflow designed so you always know the status of your project.
+            </p>
+
+            <div class="monitor-grid">
+                <div class="monitor-card">
+                    <h4 style="color:var(--accent-orange); margin-bottom:10px;">1. Quote Builder</h4>
+                    <p>Select your website features using our custom project quote system.</p>
+                </div>
+
+                <div class="monitor-card">
+                    <h4 style="color:var(--accent-orange); margin-bottom:10px;">2. Live Development</h4>
+                    <p>We begin development while you monitor progress through your GitHub preview link.</p>
+                </div>
+
+                <div class="monitor-card">
+                    <h4 style="color:var(--accent-orange); margin-bottom:10px;">3. Review & Feedback</h4>
+                    <p>Verify layouts and request adjustments during the build phase.</p>
+                </div>
+
+                <div class="monitor-card">
+                    <h4 style="color:var(--accent-orange); margin-bottom:10px;">4. Launch</h4>
+                    <p>Your finished website goes live after final approval.</p>
+                </div>
+            </div>
+        </section>
+
         <section class="testimonial-section">
             <div style="max-width: 800px; margin: 0 auto; padding: 0 5%;">
                 <div style="max-width: 400px; margin: 0 auto 40px; background: rgba(255,255,255,0.02); padding: 20px; border-radius: 12px; border: 1px solid #222;">
@@ -331,8 +365,7 @@
             <a href="portfolio.html">Portfolio</a> | 
             <a href="quote.html">Projects / Pricing</a> | 
             <a href="contact.html">Contact</a> | 
-            <a href="legal.html">Terms & Conditions</a> |
-            <a href="https://g.page/r/CZbhiUAcia4iEBI/review" target="_blank" style="color: var(--accent-orange);">Review Us</a>
+            <a href="legal.html">Terms & Conditions</a>
         </div>
         <p>&copy; 2026 JMCY WEB SOLUTIONS. All Rights Reserved.</p>
         <div class="footer-badges">
