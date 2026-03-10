@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JDR WEB SOLUTIONS | Portfolio.</title>
+    <title>JDR WEB SOLUTIONS | Portfolio</title>
     <style>
         /* --- BRAND VARIABLES --- */
         :root {
@@ -14,12 +14,6 @@
             --light-text: #F4F4F4;
             --muted-text: #A0A0A0;
             --header-bg: #000000;
-        }
-
-        /* --- KEYFRAME ANIMATIONS --- */
-        @keyframes fadeInScale {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
         }
 
         /* --- GLOBAL STYLES --- */
@@ -42,8 +36,6 @@
         main {
             flex: 1 0 auto;
             width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
             display: flex;
             flex-direction: column;
         }
@@ -114,7 +106,13 @@
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
 
         /* --- LOGO HEADER --- */
-        .logo-header { padding: 15px 5% 15px; text-align: center; background-color: #000; width: 100%; box-sizing: border-box; }
+        .logo-header { 
+            padding: 15px 5% 15px; 
+            text-align: center; 
+            background-color: #000; 
+            width: 100%;
+            box-sizing: border-box;
+        }
         .main-logo { 
             max-width: 300px; 
             width: 100%; 
@@ -134,8 +132,13 @@
             background: rgba(255, 255, 255, 0.05);
         }
 
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
         /* --- PORTFOLIO CONTENT --- */
-        .portfolio-hero { padding: 40px 5% 40px; text-align: center; background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%); }
+        .portfolio-hero { padding: 40px 5%; text-align: center; background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%); }
         .portfolio-hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 10px; font-weight: 800; }
         .portfolio-hero p { font-size: 0.95rem; color: var(--muted-text); max-width: 600px; margin: 0 auto; line-height: 1.6; }
         
@@ -144,8 +147,9 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
             gap: 30px; 
             padding: 60px 5%; 
-            margin: 0;
+            margin: 0 auto;
             width: 100%;
+            max-width: 1100px;
             box-sizing: border-box;
         }
         
@@ -158,7 +162,6 @@
             display: flex; 
             flex-direction: column; 
             width: 100%;
-            animation: fadeInScale 1s ease forwards;
         }
         .portfolio-card:hover { border-color: var(--primary-blue); transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
         
