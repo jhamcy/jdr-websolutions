@@ -3,7 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JDR WEB SOLUTIONS | Instant Quote Builder</title>
+    
+    <title>Web Development Pricing & Instant Quote | JDR WEB SOLUTIONS</title>
+    <meta name="description" content="Calculate your custom web development costs instantly. Transparent pricing for landing pages, corporate sites, SEO, and Google Ads management in the Philippines.">
+    <meta name="keywords" content="web development price philippines, website cost calculator, JDR Web Solutions quote, affordable web design, SEO pricing">
+    <link rel="canonical" href="https://yourdomain.com/quote.html">
+
+    <meta property="og:title" content="Instant Web Design Quote | JDR WEB SOLUTIONS">
+    <meta property="og:description" content="Get a real-time estimate for your next web project. Choose your features and see your 50% downpayment breakdown instantly.">
+    <meta property="og:url" content="https://yourdomain.com/quote.html">
+    <meta property="og:type" content="website">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Service",
+      "serviceType": "Web Development",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "JDR WEB SOLUTIONS"
+      },
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "PHP",
+        "lowPrice": "10000",
+        "highPrice": "28000"
+      }
+    }
+    </script>
+
     <style>
         /* --- BRAND VARIABLES --- */
         :root {
@@ -218,74 +246,76 @@
 
     <main>
         <section class="quote-section">
-            <h1>Instant <span style="color: var(--accent-orange);">Quote Builder</span></h1>
+            <h1>Estimate Your <span style="color: var(--accent-orange);">Digital Investment</span></h1>
+            <p style="font-size: 0.85rem; color: var(--muted-text); margin-bottom: 30px;">Select your infrastructure and development tier to get an instant breakdown.</p>
             
             <div class="builder-container">
                 <div class="options">
-                    <h3>1. Infrastructure</h3>
+                    <h3>1. Domain & Infrastructure</h3>
                     <select id="domain-select" style="width: 100%; padding: 12px; background: #1a1c23; color: white; border: 1px solid #444; border-radius: 8px; margin-bottom: 10px;">
-                        <option value="1200">Standard .com (₱1,200/yr)</option>
-                        <option value="3500">Premium .ph (₱3,500/yr)</option>
-                        <option value="0">Existing Domain (₱0)</option>
+                        <option value="1200">New Standard .com Registration (₱1,200/yr)</option>
+                        <option value="3500">New Local .ph / .com.ph (₱3,500/yr)</option>
+                        <option value="0">Use My Existing Domain (₱0)</option>
                     </select>
+                    <p style="font-size: 0.65rem; color: var(--muted-text); margin-bottom: 20px;">* Note: Clients retain full ownership of all purchased domains.</p>
 
-                    <h3>2. Single-Page Options</h3>
+                    <h3>2. Single-Page Development</h3>
                     <div class="option-grid">
                         <label class="option-item">
                             <div class="check-indicator"></div>
                             <input type="checkbox" class="price-trigger dev-group" data-price="10000">
                             <strong>Essential Code [₱10,000]</strong>
-                            <p>Pure Custom Code Landing Page.</p>
-                            <details><summary>Details</summary><div class="detail-content">Custom HTML/CSS/JS, mobile-responsive layout, and contact form integration.</div></details>
+                            <p>Lightweight Custom Landing Page.</p>
+                            <details><summary>Details</summary><div class="detail-content">Hand-coded HTML/CSS/JS, mobile-first design, and secure contact form.</div></details>
                         </label>
                         <label class="option-item">
                             <div class="check-indicator"></div>
                             <input type="checkbox" class="price-trigger dev-group" data-price="15000">
                             <strong>Full Ecosystem [₱15,000]</strong>
-                            <p>Landing Page + Google Discovery.</p>
-                            <details><summary>Details</summary><div class="detail-content">GMB setup, SEO foundations, Ads architecture, and GA4 traffic tracking.</div></details>
+                            <p>Landing Page + Business Visibility.</p>
+                            <details><summary>Details</summary><div class="detail-content">Everything in Essential + Google My Business setup, foundational SEO, and GA4 Analytics.</div></details>
                         </label>
                     </div>
 
-                    <h3>3. Multi-Page Options</h3>
+                    <h3>3. Multi-Page Solutions</h3>
                     <div class="option-grid">
                         <label class="option-item">
                             <div class="check-indicator"></div>
                             <input type="checkbox" class="price-trigger dev-group" data-price="20000">
                             <strong>Essential Suite [₱20,000]</strong>
-                            <p>Full Multi-Page Corporate Site.</p>
-                            <details><summary>Details</summary><div class="detail-content">Home, About, Services, and Contact pages. Clean, professional code architecture.</div></details>
+                            <p>Professional Corporate Presence.</p>
+                            <details><summary>Details</summary><div class="detail-content">Home, About, Services, and Contact pages with a clean, performant code architecture.</div></details>
                         </label>
                         <label class="option-item">
                             <div class="check-indicator"></div>
                             <input type="checkbox" class="price-trigger dev-group" data-price="28000">
                             <strong>Full Ecosystem [₱28,000]</strong>
-                            <p>Corporate Site + 24/7 Lead Stack.</p>
-                            <details><summary>Details</summary><div class="detail-content">Everything in Essential Suite plus advanced SEO, GMB lock, and GA4/Ads integration.</div></details>
+                            <p>Multi-Page + Advanced Lead Stack.</p>
+                            <details><summary>Details</summary><div class="detail-content">Full site development + Technical SEO, Google Ads bridge, and GMB optimization.</div></details>
                         </label>
                     </div>
 
-                    <h3>4. Monthly Maintenance</h3>
+                    <h3>4. Ongoing Support</h3>
                     <div class="option-grid">
                         <label class="option-item">
                             <div class="check-indicator"></div>
                             <input type="checkbox" class="price-trigger monthly-check maint-group" id="mgmt-check" data-price="1500">
-                            <strong>Active [₱1,500/mo]</strong>
-                            <p>Updates, SEO & Ads Monitoring.</p>
-                            <details><summary>Details</summary><div class="detail-content">Ongoing site maintenance, security updates, SEO rank monitoring, and Ad campaign management.</div></details>
+                            <strong>Managed Support [₱1,500/mo]</strong>
+                            <p>Maintenance, SEO & Ad Monitoring.</p>
+                            <details><summary>Details</summary><div class="detail-content">Security updates, technical support (within scope), and performance reporting.</div></details>
                         </label>
                         <label class="option-item">
                             <div class="check-indicator"></div>
                             <input type="checkbox" id="no-mgmt-check" class="maint-group">
                             <strong>Self-Managed [₱0]</strong>
                             <p>One-time delivery.</p>
-                            <details><summary>Details</summary><div class="detail-content">Client handles all future updates, hosting renewals, and marketing adjustments manually.</div></details>
+                            <details><summary>Details</summary><div class="detail-content">Final project files delivered; client manages updates and hosting manually.</div></details>
                         </label>
                     </div>
                 </div>
 
                 <div class="summary-box">
-                    <div style="font-size: 0.75rem; color: var(--primary-blue); font-weight: 800;">ESTIMATED TOTAL</div>
+                    <div style="font-size: 0.75rem; color: var(--primary-blue); font-weight: 800;">TOTAL PROJECT VALUE</div>
                     <div class="total-price">₱<span id="display-total">1,200</span></div>
                     
                     <div class="payment-row" style="margin-top:15px">
@@ -293,27 +323,27 @@
                         <span style="color:var(--accent-orange)">₱<span id="display-advance">1,200</span></span>
                     </div>
                     <div class="payment-row">
-                        <span>Balance:</span>
+                        <span>Launch Balance:</span>
                         <span>₱<span id="display-balance">0</span></span>
                     </div>
 
                     <div id="monthly-summary" style="display: none; background: rgba(249, 140, 21, 0.1); padding: 15px; border-radius: 8px; margin-top: 15px; border: 1px solid var(--accent-orange);">
-                        <div style="font-size: 0.7rem; font-weight: 800; color: var(--light-text); margin-bottom: 5px; text-transform: uppercase;">Recurring Monthly</div>
+                        <div style="font-size: 0.7rem; font-weight: 800; color: var(--light-text); margin-bottom: 5px; text-transform: uppercase;">Monthly Commitment</div>
                         <div style="display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: bold; color: var(--accent-orange);">
-                            <span>MONTHLY TOTAL:</span>
+                            <span>RECURRING:</span>
                             <span>₱<span id="display-monthly-total">1,500</span></span>
                         </div>
                     </div>
 
                     <div class="ads-calculator-card" id="ads-card">
-                        <h4 style="font-size: 0.7rem; color: var(--accent-orange); margin: 0 0 10px 0;">Ads Budget Estimator</h4>
+                        <h4 style="font-size: 0.7rem; color: var(--accent-orange); margin: 0 0 10px 0;">Optional Ads Budget</h4>
                         <div class="ads-input-row">
-                            <label style="font-size: 0.7rem;">Daily Budget:</label>
+                            <label style="font-size: 0.7rem;">Daily Ad Spend:</label>
                             <input type="number" id="daily-ads-input" placeholder="0" min="0">
                         </div>
                     </div>
 
-                    <a href="contact.html" class="cta-button">Confirm Quote</a>
+                    <a href="contact.html" class="cta-button">Request Official Quote</a>
                 </div>
             </div>
         </section>
@@ -326,11 +356,11 @@
             </video>
         </div>
         <div class="footer-nav">
- <a href="index.html">Home</a> | 
+            <a href="index.html">Home</a> | 
             <a href="about.html">About</a> | 
             <a href="service.html">Services</a> | 
             <a href="portfolio.html">Portfolio</a> | 
-            <a href="quote.html">Projects / Pricing</a> | 
+            <a href="quote.html">Pricing</a> | 
             <a href="contact.html">Contact</a> | 
             <a href="legal.html">Terms & Conditions</a>
         </div>
@@ -345,22 +375,13 @@
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('nav-menu');
 
-            // Toggle menu on click
             hamburger.addEventListener('click', (e) => {
                 e.stopPropagation();
                 navMenu.classList.toggle('nav-active');
             });
 
-            // Hide menu when clicking outside
             document.addEventListener('click', (e) => {
                 if (navMenu.classList.contains('nav-active') && !navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-                    navMenu.classList.remove('nav-active');
-                }
-            });
-
-            // Hide menu on scroll
-            window.addEventListener('scroll', () => {
-                if (navMenu.classList.contains('nav-active')) {
                     navMenu.classList.remove('nav-active');
                 }
             });

@@ -288,18 +288,16 @@
         .thx-icon { font-size: 3rem; color: var(--accent-orange); display: block; margin-bottom: 10px; }
 
         /* --- FOOTER --- */
-        footer { 
-            padding: 20px 5% 40px; 
-            text-align: center; 
-            border-top: 1px solid #333; 
-            color: #ddd; 
-            font-size: 0.8rem; 
-            background: transparent;              
+        footer {
+            flex-shrink: 0; padding: 20px 5%; text-align: center;
+            border-top: 1px solid #333; color: #ddd; font-size: 0.8rem;
+            position: relative; background-color: rgba(0,0,0,0.85); overflow: hidden;
         }
-        footer a { color: #fff !important; text-decoration: none; margin: 0 10px; }
+        footer > * { position: relative; z-index: 1; }
+        footer a { color: #fff; text-decoration: none; margin: 0 8px; font-weight: 600; }
         footer a:hover { color: var(--accent-orange); }
         .footer-nav { margin-bottom: 10px; }
-        .footer-badges { margin-top: 10px; opacity: 0.8; font-size: 0.65rem; letter-spacing: 1px; color: var(--accent-orange); line-height: 1.5; font-weight: bold;}
+        .footer-badges { margin-top: 10px; opacity: 0.8; font-size: 0.65rem; color: var(--accent-orange); font-weight: bold; }
 
         @media (max-width: 768px) {
             .hamburger { display: flex; }
@@ -336,7 +334,7 @@
                     <li><a href="service.html">Services</a></li>
                     <li><a href="portfolio.html">Portfolio</a></li>
                     <li><a href="legal.html">Terms & Conditions</a></li>
-                    <li><a href="quote.html">Projects / Pricing</a></li>                 
+                    <li><a href="quote.html">Projects / Pricing</a></li>                  
                     <li><a href="contact.html" class="active-link nav-quote-btn">Get Started</a></li>
                 </ul>
                 <div class="hamburger" id="hamburger">
@@ -399,45 +397,46 @@
             <label for="project-desc">Project Description</label>
             <textarea id="project-desc" required rows="3" placeholder="Describe your project goals..."></textarea>
 
-            <span class="section-title">1. Infrastructure</span>
+            <span class="section-title">1. Infrastructure (Client Ownership Policy)</span>
+            <p style="font-size: 0.7rem; color: #8b949e; margin-bottom: 10px;">Domains are registered under your name. You retain 100% administrative control.</p>
             <select id="domain-select" onchange="calculate()">
-                <option value="1200">Standard .com (₱1,200/yr)</option>
-                <option value="3500">Premium .ph (₱3,500/yr)</option>
-                <option value="0">Existing Domain (₱0)</option>
+                <option value="1200">Standard .com Domain (₱1,200/yr)</option>
+                <option value="3500">Premium .ph Domain (₱3,500/yr)</option>
+                <option value="0">Transfer Existing Domain (₱0)</option>
             </select>
 
-            <span class="section-title">2. Core Development</span>
+            <span class="section-title">2. Core Development Packages</span>
             <div class="option-grid">
                 <div class="option-card" id="card-dev1" onclick="selectRadio('dev1')">
                     <input type="radio" name="dev_package" id="dev1" value="Essential-Code" data-price="10000" onchange="calculate()" checked>
                     <div class="card-text">
                         <span class="card-title">Essential Code</span>
                         <span class="price-tag">₱10,000</span>
-                        <span class="card-desc">Pure Custom Code Landing Page.</span>
+                        <span class="card-desc">Custom Single Page Hand-Coded.</span>
                     </div>
                 </div>
                 <div class="option-card" id="card-dev2" onclick="selectRadio('dev2')">
                     <input type="radio" name="dev_package" id="dev2" value="Full-Ecosystem-SP" data-price="15000" onchange="calculate()">
                     <div class="card-text">
-                        <span class="card-title">Full Ecosystem</span>
+                        <span class="card-title">Growth Ecosystem</span>
                         <span class="price-tag">₱15,000</span>
-                        <span class="card-desc">Landing Page + Google Discovery.</span>
+                        <span class="card-desc">Single Page + SEO & Google Maps.</span>
                     </div>
                 </div>
                 <div class="option-card" id="card-dev3" onclick="selectRadio('dev3')">
                     <input type="radio" name="dev_package" id="dev3" value="Essential-Suite" data-price="20000" onchange="calculate()">
                     <div class="card-text">
-                        <span class="card-title">Essential Suite</span>
+                        <span class="card-title">Corporate Suite</span>
                         <span class="price-tag">₱20,000</span>
-                        <span class="card-desc">Full Multi-Page Corporate Site.</span>
+                        <span class="card-desc">Full Multi-Page Enterprise Site.</span>
                     </div>
                 </div>
                 <div class="option-card" id="card-dev4" onclick="selectRadio('dev4')">
                     <input type="radio" name="dev_package" id="dev4" value="Full-Ecosystem-MP" data-price="28000" onchange="calculate()">
                     <div class="card-text">
-                        <span class="card-title">Full Ecosystem</span>
+                        <span class="card-title">Elite Ecosystem</span>
                         <span class="price-tag">₱28,000</span>
-                        <span class="card-desc">Corporate Site + 24/7 Lead Stack.</span>
+                        <span class="card-desc">Multi-Page + Advanced SEO & Lead Stack.</span>
                     </div>
                 </div>
             </div>
@@ -447,9 +446,9 @@
                 <div class="option-card" id="card-maint1" onclick="selectRadio('maint1')">
                     <input type="radio" name="maintenance" id="maint1" value="Managed" data-price="1500" onchange="calculate()" checked>
                     <div class="card-text">
-                        <span class="card-title">Active</span>
+                        <span class="card-title">Managed Growth</span>
                         <span class="price-tag">₱1,500/mo</span>
-                        <span class="card-desc">Updates, SEO & Ads.</span>
+                        <span class="card-desc">SEO Tuning, Security & Ad Management.</span>
                     </div>
                 </div>
                 <div class="option-card" id="card-maint2" onclick="selectRadio('maint2')">
@@ -457,33 +456,33 @@
                     <div class="card-text">
                         <span class="card-title">Self-Managed</span>
                         <span class="price-tag">₱0</span>
-                        <span class="card-desc">One-time delivery.</span>
+                        <span class="card-desc">Code delivery only. No active SEO.</span>
                     </div>
                 </div>
             </div>
 
-            <span id="monthly-title" class="section-title">4. Monthly Commitment</span>
+            <span id="monthly-title" class="section-title">4. SEO Visibility & Ad Spend</span>
             <div id="monthly-section" class="summary-box" style="background: rgba(10, 88, 202, 0.05);">
-                <div style="font-size: 0.9rem; font-weight: bold; margin-bottom: 5px;">Ads Total Monthly: ₱<span id="display-monthly-total">7,500</span></div>
-                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #8b949e;"><span>Management Fee:</span> <span>₱1,500</span></div>
-                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #8b949e; margin-bottom: 10px;"><span>Google Ad Spend:</span> <span>₱<span id="ad-spend-val">6,000</span></span></div>
+                <div style="font-size: 0.9rem; font-weight: bold; margin-bottom: 5px;">Total Monthly Traffic Fuel: ₱<span id="display-monthly-total">7,500</span></div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #8b949e;"><span>Management & SEO Opt:</span> <span>₱1,500</span></div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #8b949e; margin-bottom: 10px;"><span>Google Search Ad Budget:</span> <span>₱<span id="ad-spend-val">6,000</span></span></div>
                 
-                <label for="ad-slider" style="font-size: 0.75rem;">Adjust Daily Ad Budget: ₱<span id="daily-val">200</span></label>
+                <label for="ad-slider" style="font-size: 0.75rem;">Adjust Daily SEO Visibility: ₱<span id="daily-val">200</span></label>
                 <input type="range" id="ad-slider" min="100" max="2000" step="50" value="200" oninput="updateAds()">
-                <div style="font-size: 0.75rem; color: #8b949e; margin-top: 5px;">Est. Traffic: <strong id="display-traffic" style="color:white;">300 visitors/mo</strong></div>
+                <div style="font-size: 0.75rem; color: #8b949e; margin-top: 5px;">Est. Targeted Traffic: <strong id="display-traffic" style="color:white;">300 visitors/mo</strong></div>
             </div>
 
             <div class="summary-box">
-                <div style="font-size: 0.85rem; color: #8b949e;">Setup Total Price: <span id="display-total" style="color:white; font-weight:700;">₱0</span></div>
+                <div style="font-size: 0.85rem; color: #8b949e;">Project Setup Total: <span id="display-total" style="color:white; font-weight:700;">₱0</span></div>
                 <div style="margin-top: 10px; border-top: 1px solid var(--border); padding-top:10px;">
-                    <div style="font-size: 0.85rem; color: var(--accent-orange);">50% Advance Payment:</div>
+                    <div style="font-size: 0.85rem; color: var(--accent-orange);">50% Down Payment (Required to Start):</div>
                     <div class="total-price" id="display-advance">₱0</div>
                 </div>
                 
                 <div class="terms-container">
                     <input type="checkbox" id="terms-check" onchange="toggleSubmit()">
                     <label for="terms-check" class="terms-text">
-                        I agree to the <span onclick="openTerms()">Terms of Service</span> and acknowledge the 50% advance payment.
+                        I agree to the <span onclick="openTerms()">Terms & Conditions</span> including the 50% labor deposit and domain ownership policies.
                     </label>
                 </div>
 
@@ -510,7 +509,7 @@
         </div>
         <p>&copy; 2026 JDR WEB SOLUTIONS. All Rights Reserved.</p>
         <div class="footer-badges">
-            CUSTOM HTML ARCHITECTURE • GITHUB WORKFLOWS • GCASH VERIFIED BUSINESS
+            SEO OPTIMIZED ARCHITECTURE • CLIENT DOMAIN CONTROL • 50% SECURE DOWNPAYMENT
         </div>
     </footer>
 </div>
@@ -563,7 +562,7 @@
         uploadedFilesArray = uploadedFilesArray.filter(f => f.name !== fileName);
     }
 
-    function openTerms() { document.getElementById('terms-modal').style.display = 'block'; }
+    function openTerms() { window.location.href = 'legal.html'; }
     function closeTerms() { document.getElementById('terms-modal').style.display = 'none'; }
     function closeThx() { document.getElementById('thx-modal').style.display = 'none'; }
     function selectRadio(id) { document.getElementById(id).checked = true; calculate(); }
@@ -591,7 +590,7 @@
         document.getElementById('daily-val').innerText = daily;
         document.getElementById('ad-spend-val').innerText = adSpend.toLocaleString();
         document.getElementById('display-monthly-total').innerText = (adSpend + mgmt).toLocaleString();
-        document.getElementById('display-traffic').innerText = Math.floor(adSpend / 20).toLocaleString() + " visitors/mo";
+        document.getElementById('display-traffic').innerText = Math.floor(adSpend / 20).toLocaleString() + " targeted visitors/mo";
     }
     
     function toggleSubmit() { document.getElementById('submit-btn').disabled = !document.getElementById('terms-check').checked; }
@@ -605,7 +604,7 @@
         status.style.display = "block"; 
         status.style.background = "#30363d"; 
         status.style.color = "#fff";
-        status.innerText = "Uploading files and processing request...";
+        status.innerText = "Finalizing your inquiry architecture...";
 
         try {
             let publicUrls = [];
@@ -652,20 +651,11 @@
     calculate();
 </script>
 
-<div id="terms-modal" class="modal">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeTerms()" style="cursor:pointer; float:right;">&times;</span>
-        <h3 style="color: var(--primary-blue);">Terms of Service</h3>
-        <p style="text-align: left; font-size: 0.8rem;">1. JDR WEB SOLUTIONS requires a 50% non-refundable advance payment to start development.<br><br>2. Monthly maintenance fees are billed at the start of each month cycle.<br><br>3. Google Ad Spend is paid directly to the platform or managed through our billing system.</p>
-        <button class="btn-close-thx" onclick="closeTerms()">I Understand</button>
-    </div>
-</div>
-
 <div id="thx-modal" class="modal">
     <div class="modal-content">
         <span class="thx-icon">✓</span>
         <h2 style="color: #fff; margin: 0;">Submission Success!</h2>
-        <p style="color: #8b949e; margin-top: 10px;">Thank you for choosing JDR WEB SOLUTIONS. We have received your inquiry and will contact you shortly.</p>
+        <p style="color: #8b949e; margin-top: 10px;">Your project blueprint has been received. JDR WEB SOLUTIONS will contact you shortly to discuss the development phase.</p>
         <button class="btn-close-thx" onclick="closeThx()">Continue</button>
     </div>
 </div>

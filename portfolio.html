@@ -154,8 +154,9 @@
         .portfolio-hero p { font-size: 0.95rem; color: var(--muted-text); max-width: 600px; margin: 0 auto; line-height: 1.6; }
         
         .portfolio-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Centers cards when there are only 2 */
             gap: 30px; 
             padding: 60px 5%; 
             margin: 0 auto;
@@ -172,7 +173,8 @@
             transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
             display: flex; 
             flex-direction: column; 
-            width: 100%;
+            flex: 1 1 350px; /* Responsive sizing */
+            max-width: 500px; /* Prevents card from getting too huge on 2k monitors */
         }
         .portfolio-card:hover { border-color: var(--primary-blue); transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
         
@@ -227,9 +229,25 @@
 
         @media (max-width: 768px) {
             .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; flex-direction: column; width: 260px; transform: translateX(100%); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding-top: 70px; border-left: 1px solid #222; align-items: flex-start; }
-            .nav-links li { width: 100%; margin: 0; }
+            .nav-links li { 
+                width: 100%; 
+                margin: 0; 
+                opacity: 0; 
+                transform: translateX(20px); 
+                transition: 0.3s ease; 
+            }
             .nav-links a { display: block; width: 100%; padding: 20px 30px; font-size: 0.95rem; border-bottom: 1px solid #111; box-sizing: border-box; }
+            
             .nav-active { transform: translateX(0%); }
+            .nav-active li { opacity: 1; transform: translateX(0); }
+            .nav-active li:nth-child(1) { transition-delay: 0.1s; }
+            .nav-active li:nth-child(2) { transition-delay: 0.15s; }
+            .nav-active li:nth-child(3) { transition-delay: 0.2s; }
+            .nav-active li:nth-child(4) { transition-delay: 0.25s; }
+            .nav-active li:nth-child(5) { transition-delay: 0.3s; }
+            .nav-active li:nth-child(6) { transition-delay: 0.35s; }
+            .nav-active li:nth-child(7) { transition-delay: 0.4s; }
+
             .toggle .line1 { transform: rotate(-45deg) translate(-4px, 5px); }
             .toggle .line2 { opacity: 0; }
             .toggle .line3 { transform: rotate(45deg) translate(-4px, -5px); }
@@ -282,7 +300,7 @@
                     </div>
                     <h3>Famous Touch</h3>
                     <p>A premium 24/7 service platform engineered for extreme mobile speed. Custom-coded for maximum Google Business Profile visibility and conversion.</p>
-                    <a href="https://www.famous-touch.com/" target="_blank" class="btn-live">Visit Live Site</a>
+                    <a href="https://www.famous-touch.com/" target="_blank" rel="noopener noreferrer" class="btn-live">Visit Live Site</a>
                 </div>
             </article>
 
@@ -297,7 +315,7 @@
                     </div>
                     <h3>Brew & Bean</h3>
                     <p>Corporate digital ecosystem with multi-page architecture. Integrated with advanced Schema Markup to dominate local search engine rankings.</p>
-                    <a href="https://jhamcy.github.io/Coffee-Shop-Demo/" target="_blank" class="btn-live">Visit Live Site</a>
+                    <a href="https://jhamcy.github.io/Coffee-Shop-Demo/" target="_blank" rel="noopener noreferrer" class="btn-live">Visit Live Site</a>
                 </div>
             </article>
         </section>
@@ -326,7 +344,7 @@
 
     <div class="floating-contact-wrap">
         <div class="float-item">
-            <button class="float-btn float-whatsapp" onclick="openApp('whatsapp://send?phone=0909 129 7422', 'https://play.google.com/store/apps/details?id=com.whatsapp')">
+            <button class="float-btn float-whatsapp" onclick="openApp('whatsapp://send?phone=09091297422', 'https://play.google.com/store/apps/details?id=com.whatsapp')">
                 <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.652zm6.599-3.835c1.53.909 3.039 1.389 4.625 1.39 5.25.001 9.522-4.271 9.524-9.521.001-2.544-.992-4.935-2.793-6.738-1.802-1.803-4.195-2.795-6.738-2.796-5.251 0-9.522 4.271-9.524 9.521-.001 1.688.45 3.336 1.306 4.773l-.991 3.618 3.706-.972zm10.165-6.843c-.277-.139-1.641-.809-1.894-.901-.253-.093-.438-.139-.623.139-.185.277-.714.901-.875 1.086-.161.185-.323.208-.6.069-.277-.139-1.171-.432-2.231-1.378-.824-.735-1.38-1.643-1.541-1.921-.162-.277-.017-.427.121-.565.125-.124.277-.323.416-.485.139-.161.185-.277.277-.462.093-.185.046-.347-.023-.485-.069-.139-.623-1.501-.853-2.057-.225-.542-.454-.469-.623-.477-.16-.007-.344-.008-.528-.008s-.485.069-.739.347c-.253.277-.97 0.948-.97 2.311 0 1.363.993 2.679 1.131 2.864.139.185 1.954 2.985 4.733 4.184.661.285 1.177.455 1.579.583.664.211 1.268.181 1.745.11.532-.079 1.641-.671 1.872-1.32.231-.648.231-1.202.161-1.32-.069-.118-.253-.185-.53-.324z"/></svg>
             </button>
             <span class="float-label">WhatsApp</span>
