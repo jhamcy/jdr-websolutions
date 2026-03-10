@@ -8,4 +8,4 @@ Disallow: /tmp/
 Disallow: /private/
 
 # Point search engines to your sitemap
-Sitemap: https://jdr-websolutions.com//sitemap.xml
+Sitemap: https://jmcywebsolutions.com//sitemap.xml
