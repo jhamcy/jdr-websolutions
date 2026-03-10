@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JDR WEB SOLUTIONS. | Home</title>
+
+    <link rel="canonical" href="https://jdr-websolutions.com/">
+    <meta name="description" content="Expert HTML architecture with real-time transparency. Watch your vision come to life through your private GitHub preview link.">
+
+    <meta property="og:title" content="JDR WEB SOLUTIONS | Real-Time Custom Web Development">
+    <meta property="og:description" content="Expert HTML architecture with real-time transparency. Watch your vision come to life via private GitHub staging.">
+    <meta property="og:url" content="https://jdr-websolutions.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://jdr-websolutions.com/image_0.png">
+
+    <link rel="icon" type="image/png" href="image_0.png">
+
     <style>
         /* --- BRAND VARIABLES --- */
         :root {
@@ -66,6 +78,7 @@
             left: 0;
             right: 0;
             z-index: 1000;
+            background-color: #000; /* Fallback */
             background: rgba(0,0,0,0.85); 
             overflow: hidden;
         }
@@ -103,7 +116,7 @@
         @media (max-width: 768px) { .hamburger { display: flex; } }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
         
-       /* --- LOGO HEADER --- */
+        /* --- LOGO HEADER --- */
         .logo-header { 
             padding: 15px 5% 15px; 
             text-align: center; 
@@ -165,6 +178,7 @@
             color: #ddd;
             font-size: 0.8rem;
             position: relative;
+            background-color: #000; /* Fallback */
             background-color: rgba(0,0,0,0.85);
             overflow: hidden;
         }
@@ -306,7 +320,7 @@
             </video>
         </div>
         <div class="footer-nav">
- <a href="index.html">Home</a> | 
+            <a href="index.html">Home</a> | 
             <a href="about.html">About</a> | 
             <a href="service.html">Services</a> | 
             <a href="portfolio.html">Portfolio</a> | 
@@ -322,7 +336,7 @@
 
     <div class="floating-contact-wrap">
         <div class="float-item">
-            <button class="float-btn float-whatsapp" onclick="openApp('whatsapp://send?phone=0909 129 7422', 'https://play.google.com/store/apps/details?id=com.whatsapp')">
+            <button class="float-btn float-whatsapp" onclick="openApp('whatsapp://send?phone=09091297422', 'https://play.google.com/store/apps/details?id=com.whatsapp')">
                 <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.652zm6.599-3.835c1.53.909 3.039 1.389 4.625 1.39 5.25.001 9.522-4.271 9.524-9.521.001-2.544-.992-4.935-2.793-6.738-1.802-1.803-4.195-2.795-6.738-2.796-5.251 0-9.522 4.271-9.524 9.521-.001 1.688.45 3.336 1.306 4.773l-.991 3.618 3.706-.972zm10.165-6.843c-.277-.139-1.641-.809-1.894-.901-.253-.093-.438-.139-.623.139-.185.277-.714.901-.875 1.086-.161.185-.323.208-.6.069-.277-.139-1.171-.432-2.231-1.378-.824-.735-1.38-1.643-1.541-1.921-.162-.277-.017-.427.121-.565.125-.124.277-.323.416-.485.139-.161.185-.277.277-.462.093-.185.046-.347-.023-.485-.069-.139-.623-1.501-.853-2.057-.225-.542-.454-.469-.623-.477-.16-.007-.344-.008-.528-.008s-.485.069-.739.347c-.253.277-.97 0.948-.97 2.311 0 1.363.993 2.679 1.131 2.864.139.185 1.954 2.985 4.733 4.184.661.285 1.177.455 1.579.583.664.211 1.268.181 1.745.11.532-.079 1.641-.671 1.872-1.32.231-.648.231-1.202.161-1.32-.069-.118-.253-.185-.53-.324z"/></svg>
             </button>
             <span class="float-label">WhatsApp</span>
@@ -407,7 +421,6 @@
             }
         });
 
-        // REDIRECT FUNCTION,
         function openApp(appUri, storeUrl) {
             const start = Date.now();
             window.location.href = appUri;
