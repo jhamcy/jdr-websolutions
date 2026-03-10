@@ -16,6 +16,12 @@
             --header-bg: #000000;
         }
 
+        /* --- KEYFRAME ANIMATIONS --- */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
         /* --- GLOBAL STYLES --- */
         html, body {
             height: 100%;
@@ -117,6 +123,7 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(4px);
             transition: all 0.4s ease;
+            animation: fadeInScale 1s ease-out forwards;
         }
         .main-logo:hover {
             transform: translateY(-3px) scale(1.02);
@@ -129,7 +136,14 @@
         .legal-hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 10px; font-weight: 800; }
         
         .container { max-width: 850px; margin: 0 auto; padding: 40px 5% 80px; width: 100%; box-sizing: border-box; }
-        .legal-box { background: var(--card-bg); padding: 40px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .legal-box { 
+            background: var(--card-bg); 
+            padding: 40px; 
+            border-radius: 15px; 
+            border: 1px solid rgba(255,255,255,0.05); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: fadeInScale 1s ease forwards;
+        }
         
         h2 { color: var(--accent-orange); font-size: 1.1rem; margin-top: 40px; border-bottom: 1px solid #333; padding-bottom: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
         h2:first-of-type { margin-top: 0; }
@@ -189,7 +203,6 @@
             <li><a href="about.html">About Us</a></li>
             <li><a href="service.html">Services</a></li>
             <li><a href="portfolio.html">Portfolio</a></li>
-
             <li><a href="legal.html" class="active-link">Terms & Conditions</a></li>
             <li><a href="quote.html">Projects / Pricing</a></li>
             <li><a href="contact.html" class="nav-quote-btn">Get Started</a></li>
@@ -276,9 +289,29 @@
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('nav-menu');
 
-            hamburger.addEventListener('click', () => {
+            // Scroll listener for menu auto-hide
+            window.addEventListener('scroll', () => {
+                if (navMenu.classList.contains('nav-active')) {
+                    navMenu.classList.remove('nav-active');
+                    hamburger.classList.remove('toggle');
+                }
+            }, { passive: true });
+
+            // Toggle menu
+            hamburger.addEventListener('click', (e) => {
+                e.stopPropagation();
                 navMenu.classList.toggle('nav-active');
                 hamburger.classList.toggle('toggle');
+            });
+
+            // Close when clicking outside
+            document.addEventListener('click', (e) => {
+                const isClickInsideMenu = navMenu.contains(e.target);
+                const isHamburger = hamburger.contains(e.target);
+                if ((!isClickInsideMenu && !isHamburger) || e.target.tagName === 'A') {
+                    navMenu.classList.remove('nav-active');
+                    hamburger.classList.remove('toggle');
+                }
             });
         });
     </script>

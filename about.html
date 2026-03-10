@@ -103,24 +103,38 @@
         @media (max-width: 768px) { .hamburger { display: flex; } }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
 
-        /* --- LOGO HEADER --- */
-        .logo-header { padding: 15px 5% 15px; text-align: center; background-color: #000; }
+        /* --- LOGO HEADER & ANIMATION --- */
+        .logo-header { 
+            padding: 40px 5% 20px; 
+            text-align: center; 
+            background: linear-gradient(to bottom, #000, var(--dark-bg)); 
+        }
+        
         .main-logo { 
-            max-width: 300px; 
+            max-width: 280px; 
             width: 100%; 
             height: auto; 
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(4px);
-            transition: all 0.4s ease;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            /* ANIMATION COPIED FROM INDEX.HTML */
+            animation: fadeInScale 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
+
         .main-logo:hover {
-            transform: translateY(-3px) scale(1.02);
+            transform: translateY(-5px);
             border-color: var(--primary-blue);
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(10, 88, 202, 0.05);
+            box-shadow: 0 15px 40px rgba(10, 88, 202, 0.2);
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         /* --- CONTENT STYLES --- */

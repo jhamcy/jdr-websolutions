@@ -16,6 +16,12 @@
             --header-bg: #000000;
         }
 
+        /* --- KEYFRAME ANIMATIONS --- */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
         /* --- GLOBAL STYLES --- */
         html, body {
             height: 100%;
@@ -120,6 +126,7 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(4px);
             transition: all 0.4s ease;
+            animation: fadeInScale 1s ease-out forwards;
         }
         .main-logo:hover {
             transform: translateY(-3px) scale(1.02);
@@ -151,6 +158,7 @@
             display: flex; 
             flex-direction: column; 
             width: 100%;
+            animation: fadeInScale 1s ease forwards;
         }
         .portfolio-card:hover { border-color: var(--primary-blue); transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
         
