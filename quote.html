@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: 100%;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JDR WEB SOLUTIONS | Instant Quote Builder.</title>
+    <title>JDR WEB SOLUTIONS | Instant Quote Builder</title>
     <style>
         /* --- BRAND VARIABLES --- */
         :root {
@@ -17,7 +17,11 @@
         }
 
         /* --- GLOBAL STYLES --- */
-        html, body { height: 100%; margin: 0; padding: 0; }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--dark-bg);
@@ -25,10 +29,15 @@
             line-height: 1.4;
             display: flex;
             flex-direction: column;
-            padding-top: 70px;
+            min-height: 100vh;
+            padding-top: 60px; 
         }
         
-        main { flex: 1 0 auto; }
+        main {
+            flex: 1 0 auto;
+            display: flex;
+            flex-direction: column;
+        }
 
         /* --- VIDEO BACKGROUND --- */
         .video-bg-wrap {
@@ -48,17 +57,17 @@
 
         /* --- NAVIGATION --- */
         nav {
-            padding: 0.7rem 5%;
+            padding: 0.5rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #222;
-            position: fixed;
+            position: fixed; 
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(0,0,0,0.85);
+            background: rgba(0,0,0,0.85); 
             overflow: hidden;
         }
         nav > * { position: relative; z-index: 1; }
@@ -84,114 +93,101 @@
         .nav-links li { margin-left: 18px; }
         .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; display: inline-block; }
         .nav-links a:hover, .active-link { color: var(--accent-orange) !important; }
-        
-        .nav-quote-btn { border: 1px solid var(--accent-orange); padding: 5px 12px; border-radius: 4px; color: var(--accent-orange) !important; font-weight: 800 !important; }
+        .nav-quote-btn {
+            border: 1px solid var(--accent-orange);
+            padding: 5px 12px;
+            border-radius: 4px;
+            color: var(--accent-orange) !important;
+            font-weight: 800 !important;
+        }
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
-        @media (max-width: 768px) { .hamburger { display: flex; } }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
 
-        /* --- QUOTE HERO & BUILDER --- */
-        .quote-section {
-            padding: 60px 5% 80px;
-            background: radial-gradient(circle at top, #1E3A5F 0%, #0C0D11 100%);
-            text-align: center;
-        }
-        .quote-section h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 10px; font-weight: 800; }
-        
+        /* --- QUOTE BUILDER UI --- */
+        .quote-section { padding: 40px 5% 80px; text-align: center; position: relative; z-index: 1; }
         .builder-container {
-            max-width: 1000px;
-            margin: 30px auto;
-            background: var(--card-bg);
+            max-width: 1100px; margin: 20px auto;
+            background: var(--card-bg); border-radius: 20px;
+            padding: 30px; display: grid; grid-template-columns: 1fr 340px;
+            gap: 30px; text-align: left; backdrop-filter: blur(15px);
             border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 20px;
-            padding: 40px;
-            display: grid;
-            grid-template-columns: 1fr 340px;
-            gap: 40px;
-            text-align: left;
-            backdrop-filter: blur(15px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
 
-        .options h3 { color: var(--primary-blue); margin-top: 25px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
+        h3 { color: var(--primary-blue); margin-top: 20px; font-size: 1rem; text-transform: uppercase; }
+        .option-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+
         .option-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 15px;
-            padding: 20px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 12px;
-            cursor: pointer;
-            transition: 0.2s ease;
-            border: 1px solid transparent;
+            display: flex; flex-direction: column;
+            padding: 15px; background: rgba(255,255,255,0.03);
+            border-radius: 10px; cursor: pointer; border: 2px solid transparent;
+            transition: 0.2s; position: relative;
         }
-        .option-item.selected { background: rgba(10, 88, 202, 0.1); border-color: var(--primary-blue); }
+        .option-item.selected { background: rgba(10, 88, 202, 0.15); border-color: var(--primary-blue); }
+        .option-item input { position: absolute; opacity: 0; }
+        
+        .check-indicator {
+            width: 16px; height: 16px; border: 2px solid #555; border-radius: 50%;
+            margin-bottom: 10px; display: flex; align-items: center; justify-content: center;
+        }
+        .option-item.selected .check-indicator {
+            border-color: var(--accent-orange); background: var(--accent-orange);
+            box-shadow: 0 0 10px rgba(249, 140, 21, 0.4);
+        }
+        .option-item.selected .check-indicator::after { content: ''; width: 6px; height: 6px; background: white; border-radius: 50%; }
 
-        .tooltip { position: relative; display: inline-block; cursor: help; margin-left: 4px; color: var(--primary-blue); font-weight: bold; }
-        .tooltip .tooltiptext {
-            visibility: hidden; width: 240px; background-color: #16181d; color: #fff; text-align: left; border: 1px solid var(--primary-blue);
-            border-radius: 6px; padding: 12px; position: absolute; z-index: 1001; bottom: 140%; left: 50%; margin-left: -120px;
-            opacity: 0; transition: opacity 0.3s; font-size: 0.75rem; line-height: 1.4; font-weight: normal; box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-        }
-        .tooltip:hover .tooltiptext { visibility: visible; opacity: 1; }
-        details { margin-top: 10px; width: 100%; }
-        summary { font-size: 0.75rem; color: var(--primary-blue); cursor: pointer; outline: none; font-weight: bold; list-style: none; }
-        summary:hover { color: var(--accent-orange); }
-        summary::before { content: 'ⓘ '; font-style: normal; }
-        .detail-content { font-size: 0.85rem; color: var(--muted-text); padding: 12px 0 0 0; line-height: 1.5; animation: slideDown 0.3s ease; }
-        
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
-        
-        .option-item select { width: 100%; padding: 12px; margin-top: 10px; background: #1a1c23; color: white; border: 1px solid #444; border-radius: 6px; cursor: pointer; }
-        .option-item input[type="checkbox"] { accent-color: var(--accent-orange); scale: 1.4; margin-top: 5px; cursor: pointer; }
-        
+        .option-item strong { font-size: 0.85rem; line-height: 1.2; display: block; margin-bottom: 5px; }
+        .option-item p { font-size: 0.7rem; color: var(--muted-text); margin: 0; }
+
+        details { margin-top: 8px; }
+        summary { font-size: 0.7rem; color: var(--primary-blue); cursor: pointer; font-weight: bold; }
+        .detail-content { font-size: 0.7rem; color: #ccc; padding-top: 5px; line-height: 1.3; }
+
         /* --- SUMMARY BOX --- */
         .summary-box {
-            background: #000; padding: 35px; border-radius: 15px; border: 1px solid var(--primary-blue); height: fit-content;
-            position: sticky; top: 100px; box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            background: #000; padding: 25px; border-radius: 15px;
+            border: 1px solid var(--primary-blue); height: fit-content;
+            position: sticky; top: 100px; display: flex; flex-direction: column;
         }
-        .total-price { font-size: 2.6rem; color: var(--accent-orange); font-weight: 800; margin: 5px 0 15px 0; }
-        .price-breakdown { font-size: 0.95rem; color: var(--muted-text); margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #222; }
-        .payment-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
-        .payment-label { font-weight: 600; color: var(--light-text); }
-        .payment-value { font-weight: 800; color: white; }
-        .monthly-notice { background: rgba(10, 88, 202, 0.1); border: 1px solid rgba(10, 88, 202, 0.3); padding: 20px; border-radius: 10px; margin-top: 20px; }
+        .total-price { font-size: 2.2rem; color: var(--accent-orange); font-weight: 800; }
+        .payment-row { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.9rem; }
+        .cta-button {
+            display: block; background: var(--primary-blue); color: white;
+            text-align: center; padding: 12px 24px; border-radius: 6px; text-decoration: none;
+            font-weight: bold; margin-top: 15px;
+        }
 
-        @media (max-width: 850px) {
-            .builder-container { grid-template-columns: 1fr; padding: 25px; }
-            .summary-box { position: static; margin-top: 30px; }
+        /* ADS CALCULATOR */
+        .ads-calculator-card {
+            margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.05);
+            border: 1px dashed #444; border-radius: 10px;
+        }
+        .ads-calculator-card.disabled { opacity: 0.4; pointer-events: none; }
+        .ads-input-row { display: flex; justify-content: space-between; align-items: center; }
+        .ads-input-row input {
+            width: 80px; background: #111; border: 1px solid #333; color: #fff;
+            padding: 5px; border-radius: 4px; font-size: 0.75rem; text-align: right;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            flex-shrink: 0; padding: 20px 5%; text-align: center;
+            border-top: 1px solid #333; color: #ddd; font-size: 0.8rem;
+            position: relative; background-color: rgba(0,0,0,0.85); overflow: hidden;
+        }
+        footer > * { position: relative; z-index: 1; }
+        footer a { color: #fff; text-decoration: none; margin: 0 8px; font-weight: 600; }
+        footer a:hover { color: var(--accent-orange); }
+        .footer-nav { margin-bottom: 10px; }
+        .footer-badges { margin-top: 10px; opacity: 0.8; font-size: 0.65rem; color: var(--accent-orange); font-weight: bold; }
+
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
             .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; flex-direction: column; width: 260px; transform: translateX(100%); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding-top: 70px; border-left: 1px solid #222; align-items: flex-start; }
             .nav-links li { width: 100%; margin: 0; }
             .nav-links a { display: block; width: 100%; padding: 20px 30px; font-size: 0.95rem; border-bottom: 1px solid #111; box-sizing: border-box; }
             .nav-active { transform: translateX(0%); }
-            .toggle .line1 { transform: rotate(-45deg) translate(-4px, 5px); }
-            .toggle .line2 { opacity: 0; }
-            .toggle .line3 { transform: rotate(45deg) translate(-4px, -5px); }
-        }
-
-        footer {
-            flex-shrink: 0;
-            padding: 25px 5%;
-            text-align: center;
-            border-top: 1px solid #333;
-            color: #ddd;
-            font-size: 0.8rem;
-            position: relative;
-            background-color: rgba(0,0,0,0.85);
-            overflow: hidden;
-        }
-        footer > * { position: relative; z-index: 1; }
-        footer a { color: #fff; text-decoration: none; margin: 0 10px; font-weight: 600; }
-        footer a:hover { color: var(--accent-orange); }
-        .footer-nav { margin-bottom: 12px; }
-        .footer-badges { 
-            margin-top: 12px; 
-            opacity: 0.9; 
-            font-size: 0.65rem; 
-            letter-spacing: 1px; 
-            color: var(--accent-orange);
-            font-weight: bold;
+            .builder-container { grid-template-columns: 1fr; }
+            .summary-box { position: static; margin-top: 20px; }
         }
     </style>
 </head>
@@ -222,129 +218,102 @@
 
     <main>
         <section class="quote-section">
-            <h1>Instant <span style="color: var(--accent-orange);">Project Price</span></h1>
-            <p style="color: var(--muted-text); font-size: 1.1rem; max-width: 700px; margin: 0 auto;">Build your digital infrastructure with custom code, GMB optimization, and live development transparency.</p>
+            <h1>Instant <span style="color: var(--accent-orange);">Quote Builder</span></h1>
             
             <div class="builder-container">
                 <div class="options">
                     <h3>1. Infrastructure</h3>
-                    <div class="option-item selected">
-                        <div style="width: 100%;">
-                            <strong>Domain Selection (1 Year Min.)</strong>
-                            <p style="margin: 5px 0 10px 0; font-size: 0.75rem; color: var(--primary-blue); font-style: italic;">Note: Registration costs vary by availability and TLD.</p>
-                            <select id="domain-select">
-                                <option value="1200" data-name=".com Domain">Standard .com (₱1,200/yr)</option>
-                                <option value="3500" data-name=".ph Domain">Premium .ph (₱3,500/yr)</option>
-                                <option value="0" data-name="Existing Domain">I already have a domain (₱0)</option>
-                            </select>
-                        </div>
+                    <select id="domain-select" style="width: 100%; padding: 12px; background: #1a1c23; color: white; border: 1px solid #444; border-radius: 8px; margin-bottom: 10px;">
+                        <option value="1200">Standard .com (₱1,200/yr)</option>
+                        <option value="3500">Premium .ph (₱3,500/yr)</option>
+                        <option value="0">Existing Domain (₱0)</option>
+                    </select>
+
+                    <h3>2. Single-Page Options</h3>
+                    <div class="option-grid">
+                        <label class="option-item">
+                            <div class="check-indicator"></div>
+                            <input type="checkbox" class="price-trigger dev-group" data-price="10000">
+                            <strong>Essential Code [₱10,000]</strong>
+                            <p>Pure Custom Code Landing Page.</p>
+                            <details><summary>Details</summary><div class="detail-content">Custom HTML/CSS/JS, mobile-responsive layout, and contact form integration.</div></details>
+                        </label>
+                        <label class="option-item">
+                            <div class="check-indicator"></div>
+                            <input type="checkbox" class="price-trigger dev-group" data-price="15000">
+                            <strong>Full Ecosystem [₱15,000]</strong>
+                            <p>Landing Page + Google Discovery.</p>
+                            <details><summary>Details</summary><div class="detail-content">GMB setup, SEO foundations, Ads architecture, and GA4 traffic tracking.</div></details>
+                        </label>
                     </div>
 
-                    <h3>2. Core Development & Google Setup</h3>
-                    <label class="option-item">
-                        <input type="checkbox" class="price-trigger dev-group" data-price="10000" data-name="Growth Engine (1-Page)">
-                        <div style="width: 100%;">
-                            <strong>Single-Page Growth Engine</strong>
-                            <p style="margin:0; font-size: 0.85rem; color: var(--muted-text);">Landing Page + GMB Setup + Ads Config + Live Code Access.</p>
-                            <details>
-                                <summary>What exactly do I get?</summary>
-                                <div class="detail-content">
-                                    • <strong>Custom Site:</strong> Clean, conversion-focused single-page site.<br>
-                                    • <strong>GMB:</strong> Google Business Profile verification and Maps indexing.<br>
-                                    • <strong>Ads Config:</strong> Technical setup of conversion tracking & account.<br>
-                                    • <strong>Live Access:</strong> GitHub Dev Hub access to watch the build real-time.<br>
-                                    <span style="color: var(--accent-orange); font-weight: bold; font-size: 0.75rem;">⚠️ NOTE: Setup fee does NOT include Google Ad Budget.</span>
-                                </div>
-                            </details>
-                        </div>
-                    </label>
-                    
-                    <label class="option-item">
-                        <input type="checkbox" class="price-trigger dev-group" data-price="16500" data-name="Business Suite (Multi-Page)">
-                        <div style="width: 100%;">
-                            <strong>Multi-Page Business Suite</strong>
-                            <p style="margin:0; font-size: 0.85rem; color: var(--muted-text);">Full Corporate Site + Complete Google Ecosystem + Live Code Access.</p>
-                            <details>
-                                <summary>View breakdown</summary>
-                                <div class="detail-content">
-                                    Ideal for service providers. Includes Home, Services, About, and Contact pages. Advanced SEO Schema markup included for higher ranking potential. 100% transparent development via GitHub.
-                                </div>
-                            </details>
-                        </div>
-                    </label>
+                    <h3>3. Multi-Page Options</h3>
+                    <div class="option-grid">
+                        <label class="option-item">
+                            <div class="check-indicator"></div>
+                            <input type="checkbox" class="price-trigger dev-group" data-price="20000">
+                            <strong>Essential Suite [₱20,000]</strong>
+                            <p>Full Multi-Page Corporate Site.</p>
+                            <details><summary>Details</summary><div class="detail-content">Home, About, Services, and Contact pages. Clean, professional code architecture.</div></details>
+                        </label>
+                        <label class="option-item">
+                            <div class="check-indicator"></div>
+                            <input type="checkbox" class="price-trigger dev-group" data-price="28000">
+                            <strong>Full Ecosystem [₱28,000]</strong>
+                            <p>Corporate Site + 24/7 Lead Stack.</p>
+                            <details><summary>Details</summary><div class="detail-content">Everything in Essential Suite plus advanced SEO, GMB lock, and GA4/Ads integration.</div></details>
+                        </label>
+                    </div>
 
-                    <h3>3. Monthly Growth & Maintenance</h3>
-                    <label class="option-item">
-                        <input type="checkbox" class="price-trigger monthly-check maint-group" id="mgmt-check" data-price="1500" data-name="Maintenance & Ads Mgmt">
-                        <div style="width: 100%;">
-                            <strong>Ads Management & SEO Maintenance</strong>
-                            <p style="margin:0; font-size: 0.85rem; color: var(--muted-text);">Weekly monitoring, code updates & ad optimization (₱1,500/mo).</p>
-                            <details id="ads-calculator-details">
-                                <summary>Estimate your Google Ad Spend & Reach</summary>
-                                <div class="detail-content">
-                                    <label style="font-size: 0.8rem; color: #fff;">Daily Ad Budget: <strong>₱<span id="daily-val">200</span></strong></label>
-                                    <input type="range" id="ad-slider" min="100" max="2000" step="50" value="200" style="width: 100%; margin: 12px 0; accent-color: var(--accent-orange);">
-                                    <div style="text-align: center; background: rgba(10, 88, 202, 0.15); padding: 15px; border-radius: 10px; margin-bottom: 15px; border: 1px dashed var(--primary-blue);">
-                                        <span style="font-size: 0.7rem; color: var(--muted-text); display: block; text-transform: uppercase; letter-spacing: 1px;">Monthly Traffic Forecast</span>
-                                        <strong style="font-size: 1.3rem; color: #fff;"><span id="est-clicks">300</span> Potential Customers</strong>
-                                    </div>
-                                    <div style="background: rgba(0,0,0,0.4); padding: 15px; border-radius: 8px; font-size: 0.8rem;">
-                                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                                            <span>Est. Google Spend <div class="tooltip">ⓘ<span class="tooltiptext">Paid directly to Google via your credit card.</span></div></span> 
-                                            <span>₱<span id="google-spend-val">6,000</span></span>
-                                        </div>
-                                        <div style="display: flex; justify-content: space-between; align-items: center; color: var(--primary-blue);">
-                                            <span>JDR Mgmt Fee <div class="tooltip">ⓘ<span class="tooltiptext">Professional monitoring and ROI optimization.</span></div></span> 
-                                            <span>₱1,500</span>
-                                        </div>
-                                        <hr style="border: 0; border-top: 1px solid #333; margin: 10px 0;">
-                                        <div style="display: flex; justify-content: space-between; font-weight: bold; color: white; font-size: 0.9rem;"><span>Total Monthly Investment:</span> <span>₱<span id="total-monthly-val">7,500</span></span></div>
-                                    </div>
-                                </div>
-                            </details>
-                        </div>
-                    </label>
-                    <label class="option-item" id="no-mgmt-label">
-                        <input type="checkbox" id="no-mgmt-check" class="maint-group">
-                        <div style="width: 100%;">
-                            <strong>No Maintenance (Self-Managed)</strong>
-                            <p style="margin:0; font-size: 0.85rem; color: var(--muted-text);">One-time setup only. Client assumes responsibility for all future updates.</p>
-                            <details id="no-mgmt-details">
-                                <summary>Note for self-managed projects</summary>
-                                <div class="detail-content">
-                                    Selecting this means you will handle technical updates, hosting renewals, and ad bidding yourself. Support requests post-turnover will be billed at an hourly rate.
-                                </div>
-                            </details>
-                        </div>
-                    </label>
+                    <h3>4. Monthly Maintenance</h3>
+                    <div class="option-grid">
+                        <label class="option-item">
+                            <div class="check-indicator"></div>
+                            <input type="checkbox" class="price-trigger monthly-check maint-group" id="mgmt-check" data-price="1500">
+                            <strong>Active [₱1,500/mo]</strong>
+                            <p>Updates, SEO & Ads Monitoring.</p>
+                            <details><summary>Details</summary><div class="detail-content">Ongoing site maintenance, security updates, SEO rank monitoring, and Ad campaign management.</div></details>
+                        </label>
+                        <label class="option-item">
+                            <div class="check-indicator"></div>
+                            <input type="checkbox" id="no-mgmt-check" class="maint-group">
+                            <strong>Self-Managed [₱0]</strong>
+                            <p>One-time delivery.</p>
+                            <details><summary>Details</summary><div class="detail-content">Client handles all future updates, hosting renewals, and marketing adjustments manually.</div></details>
+                        </label>
+                    </div>
                 </div>
 
                 <div class="summary-box">
-                    <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--primary-blue); font-weight: 800; margin-bottom: 5px;">Build Total</div>
+                    <div style="font-size: 0.75rem; color: var(--primary-blue); font-weight: 800;">ESTIMATED TOTAL</div>
                     <div class="total-price">₱<span id="display-total">1,200</span></div>
-                    <div class="price-breakdown">
-                        <div class="payment-row">
-                            <span class="payment-label" style="color: var(--accent-orange);">Downpayment</span>
-                            <span class="payment-value">₱<span id="display-advance">1,200</span></span>
-                        </div>
-                        <p style="font-size: 0.75rem; margin: 0 0 15px 0; opacity: 0.8;">Domain + 50% Labor to begin</p>
-                        <div class="payment-row" style="border-top: 1px solid #333; padding-top: 12px;">
-                            <span class="payment-label" style="color: var(--muted-text);">Balance</span>
-                            <span class="payment-value" style="color: var(--muted-text);">₱<span id="display-balance">0</span></span>
-                        </div>
-                        <p style="font-size: 0.75rem; margin: 0; opacity: 0.8;">Due upon project sign-off</p>
+                    
+                    <div class="payment-row" style="margin-top:15px">
+                        <span>Downpayment (50%):</span>
+                        <span style="color:var(--accent-orange)">₱<span id="display-advance">1,200</span></span>
+                    </div>
+                    <div class="payment-row">
+                        <span>Balance:</span>
+                        <span>₱<span id="display-balance">0</span></span>
                     </div>
 
-                    <div id="monthly-summary" style="display: none;" class="monthly-notice">
-                        <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-orange); font-weight: 900; margin-bottom: 5px;">Recurrent Monthly</div>
-                        <div style="font-size: 2rem; color: #fff; font-weight: 800; margin-bottom: 12px;">₱<span id="display-combined-monthly">0</span></div>
-                        <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px; font-size: 0.8rem; color: var(--muted-text);">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 3px;">
-                                <span>Mgmt: ₱<span id="display-monthly">0</span></span>
-                                <span>Ads: ₱<span id="display-google">0</span></span>
-                            </div>
+                    <div id="monthly-summary" style="display: none; background: rgba(249, 140, 21, 0.1); padding: 15px; border-radius: 8px; margin-top: 15px; border: 1px solid var(--accent-orange);">
+                        <div style="font-size: 0.7rem; font-weight: 800; color: var(--light-text); margin-bottom: 5px; text-transform: uppercase;">Recurring Monthly</div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: bold; color: var(--accent-orange);">
+                            <span>MONTHLY TOTAL:</span>
+                            <span>₱<span id="display-monthly-total">1,500</span></span>
                         </div>
                     </div>
+
+                    <div class="ads-calculator-card" id="ads-card">
+                        <h4 style="font-size: 0.7rem; color: var(--accent-orange); margin: 0 0 10px 0;">Ads Budget Estimator</h4>
+                        <div class="ads-input-row">
+                            <label style="font-size: 0.7rem;">Daily Budget:</label>
+                            <input type="number" id="daily-ads-input" placeholder="0" min="0">
+                        </div>
+                    </div>
+
+                    <a href="contact.html" class="cta-button">Confirm Quote</a>
                 </div>
             </div>
         </section>
@@ -367,7 +336,7 @@
         </div>
         <p>&copy; 2026 JDR WEB SOLUTIONS. All Rights Reserved.</p>
         <div class="footer-badges">
-            CUSTOM HTML ARCHITECTURE • GITHUB WORKFLOWS • GCASH VERIFIED BUSINESS
+            CUSTOM HTML ARCHITECTURE • GCASH VERIFIED BUSINESS
         </div>
     </footer>
 
@@ -375,115 +344,87 @@
         document.addEventListener('DOMContentLoaded', () => {
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('nav-menu');
-            
-            const closeMenu = () => {
-                if (navMenu.classList.contains('nav-active')) {
-                    navMenu.classList.remove('nav-active');
-                    hamburger.classList.remove('toggle');
-                }
-            };
-            
+
+            // Toggle menu on click
             hamburger.addEventListener('click', (e) => {
                 e.stopPropagation();
                 navMenu.classList.toggle('nav-active');
-                hamburger.classList.toggle('toggle');
             });
-            
-            window.addEventListener('scroll', closeMenu, { passive: true });
-            
+
+            // Hide menu when clicking outside
             document.addEventListener('click', (e) => {
-                if ((!navMenu.contains(e.target) && !hamburger.contains(e.target)) || e.target.tagName === 'A') {
-                    closeMenu();
+                if (navMenu.classList.contains('nav-active') && !navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                    navMenu.classList.remove('nav-active');
                 }
             });
 
-            /* --- CALCULATION LOGIC --- */
+            // Hide menu on scroll
+            window.addEventListener('scroll', () => {
+                if (navMenu.classList.contains('nav-active')) {
+                    navMenu.classList.remove('nav-active');
+                }
+            });
+
             const devChecks = document.querySelectorAll('.dev-group');
             const maintChecks = document.querySelectorAll('.maint-group');
             const domainSelect = document.getElementById('domain-select');
             const displayTotal = document.getElementById('display-total');
             const displayAdvance = document.getElementById('display-advance');
             const displayBalance = document.getElementById('display-balance');
-            const displayMonthly = document.getElementById('display-monthly');
-            const displayGoogle = document.getElementById('display-google');
-            const displayCombinedMonthly = document.getElementById('display-combined-monthly');
             const monthlySummary = document.getElementById('monthly-summary');
-            const adSlider = document.getElementById('ad-slider');
-            const dailyVal = document.getElementById('daily-val');
-            const googleSpendVal = document.getElementById('google-spend-val');
-            const totalMonthlyVal = document.getElementById('total-monthly-val');
-            const estClicks = document.getElementById('est-clicks');
-            const mgmtCheck = document.getElementById('mgmt-check');
+            const displayMonthlyTotal = document.getElementById('display-monthly-total');
+            const dailyAdsInput = document.getElementById('daily-ads-input');
             const noMgmtCheck = document.getElementById('no-mgmt-check');
-            const adsDetails = document.getElementById('ads-calculator-details');
-            const noMgmtDetails = document.getElementById('no-mgmt-details');
-
-            devChecks.forEach(c => { 
-                c.addEventListener('change', () => { 
-                    if(c.checked) devChecks.forEach(o => { if(o !== c) o.checked = false; }); 
-                    calculate(); 
-                }); 
-            });
-            
-            maintChecks.forEach(c => { 
-                c.addEventListener('change', () => { 
-                    if(c.checked) maintChecks.forEach(o => { if(o !== c) o.checked = false; }); 
-                    calculate(); 
-                }); 
-            });
 
             function calculate() {
-                let setupTotal = 0;
+                let setupTotal = parseInt(domainSelect.value);
                 let laborTotal = 0;
-                let monthlyMgmtFee = 0;
-                let domainCost = parseInt(domainSelect.value);
-                setupTotal += domainCost;
                 
-                const allChecks = document.querySelectorAll('.price-trigger, #no-mgmt-check');
-                allChecks.forEach(t => {
-                    const parentLabel = t.closest('.option-item');
-                    let price = parseInt(t.getAttribute('data-price') || 0);
-                    if(t.checked) {
-                        if(t.classList.contains('monthly-check')) { 
-                            monthlyMgmtFee += price; 
-                            adsDetails.open = true; 
-                        } else if (t.classList.contains('price-trigger')) { 
-                            setupTotal += price; 
-                            laborTotal += price; 
-                        }
-                        parentLabel.classList.add('selected');
-                    } else {
-                        parentLabel.classList.remove('selected');
-                        if(t.classList.contains('monthly-check')) adsDetails.open = false;
-                    }
+                devChecks.forEach(cb => {
+                    if(cb.checked) {
+                        setupTotal += parseInt(cb.dataset.price);
+                        laborTotal += parseInt(cb.dataset.price);
+                        cb.closest('.option-item').classList.add('selected');
+                    } else { cb.closest('.option-item').classList.remove('selected'); }
                 });
 
-                noMgmtDetails.open = noMgmtCheck.checked;
+                maintChecks.forEach(cb => {
+                    if(cb.checked) cb.closest('.option-item').classList.add('selected');
+                    else cb.closest('.option-item').classList.remove('selected');
+                });
 
-                let dailyBudget = parseInt(adSlider.value);
-                let monthlyGoogleSpend = dailyBudget * 30;
-                let clicks = Math.floor(monthlyGoogleSpend / 20); 
-                let combinedMonthly = monthlyMgmtFee + monthlyGoogleSpend;
-
-                dailyVal.innerText = dailyBudget.toLocaleString();
-                googleSpendVal.innerText = monthlyGoogleSpend.toLocaleString();
-                totalMonthlyVal.innerText = combinedMonthly.toLocaleString();
-                estClicks.innerText = clicks.toLocaleString();
-
-                const advance = domainCost + (laborTotal / 2);
-                const balance = setupTotal - advance;
-
+                const advance = parseInt(domainSelect.value) + (laborTotal / 2);
                 displayTotal.innerText = setupTotal.toLocaleString();
                 displayAdvance.innerText = Math.round(advance).toLocaleString();
-                displayBalance.innerText = Math.round(balance).toLocaleString();
-                displayMonthly.innerText = monthlyMgmtFee.toLocaleString();
-                displayGoogle.innerText = monthlyGoogleSpend.toLocaleString();
-                displayCombinedMonthly.innerText = combinedMonthly.toLocaleString();
-                monthlySummary.style.display = mgmtCheck.checked ? "block" : "none";
+                displayBalance.innerText = Math.round(setupTotal - advance).toLocaleString();
+
+                const maintenanceFee = document.getElementById('mgmt-check').checked ? 1500 : 0;
+                const monthlyAdsVal = (parseInt(dailyAdsInput.value) || 0) * 30;
+                displayMonthlyTotal.innerText = (maintenanceFee + monthlyAdsVal).toLocaleString();
+                monthlySummary.style.display = (maintenanceFee > 0 || monthlyAdsVal > 0) ? "block" : "none";
+                
+                if(noMgmtCheck.checked) {
+                    dailyAdsInput.value = "";
+                    dailyAdsInput.disabled = true;
+                    document.getElementById('ads-card').classList.add('disabled');
+                } else {
+                    dailyAdsInput.disabled = false;
+                    document.getElementById('ads-card').classList.remove('disabled');
+                }
             }
 
+            devChecks.forEach(c => c.addEventListener('change', () => {
+                if(c.checked) devChecks.forEach(o => { if(o !== c) o.checked = false; });
+                calculate();
+            }));
+
+            maintChecks.forEach(c => c.addEventListener('change', () => {
+                if(c.checked) maintChecks.forEach(o => { if(o !== c) o.checked = false; });
+                calculate();
+            }));
+
             domainSelect.addEventListener('change', calculate);
-            adSlider.addEventListener('input', calculate);
+            dailyAdsInput.addEventListener('input', calculate);
             calculate();
         });
     </script>
