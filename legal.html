@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" style="height: 100%;">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-31P3617CQT"></script>
+    <script async src="https://www.googletagmanager.com/gtag.js?id=G-31P3617CQT"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -14,6 +14,8 @@
     
     <title>Terms & Conditions | JMCY WEB SOLUTIONS</title>
     <meta name="description" content="Official Terms and Conditions for JMCY WEB SOLUTIONS. Understand our service agreements, domain ownership policies, and development standards.">
+    
+    <link rel="icon" type="image/png" href="1000015600.png">
     <link rel="canonical" href="https://jmcywebsolutions.com/legal.html">
 
     <style>
@@ -58,7 +60,7 @@
             flex-direction: column;
         }
 
-        /* --- VIDEO BACKGROUND --- */
+        /* --- STICKY VIDEO WRAPPER (UPDATED FOR COLOR) --- */
         .video-bg-wrap {
             position: absolute;
             top: 0;
@@ -72,6 +74,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            opacity: 1; /* Restore original video color */
         }
 
         /* --- NAVIGATION --- */
@@ -86,9 +89,8 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(0,0,0,0.85); 
+            background: transparent; /* Changed from black to allow video through */
             overflow: hidden;
-            /* Transform removed to prevent hiding */
             transition: background 0.3s ease;
         }
         nav > * { position: relative; z-index: 1; }
@@ -166,7 +168,7 @@
             color: #ddd;
             font-size: 0.8rem;
             position: relative;
-            background-color: rgba(0,0,0,0.85);
+            background-color: transparent; /* Allow video background through */
             overflow: hidden;
         }
         footer > * { position: relative; z-index: 1; }
@@ -306,7 +308,6 @@
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('nav-menu');
 
-            // 1. MOBILE MENU TOGGLE
             const closeMenu = () => {
                 if (navMenu.classList.contains('nav-active')) {
                     navMenu.classList.remove('nav-active');
@@ -320,18 +321,10 @@
                 hamburger.classList.toggle('toggle');
             });
 
-            // 2. SCROLL LOGIC: Only closes the menu if it's open. 
-            // The navbar bar itself stays visible.
-            window.addEventListener('scroll', () => {
-                closeMenu();
-            }, { passive: true });
+            window.addEventListener('scroll', closeMenu, { passive: true });
 
-            // 3. AUTO-CLOSE ON CLICK OUTSIDE OR ON LINK
             document.addEventListener('click', (e) => {
-                const isClickInsideMenu = navMenu.contains(e.target);
-                const isHamburger = hamburger.contains(e.target);
-                
-                if ((!isClickInsideMenu && !isHamburger) || e.target.tagName === 'A') {
+                if ((!navMenu.contains(e.target) && !hamburger.contains(e.target)) || e.target.tagName === 'A') {
                     closeMenu();
                 }
             });

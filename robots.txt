@@ -1,11 +1,11 @@
-# JDR WEB SOLUTIONS - Robots.txt
+# JMCY WEB SOLUTIONS - Robots.txt
 User-agent: *
 Allow: /
 
-# Block access to any potential system or temporary files
+# Block access to system or temporary files
 Disallow: /cgi-bin/
 Disallow: /tmp/
 Disallow: /private/
 
 # Point search engines to your sitemap
-Sitemap: https://jmcywebsolutions.com//sitemap.xml
+Sitemap: https://jmcywebsolutions.com/sitemap.xml

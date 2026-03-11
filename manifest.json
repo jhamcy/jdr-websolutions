@@ -1,0 +1,21 @@
+{
+  "name": "JMCY WEB SOLUTIONS",
+  "short_name": "JMCY",
+  "description": "Custom HTML Architecture & Real-Time Development",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#0C0D11",
+  "theme_color": "#0A58CA",
+  "icons": [
+    {
+      "src": "image_0.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "image_0.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Connection Lost | JMCY WEB SOLUTIONS</title>
+    <style>
+        :root {
+            --primary-blue: #0A58CA;
+            --accent-orange: #F98C15;
+            --dark-bg: #0C0D11;
+            --light-text: #F4F4F4;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            padding: 30px;
+            z-index: 2;
+            max-width: 90%;
+        }
+
+        .logo {
+            max-width: 250px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px rgba(10, 88, 202, 0.2));
+        }
+
+        .error-code {
+            font-size: clamp(5rem, 20vw, 10rem);
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin: 0;
+            line-height: 1;
+            text-shadow: 0 0 20px rgba(10, 88, 202, 0.4);
+        }
+
+        .error-message {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            color: var(--accent-orange);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: bold;
+        }
+
+        .description {
+            max-width: 450px;
+            margin: 0 auto 40px;
+            color: #A0A0A0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background-color: var(--primary-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 1px solid var(--primary-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+        }
+
+        .back-btn:hover {
+            background-color: transparent;
+            color: var(--primary-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(10, 88, 202, 0.2);
+        }
+
+        /* Glitch effect for the 404 text */
+        .glitch {
+            position: relative;
+        }
+        
+        .glitch::after {
+            content: "404";
+            position: absolute;
+            left: 2px;
+            text-shadow: -2px 0 #ff4b4b;
+            top: 0;
+            color: var(--primary-blue);
+            background: var(--dark-bg);
+            overflow: hidden;
+            clip: rect(0, 900px, 0, 0); 
+            animation: noise-anim 2.5s infinite linear alternate-reverse;
+        }
+
+        @keyframes noise-anim {
+            0% { clip: rect(15px, 9999px, 55px, 0); }
+            20% { clip: rect(85px, 9999px, 105px, 0); }
+            40% { clip: rect(25px, 9999px, 65px, 0); }
+            60% { clip: rect(75px, 9999px, 85px, 0); }
+            80% { clip: rect(15px, 9999px, 35px, 0); }
+            100% { clip: rect(95px, 9999px, 105px, 0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="/image_0.png" alt="JMCY WEB SOLUTIONS" class="logo">
+        
+        <h1 class="error-code glitch">404</h1>
+        <p class="error-message">Connection Lost</p>
+        
+        <p class="description">
+            The requested module or directory does not exist on our server. 
+            The link may be broken or the page has been moved to a new deployment.
+        </p>
+        
+        <a href="/index.html" class="back-btn">Return to Dashboard</a>
+    </div>
+
+</body>
+</html>

@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" style="height: 100%;">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-31P3617CQT"></script>
+    <script async src="https://www.googletagmanager.com/gtag.js?id=G-31P3617CQT"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-31P3617CQT');
+
+      gtag('config', 'G-31P3617CQT', {
+        'send_page_view': true,
+        'cookie_flags': 'SameSite=None;Secure'
+      });
     </script>
 
     <meta charset="UTF-8">
@@ -18,17 +22,25 @@
     <meta name="keywords" content="web development, custom HTML, GitHub staging, real-time web build, JMCY Web Solutions, responsive design, technical support">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://jmcywebsolutions.com/">
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="image_0.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="image_0.png">
+    <link rel="shortcut icon" href="image_0.png">
+    <link rel="apple-touch-icon" href="image_0.png">
+    <link rel="manifest" href="manifest.json">
+
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jmcywebsolutions.com/">
     <meta property="og:title" content="JMCY WEB SOLUTIONS | Real-Time Custom Web Development">
     <meta property="og:description" content="Expert HTML architecture with real-time transparency. Watch your vision come to life via private GitHub staging links.">
     <meta property="og:image" content="https://jmcywebsolutions.com/image_0.png">
+
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://jmcywebsolutions.com/">
     <meta property="twitter:title" content="JMCY WEB SOLUTIONS | Real-Time Custom Web Development">
     <meta property="twitter:description" content="Expert HTML architecture with real-time transparency. Watch your vision come to life through your private GitHub preview link.">
     <meta property="twitter:image" content="https://jmcywebsolutions.com/image_0.png">
-    <link rel="icon" type="image/png" href="image_0.png">
+    
     <style>
         /* --- BRAND VARIABLES --- */
         :root {
@@ -226,7 +238,7 @@
 </head>
 <body>
     <nav>
-        <div class="video-bg-wrap">
+        <div class="video-bg-wrap" aria-hidden="true">
             <video autoplay loop muted playsinline>
                 <source src="81092-574743664_medium.mp4" type="video/mp4">
             </video>
@@ -353,7 +365,7 @@
         </section>
     </main>
     <footer>
-        <div class="video-bg-wrap">
+        <div class="video-bg-wrap" aria-hidden="true">
             <video autoplay loop muted playsinline>
                 <source src="81092-574743664_medium.mp4" type="video/mp4">
             </video>

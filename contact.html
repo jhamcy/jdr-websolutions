@@ -33,7 +33,7 @@
 
         .main-content { flex: 1 0 auto; }
 
-        /* --- STICKY VIDEO WRAPPER --- */
+        /* --- STICKY VIDEO WRAPPER (UPDATED FOR COLOR) --- */
         .sticky-wrapper {
             position: sticky;
             top: 0;
@@ -41,6 +41,7 @@
             width: 100%;
             overflow: hidden;
             border-bottom: 1px solid #222;
+            background: transparent; /* Removed black background */
         }
 
         .video-wrapper {
@@ -60,11 +61,14 @@
             transform: translate(-50%, -50%);
             z-index: 0;
             object-fit: cover;
+            opacity: 1; /* Restore full video color */
         }
 
         .layer-content {
             position: relative;
             z-index: 1;
+            /* Added a soft gradient to ensure text remains readable over original video colors */
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1));
         }
 
         /* --- NAVIGATION --- */
@@ -286,11 +290,13 @@
         .btn-close-thx { background: var(--primary-blue); border: none; color: white; padding: 10px 20px; border-radius: 4px; margin-top: 20px; cursor: pointer; }
         .thx-icon { font-size: 3rem; color: var(--accent-orange); display: block; margin-bottom: 10px; }
 
-        /* --- FOOTER --- */
+        /* --- FOOTER (UPDATED FOR COLOR) --- */
         footer {
             flex-shrink: 0; padding: 20px 5%; text-align: center;
             border-top: 1px solid #333; color: #ddd; font-size: 0.8rem;
-            position: relative; background-color: rgba(0,0,0,0.85); overflow: hidden;
+            position: relative; 
+            background: transparent; /* Removed black overlay */
+            overflow: hidden;
         }
         footer > * { position: relative; z-index: 1; }
         footer a { color: #fff; text-decoration: none; margin: 0 8px; font-weight: 600; }

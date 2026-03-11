@@ -1,17 +1,37 @@
-<!DOCTYPE html> <html lang="en" style="height: 100%;"> <head> <script async src="https://www.googletagmanager.com/gtag/js?id=G-31P3617CQT"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-31P3617CQT'); </script> 
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag.js?id=G-31P3617CQT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-31P3617CQT', {
+        'send_page_view': true,
+        'cookie_flags': 'SameSite=None;Secure'
+      });
+    </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Web Development Pricing & Instant Quote | JMCY WEB SOLUTIONS</title>
-    <meta name="description" content="Calculate your custom web development costs instantly. Transparent pricing for landing pages, corporate sites, SEO, and Google Ads management in the Philippines.">
+    <meta name="description" content="Calculate your custom web development costs instantly. Transparent pricing for landing pages, corporate sites, SEO, and Google Ads management.">
     <meta name="keywords" content="web development price philippines, website cost calculator, JMCY Web Solutions quote, affordable web design, SEO pricing">
     <link rel="canonical" href="https://jmcywebsolutions.com/quote.html">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="image_0.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="image_0.png">
+    <link rel="shortcut icon" href="image_0.png">
+    <link rel="apple-touch-icon" href="image_0.png">
+    <link rel="manifest" href="manifest.json">
 
     <meta property="og:title" content="Instant Web Design Quote | JMCY WEB SOLUTIONS">
     <meta property="og:description" content="Get a real-time estimate for your next web project. Choose your features and see your 50% downpayment breakdown instantly.">
     <meta property="og:url" content="https://jmcywebsolutions.com/quote.html">
     <meta property="og:type" content="website">
+    <meta property="og:image" content="https://jmcywebsolutions.com/image_0.png">
 
     <script type="application/ld+json">
     {
@@ -129,6 +149,34 @@
         }
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
+        @media (max-width: 768px) { .hamburger { display: flex; } }
+
+        /* --- LOGO HEADER --- */
+        .logo-header { 
+            padding: 15px 5%; 
+            text-align: center; 
+            background-color: #000; 
+            width: 100%;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 1;
+        }
+        .main-logo { 
+            max-width: 300px; 
+            width: 100%; 
+            height: auto; 
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            backdrop-filter: blur(4px);
+            animation: fadeInScale 1s ease-out forwards;
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
 
         /* --- QUOTE BUILDER UI --- */
         .quote-section { padding: 40px 5% 80px; text-align: center; position: relative; z-index: 1; }
@@ -180,8 +228,9 @@
         .cta-button {
             display: block; background: var(--primary-blue); color: white;
             text-align: center; padding: 12px 24px; border-radius: 6px; text-decoration: none;
-            font-weight: bold; margin-top: 15px;
+            font-weight: bold; margin-top: 15px; transition: 0.3s;
         }
+        .cta-button:hover { background: #0849aa; transform: scale(1.02); }
 
         /* ADS CALCULATOR */
         .ads-calculator-card {
@@ -199,7 +248,7 @@
         footer {
             flex-shrink: 0; padding: 20px 5%; text-align: center;
             border-top: 1px solid #333; color: #ddd; font-size: 0.8rem;
-            position: relative; background-color: rgba(0,0,0,0.85); overflow: hidden;
+            position: relative; background-color: #000; overflow: hidden;
         }
         footer > * { position: relative; z-index: 1; }
         footer a { color: #fff; text-decoration: none; margin: 0 8px; font-weight: 600; }
@@ -208,11 +257,13 @@
         .footer-badges { margin-top: 10px; opacity: 0.8; font-size: 0.65rem; color: var(--accent-orange); font-weight: bold; }
 
         @media (max-width: 768px) {
-            .hamburger { display: flex; }
             .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; flex-direction: column; width: 260px; transform: translateX(100%); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding-top: 70px; border-left: 1px solid #222; align-items: flex-start; }
-            .nav-links li { width: 100%; margin: 0; }
+            .nav-links li { width: 100%; margin: 0; opacity: 0; transform: translateX(20px); transition: 0.3s ease; }
             .nav-links a { display: block; width: 100%; padding: 20px 30px; font-size: 0.95rem; border-bottom: 1px solid #111; box-sizing: border-box; }
             .nav-active { transform: translateX(0%); }
+            .nav-active li { opacity: 1; transform: translateX(0); }
+            .nav-active li:nth-child(n) { transition-delay: calc(0.1s * var(--i, 1)); }
+            
             .builder-container { grid-template-columns: 1fr; }
             .summary-box { position: static; margin-top: 20px; }
         }
@@ -230,13 +281,13 @@
             JMCY WEB SOLUTIONS<br><span>Real-Time Custom Web Development</span>
         </a>
         <ul class="nav-links" id="nav-menu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="service.html">Services</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="legal.html">Terms & Conditions</a></li>
-            <li><a href="quote.html" class="active-link">Projects / Pricing</a></li>
-            <li><a href="contact.html" class="nav-quote-btn">Get Started</a></li>
+            <li style="--i:1"><a href="index.html">Home</a></li>
+            <li style="--i:2"><a href="about.html">About Us</a></li>
+            <li style="--i:3"><a href="service.html">Services</a></li>
+            <li style="--i:4"><a href="portfolio.html">Portfolio</a></li>
+            <li style="--i:5"><a href="legal.html">Terms & Conditions</a></li>
+            <li style="--i:6"><a href="quote.html" class="active-link">Projects / Pricing</a></li>
+            <li style="--i:7"><a href="contact.html" class="nav-quote-btn">Get Started</a></li>
         </ul>
         <div class="hamburger" id="hamburger">
             <div class="line1"></div><div class="line2"></div><div class="line3"></div>
@@ -244,6 +295,10 @@
     </nav>
 
     <main>
+        <header class="logo-header">
+            <img src="image_0.png" alt="JMCY WEB SOLUTIONS Logo" class="main-logo">
+        </header>
+
         <section class="quote-section">
             <h1>Estimate Your <span style="color: var(--accent-orange);">Digital Investment</span></h1>
             <p style="font-size: 0.85rem; color: var(--muted-text); margin-bottom: 30px;">Select your infrastructure and development tier to get an instant breakdown.</p>
@@ -256,7 +311,7 @@
                         <option value="3500">New Local .ph / .com.ph (₱3,500/yr)</option>
                         <option value="0">Use My Existing Domain (₱0)</option>
                     </select>
-                    <p style="font-size: 0.65rem; color: var(--muted-text); margin-bottom: 20px;">* Note: Clients retain full ownership of all purchased domains.</p>
+                    <p style="font-size: 0.65rem; color: var(--muted-text); margin-bottom: 20px;">* Clients retain full ownership of all purchased domains.</p>
 
                     <h3>2. Single-Page Development</h3>
                     <div class="option-grid">
@@ -272,7 +327,7 @@
                             <input type="checkbox" class="price-trigger dev-group" data-price="15000">
                             <strong>Full Ecosystem [₱15,000]</strong>
                             <p>Landing Page + Business Visibility.</p>
-                            <details><summary>Details</summary><div class="detail-content">Everything in Essential + Google My Business setup, foundational SEO, and GA4 Analytics.</div></details>
+                            <details><summary>Details</summary><div class="detail-content">Everything in Essential + Google Business setup, foundational SEO, and GA4 Analytics.</div></details>
                         </label>
                     </div>
 
@@ -283,7 +338,7 @@
                             <input type="checkbox" class="price-trigger dev-group" data-price="20000">
                             <strong>Essential Suite [₱20,000]</strong>
                             <p>Professional Corporate Presence.</p>
-                            <details><summary>Details</summary><div class="detail-content">Home, About, Services, and Contact pages with a clean, performant code architecture.</div></details>
+                            <details><summary>Details</summary><div class="detail-content">Home, About, Services, and Contact pages with a clean, performant architecture.</div></details>
                         </label>
                         <label class="option-item">
                             <div class="check-indicator"></div>
@@ -305,7 +360,7 @@
                         </label>
                         <label class="option-item">
                             <div class="check-indicator"></div>
-                            <input type="checkbox" id="no-mgmt-check" class="maint-group">
+                            <input type="checkbox" id="no-mgmt-check" class="maint-group" checked>
                             <strong>Self-Managed [₱0]</strong>
                             <p>One-time delivery.</p>
                             <details><summary>Details</summary><div class="detail-content">Final project files delivered; client manages updates and hosting manually.</div></details>
@@ -330,7 +385,7 @@
                         <div style="font-size: 0.7rem; font-weight: 800; color: var(--light-text); margin-bottom: 5px; text-transform: uppercase;">Monthly Commitment</div>
                         <div style="display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: bold; color: var(--accent-orange);">
                             <span>RECURRING:</span>
-                            <span>₱<span id="display-monthly-total">1,500</span></span>
+                            <span>₱<span id="display-monthly-total">0</span></span>
                         </div>
                     </div>
 
@@ -365,7 +420,7 @@
         </div>
         <p>&copy; 2026 JMCY WEB SOLUTIONS. All Rights Reserved.</p>
         <div class="footer-badges">
-            CUSTOM HTML ARCHITECTURE • GCASH VERIFIED BUSINESS
+            CUSTOM HTML ARCHITECTURE • GITHUB WORKFLOWS • GCASH VERIFIED BUSINESS
         </div>
     </footer>
 
@@ -373,6 +428,16 @@
         document.addEventListener('DOMContentLoaded', () => {
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('nav-menu');
+            let scrollTimer;
+
+            // Scroll handling for floating effects
+            window.addEventListener('scroll', () => {
+                document.body.classList.add('is-scrolling');
+                clearTimeout(scrollTimer);
+                scrollTimer = setTimeout(() => {
+                    document.body.classList.remove('is-scrolling');
+                }, 400);
+            }, { passive: true });
 
             hamburger.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -397,12 +462,11 @@
             const noMgmtCheck = document.getElementById('no-mgmt-check');
 
             function calculate() {
-                let setupTotal = parseInt(domainSelect.value);
+                let domainPrice = parseInt(domainSelect.value);
                 let laborTotal = 0;
                 
                 devChecks.forEach(cb => {
                     if(cb.checked) {
-                        setupTotal += parseInt(cb.dataset.price);
                         laborTotal += parseInt(cb.dataset.price);
                         cb.closest('.option-item').classList.add('selected');
                     } else { cb.closest('.option-item').classList.remove('selected'); }
@@ -413,10 +477,12 @@
                     else cb.closest('.option-item').classList.remove('selected');
                 });
 
-                const advance = parseInt(domainSelect.value) + (laborTotal / 2);
-                displayTotal.innerText = setupTotal.toLocaleString();
+                const projectTotal = domainPrice + laborTotal;
+                const advance = domainPrice + (laborTotal / 2);
+                
+                displayTotal.innerText = projectTotal.toLocaleString();
                 displayAdvance.innerText = Math.round(advance).toLocaleString();
-                displayBalance.innerText = Math.round(setupTotal - advance).toLocaleString();
+                displayBalance.innerText = Math.round(projectTotal - advance).toLocaleString();
 
                 const maintenanceFee = document.getElementById('mgmt-check').checked ? 1500 : 0;
                 const monthlyAdsVal = (parseInt(dailyAdsInput.value) || 0) * 30;
