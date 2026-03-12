@@ -151,18 +151,15 @@
             width: 100%; 
             height: auto; 
             padding: 10px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(4px);
+            background: transparent; /* Removed grey background */
+            border: none; /* Removed border lines */
+            box-shadow: none; /* Removed shadow box */
+            mix-blend-mode: screen; /* Makes the image's white background transparent */
             transition: all 0.4s ease;
             animation: fadeInScale 1s ease-out forwards;
         }
         .main-logo:hover {
             transform: translateY(-3px) scale(1.02);
-            border-color: var(--primary-blue);
-            background: rgba(255, 255, 255, 0.05);
         }
         @keyframes fadeInScale {
             from { opacity: 0; transform: scale(0.95); }
