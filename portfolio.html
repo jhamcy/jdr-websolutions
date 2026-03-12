@@ -134,31 +134,28 @@
         @media (max-width: 768px) { .hamburger { display: flex; } }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
 
-        /* --- LOGO HEADER --- */
+        /* --- LOGO HEADER (Updated size & padding) --- */
         .logo-header { 
-            padding: 15px 5% 15px; 
+            padding: 0px 5% 10px; /* Reduced top padding for seamless flow */
             text-align: center; 
             background-color: #000; 
             width: 100%;
             box-sizing: border-box;
         }
         .main-logo { 
-            max-width: 300px; 
+            max-width: 220px; /* Reduced from 300px */
             width: 100%; 
             height: auto; 
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(4px);
+            padding: 0;
+            background: transparent; /* Removed background box */
+            border: none;
+            box-shadow: none;
+            mix-blend-mode: screen;
             transition: all 0.4s ease;
             animation: fadeInScale 1s ease-out forwards;
         }
         .main-logo:hover {
-            transform: translateY(-3px) scale(1.02);
-            border-color: var(--primary-blue);
-            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px) scale(1.02);
         }
 
         @keyframes fadeInScale {
@@ -219,7 +216,6 @@
             color: #ddd;
             font-size: 0.8rem;
             position: relative;
-            background-color: #000;
             background-color: rgba(0,0,0,0.85);
             overflow: hidden;
         }

@@ -151,9 +151,9 @@
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
         @media (max-width: 768px) { .hamburger { display: flex; } }
 
-        /* --- LOGO HEADER --- */
+        /* --- LOGO HEADER (Updated size & transparent style) --- */
         .logo-header { 
-            padding: 15px 5%; 
+            padding: 0px 5% 10px; 
             text-align: center; 
             background-color: #000; 
             width: 100%;
@@ -162,14 +162,14 @@
             z-index: 1;
         }
         .main-logo { 
-            max-width: 300px; 
+            max-width: 220px; /* Reduced from 300px */
             width: 100%; 
             height: auto; 
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            backdrop-filter: blur(4px);
+            padding: 0;
+            background: transparent; /* Box removed */
+            border: none;
+            backdrop-filter: none;
+            mix-blend-mode: screen;
             animation: fadeInScale 1s ease-out forwards;
         }
 
@@ -248,7 +248,7 @@
         footer {
             flex-shrink: 0; padding: 20px 5%; text-align: center;
             border-top: 1px solid #333; color: #ddd; font-size: 0.8rem;
-            position: relative; background-color: #000; overflow: hidden;
+            position: relative; background-color: rgba(0,0,0,0.85); overflow: hidden;
         }
         footer > * { position: relative; z-index: 1; }
         footer a { color: #fff; text-decoration: none; margin: 0 8px; font-weight: 600; }
@@ -430,7 +430,6 @@
             const navMenu = document.getElementById('nav-menu');
             let scrollTimer;
 
-            // Scroll handling for floating effects
             window.addEventListener('scroll', () => {
                 document.body.classList.add('is-scrolling');
                 clearTimeout(scrollTimer);

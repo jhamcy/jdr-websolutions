@@ -69,7 +69,7 @@
             flex-direction: column;
         }
 
-        /* --- STICKY VIDEO WRAPPER (UPDATED FOR COLOR) --- */
+        /* --- VIDEO BACKGROUND --- */
         .video-bg-wrap {
             position: absolute;
             top: 0;
@@ -83,7 +83,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 1; /* Restore original video color */
+            opacity: 1;
         }
 
         /* --- NAVIGATION --- */
@@ -98,7 +98,7 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background: transparent; /* Changed from black to allow video through */
+            background: rgba(0,0,0,0.85); 
             overflow: hidden;
             transition: background 0.3s ease;
         }
@@ -136,24 +136,25 @@
         @media (max-width: 768px) { .hamburger { display: flex; } }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
 
-        /* --- LOGO HEADER --- */
+        /* --- LOGO HEADER (Updated size & transparent style) --- */
         .logo-header { 
-            padding: 15px 5% 15px; 
+            padding: 0px 5% 10px; 
             text-align: center; 
             background-color: #000; 
-            width: 100%; 
-            box-sizing: border-box; 
+            width: 100%;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 1;
         }
         .main-logo { 
-            max-width: 300px; 
+            max-width: 220px; 
             width: 100%; 
             height: auto; 
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(4px);
+            padding: 0;
+            background: transparent;
+            border: none;
+            backdrop-filter: none;
+            mix-blend-mode: screen;
             animation: fadeInScale 1s ease-out forwards;
         }
 
@@ -162,7 +163,7 @@
         .legal-hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 10px; font-weight: 800; }
         
         .container { max-width: 1000px; margin: 0 auto; padding: 20px 5% 80px; }
-        .legal-box { background: var(--card-bg); padding: 40px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05); margin-top: 20px; }
+        .legal-box { background: var(--card-bg); padding: 40px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05); margin-top: 20px; backdrop-filter: blur(10px); }
         .legal-section { margin-bottom: 30px; }
         .legal-section h3 { color: var(--accent-orange); margin-top: 0; font-size: 1.1rem; border-bottom: 1px solid rgba(249, 140, 21, 0.2); padding-bottom: 10px; }
         .legal-section p, .legal-section li { color: var(--muted-text); font-size: 0.85rem; line-height: 1.6; margin-top: 15px; }
@@ -170,15 +171,9 @@
 
         /* --- FOOTER --- */
         footer {
-            flex-shrink: 0;
-            padding: 20px 5%;
-            text-align: center;
-            border-top: 1px solid #333;
-            color: #ddd;
-            font-size: 0.8rem;
-            position: relative;
-            background-color: transparent; /* Allow video background through */
-            overflow: hidden;
+            flex-shrink: 0; padding: 20px 5%; text-align: center;
+            border-top: 1px solid #333; color: #ddd; font-size: 0.8rem;
+            position: relative; background-color: rgba(0,0,0,0.85); overflow: hidden;
         }
         footer > * { position: relative; z-index: 1; }
         footer a { color: #fff; text-decoration: none; margin: 0 8px; font-weight: 600; }
@@ -198,9 +193,6 @@
             .nav-links li { width: 100%; margin: 0; }
             .nav-links a { display: block; width: 100%; padding: 20px 30px; font-size: 0.95rem; border-bottom: 1px solid #111; box-sizing: border-box; }
             .nav-active { transform: translateX(0%); }
-            .toggle .line1 { transform: rotate(-45deg) translate(-4px, 5px); }
-            .toggle .line2 { opacity: 0; }
-            .toggle .line3 { transform: rotate(45deg) translate(-4px, -5px); }
         }
     </style>
 </head>
@@ -320,14 +312,12 @@
             const closeMenu = () => {
                 if (navMenu.classList.contains('nav-active')) {
                     navMenu.classList.remove('nav-active');
-                    hamburger.classList.remove('toggle');
                 }
             };
 
             hamburger.addEventListener('click', (e) => {
                 e.stopPropagation();
                 navMenu.classList.toggle('nav-active');
-                hamburger.classList.toggle('toggle');
             });
 
             window.addEventListener('scroll', closeMenu, { passive: true });
