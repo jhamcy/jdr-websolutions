@@ -13,8 +13,6 @@
       });
     </script>
 
-<script src="https://spreadpreferencetelevision.com/25/63/6a/25636a97d0b10d79c797db1986a99856.js"></script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -88,6 +86,26 @@
             flex-direction: column;
         }
 
+        /* --- AD BANNER STYLING --- */
+        .ad-container {
+            width: 100%;
+            margin: 20px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px dashed #333;
+            text-align: center;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+        .ad-label {
+            font-size: 0.6rem;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
         /* --- VIDEO BACKGROUND --- */
         .video-bg-wrap {
             position: absolute;
@@ -153,7 +171,7 @@
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
         @media (max-width: 768px) { .hamburger { display: flex; } }
 
-        /* --- LOGO HEADER (Updated size & transparent style) --- */
+        /* --- LOGO HEADER --- */
         .logo-header { 
             padding: 0px 5% 10px; 
             text-align: center; 
@@ -164,11 +182,11 @@
             z-index: 1;
         }
         .main-logo { 
-            max-width: 220px; /* Reduced from 300px */
+            max-width: 220px; 
             width: 100%; 
             height: auto; 
             padding: 0;
-            background: transparent; /* Box removed */
+            background: transparent;
             border: none;
             backdrop-filter: none;
             mix-blend-mode: screen;
@@ -307,6 +325,12 @@
             
             <div class="builder-container">
                 <div class="options">
+                    <div class="ad-container">
+                        <span class="ad-label">Advertisement</span>
+                        <script async="async" data-cfasync="false" src="//spreadpreferencetelevision.com/2646f115de46c4b4c5e833512708597e/invoke.js"></script>
+                        <div id="container-2646f115de46c4b4c5e833512708597e"></div>
+                    </div>
+
                     <h3>1. Domain & Infrastructure</h3>
                     <select id="domain-select" style="width: 100%; padding: 12px; background: #1a1c23; color: white; border: 1px solid #444; border-radius: 8px; margin-bottom: 10px;">
                         <option value="1200">New Standard .com Registration (₱1,200/yr)</option>
@@ -515,5 +539,8 @@
             calculate();
         });
     </script>
+
+    <script src="https://spreadpreferencetelevision.com/25/63/6a/25636a97d0b10d79c797db1986a99856.js"></script>
+
 </body>
 </html>
