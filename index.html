@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" style="height: 100%;">
 <head>
-<script src="https://spreadpreferencetelevision.com/25/63/6a/25636a97d0b10d79c797db1986a99856.js"></script>
+    <script src="https://spreadpreferencetelevision.com/25/63/6a/25636a97d0b10d79c797db1986a99856.js"></script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-31P3617CQT"></script>
     <script>
@@ -103,6 +103,28 @@
         .float-whatsapp { background-color: #25D366; }
         .float-btn svg { width: 28px; height: 28px; fill: white; }
         .float-label { font-size: 0.65rem; font-weight: bold; color: #ccc; background: rgba(0,0,0,0.8); padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
+
+        /* AD BANNER CONTAINER STYLE */
+        .ad-banner-manual {
+            width: 100%;
+            max-width: 728px; /* Standard leaderboard width */
+            margin: 30px auto;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px dashed #333;
+            text-align: center;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .ad-tag-label {
+            font-size: 0.6rem;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
         @media (max-width: 768px) {
             .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; flex-direction: column; width: 260px; transform: translateX(100%); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding-top: 70px; border-left: 1px solid #222; align-items: flex-start; }
             .nav-links li { width: 100%; margin: 0; }
@@ -156,6 +178,9 @@
             </div>
         </section>
 
+        <div class="ad-banner-manual">
+            <span class="ad-tag-label">Advertisement</span>
+            </div>
         <section style="padding:60px 5%; background:#000; text-align:center; border-top: 1px solid #111;">
             <h2 style="font-size:1.8rem; margin-bottom:15px;">Our Development Process</h2>
             <p style="color:var(--muted-text); font-size:0.9rem; max-width:550px; margin:0 auto 40px;">A transparent workflow designed so you always know the status of your project.</p>
