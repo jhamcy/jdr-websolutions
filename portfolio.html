@@ -13,7 +13,7 @@
       });
     </script>
 
-<script src="https://spreadpreferencetelevision.com/25/63/6a/25636a97d0b10d79c797db1986a99856.js"></script>
+    <script src="https://spreadpreferencetelevision.com/25/63/6a/25636a97d0b10d79c797db1986a99856.js"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,12 +28,6 @@
     <link rel="shortcut icon" href="logo.png">
     <link rel="apple-touch-icon" href="logo.png">
     <link rel="manifest" href="manifest.json">
-
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://jmcywebsolutions.com/portfolio.html">
-    <meta property="og:title" content="Portfolio | JMCY WEB SOLUTIONS Showcase">
-    <meta property="og:description" content="View our latest live-deployed projects featuring high-speed mobile performance and advanced Schema SEO.">
-    <meta property="og:image" content="https://jmcywebsolutions.com/image_0.png">
 
     <style>
         /* --- BRAND VARIABLES --- */
@@ -69,6 +63,28 @@
             width: 100%;
             display: flex;
             flex-direction: column;
+        }
+
+        /* --- AD BANNER STYLING --- */
+        .ad-container {
+            width: 90%;
+            max-width: 728px;
+            margin: 20px auto;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px dashed #333;
+            text-align: center;
+            border-radius: 8px;
+            position: relative;
+            z-index: 1;
+        }
+        .ad-label {
+            font-size: 0.6rem;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            display: block;
         }
 
         /* --- VIDEO BACKGROUND --- */
@@ -173,7 +189,7 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 30px; 
-            padding: 60px 5%; 
+            padding: 40px 5% 60px; 
             margin: 0 auto;
             width: 100%;
             max-width: 1100px;
@@ -207,7 +223,7 @@
         .btn-live { text-decoration: none; padding: 14px; border-radius: 6px; font-weight: bold; font-size: 0.85rem; text-align: center; transition: 0.3s; background: var(--primary-blue); color: white; margin-top: auto; }
         .btn-live:hover { background: #0849aa; transform: scale(1.02); }
 
-        /* --- NEW SLIDER STYLES --- */
+        /* --- SLIDER STYLES --- */
         .slider-container { position: relative; width: 100%; height: 100%; overflow: hidden; }
         .slider-wrapper { display: flex; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); height: 100%; }
         .slide { min-width: 100%; height: 100%; background-size: cover; background-position: top center; }
@@ -302,6 +318,10 @@
             <h1>Live Build <span style="color: var(--accent-orange);">Showcase</span></h1>
             <p>Every project below was developed using our signature <strong>Live-Preview Protocol</strong>. Experience real-time transparency through direct GitHub deployment cycles.</p>
         </section>
+
+        <div class="ad-container">
+            <span class="ad-label">Advertisement</span>
+            </div>
 
         <section class="portfolio-grid">
             <article class="portfolio-card">

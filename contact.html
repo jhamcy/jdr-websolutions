@@ -6,16 +6,22 @@
       window.dataLayer = window.dataLayer || []; 
       function gtag(){dataLayer.push(arguments);} 
       gtag('js', new Date()); 
-      gtag('config', 'G-31P3617CQT'); 
+
+      gtag('config', 'G-31P3617CQT', {
+        'send_page_view': true,
+        'cookie_flags': 'SameSite=None;Secure'
+      });
     </script> 
 
-<script src="https://spreadpreferencetelevision.com/25/63/6a/25636a97d0b10d79c797db1986a99856.js"></script>
+    <script src="https://spreadpreferencetelevision.com/25/63/6a/25636a97d0b10d79c797db1986a99856.js"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>JMCY WEB SOLUTIONS | Get Started</title>
+    
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
     <style>
         /* --- BRAND VARIABLES --- */
         :root {
@@ -44,7 +50,29 @@
 
         .main-content { flex: 1 0 auto; }
 
-        /* --- STICKY VIDEO WRAPPER (UPDATED FOR COLOR) --- */
+        /* --- AD BANNER STYLING --- */
+        .ad-container {
+            width: 90%;
+            max-width: 728px;
+            margin: 20px auto 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px dashed #333;
+            text-align: center;
+            border-radius: 8px;
+            position: relative;
+            z-index: 1;
+        }
+        .ad-label {
+            font-size: 0.6rem;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        /* --- STICKY VIDEO WRAPPER --- */
         .sticky-wrapper {
             position: sticky;
             top: 0;
@@ -52,7 +80,7 @@
             width: 100%;
             overflow: hidden;
             border-bottom: 1px solid #222;
-            background: transparent; /* Removed black background */
+            background: transparent;
         }
 
         .video-wrapper {
@@ -72,13 +100,12 @@
             transform: translate(-50%, -50%);
             z-index: 0;
             object-fit: cover;
-            opacity: 1; /* Restore full video color */
+            opacity: 1;
         }
 
         .layer-content {
             position: relative;
             z-index: 1;
-            /* Added a soft gradient to ensure text remains readable over original video colors */
             background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1));
         }
 
@@ -301,12 +328,12 @@
         .btn-close-thx { background: var(--primary-blue); border: none; color: white; padding: 10px 20px; border-radius: 4px; margin-top: 20px; cursor: pointer; }
         .thx-icon { font-size: 3rem; color: var(--accent-orange); display: block; margin-bottom: 10px; }
 
-        /* --- FOOTER (UPDATED FOR COLOR) --- */
+        /* --- FOOTER --- */
         footer {
             flex-shrink: 0; padding: 20px 5%; text-align: center;
             border-top: 1px solid #333; color: #ddd; font-size: 0.8rem;
             position: relative; 
-            background: transparent; /* Removed black overlay */
+            background: transparent;
             overflow: hidden;
         }
         footer > * { position: relative; z-index: 1; }
@@ -364,6 +391,10 @@
         <h1>Project Inquiry</h1>
         <p>Build your custom digital solution</p>
     </header>
+
+    <div class="ad-container">
+        <span class="ad-label">Advertisement</span>
+        </div>
 
     <div class="form-container">
         <form id="inquiry-form">
@@ -579,8 +610,6 @@
     }
 
     function openTerms() { window.location.href = 'legal.html'; }
-    function closeTerms() { document.getElementById('terms-modal').style.display = 'none'; }
-    function closeThx() { document.getElementById('thx-modal').style.display = 'none'; }
     function selectRadio(id) { document.getElementById(id).checked = true; calculate(); }
     
     function calculate() {
@@ -665,6 +694,7 @@
     });
 
     calculate();
+    function closeThx() { document.getElementById('thx-modal').style.display = 'none'; }
 </script>
 
 <div id="thx-modal" class="modal">

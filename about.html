@@ -13,7 +13,7 @@
       });
     </script>
 
-<script src="https://spreadpreferencetelevision.com/25/63/6a/25636a97d0b10d79c797db1986a99856.js"></script>
+    <script src="https://spreadpreferencetelevision.com/25/63/6a/25636a97d0b10d79c797db1986a99856.js"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -134,20 +134,40 @@
         @media (max-width: 768px) { .hamburger { display: flex; } }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
 
-        /* --- LOGO HEADER (Updated size & position) --- */
+        /* --- AD BANNER STYLING --- */
+        .ad-container {
+            width: 100%;
+            max-width: 728px;
+            margin: 20px auto;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px dashed #333;
+            text-align: center;
+            border-radius: 8px;
+        }
+        .ad-label {
+            font-size: 0.6rem;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        /* --- LOGO HEADER --- */
         .logo-header { 
-            padding: 0px 5% 10px; /* Reduced top padding */
+            padding: 0px 5% 10px;
             text-align: center; 
             background-color: #000; 
             width: 100%;
             box-sizing: border-box;
         }
         .main-logo { 
-            max-width: 220px; /* Reduced size */
+            max-width: 220px;
             width: 100%; 
             height: auto; 
             padding: 0;
-            background: transparent; /* Removed box styling for cleaner look */
+            background: transparent;
             border: none;
             box-shadow: none;
             mix-blend-mode: screen;
@@ -256,6 +276,10 @@
             <h1>Our <span style="color: var(--primary-blue);">Mission</span></h1>
             <p style="color: var(--muted-text); font-size: 0.9rem; max-width: 500px; margin: 0 auto;">Building high-authority digital architecture with technical precision and SEO-first infrastructure.</p>
         </section>
+
+        <div class="ad-container">
+            <span class="ad-label">Advertisement</span>
+            </div>
 
         <div class="container">
             <div style="text-align: center; margin-bottom: 50px;">
