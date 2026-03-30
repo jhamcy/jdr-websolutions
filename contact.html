@@ -48,7 +48,6 @@
 
         .main-content { flex: 1 0 auto; }
 
-        /* --- AD BANNER STYLING --- */
         .ad-container {
             width: 90%;
             max-width: 728px;
@@ -71,7 +70,6 @@
             display: block;
         }
 
-        /* --- STICKY VIDEO WRAPPER --- */
         .sticky-wrapper {
             position: sticky;
             top: 0;
@@ -108,7 +106,6 @@
             background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1));
         }
 
-        /* --- NAVIGATION --- */
         nav { 
             padding: 0.7rem 5%; 
             display: flex; 
@@ -178,7 +175,6 @@
             transition: 0.3s; 
         }
 
-        /* --- HEADER & FORM --- */
         .page-header {
             text-align: center;
             padding: 40px 5% 20px;
@@ -327,7 +323,6 @@
         .btn-close-thx { background: var(--primary-blue); border: none; color: white; padding: 10px 20px; border-radius: 4px; margin-top: 20px; cursor: pointer; }
         .thx-icon { font-size: 3rem; color: var(--accent-orange); display: block; margin-bottom: 10px; }
 
-        /* --- FOOTER --- */
         footer {
             flex-shrink: 0; padding: 20px 5%; text-align: center;
             border-top: 1px solid #333; color: #ddd; font-size: 0.8rem;
@@ -583,8 +578,8 @@
         });
     });
 
-    const SUPABASE_URL = 'https://yphtlcsgicbzjrcyxybp.supabase.co';
-    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlwaHRsY3NnaWNiempyY3l4eWJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI3Njk0NDAsImV4cCI6MjA4ODM0NTQ0MH0.Bb6ShJPt1be2VwcOMG_CKziYwjIBaoDGgs9B2DEYpm0';
+    const SUPABASE_URL = 'https://rtpeofjlmtljwabmthsf.supabase.co';
+    const SUPABASE_KEY = 'EyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ0cGVvZmpsbXRsandhYm10aHNmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ4ODI5MjAsImV4cCI6MjA5MDQ1ODkyMH0.w8V7fORbWYnD2gXQ0v8lS_287OSrNKxoHZ6vuzRHodE';
     const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
     const EJS_SERVICE_ID = 'service_9azfmgp';
     const EJS_TEMPLATE_ID = 'template_rug054q';
@@ -644,7 +639,7 @@
     document.getElementById('inquiry-form').addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        const myWhatsAppNumber = "639171234567"; // Replace with your actual number
+        const myWhatsAppNumber = "639171234567"; 
 
         const btn = document.getElementById('submit-btn');
         const status = document.getElementById('status-msg');
@@ -676,6 +671,7 @@
             let publicUrls = [];
             for (const file of uploadedFilesArray) {
                 const fileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
+                // Uploading to bucket named 'project-files'
                 const { error: upErr } = await _supabase.storage.from('project-files').upload(fileName, file);
                 if (upErr) throw upErr;
                 const url = _supabase.storage.from('project-files').getPublicUrl(fileName).data.publicUrl;
@@ -696,7 +692,6 @@
             await _supabase.from('inquiries').insert([formData]);
             await emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, formData);
 
-            // Constructing text message for WhatsApp
             let text = `*NEW PROJECT INQUIRY*\n` +
                        `--------------------------\n` +
                        `*Client:* ${name}\n` +
@@ -726,7 +721,6 @@
                     `*TOTAL QUOTE:* ${total}\n` +
                     `*REQUIRED DEPOSIT:* ${advance}`;
 
-            // Final URL encoding for reliability
             const whatsappUrl = `https://wa.me/${myWhatsAppNumber}?text=${encodeURIComponent(text)}`;
             window.open(whatsappUrl, '_blank').focus();
 
