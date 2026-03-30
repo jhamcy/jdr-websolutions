@@ -578,6 +578,7 @@
         });
     });
 
+    // FIXED: Using Public Anon Key to resolve JWS Protected Header error
     const SUPABASE_URL = 'https://rtpeofjlmtljwabmthsf.supabase.co';
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ0cGVvZmpsbXRsandhYm10aHNmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ4ODI5MjAsImV4cCI6MjA5MDQ1ODkyMH0.w8V7fORbWYnD2gXQ0v8lS_287OSrNKxoHZ6vuzRHodE';
     const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -694,7 +695,7 @@
             let text = `*NEW PROJECT INQUIRY*\n` +
                        `--------------------------\n` +
                        `*Client:* ${name}\n` +
-                       `*Email:* ${email}\n` + // ADDED EMAIL FIELD HERE
+                       `*Email:* ${email}\n` +
                        `*Web Name:* ${webName}\n` +
                        `*Phone:* ${phone}\n` +
                        `--------------------------\n` +
@@ -722,7 +723,12 @@
                     `*REQUIRED DEPOSIT:* ${advance}`;
 
             const whatsappUrl = `https://wa.me/${myWhatsAppNumber}?text=${encodeURIComponent(text)}`;
-            window.open(whatsappUrl, '_blank').focus();
+            
+            // FIXED: Removed .focus() and added fallback for mobile browsers blocking popups
+            const newWindow = window.open(whatsappUrl, '_blank');
+            if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+                window.location.href = whatsappUrl;
+            }
 
             status.style.display = "none";
             document.getElementById('thx-modal').style.display = 'block';
