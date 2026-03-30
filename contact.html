@@ -456,7 +456,7 @@
             <span class="section-title">2. Core Development Packages</span>
             <div class="option-grid">
                 <div class="option-card" id="card-dev1" onclick="selectRadio('dev1')">
-                    <input type="radio" name="dev_package" id="dev1" value="Essential-Code" data-price="10000" onchange="calculate()" checked>
+                    <input type="radio" name="dev_package" id="dev1" value="Essential Code" data-price="10000" onchange="calculate()" checked>
                     <div class="card-text">
                         <span class="card-title">Essential Code</span>
                         <span class="price-tag">₱10,000</span>
@@ -464,7 +464,7 @@
                     </div>
                 </div>
                 <div class="option-card" id="card-dev2" onclick="selectRadio('dev2')">
-                    <input type="radio" name="dev_package" id="dev2" value="Full-Ecosystem-SP" data-price="15000" onchange="calculate()">
+                    <input type="radio" name="dev_package" id="dev2" value="Growth Ecosystem" data-price="15000" onchange="calculate()">
                     <div class="card-text">
                         <span class="card-title">Growth Ecosystem</span>
                         <span class="price-tag">₱15,000</span>
@@ -472,7 +472,7 @@
                     </div>
                 </div>
                 <div class="option-card" id="card-dev3" onclick="selectRadio('dev3')">
-                    <input type="radio" name="dev_package" id="dev3" value="Essential-Suite" data-price="20000" onchange="calculate()">
+                    <input type="radio" name="dev_package" id="dev3" value="Corporate Suite" data-price="20000" onchange="calculate()">
                     <div class="card-text">
                         <span class="card-title">Corporate Suite</span>
                         <span class="price-tag">₱20,000</span>
@@ -480,7 +480,7 @@
                     </div>
                 </div>
                 <div class="option-card" id="card-dev4" onclick="selectRadio('dev4')">
-                    <input type="radio" name="dev_package" id="dev4" value="Full-Ecosystem-MP" data-price="28000" onchange="calculate()">
+                    <input type="radio" name="dev_package" id="dev4" value="Elite Ecosystem" data-price="28000" onchange="calculate()">
                     <div class="card-text">
                         <span class="card-title">Elite Ecosystem</span>
                         <span class="price-tag">₱28,000</span>
@@ -492,7 +492,7 @@
             <span class="section-title">3. Growth & Maintenance</span>
             <div class="option-grid">
                 <div class="option-card" id="card-maint1" onclick="selectRadio('maint1')">
-                    <input type="radio" name="maintenance" id="maint1" value="Managed" data-price="1500" onchange="calculate()" checked>
+                    <input type="radio" name="maintenance" id="maint1" value="Managed Growth" data-price="1500" onchange="calculate()" checked>
                     <div class="card-text">
                         <span class="card-title">Managed Growth</span>
                         <span class="price-tag">₱1,500/mo</span>
@@ -644,7 +644,6 @@
     document.getElementById('inquiry-form').addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        // --- 1. SET YOUR WHATSAPP NUMBER HERE ---
         const myWhatsAppNumber = "639171234567"; // No + or spaces
 
         const btn = document.getElementById('submit-btn');
@@ -657,7 +656,7 @@
         status.innerText = "Processing inquiry and opening WhatsApp...";
 
         try {
-            // Collect Field Data
+            // Basic Fields
             const name = document.getElementById('full-name').value;
             const email = document.getElementById('email-address').value;
             const phone = document.getElementById('phone-input').value;
@@ -666,6 +665,18 @@
             const desc = document.getElementById('project-desc').value;
             const total = document.getElementById('display-total').innerText;
             const advance = document.getElementById('display-advance').innerText;
+
+            // --- Capture Selection Details ---
+            const domainSelect = document.getElementById('domain-select');
+            const selectedDomain = domainSelect.options[domainSelect.selectedIndex].text;
+            
+            const selectedPackage = document.querySelector('input[name="dev_package"]:checked').value;
+            const selectedMaint = document.querySelector('input[name="maintenance"]:checked').value;
+            
+            // SEO Details
+            const isManaged = document.getElementById('maint1').checked;
+            const monthlyTotal = document.getElementById('display-monthly-total').innerText;
+            const trafficEst = document.getElementById('display-traffic').innerText;
 
             let publicUrls = [];
             for (const file of uploadedFilesArray) {
@@ -687,27 +698,33 @@
                 attachment: publicUrls.length > 0 ? publicUrls.join(", ") : "None provided"
             };
 
-            // Save to DB and Email as Backup
             await _supabase.from('inquiries').insert([formData]);
             await emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, formData);
 
-            // --- 2. CONSTRUCT WHATSAPP MESSAGE ---
-            const messageText = `*NEW PROJECT INQUIRY*%0A` +
-                                `--------------------------%0A` +
-                                `*Client:* ${name}%0A` +
-                                `*Email:* ${email}%0A` +
-                                `*Phone:* ${phone}%0A` +
-                                `*Web Name:* ${webName}%0A` +
-                                `*Preferred Contact:* ${method}%0A` +
-                                `--------------------------%0A` +
-                                `*Project Description:*%0A${desc}%0A` +
-                                `--------------------------%0A` +
-                                `*Quoted Total:* ${total}%0A` +
-                                `*50% Downpayment:* ${advance}`;
+            // --- CONSTRUCT THE COMPREHENSIVE WHATSAPP MESSAGE ---
+            let messageText = `*NEW PROJECT INQUIRY*%0A` +
+                              `--------------------------%0A` +
+                              `*Client:* ${name}%0A` +
+                              `*Web Name:* ${webName}%0A` +
+                              `*Phone:* ${phone}%0A` +
+                              `--------------------------%0A` +
+                              `*SELECTED OPTIONS:*%0A` +
+                              `• Domain: ${selectedDomain}%0A` +
+                              `• Package: ${selectedPackage}%0A` +
+                              `• Plan: ${selectedMaint}%0A`;
+
+            if(isManaged) {
+                messageText += `• Monthly SEO Budget: ₱${monthlyTotal}%0A` +
+                               `• Est. Traffic: ${trafficEst}%0A`;
+            }
+
+            messageText += `--------------------------%0A` +
+                           `*Project Description:*%0A${desc}%0A` +
+                           `--------------------------%0A` +
+                           `*TOTAL QUOTE:* ${total}%0A` +
+                           `*REQUIRED DEPOSIT:* ${advance}`;
 
             const whatsappUrl = `https://wa.me/${myWhatsAppNumber}?text=${messageText}`;
-
-            // --- 3. OPEN WHATSAPP ---
             window.open(whatsappUrl, '_blank').focus();
 
             status.style.display = "none";
