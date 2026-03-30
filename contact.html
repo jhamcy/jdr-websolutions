@@ -644,7 +644,7 @@
     document.getElementById('inquiry-form').addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        const myWhatsAppNumber = "639171234567"; // No + or spaces
+        const myWhatsAppNumber = "639171234567"; // Replace with your actual number
 
         const btn = document.getElementById('submit-btn');
         const status = document.getElementById('status-msg');
@@ -656,7 +656,6 @@
         status.innerText = "Processing inquiry and opening WhatsApp...";
 
         try {
-            // Basic Fields
             const name = document.getElementById('full-name').value;
             const email = document.getElementById('email-address').value;
             const phone = document.getElementById('phone-input').value;
@@ -666,14 +665,10 @@
             const total = document.getElementById('display-total').innerText;
             const advance = document.getElementById('display-advance').innerText;
 
-            // --- Capture Selection Details ---
             const domainSelect = document.getElementById('domain-select');
             const selectedDomain = domainSelect.options[domainSelect.selectedIndex].text;
-            
             const selectedPackage = document.querySelector('input[name="dev_package"]:checked').value;
             const selectedMaint = document.querySelector('input[name="maintenance"]:checked').value;
-            
-            // SEO Details
             const isManaged = document.getElementById('maint1').checked;
             const monthlyTotal = document.getElementById('display-monthly-total').innerText;
             const trafficEst = document.getElementById('display-traffic').innerText;
@@ -701,30 +696,38 @@
             await _supabase.from('inquiries').insert([formData]);
             await emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, formData);
 
-            // --- CONSTRUCT THE COMPREHENSIVE WHATSAPP MESSAGE ---
-            let messageText = `*NEW PROJECT INQUIRY*%0A` +
-                              `--------------------------%0A` +
-                              `*Client:* ${name}%0A` +
-                              `*Web Name:* ${webName}%0A` +
-                              `*Phone:* ${phone}%0A` +
-                              `--------------------------%0A` +
-                              `*SELECTED OPTIONS:*%0A` +
-                              `• Domain: ${selectedDomain}%0A` +
-                              `• Package: ${selectedPackage}%0A` +
-                              `• Plan: ${selectedMaint}%0A`;
+            // Constructing text message for WhatsApp
+            let text = `*NEW PROJECT INQUIRY*\n` +
+                       `--------------------------\n` +
+                       `*Client:* ${name}\n` +
+                       `*Web Name:* ${webName}\n` +
+                       `*Phone:* ${phone}\n` +
+                       `--------------------------\n` +
+                       `*SELECTED OPTIONS:*\n` +
+                       `• Domain: ${selectedDomain}\n` +
+                       `• Package: ${selectedPackage}\n` +
+                       `• Plan: ${selectedMaint}\n`;
 
             if(isManaged) {
-                messageText += `• Monthly SEO Budget: ₱${monthlyTotal}%0A` +
-                               `• Est. Traffic: ${trafficEst}%0A`;
+                text += `• Monthly SEO Budget: ₱${monthlyTotal}\n` +
+                        `• Est. Traffic: ${trafficEst}\n`;
             }
 
-            messageText += `--------------------------%0A` +
-                           `*Project Description:*%0A${desc}%0A` +
-                           `--------------------------%0A` +
-                           `*TOTAL QUOTE:* ${total}%0A` +
-                           `*REQUIRED DEPOSIT:* ${advance}`;
+            if(publicUrls.length > 0) {
+                text += `--------------------------\n*ATTACHED ASSETS:*\n`;
+                publicUrls.forEach((link, idx) => {
+                    text += `File ${idx + 1}: ${link}\n`;
+                });
+            }
 
-            const whatsappUrl = `https://wa.me/${myWhatsAppNumber}?text=${messageText}`;
+            text += `--------------------------\n` +
+                    `*Project Description:*\n${desc}\n` +
+                    `--------------------------\n` +
+                    `*TOTAL QUOTE:* ${total}\n` +
+                    `*REQUIRED DEPOSIT:* ${advance}`;
+
+            // Final URL encoding for reliability
+            const whatsappUrl = `https://wa.me/${myWhatsAppNumber}?text=${encodeURIComponent(text)}`;
             window.open(whatsappUrl, '_blank').focus();
 
             status.style.display = "none";
