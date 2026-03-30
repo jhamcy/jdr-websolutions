@@ -413,7 +413,7 @@
             <div class="flex-row">
                 <div class="flex-item">
                     <label for="phone-input">Mobile Number</label>
-                    <input type="tel" id="phone-input" required pattern="[0-9]{11}" maxlength="11" placeholder="09171234567" inputmode="numeric">
+                    <input type="tel" id="phone-input" required pattern="[0-9]{11}" maxlength="11" placeholder="09091297422" inputmode="numeric">
                 </div>
                 <div class="flex-item">
                     <label for="web-name">Desired Web Name</label>
@@ -643,16 +643,30 @@
 
     document.getElementById('inquiry-form').addEventListener('submit', async (e) => {
         e.preventDefault();
+        
+        // --- 1. SET YOUR WHATSAPP NUMBER HERE ---
+        const myWhatsAppNumber = "639171234567"; // No + or spaces
+
         const btn = document.getElementById('submit-btn');
         const status = document.getElementById('status-msg');
         btn.disabled = true; 
-        btn.innerText = "PROCESSING...";
+        btn.innerText = "SENDING TO WHATSAPP...";
         status.style.display = "block"; 
         status.style.background = "#30363d"; 
         status.style.color = "#fff";
-        status.innerText = "Finalizing your inquiry architecture...";
+        status.innerText = "Processing inquiry and opening WhatsApp...";
 
         try {
+            // Collect Field Data
+            const name = document.getElementById('full-name').value;
+            const email = document.getElementById('email-address').value;
+            const phone = document.getElementById('phone-input').value;
+            const webName = document.getElementById('web-name').value;
+            const method = document.getElementById('contact-method').value;
+            const desc = document.getElementById('project-desc').value;
+            const total = document.getElementById('display-total').innerText;
+            const advance = document.getElementById('display-advance').innerText;
+
             let publicUrls = [];
             for (const file of uploadedFilesArray) {
                 const fileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
@@ -663,20 +677,38 @@
             }
 
             const formData = {
-                name: document.getElementById('full-name').value,
-                email: document.getElementById('email-address').value,
-                phone: document.getElementById('phone-input').value,
-                web_name: document.getElementById('web-name').value,
-                contact_method: document.getElementById('contact-method').value,
-                description: document.getElementById('project-desc').value,
-                total_cost: document.getElementById('display-total').innerText,
+                name: name,
+                email: email,
+                phone: phone,
+                web_name: webName,
+                contact_method: method,
+                description: desc,
+                total_cost: total,
                 attachment: publicUrls.length > 0 ? publicUrls.join(", ") : "None provided"
             };
 
-            const { error: dbError } = await _supabase.from('inquiries').insert([formData]);
-            if (dbError) throw dbError;
-
+            // Save to DB and Email as Backup
+            await _supabase.from('inquiries').insert([formData]);
             await emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, formData);
+
+            // --- 2. CONSTRUCT WHATSAPP MESSAGE ---
+            const messageText = `*NEW PROJECT INQUIRY*%0A` +
+                                `--------------------------%0A` +
+                                `*Client:* ${name}%0A` +
+                                `*Email:* ${email}%0A` +
+                                `*Phone:* ${phone}%0A` +
+                                `*Web Name:* ${webName}%0A` +
+                                `*Preferred Contact:* ${method}%0A` +
+                                `--------------------------%0A` +
+                                `*Project Description:*%0A${desc}%0A` +
+                                `--------------------------%0A` +
+                                `*Quoted Total:* ${total}%0A` +
+                                `*50% Downpayment:* ${advance}`;
+
+            const whatsappUrl = `https://wa.me/${myWhatsAppNumber}?text=${messageText}`;
+
+            // --- 3. OPEN WHATSAPP ---
+            window.open(whatsappUrl, '_blank').focus();
 
             status.style.display = "none";
             document.getElementById('thx-modal').style.display = 'block';
@@ -704,7 +736,7 @@
     <div class="modal-content">
         <span class="thx-icon">✓</span>
         <h2 style="color: #fff; margin: 0;">Submission Success!</h2>
-        <p style="color: #8b949e; margin-top: 10px;">Your project blueprint has been received. JMCY WEB SOLUTIONS will contact you shortly to discuss the development phase.</p>
+        <p style="color: #8b949e; margin-top: 10px;">Your project blueprint has been sent to WhatsApp. JMCY WEB SOLUTIONS will contact you shortly to discuss the development phase.</p>
         <button class="btn-close-thx" onclick="closeThx()">Continue</button>
     </div>
 </div>
