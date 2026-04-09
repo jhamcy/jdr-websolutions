@@ -132,26 +132,6 @@
         @media (max-width: 768px) { .hamburger { display: flex; } }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
 
-        /* --- AD BANNER STYLING --- */
-        .ad-container {
-            width: 90%;
-            max-width: 728px;
-            margin: 20px auto;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px dashed #333;
-            text-align: center;
-            border-radius: 8px;
-        }
-        .ad-label {
-            font-size: 0.6rem;
-            color: #555;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-            display: block;
-        }
-
         /* --- LOGO HEADER --- */
         .logo-header { 
             padding: 0px 5% 10px;
@@ -183,12 +163,19 @@
 
         /* --- CONTENT STYLES --- */
         .about-hero { padding: 40px 5%; text-align: center; background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%); }
-        .about-hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 10px; font-weight: 800; }
-        .container { max-width: 800px; margin: 0 auto; padding: 40px 5% 80px; }
+        .about-hero h1 { font-size: clamp(1rem, 5vw, 3rem); margin-bottom: 10px; font-weight: 800; }
+        
+        /* UPDATED CONTAINER SIZE TO MATCH INDEX.HTML */
+        .container { 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            padding: 40px 5% 80px; 
+            box-sizing: border-box;
+        }
+
         h2 { color: var(--primary-blue); margin-top: 40px; font-size: 1.4rem; font-weight: 800; }
         .highlight-text { font-size: 1.05rem; color: var(--accent-orange); font-weight: 600; border-left: 3px solid var(--accent-orange); padding-left: 20px; margin: 40px 0; font-style: italic; line-height: 1.6; }
-        .philosophy-card { background: rgba(10, 88, 202, 0.05); padding: 30px; border-radius: 12px; border: 1px solid rgba(10, 88, 202, 0.2); margin-top: 40px; }
-
+        .philosophy-card { background: rgba(10, 88, 202, 0.05); padding: 30px 20px; border-radius: 12px; border: 1px solid rgba(10, 88, 202, 0.2); margin-top: 40px; }
         /* --- FAQ SECTION --- */
         .faq-section { margin-top: 60px; border-top: 1px solid #222; padding-top: 40px; }
         .faq-item { margin-bottom: 25px; }
@@ -275,12 +262,6 @@
             <p style="color: var(--muted-text); font-size: 0.9rem; max-width: 500px; margin: 0 auto;">We build fast, search-optimized websites with full transparency — so you always know what you're getting and how it performs.</p>
         </section>
 
-        <div class="ad-container">
-            <span class="ad-label">Advertisement</span>
-            <script async="async" data-cfasync="false" src="//spreadpreferencetelevision.com/2646f115de46c4b4c5e833512708597e/invoke.js"></script>
-            <div id="container-2646f115de46c4b4c5e833512708597e"></div>
-        </div>
-
         <div class="container">
             <div style="text-align: center; margin-bottom: 50px;">
                 <h2 style="margin-top: 0; color: var(--primary-blue);">The Founder's Vision</h2>
@@ -290,7 +271,7 @@
             </div>
 
             <p style="font-size: 0.95rem; color: var(--light-text); margin-top: 40px;">
-                We specialize in <strong>Custom HTML websites</strong> — built for speed, clean code, and better search engine performance from day one. By avoiding heavy CMS platforms, your site loads faster, ranks better, and gives you full control over every detail.
+                We specialize in <strong>Custom HTML websites</strong> — built for speed, clean code, and better search engine performance from day one. By avoiding heavy CMS platforms, your site loads faster, ranks better, and gives you full control over every detail.
             </p>
             
             <div class="highlight-text">
@@ -324,10 +305,10 @@
                     <span class="faq-question">Is custom code better for SEO?</span>
                     <p class="faq-answer">Yes. Custom HTML avoids unnecessary code, which means faster loading speeds and better SEO performance.</p>
                 </div>
-<div class="faq-item">
-    <span class="faq-question">Why choose JMCY over traditional agencies?</span>
-    <p class="faq-answer">Most agencies hide progress and limit access. We do the opposite — you get full visibility, real-time updates, and complete ownership of your website from start to finish.</p>
-</div>
+                <div class="faq-item">
+                    <span class="faq-question">Why choose JMCY over traditional agencies?</span>
+                    <p class="faq-answer">Most agencies hide progress and limit access. We do the opposite — you get full visibility, real-time updates, and complete ownership of your website from start to finish.</p>
+                </div>
                 <div class="faq-item">
                     <span class="faq-question">Who owns the intellectual property?</span>
                     <p class="faq-answer">Once final settlement is reached, the client owns the full source code and all related digital assets. We provide the technical expertise; you own the result.</p>
@@ -418,8 +399,5 @@
             }, 2000);
         }
     </script>
-
-    <script src="https://spreadpreferencetelevision.com/25/63/6a/25636a97d0b10d79c797db1986a99856.js"></script>
-
 </body>
 </html>

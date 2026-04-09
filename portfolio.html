@@ -63,28 +63,6 @@
             flex-direction: column;
         }
 
-        /* --- AD BANNER STYLING --- */
-        .ad-container {
-            width: 90%;
-            max-width: 728px;
-            margin: 20px auto;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px dashed #333;
-            text-align: center;
-            border-radius: 8px;
-            position: relative;
-            z-index: 1;
-        }
-        .ad-label {
-            font-size: 0.6rem;
-            color: #555;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-            display: block;
-        }
-
         /* --- VIDEO BACKGROUND --- */
         .video-bg-wrap {
             position: absolute;
@@ -179,7 +157,7 @@
 
         /* --- PORTFOLIO CONTENT --- */
         .portfolio-hero { padding: 40px 5%; text-align: center; background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%); }
-        .portfolio-hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 10px; font-weight: 800; }
+        .portfolio-hero h1 { font-size: clamp(1rem, 5vw, 3rem); margin-bottom: 10px; font-weight: 800; }
         .portfolio-hero p { font-size: 0.95rem; color: var(--muted-text); max-width: 600px; margin: 0 auto; line-height: 1.6; }
         
         .portfolio-grid { 
@@ -244,15 +222,9 @@
 
         /* --- FOOTER --- */
         footer {
-            flex-shrink: 0;
-            padding: 20px 5%;
-            text-align: center;
-            border-top: 1px solid #333;
-            color: #ddd;
-            font-size: 0.8rem;
-            position: relative;
-            background-color: rgba(0,0,0,0.85);
-            overflow: hidden;
+            flex-shrink: 0; padding: 20px 5%; text-align: center;
+            border-top: 1px solid #333; color: #ddd; font-size: 0.8rem;
+            position: relative; background-color: rgba(0,0,0,0.85); overflow: hidden;
         }
         footer > * { position: relative; z-index: 1; }
         footer a { color: #fff; text-decoration: none; margin: 0 8px; font-weight: 600; }
@@ -316,12 +288,6 @@
             <h1>Live Build <span style="color: var(--accent-orange);">Showcase</span></h1>
             <p>Every project below was developed using our signature <strong>Live-Preview Protocol</strong>. Experience real-time transparency through direct GitHub deployment cycles.</p>
         </section>
-
-        <div class="ad-container">
-            <span class="ad-label">Advertisement</span>
-            <script async="async" data-cfasync="false" src="//spreadpreferencetelevision.com/2646f115de46c4b4c5e833512708597e/invoke.js"></script>
-            <div id="container-2646f115de46c4b4c5e833512708597e"></div>
-        </div>
 
         <section class="portfolio-grid">
             <article class="portfolio-card">
@@ -491,8 +457,5 @@
             }, 2000);
         }
     </script>
-
-    <script src="https://spreadpreferencetelevision.com/25/63/6a/25636a97d0b10d79c797db1986a99856.js"></script>
-
 </body>
 </html>

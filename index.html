@@ -40,11 +40,26 @@
             --muted-text: #A0A0A0;
             --header-bg: #000000;
         }
+
         html, body { height: 100%; margin: 0; padding: 0; }
-        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: var(--dark-bg); color: var(--light-text); line-height: 1.4; display: flex; flex-direction: column; min-height: 100vh; padding-top: 60px; }
+        body { 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            background-color: var(--dark-bg); 
+            color: var(--light-text); 
+            line-height: 1.4; 
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh; 
+            padding-top: 60px; 
+        }
+
         main { flex: 1 0 auto; display: flex; flex-direction: column; }
+
+        /* --- VIDEO BACKGROUND --- */
         .video-bg-wrap { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; overflow: hidden; }
         .video-bg-wrap video { width: 100%; height: 100%; object-fit: cover; opacity: 1; }
+
+        /* --- NAVIGATION --- */
         nav { padding: 0.5rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(0,0,0,0.85); overflow: hidden; }
         nav > * { position: relative; z-index: 1; }
         .nav-brand { font-size: 0.9rem; font-weight: 800; letter-spacing: 1px; color: var(--light-text); text-transform: uppercase; text-decoration: none; line-height: 1.2; display: inline-block; }
@@ -57,14 +72,27 @@
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
         @media (max-width: 768px) { .hamburger { display: flex; } }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
+
+        /* --- HEADER LOGO --- */
         .logo-header { padding: 0px 5% 10px; text-align: center; background-color: #000; width: 100%; box-sizing: border-box; }
         .main-logo { max-width: 220px; width: 100%; height: auto; padding: 0; background: transparent; border: none; box-shadow: none; mix-blend-mode: screen; transition: all 0.4s ease; animation: fadeInScale 1s ease-out forwards; }
         .main-logo:hover { transform: translateY(-2px) scale(1.02); }
         @keyframes fadeInScale { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-        .hero { padding: 20px 5% 40px; text-align: center; background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%); }
-        .hero h1 { font-size: clamp(1.5rem, 3.5vw, 2.2rem); margin-bottom: 10px; font-weight: 800; line-height: 1.2;}
+        
+        /* --- HERO SECTION (Synced with About Us) --- */
+        .hero { 
+            padding: 40px 5% 60px; 
+            text-align: center; 
+            background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%); 
+        }
+        .hero h1 { font-size: clamp(1rem, 5vw, 3rem); margin-bottom: 10px; font-weight: 800; line-height: 1.2;}
         .hero p { font-size: 0.9rem; color: var(--muted-text); max-width: 500px; margin: 0 auto 20px; }
         .cta-btn-main { background: var(--primary-blue); color: white; padding: 10px 24px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; transition: 0.3s; font-size: 0.85rem; }
+
+        /* --- MAIN CONTAINER (Synced with About Us) --- */
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 5% 80px; }
+
+        /* --- MONITOR/GRID STYLES --- */
         .transparency-section { padding: 40px 5%; background: #000; text-align: center; }
         .monitor-box { max-width: 900px; margin: 0 auto; padding: 30px 20px; background: rgba(10, 88, 202, 0.05); border: 1px solid var(--primary-blue); border-radius: 12px; }
         .pulse-dot { height: 7px; width: 7px; background-color: #ff4b4b; border-radius: 50%; display: inline-block; box-shadow: 0 0 6px #ff4b4b; animation: pulse-animation 1.5s infinite; }
@@ -73,35 +101,14 @@
         .monitor-card { background: rgba(255,255,255,0.02); padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05); }
         .monitor-card h4 { color: var(--accent-orange); margin: 0 0 8px; font-size: 1rem; }
         .monitor-card p { font-size: 0.85rem; color: var(--muted-text); line-height: 1.5; margin: 0; }
-        
-        /* UPDATED AD CONTAINER STYLING */
-        .ad-container {
-            width: 90%;
-            max-width: 728px;
-            margin: 20px auto;
-            padding: 10px;
-            background: rgba(10, 88, 202, 0.03); /* Subtle blue tint to match site */
-            border: 1px solid #222;
-            text-align: center;
-            border-radius: 8px;
-            position: relative;
-            z-index: 1;
-        }
-        .ad-label {
-            font-size: 0.6rem;
-            color: var(--accent-orange);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-            display: block;
-            font-weight: bold;
-        }
 
+        /* --- TESTIMONIALS --- */
         .testimonial-section { background: #000; padding: 40px 0 0 0; border-top: 1px solid #111; margin-top: auto; }
         .testimonial-slider { width: 100%; overflow: hidden; padding: 20px 0; cursor: grab; user-select: none; position: relative; }
         .testimonial-track { display: flex; width: max-content; gap: 15px; will-change: transform; }
         .testimonial-card-move { width: 220px; flex-shrink: 0; background: rgba(10, 88, 202, 0.05); padding: 15px; border-radius: 10px; border-left: 3px solid var(--primary-blue); white-space: normal; text-align: left; pointer-events: none; }
         
+        /* --- FOOTER --- */
         footer { flex-shrink: 0; padding: 20px 5%; text-align: center; border-top: 1px solid #333; color: #ddd; font-size: 0.8rem; position: relative; background-color: rgba(0,0,0,0.85); overflow: hidden; }
         footer > * { position: relative; z-index: 1; }
         footer a { color: #fff; text-decoration: none; margin: 0 8px; font-weight: 600; }
@@ -109,6 +116,7 @@
         .footer-nav { margin-bottom: 10px; }
         .footer-badges { margin-top: 10px; opacity: 0.8; font-size: 0.65rem; letter-spacing: 1px; color: var(--accent-orange); font-weight: bold; }
         
+        /* --- FLOATING CONTACT --- */
         .floating-contact-wrap { position: fixed; bottom: 30px; right: 20px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; transition: transform 0.4s ease, opacity 0.3s ease; }
         body.is-scrolling .floating-contact-wrap { transform: translateX(100px); opacity: 0; pointer-events: none; }
         .float-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
@@ -123,6 +131,7 @@
             .nav-links li { width: 100%; margin: 0; }
             .nav-links a { display: block; width: 100%; padding: 20px 30px; font-size: 0.95rem; border-bottom: 1px solid #111; box-sizing: border-box; }
             .nav-active { transform: translateX(0%); }
+            .hero { padding: 40px 5% 60px; }
         }
     </style>
 </head>
@@ -153,43 +162,39 @@
             <a href="quote.html" class="cta-btn-main">Build Your Custom Quote</a>
         </section>
         
-        <section class="transparency-section">
-            <div class="monitor-box">
-                <div style="display: inline-flex; align-items: center; gap: 6px; background: rgba(0,0,0,0.3); padding: 4px 12px; border-radius: 20px; border: 1px solid #333; margin-bottom: 15px;">
-                     <span class="pulse-dot"></span>
-                     <span style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; color: #eee;">System Status: Active Build</span>
+        <div class="container">
+            <section class="transparency-section">
+                <div class="monitor-box">
+                    <div style="display: inline-flex; align-items: center; gap: 6px; background: rgba(0,0,0,0.3); padding: 4px 12px; border-radius: 20px; border: 1px solid #333; margin-bottom: 15px;">
+                         <span class="pulse-dot"></span>
+                         <span style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; color: #eee;">System Status: Active Build</span>
+                    </div>
+                    <h2 style="font-size: 1.8rem; margin: 0 0 15px;">Real-Time Development Access</h2>
+                    <div class="monitor-grid">
+                         <div class="monitor-card"><h4>Exclusive Preview URL</h4><p>Real-Time Development Access <strong>live staging link</strong> where every update is deployed instantly.</p></div>
+                        <div class="monitor-card"><h4>Visual Verification</h4><p>Preview your website on mobile or desktop in real time — ensuring everything looks perfect before launch.</p></div>
+                        <div class="monitor-card"><h4>Instant Milestone Sync</h4><p>Every feature and section is updated live — no waiting, no hidden progress, full visibility.</p></div>
+                    </div>
                 </div>
-                <h2 style="font-size: 1.8rem; margin: 0 0 15px;">Real-Time Development Access</h2>
+            </section>
+
+            <section style="padding:60px 0; background:#0C0D11; text-align:center;">
+                <h2 style="font-size:1.8rem; margin-bottom:15px; color: var(--primary-blue);">Our Development Process</h2>
+                <p style="color:var(--muted-text); font-size:0.9rem; max-width:550px; margin:0 auto 40px;">A streamlined workflow designed to give you full control at every stage.</p>
                 <div class="monitor-grid">
-                     <div class="monitor-card"><h4>Exclusive Preview URL</h4><p>Real-Time Development Access <strong>live staging link</strong> where every update is deployed instantly as development progresses.</p></div>
-                    <div class="monitor-card"><h4>Visual Verification</h4><p>Preview your website on mobile or desktop in real time — ensuring everything looks perfect before launch.</p></div>
-                    <div class="monitor-card"><h4>Instant Milestone Sync</h4><p>Every feature and section is updated live — no waiting, no hidden progress, full visibility.</p></div>
+                    <div class="monitor-card"><h4>1. Quote Builder</h4><p>Customize your project by selecting features and functionality through our smart quote builder.</p></div>
+                    <div class="monitor-card"><h4>2. Live Development</h4><p>Development starts immediately with real-time access to your private preview link.</p></div>
+                    <div class="monitor-card"><h4>3. Review & Feedback</h4><p>Review progress live and request changes instantly while your website is being built.</p></div>
+                    <div class="monitor-card"><h4>4. Launch</h4><p>After final approval, your fully optimized website is deployed and ready for the world.</p></div>
                 </div>
-            </div>
-        </section>
-
-        <div class="ad-container">
-            <span class="ad-label">Recommended Tools & Services</span>
-            <script async="async" data-cfasync="false" src="//spreadpreferencetelevision.com/2646f115de46c4b4c5e833512708597e/invoke.js"></script>
-            <div id="container-2646f115de46c4b4c5e833512708597e"></div>
+            </section>
         </div>
-
-        <section style="padding:60px 5%; background:#000; text-align:center; border-top: 1px solid #111;">
-            <h2 style="font-size:1.8rem; margin-bottom:15px;">Our Development Process</h2>
-            <p style="color:var(--muted-text); font-size:0.9rem; max-width:550px; margin:0 auto 40px;">A streamlined and transparent workflow designed to give you full control, visibility, and confidence at every stage.</p>
-            <div class="monitor-grid">
-                <div class="monitor-card"><h4>1. Quote Builder</h4><p>Customize your project by selecting features, functionality, and requirements through our smart quote builder.</p></div>
-                <div class="monitor-card"><h4>2. Live Development</h4><p>Development starts immediately with real-time access to your private preview link.</p></div>
-                <div class="monitor-card"><h4>3. Review & Feedback</h4><p>Review progress live and request changes instantly while your website is being built.</p></div>
-                <div class="monitor-card"><h4>4. Launch</h4><p>After final approval, your fully optimized website is deployed and ready for the world.</p></div>
-            </div>
-        </section>
 
         <section class="testimonial-section">
             <div style="max-width: 800px; margin: 0 auto; padding: 0 5%;">
                 <div style="max-width: 400px; margin: 0 auto 40px; background: rgba(255,255,255,0.02); padding: 30px 20px; border-radius: 12px; border: 1px solid #222;">
                     <h2 style="font-size: 1.2rem; margin-bottom: 10px;">Rate Our <span style="color: var(--accent-orange);">Service</span></h2>
-                    <p style="font-size: 0.8rem; color: var(--muted-text); margin-bottom: 25px; line-height: 1.6;">Your insights are vital in maintaining the high technical standards of JMCY WEB SOLUTIONS.</p>
+                    <p style="font-size: 0.8rem; color: var(--muted-text); margin-bottom: 25px; line-height: 1.6;">Your insights are vital in maintaining our high technical standards.</p>
                     <button onclick="submitRating()" id="submit-btn" style="background: var(--accent-orange); color: black; border: none; padding: 14px 20px; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 0.85rem; transition: 0.3s; width: 100%; text-transform: uppercase; letter-spacing: 1px;">Submit Rating & Review</button>
                 </div>
             </div>
@@ -249,8 +254,5 @@
         function openApp(appUri, storeUrl) { const start = Date.now(); window.location.href = appUri; setTimeout(function() { if (Date.now() - start < 2500) window.location.href = storeUrl; }, 2000); }
         function submitRating() { window.open("https://g.page/r/CZbhiUAcia4iEBI/review", "_blank"); }
     </script>
-
-    <script src="https://spreadpreferencetelevision.com/25/63/6a/25636a97d0b10d79c797db1986a99856.js"></script>
-
 </body>
 </html>
