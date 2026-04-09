@@ -79,17 +79,18 @@
         .main-logo:hover { transform: translateY(-2px) scale(1.02); }
         @keyframes fadeInScale { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
         
-        /* --- HERO SECTION (Synced with About Us) --- */
+        /* --- HERO SECTION --- */
         .hero { 
-            padding: 40px 5% 60px; 
+            padding: 2px 5% 9px; 
             text-align: center; 
             background: radial-gradient(circle at center, #1E3A5F 0%, #0C0D11 100%); 
         }
-        .hero h1 { font-size: clamp(1rem, 5vw, 3rem); margin-bottom: 10px; font-weight: 800; line-height: 1.2;}
-        .hero p { font-size: 0.9rem; color: var(--muted-text); max-width: 500px; margin: 0 auto 20px; }
-        .cta-btn-main { background: var(--primary-blue); color: white; padding: 10px 24px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; transition: 0.3s; font-size: 0.85rem; }
+        .hero h1 { font-size: clamp(1rem, 5vw, 2.5rem); margin-bottom: 2px; font-weight: 800; line-height: 1;}
+        .hero h2 { font-size: clamp(1rem, 5vw, 2rem); margin-bottom: 9px; font-weight: 800; line-height: 1;}
+        .hero p { font-size: 0.9rem; color: var(--muted-text); max-width: 800px; margin: 0 auto 10px; }
+        .cta-btn-main { background: var(--primary-blue); color: white; padding: 10px 24px; border-radius: 5px; text-decoration: none; display: inline-block; transition: 0.3s; font-size: 0.9rem; }
 
-        /* --- MAIN CONTAINER (Synced with About Us) --- */
+        /* --- MAIN CONTAINER --- */
         .container { max-width: 800px; margin: 0 auto; padding: 40px 5% 80px; }
 
         /* --- MONITOR/GRID STYLES --- */
@@ -102,11 +103,31 @@
         .monitor-card h4 { color: var(--accent-orange); margin: 0 0 8px; font-size: 1rem; }
         .monitor-card p { font-size: 0.85rem; color: var(--muted-text); line-height: 1.5; margin: 0; }
 
-        /* --- TESTIMONIALS --- */
-        .testimonial-section { background: #000; padding: 40px 0 0 0; border-top: 1px solid #111; margin-top: auto; }
-        .testimonial-slider { width: 100%; overflow: hidden; padding: 20px 0; cursor: grab; user-select: none; position: relative; }
-        .testimonial-track { display: flex; width: max-content; gap: 15px; will-change: transform; }
-        .testimonial-card-move { width: 220px; flex-shrink: 0; background: rgba(10, 88, 202, 0.05); padding: 15px; border-radius: 10px; border-left: 3px solid var(--primary-blue); white-space: normal; text-align: left; pointer-events: none; }
+        /* --- UPDATED TESTIMONIALS (MARQUEE FIX) --- */
+        .testimonial-section { background: #000; padding: 40px 0 0 0; border-top: 1px solid #111; margin-top: auto; overflow: hidden; }
+        .testimonial-slider { width: 100%; overflow: hidden; padding: 20px 0; position: relative; }
+        .testimonial-track { 
+            display: flex; 
+            width: max-content; 
+            gap: 15px; 
+            animation: marquee 25s linear infinite; 
+        }
+        .testimonial-track:hover { animation-play-state: paused; }
+        .testimonial-card-move { 
+            width: 240px; 
+            flex-shrink: 0; 
+            background: rgba(10, 88, 202, 0.05); 
+            padding: 15px; 
+            border-radius: 10px; 
+            border-left: 3px solid var(--primary-blue); 
+            white-space: normal; 
+            text-align: left; 
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
         
         /* --- FOOTER --- */
         footer { flex-shrink: 0; padding: 20px 5%; text-align: center; border-top: 1px solid #333; color: #ddd; font-size: 0.8rem; position: relative; background-color: rgba(0,0,0,0.85); overflow: hidden; }
@@ -157,7 +178,8 @@
         <header class="logo-header"><img src="image_0.png" alt="JMCY WEB SOLUTIONS Logo" class="main-logo"></header>
         
         <section class="hero">
-            <h1>Custom Websites Built Live <br><span style="color: var(--accent-orange);">Watch Your Site Being Developed in Real Time</span></h1>
+            <h1><span style="color: var(--accent-orange);">Custom Websites Built Real-Time</span></h1>
+            <h2>Watch Your Site Being Developed in Real Time</h2>
             <p>Get a private live preview link and watch your website evolve step-by-step — with full transparency, faster revisions, and zero guesswork.</p>
             <a href="quote.html" class="cta-btn-main">Build Your Custom Quote</a>
         </section>
@@ -192,7 +214,7 @@
 
         <section class="testimonial-section">
             <div style="max-width: 800px; margin: 0 auto; padding: 0 5%;">
-                <div style="max-width: 400px; margin: 0 auto 40px; background: rgba(255,255,255,0.02); padding: 30px 20px; border-radius: 12px; border: 1px solid #222;">
+                <div style="max-width: 400px; margin: 0 auto 40px; background: rgba(255,255,255,0.02); padding: 30px 20px; border-radius: 12px; border: 1px solid #222; text-align: center;">
                     <h2 style="font-size: 1.2rem; margin-bottom: 10px;">Rate Our <span style="color: var(--accent-orange);">Service</span></h2>
                     <p style="font-size: 0.8rem; color: var(--muted-text); margin-bottom: 25px; line-height: 1.6;">Your insights are vital in maintaining our high technical standards.</p>
                     <button onclick="submitRating()" id="submit-btn" style="background: var(--accent-orange); color: black; border: none; padding: 14px 20px; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 0.85rem; transition: 0.3s; width: 100%; text-transform: uppercase; letter-spacing: 1px;">Submit Rating & Review</button>
@@ -224,33 +246,32 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Navigation Elements
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('nav-menu');
+            
+            // Scroll State for Floating Buttons
             let scrollTimer;
             window.addEventListener('scroll', () => {
                 document.body.classList.add('is-scrolling');
                 clearTimeout(scrollTimer);
                 scrollTimer = setTimeout(() => { document.body.classList.remove('is-scrolling'); }, 400);
             }, { passive: true });
+
+            // Mobile Menu Logic
             const closeMenu = () => { if (navMenu.classList.contains('nav-active')) { navMenu.classList.remove('nav-active'); hamburger.classList.remove('toggle'); } };
             hamburger.addEventListener('click', (e) => { e.stopPropagation(); navMenu.classList.toggle('nav-active'); hamburger.classList.toggle('toggle'); });
             window.addEventListener('scroll', closeMenu, { passive: true });
             document.addEventListener('click', (e) => { if ((!navMenu.contains(e.target) && !hamburger.contains(e.target)) || e.target.tagName === 'A') closeMenu(); });
-            const slider = document.getElementById('slider-container');
+
+            // Testimonial Infinite Loop Logic
             const track = document.getElementById('slider-track');
-            if (slider && track) {
+            if (track) {
+                // Duplicate content for seamless transition
                 track.innerHTML += track.innerHTML; 
-                let isDown = false; let startX; let scrollLeft;
-                const autoScroll = () => { if (!isDown) { slider.scrollLeft += 1; if (slider.scrollLeft >= track.scrollWidth / 2) slider.scrollLeft = 0; } requestAnimationFrame(autoScroll); };
-                const startDragging = (e) => { isDown = true; startX = (e.pageX || e.touches[0].pageX) - slider.offsetLeft; scrollLeft = slider.scrollLeft; };
-                const stopDragging = () => isDown = false;
-                const moveDragging = (e) => { if (!isDown) return; e.preventDefault(); const x = (e.pageX || e.touches[0].pageX) - slider.offsetLeft; slider.scrollLeft = scrollLeft - (x - startX) * 2; };
-                slider.addEventListener('mousedown', startDragging); slider.addEventListener('touchstart', startDragging);
-                window.addEventListener('mouseup', stopDragging); window.addEventListener('touchend', stopDragging);
-                slider.addEventListener('mousemove', moveDragging); slider.addEventListener('touchmove', moveDragging);
-                autoScroll();
             }
         });
+
         function openApp(appUri, storeUrl) { const start = Date.now(); window.location.href = appUri; setTimeout(function() { if (Date.now() - start < 2500) window.location.href = storeUrl; }, 2000); }
         function submitRating() { window.open("https://g.page/r/CZbhiUAcia4iEBI/review", "_blank"); }
     </script>
