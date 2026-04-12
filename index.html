@@ -132,6 +132,24 @@
         /* --- MAIN CONTAINER --- */
         .container { max-width: 800px; margin: 0 auto; padding: 40px 5% 80px; }
 
+        /* --- PROCESS VIDEO STYLING (Updated for Clickable Play) --- */
+        .process-video-container {
+            width: 100%;
+            max-width: 650px;
+            margin: 0 auto;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid #222;
+            background: #000;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+        }
+        .process-video { 
+            width: 100%; 
+            display: block;
+            cursor: pointer;
+        }
+
         /* --- MONITOR/GRID STYLES --- */
         .transparency-section { padding: 40px 5%; background: #000; text-align: center; }
         .monitor-box { max-width: 900px; margin: 0 auto; padding: 30px 20px; background: rgba(10, 88, 202, 0.05); border: 1px solid var(--primary-blue); border-radius: 12px; }
@@ -141,17 +159,6 @@
         .monitor-card { background: rgba(255,255,255,0.02); padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05); }
         .monitor-card h4 { color: var(--accent-orange); margin: 0 0 8px; font-size: 1rem; }
         .monitor-card p { font-size: 0.85rem; color: var(--muted-text); line-height: 1.5; margin: 0; }
-
-        /* --- PROCESS VIDEO STYLING --- */
-        .process-video { 
-            width: 100%; 
-            max-width: 600px; 
-            border-radius: 12px; 
-            border: 1px solid #333; 
-            margin: 0 auto;
-            display: block;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
 
         /* --- TESTIMONIALS --- */
         .testimonial-section { background: #000; padding: 40px 0 0 0; border-top: 1px solid #111; margin-top: auto; overflow: hidden; }
@@ -253,9 +260,12 @@
                 <h2 style="font-size:1.8rem; margin-bottom:15px; color: var(--primary-blue);">Our Development Process</h2>
                 <p style="color:var(--muted-text); font-size:0.9rem; max-width:550px; margin:0 auto 25px;">A streamlined workflow designed to give you full control at every stage.</p>
                 
-                <video class="process-video" autoplay loop muted playsinline preload="auto" loading="lazy" poster="tech-bg.png">
-                    <source src="1000015986.mp4" type="video/mp4">
-                </video>
+                <div class="process-video-container">
+                    <video class="process-video" controls preload="metadata" poster="tech-bg.png">
+                        <source src="1000015986.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
 
                 <div class="monitor-grid" style="margin-top: 40px;">
                     <div class="monitor-card"><h4>1. Quote Builder</h4><p>Customize your project by selecting features and functionality through our smart quote builder.</p></div>
