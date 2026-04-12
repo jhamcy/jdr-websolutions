@@ -6,11 +6,7 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
-      gtag('config', 'G-31P3617CQT', {
-        'send_page_view': true,
-        'cookie_flags': 'SameSite=None;Secure'
-      });
+      gtag('config', 'G-31P3617CQT', { 'send_page_view': true, 'cookie_flags': 'SameSite=None;Secure' });
     </script>
 
     <meta charset="UTF-8">
@@ -22,34 +18,8 @@
     <link rel="canonical" href="https://jmcywebsolutions.com/quote.html">
 
     <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="logo.png">
-    <link rel="shortcut icon" href="logo.png">
-    <link rel="apple-touch-icon" href="logo.png">
     <link rel="manifest" href="manifest.json">
-
-    <meta property="og:title" content="Instant Web Design Quote | JMCY WEB SOLUTIONS">
-    <meta property="og:description" content="Get a real-time estimate for your next web project. Choose your features and see your 50% downpayment breakdown instantly.">
-    <meta property="og:url" content="https://jmcywebsolutions.com/quote.html">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://jmcywebsolutions.com/image_0.png">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org/",
-      "@type": "Service",
-      "serviceType": "Web Development",
-      "provider": {
-        "@type": "LocalBusiness",
-        "name": "JMCY WEB SOLUTIONS"
-      },
-      "offers": {
-        "@type": "AggregateOffer",
-        "priceCurrency": "PHP",
-        "lowPrice": "10000",
-        "highPrice": "28000"
-      }
-    }
-    </script>
+    <meta name="theme-color" content="#0A58CA">
 
     <style>
         /* --- BRAND VARIABLES --- */
@@ -64,11 +34,7 @@
         }
 
         /* --- GLOBAL STYLES --- */
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
+        html, body { height: 100%; margin: 0; padding: 0; }
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--dark-bg);
@@ -77,350 +43,305 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            padding-top: 60px; 
+            padding-top: 60px;
         }
         
-        main {
-            flex: 1 0 auto;
-            display: flex;
-            flex-direction: column;
-        }
+        main { flex: 1 0 auto; display: flex; flex-direction: column; }
 
         /* --- VIDEO BACKGROUND --- */
-        .video-bg-wrap {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            overflow: hidden;
-        }
-        .video-bg-wrap video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .video-bg-wrap { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; overflow: hidden; }
+        .video-bg-wrap video { width: 100%; height: 100%; object-fit: cover; }
 
         /* --- NAVIGATION --- */
-        nav {
-            padding: 0.5rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #222;
-            position: fixed; 
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(0,0,0,0.85); 
-            overflow: hidden;
-        }
+        nav { padding: 0.5rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(0,0,0,0.85); overflow: hidden; }
         nav > * { position: relative; z-index: 1; }
 
-        .nav-brand {
-            font-size: 0.9rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-            color: var(--light-text);
-            text-transform: uppercase;
-            text-decoration: none;
-            line-height: 1.2;
-            display: inline-block;
-        }
-        .nav-brand span { 
-            color: var(--accent-orange); 
-            font-size: 0.65rem; 
-            display: block; 
-            margin-top: 2px;
-            letter-spacing: 0.5px;
-        }
+        .nav-brand { display: flex !important; align-items: center; font-size: 0.9rem; font-weight: 800; letter-spacing: 1px; color: var(--light-text); text-transform: uppercase; text-decoration: none; line-height: 1.2; }
+        .nav-logo { height: 40px; width: auto; margin-right: 12px; vertical-align: middle; }
+        .nav-brand span { color: var(--accent-orange); font-size: 0.65rem; display: block; margin-top: 2px; letter-spacing: 0.5px; }
+
         .nav-links { display: flex; list-style: none; margin: 0; padding: 0; align-items: center; }
         .nav-links li { margin-left: 18px; }
         .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; display: inline-block; }
         .nav-links a:hover, .active-link { color: var(--accent-orange) !important; }
-        .nav-quote-btn {
-            border: 1px solid var(--accent-orange);
-            padding: 5px 12px;
-            border-radius: 4px;
-            color: var(--accent-orange) !important;
-            font-weight: 800 !important;
-        }
+        .nav-quote-btn { border: 1px solid var(--accent-orange); padding: 5px 12px; border-radius: 4px; color: var(--accent-orange) !important; font-weight: 800 !important; }
+
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
-        @media (max-width: 768px) { .hamburger { display: flex; } }
 
-        /* --- LOGO HEADER --- */
-        .logo-header { 
-            padding: 0px 5% 10px; 
+        /* --- SYNCED HERO SECTION (MATCHED TO BRAND STANDARD) --- */
+        .quote-hero { 
+            position: relative;
+            padding: 130px 5% 155px; 
             text-align: center; 
-            background-color: #000; 
-            width: 100%;
+            background: #000; 
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .hero-video-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1; object-fit: cover;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, rgba(12,13,17,0.3) 0%, rgba(12,13,17,0.9) 100%);
+            z-index: 2;
+        }
+        .hero-content { position: relative; z-index: 3; }
+
+        .quote-hero h1 { 
+            font-size: clamp(2rem, 8vw, 3.5rem); 
+            margin-bottom: 10px; 
+            font-weight: 900; 
+            line-height: 1.1; 
+            letter-spacing: -1px;
+            color: #fff;
+        }
+        .quote-hero p { 
+            font-size: 1.1rem; 
+            color: #ccc; 
+            max-width: 750px; 
+            margin: 0 auto; 
+            line-height: 1.6; 
+        }
+
+        /* --- QUOTE BUILDER CONTAINER --- */
+        .builder-container {
+            max-width: 1100px; 
+            margin: -40px auto 80px; /* Pull up slightly over hero */
+            background: var(--card-bg); 
+            border-radius: 20px;
+            padding: 40px; 
+            display: grid; 
+            grid-template-columns: 1fr 340px;
+            gap: 40px; 
+            text-align: left; 
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.05);
             box-sizing: border-box;
             position: relative;
-            z-index: 1;
-        }
-        .main-logo { 
-            max-width: 220px; 
-            width: 100%; 
-            height: auto; 
-            padding: 0;
-            background: transparent;
-            border: none;
-            backdrop-filter: none;
-            mix-blend-mode: screen;
-            animation: fadeInScale 1s ease-out forwards;
+            z-index: 10;
         }
 
-        @keyframes fadeInScale {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        /* --- QUOTE BUILDER UI --- */
-        .quote-section { padding: 40px 5% 80px; text-align: center; position: relative; z-index: 1; }
-        .builder-container {
-            max-width: 1100px; margin: 20px auto;
-            background: var(--card-bg); border-radius: 20px;
-            padding: 30px; display: grid; grid-template-columns: 1fr 340px;
-            gap: 30px; text-align: left; backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-
-        h3 { color: var(--primary-blue); margin-top: 20px; font-size: 1rem; text-transform: uppercase; }
-        .option-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+        h3 { color: var(--primary-blue); margin-top: 25px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 800; }
+        .option-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
 
         .option-item {
             display: flex; flex-direction: column;
-            padding: 15px; background: rgba(255,255,255,0.03);
-            border-radius: 10px; cursor: pointer; border: 2px solid transparent;
+            padding: 20px; background: rgba(255,255,255,0.03);
+            border-radius: 12px; cursor: pointer; border: 2px solid transparent;
             transition: 0.2s; position: relative;
         }
         .option-item.selected { background: rgba(10, 88, 202, 0.15); border-color: var(--primary-blue); }
         .option-item input { position: absolute; opacity: 0; }
         
         .check-indicator {
-            width: 16px; height: 16px; border: 2px solid #555; border-radius: 50%;
-            margin-bottom: 10px; display: flex; align-items: center; justify-content: center;
+            width: 18px; height: 18px; border: 2px solid #444; border-radius: 50%;
+            margin-bottom: 12px; display: flex; align-items: center; justify-content: center;
         }
         .option-item.selected .check-indicator {
             border-color: var(--accent-orange); background: var(--accent-orange);
-            box-shadow: 0 0 10px rgba(249, 140, 21, 0.4);
+            box-shadow: 0 0 10px rgba(249, 140, 21, 0.3);
         }
         .option-item.selected .check-indicator::after { content: ''; width: 6px; height: 6px; background: white; border-radius: 50%; }
 
-        .option-item strong { font-size: 0.85rem; line-height: 1.2; display: block; margin-bottom: 5px; }
-        .option-item p { font-size: 0.7rem; color: var(--muted-text); margin: 0; }
+        .option-item strong { font-size: 0.9rem; line-height: 1.2; display: block; margin-bottom: 8px; color: #fff; }
+        .option-item p { font-size: 0.75rem; color: var(--muted-text); margin: 0 0 10px 0; }
 
-        details { margin-top: 8px; }
-        summary { font-size: 0.7rem; color: var(--primary-blue); cursor: pointer; font-weight: bold; }
-        .detail-content { font-size: 0.7rem; color: #ccc; padding-top: 5px; line-height: 1.3; }
+        summary { font-size: 0.75rem; color: var(--primary-blue); cursor: pointer; font-weight: 800; text-transform: uppercase; }
+        .detail-content { font-size: 0.75rem; color: #bbb; padding-top: 8px; line-height: 1.5; }
 
         /* --- SUMMARY BOX --- */
         .summary-box {
-            background: #000; padding: 25px; border-radius: 15px;
+            background: #000; padding: 30px; border-radius: 15px;
             border: 1px solid var(--primary-blue); height: fit-content;
             position: sticky; top: 100px; display: flex; flex-direction: column;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
-        .total-price { font-size: 2.2rem; color: var(--accent-orange); font-weight: 800; }
-        .payment-row { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.9rem; }
+        .total-price { font-size: 2.5rem; color: var(--accent-orange); font-weight: 900; letter-spacing: -1px; margin: 10px 0; }
+        .payment-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.95rem; }
         .cta-button {
             display: block; background: var(--primary-blue); color: white;
-            text-align: center; padding: 12px 24px; border-radius: 6px; text-decoration: none;
-            font-weight: bold; margin-top: 15px; transition: 0.3s;
+            text-align: center; padding: 15px; border-radius: 6px; text-decoration: none;
+            font-weight: 800; margin-top: 20px; transition: 0.3s; text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        .cta-button:hover { background: #0849aa; transform: scale(1.02); }
+        .cta-button:hover { background: #0849aa; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(10, 88, 202, 0.2); }
 
-        /* ADS CALCULATOR */
         .ads-calculator-card {
             margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.05);
             border: 1px dashed #444; border-radius: 10px;
         }
-        .ads-calculator-card.disabled { opacity: 0.4; pointer-events: none; }
+        .ads-calculator-card.disabled { opacity: 0.3; pointer-events: none; }
         .ads-input-row { display: flex; justify-content: space-between; align-items: center; }
         .ads-input-row input {
-            width: 80px; background: #111; border: 1px solid #333; color: #fff;
-            padding: 5px; border-radius: 4px; font-size: 0.75rem; text-align: right;
+            width: 90px; background: #111; border: 1px solid #333; color: #fff;
+            padding: 8px; border-radius: 4px; font-size: 0.8rem; text-align: right; font-weight: bold;
         }
 
         /* --- FOOTER --- */
-        footer {
-            flex-shrink: 0; padding: 20px 5%; text-align: center;
-            border-top: 1px solid #333; color: #ddd; font-size: 0.8rem;
-            position: relative; background-color: rgba(0,0,0,0.85); overflow: hidden;
-        }
+        footer { flex-shrink: 0; padding: 30px 5%; text-align: center; border-top: 1px solid #333; color: #ddd; font-size: 0.8rem; position: relative; background-color: #000; overflow: hidden; }
         footer > * { position: relative; z-index: 1; }
-        footer a { color: #fff; text-decoration: none; margin: 0 8px; font-weight: 600; }
+        footer a { color: #fff; text-decoration: none; margin: 0 10px; font-weight: 600; }
         footer a:hover { color: var(--accent-orange); }
-        .footer-nav { margin-bottom: 10px; }
-        .footer-badges { margin-top: 10px; opacity: 0.8; font-size: 0.65rem; color: var(--accent-orange); font-weight: bold; }
+        .footer-nav { margin-bottom: 15px; }
+        .footer-badges { margin-top: 15px; opacity: 0.8; font-size: 0.7rem; letter-spacing: 1.5px; color: var(--accent-orange); font-weight: 900; }
 
         @media (max-width: 768px) {
-            .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; flex-direction: column; width: 260px; transform: translateX(100%); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding-top: 70px; border-left: 1px solid #222; align-items: flex-start; }
-            .nav-links li { width: 100%; margin: 0; opacity: 0; transform: translateX(20px); transition: 0.3s ease; }
-            .nav-links a { display: block; width: 100%; padding: 20px 30px; font-size: 0.95rem; border-bottom: 1px solid #111; box-sizing: border-box; }
-            .nav-active { transform: translateX(0%); }
-            .nav-active li { opacity: 1; transform: translateX(0); }
-            
-            .builder-container { grid-template-columns: 1fr; }
+            .quote-hero { padding: 100px 5% 80px; }
+            .builder-container { grid-template-columns: 1fr; padding: 25px; margin-top: 0; }
+            .option-grid { grid-template-columns: 1fr; }
             .summary-box { position: static; margin-top: 20px; }
+            .hamburger { display: flex; }
+            .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; flex-direction: column; width: 280px; transform: translateX(100%); transition: 0.4s; padding-top: 80px; border-left: 1px solid #222; align-items: flex-start; }
+            .nav-links.nav-active { transform: translateX(0%); }
+            .nav-links li { width: 100%; margin: 0; }
+            .nav-links a { display: block; width: 100%; padding: 22px 35px; font-size: 1rem; border-bottom: 1px solid #111; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="video-bg-wrap">
-            <video autoplay loop muted playsinline>
-                <source src="81092-574743664_medium.mp4" type="video/mp4">
-            </video>
+        <div class="video-bg-wrap" aria-hidden="true">
+            <video autoplay loop muted playsinline><source src="81092-574743664_medium.mp4" type="video/mp4"></video>
         </div>
         <a href="index.html" class="nav-brand">
-            JMCY WEB SOLUTIONS<br><span>Real-Time Custom Web Development</span>
+            <img src="logo.png" alt="JMCY Logo" class="nav-logo">
+            <div>JMCY WEB SOLUTIONS<br><span>Real-Time Custom Web Development</span></div>
         </a>
         <ul class="nav-links" id="nav-menu">
-            <li style="--i:1"><a href="index.html">Home</a></li>
-            <li style="--i:2"><a href="about.html">About Us</a></li>
-            <li style="--i:3"><a href="service.html">Services</a></li>
-            <li style="--i:4"><a href="portfolio.html">Portfolio</a></li>
-            <li style="--i:5"><a href="legal.html">Terms & Conditions</a></li>
-            <li style="--i:6"><a href="quote.html" class="active-link">Projects / Pricing</a></li>
-            <li style="--i:7"><a href="contact.html" class="nav-quote-btn">Get Started</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="legal.html">Terms & Conditions</a></li>
+            <li><a href="quote.html" class="active-link">Projects / Pricing</a></li>
+            <li><a href="contact.html" class="nav-quote-btn">Get Started</a></li>
         </ul>
-        <div class="hamburger" id="hamburger">
-            <div class="line1"></div><div class="line2"></div><div class="line3"></div>
-        </div>
+        <div class="hamburger" id="hamburger"><div></div><div></div><div></div></div>
     </nav>
 
     <main>
-        <header class="logo-header">
-            <img src="image_0.png" alt="JMCY WEB SOLUTIONS Logo" class="main-logo">
-        </header>
-
-        <section class="quote-section">
-            <h1>Estimate Your <span style="color: var(--accent-orange);">Digital Investment</span></h1>
-            <p style="font-size: 0.85rem; color: var(--muted-text); margin-bottom: 30px;">Select your infrastructure and development tier to get an instant breakdown.</p>
+        <section class="quote-hero">
+            <video class="hero-video-bg" autoplay loop muted playsinline>
+                <source src="818026310.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
             
-            <div class="builder-container">
-                <div class="options">
-                    <h3>1. Domain & Infrastructure</h3>
-                    <select id="domain-select" style="width: 100%; padding: 12px; background: #1a1c23; color: white; border: 1px solid #444; border-radius: 8px; margin-bottom: 10px;">
-                        <option value="1200">New Standard .com Registration (₱1,200/yr)</option>
-                        <option value="3500">New Local .ph / .com.ph (₱3,500/yr)</option>
-                        <option value="0">Use My Existing Domain (₱0)</option>
-                    </select>
-                    <p style="font-size: 0.65rem; color: var(--muted-text); margin-bottom: 20px;">* Clients retain full ownership of all purchased domains.</p>
-
-                    <h3>2. Single-Page Development</h3>
-                    <div class="option-grid">
-                        <label class="option-item">
-                            <div class="check-indicator"></div>
-                            <input type="checkbox" class="price-trigger dev-group" data-price="10000">
-                            <strong>Essential Code [₱10,000]</strong>
-                            <p>Lightweight Custom Landing Page.</p>
-                            <details><summary>Details</summary><div class="detail-content">Hand-coded HTML/CSS/JS, mobile-first design, and secure contact form.</div></details>
-                        </label>
-                        <label class="option-item">
-                            <div class="check-indicator"></div>
-                            <input type="checkbox" class="price-trigger dev-group" data-price="15000">
-                            <strong>Full Ecosystem [₱15,000]</strong>
-                            <p>Landing Page + Business Visibility.</p>
-                            <details><summary>Details</summary><div class="detail-content">Everything in Essential + Google Business setup, foundational SEO, and GA4 Analytics.</div></details>
-                        </label>
-                    </div>
-
-                    <h3>3. Multi-Page Solutions</h3>
-                    <div class="option-grid">
-                        <label class="option-item">
-                            <div class="check-indicator"></div>
-                            <input type="checkbox" class="price-trigger dev-group" data-price="20000">
-                            <strong>Essential Suite [₱20,000]</strong>
-                            <p>Professional Corporate Presence.</p>
-                            <details><summary>Details</summary><div class="detail-content">Home, About, Services, and Contact pages with a clean, performant architecture.</div></details>
-                        </label>
-                        <label class="option-item">
-                            <div class="check-indicator"></div>
-                            <input type="checkbox" class="price-trigger dev-group" data-price="28000">
-                            <strong>Full Ecosystem [₱28,000]</strong>
-                            <p>Multi-Page + Advanced Lead Stack.</p>
-                            <details><summary>Details</summary><div class="detail-content">Full site development + Technical SEO, Google Ads bridge, and GMB optimization.</div></details>
-                        </label>
-                    </div>
-
-                    <h3>4. Ongoing Support</h3>
-                    <div class="option-grid">
-                        <label class="option-item">
-                            <div class="check-indicator"></div>
-                            <input type="checkbox" class="price-trigger monthly-check maint-group" id="mgmt-check" data-price="1500">
-                            <strong>Managed Support [₱1,500/mo]</strong>
-                            <p>Maintenance, SEO & Ad Monitoring.</p>
-                            <details><summary>Details</summary><div class="detail-content">Security updates, technical support (within scope), and performance reporting.</div></details>
-                        </label>
-                        <label class="option-item">
-                            <div class="check-indicator"></div>
-                            <input type="checkbox" id="no-mgmt-check" class="maint-group" checked>
-                            <strong>Self-Managed [₱0]</strong>
-                            <p>One-time delivery.</p>
-                            <details><summary>Details</summary><div class="detail-content">Final project files delivered; client manages updates and hosting manually.</div></details>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="summary-box">
-                    <div style="font-size: 0.75rem; color: var(--primary-blue); font-weight: 800;">TOTAL PROJECT VALUE</div>
-                    <div class="total-price">₱<span id="display-total">1,200</span></div>
-                    
-                    <div class="payment-row" style="margin-top:15px">
-                        <span>Downpayment (50%):</span>
-                        <span style="color:var(--accent-orange)">₱<span id="display-advance">1,200</span></span>
-                    </div>
-                    <div class="payment-row">
-                        <span>Launch Balance:</span>
-                        <span>₱<span id="display-balance">0</span></span>
-                    </div>
-
-                    <div id="monthly-summary" style="display: none; background: rgba(249, 140, 21, 0.1); padding: 15px; border-radius: 8px; margin-top: 15px; border: 1px solid var(--accent-orange);">
-                        <div style="font-size: 0.7rem; font-weight: 800; color: var(--light-text); margin-bottom: 5px; text-transform: uppercase;">Monthly Commitment</div>
-                        <div style="display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: bold; color: var(--accent-orange);">
-                            <span>RECURRING:</span>
-                            <span>₱<span id="display-monthly-total">0</span></span>
-                        </div>
-                    </div>
-
-                    <div class="ads-calculator-card" id="ads-card">
-                        <h4 style="font-size: 0.7rem; color: var(--accent-orange); margin: 0 0 10px 0;">Optional Ads Budget</h4>
-                        <div class="ads-input-row">
-                            <label style="font-size: 0.7rem;">Daily Ad Spend:</label>
-                            <input type="number" id="daily-ads-input" placeholder="0" min="0">
-                        </div>
-                    </div>
-
-                    <a href="contact.html" class="cta-button">Request Official Quote</a>
-                </div>
+            <div class="hero-content">
+                <h1>Estimate Your <span style="color: var(--accent-orange);">Digital Investment</span></h1>
+                <p>Select your infrastructure and development tier to get an instant breakdown of your project costs.</p>
             </div>
         </section>
+
+        <div class="builder-container">
+            <div class="options">
+                <h3>1. Domain & Infrastructure</h3>
+                <select id="domain-select" style="width: 100%; padding: 15px; background: #1a1c23; color: white; border: 1px solid #444; border-radius: 8px; margin-bottom: 10px; font-size: 0.9rem;">
+                    <option value="1200">New Standard .com Registration (₱1,200/yr)</option>
+                    <option value="3500">New Local .ph / .com.ph (₱3,500/yr)</option>
+                    <option value="0">Use My Existing Domain (₱0)</option>
+                </select>
+                <p style="font-size: 0.7rem; color: var(--muted-text); margin-bottom: 30px;">* Clients retain full ownership and administrative control of all purchased domains.</p>
+
+                <h3>2. Single-Page Development</h3>
+                <div class="option-grid">
+                    <label class="option-item">
+                        <div class="check-indicator"></div>
+                        <input type="checkbox" class="price-trigger dev-group" data-price="10000">
+                        <strong>Essential Code [₱10,000]</strong>
+                        <p>Lightweight Custom Landing Page.</p>
+                        <details><summary>Details</summary><div class="detail-content">Hand-coded HTML/CSS/JS, mobile-first design, and contact form integration.</div></details>
+                    </label>
+                    <label class="option-item">
+                        <div class="check-indicator"></div>
+                        <input type="checkbox" class="price-trigger dev-group" data-price="15000">
+                        <strong>Full Ecosystem [₱15,000]</strong>
+                        <p>Landing Page + Business Visibility.</p>
+                        <details><summary>Details</summary><div class="detail-content">Includes Google Business setup, local map integration, and SEO foundations.</div></details>
+                    </label>
+                </div>
+
+                <h3>3. Multi-Page Solutions</h3>
+                <div class="option-grid">
+                    <label class="option-item">
+                        <div class="check-indicator"></div>
+                        <input type="checkbox" class="price-trigger dev-group" data-price="20000">
+                        <strong>Essential Suite [₱20,000]</strong>
+                        <p>Professional Corporate Presence.</p>
+                        <details><summary>Details</summary><div class="detail-content">Standard 4-page architecture (Home, About, Services, Contact) with custom UI.</div></details>
+                    </label>
+                    <label class="option-item">
+                        <div class="check-indicator"></div>
+                        <input type="checkbox" class="price-trigger dev-group" data-price="28000">
+                        <strong>Full Ecosystem [₱28,000]</strong>
+                        <p>Multi-Page + Advanced Lead Stack.</p>
+                        <details><summary>Details</summary><div class="detail-content">Full site architecture + Technical SEO, Ad bridge, and priority staging.</div></details>
+                    </label>
+                </div>
+
+                <h3>4. Ongoing Support</h3>
+                <div class="option-grid">
+                    <label class="option-item">
+                        <div class="check-indicator"></div>
+                        <input type="checkbox" class="price-trigger monthly-check maint-group" id="mgmt-check" data-price="1500">
+                        <strong>Managed Support [₱1,500/mo]</strong>
+                        <p>Maintenance, SEO & Ad Monitoring.</p>
+                    </label>
+                    <label class="option-item">
+                        <div class="check-indicator"></div>
+                        <input type="checkbox" id="no-mgmt-check" class="maint-group" checked>
+                        <strong>Self-Managed [₱0]</strong>
+                        <p>One-time delivery.</p>
+                    </label>
+                </div>
+            </div>
+
+            <div class="summary-box">
+                <div style="font-size: 0.8rem; color: var(--primary-blue); font-weight: 900; text-transform: uppercase; letter-spacing: 1px;">Estimated Project Value</div>
+                <div class="total-price">₱<span id="display-total">1,200</span></div>
+                
+                <div class="payment-row" style="margin-top:20px; border-top: 1px solid #222; padding-top: 15px;">
+                    <span>Downpayment (50%):</span>
+                    <strong style="color:var(--accent-orange)">₱<span id="display-advance">1,200</span></strong>
+                </div>
+                <div class="payment-row">
+                    <span>Launch Balance:</span>
+                    <span>₱<span id="display-balance">0</span></span>
+                </div>
+
+                <div id="monthly-summary" style="display: none; background: rgba(249, 140, 21, 0.1); padding: 20px; border-radius: 8px; margin-top: 20px; border: 1px solid var(--accent-orange);">
+                    <div style="font-size: 0.75rem; font-weight: 900; color: var(--light-text); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">Monthly Commitment</div>
+                    <div style="display: flex; justify-content: space-between; font-size: 1.1rem; font-weight: 900; color: var(--accent-orange);">
+                        <span>RECURRING:</span>
+                        <span>₱<span id="display-monthly-total">0</span></span>
+                    </div>
+                </div>
+
+                <div class="ads-calculator-card" id="ads-card">
+                    <h4 style="font-size: 0.75rem; color: var(--accent-orange); margin: 0 0 12px 0; font-weight: 800; text-transform: uppercase;">Optional Ads Budget</h4>
+                    <div class="ads-input-row">
+                        <label style="font-size: 0.75rem;">Daily Ad Spend (₱):</label>
+                        <input type="number" id="daily-ads-input" placeholder="0" min="0">
+                    </div>
+                </div>
+
+                <a href="contact.html" class="cta-button">Request Official Quote</a>
+            </div>
+        </div>
     </main>
 
     <footer>
-        <div class="video-bg-wrap">
-            <video autoplay loop muted playsinline>
-                <source src="81092-574743664_medium.mp4" type="video/mp4">
-            </video>
-        </div>
-        <div class="footer-nav">
-            <a href="index.html">Home</a> | 
-            <a href="about.html">About</a> | 
-            <a href="service.html">Services</a> | 
-            <a href="portfolio.html">Portfolio</a> | 
-            <a href="quote.html">Pricing</a> | 
-            <a href="contact.html">Get Started</a> | 
-            <a href="legal.html">Terms & Conditions</a>
-        </div>
+        <div class="video-bg-wrap" aria-hidden="true"><video autoplay loop muted playsinline><source src="81092-574743664_medium.mp4" type="video/mp4"></video></div>
+        <div class="footer-nav"><a href="index.html">Home</a> | <a href="about.html">About</a> | <a href="service.html">Services</a> | <a href="portfolio.html">Portfolio</a> | <a href="quote.html">Pricing</a> | <a href="contact.html">Get Started</a> | <a href="legal.html">Terms</a></div>
         <p>&copy; 2026 JMCY WEB SOLUTIONS. All Rights Reserved.</p>
-        <div class="footer-badges">
-            CUSTOM HTML ARCHITECTURE • GITHUB WORKFLOWS • GCASH VERIFIED BUSINESS
-        </div>
+        <div class="footer-badges">REAL-TIME WEB ARCHITECTURE • SEO-OPTIMIZED SYSTEMS • 100% OWNERSHIP</div>
     </footer>
 
     <script>
@@ -428,27 +349,14 @@
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('nav-menu');
 
-            hamburger.addEventListener('click', (e) => {
-                e.stopPropagation();
+            hamburger.addEventListener('click', () => {
                 navMenu.classList.toggle('nav-active');
-            });
-
-            document.addEventListener('click', (e) => {
-                if (navMenu.classList.contains('nav-active') && !navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-                    navMenu.classList.remove('nav-active');
-                }
             });
 
             const devChecks = document.querySelectorAll('.dev-group');
             const maintChecks = document.querySelectorAll('.maint-group');
             const domainSelect = document.getElementById('domain-select');
-            const displayTotal = document.getElementById('display-total');
-            const displayAdvance = document.getElementById('display-advance');
-            const displayBalance = document.getElementById('display-balance');
-            const monthlySummary = document.getElementById('monthly-summary');
-            const displayMonthlyTotal = document.getElementById('display-monthly-total');
             const dailyAdsInput = document.getElementById('daily-ads-input');
-            const noMgmtCheck = document.getElementById('no-mgmt-check');
 
             function calculate() {
                 let domainPrice = parseInt(domainSelect.value);
@@ -469,23 +377,19 @@
                 const projectTotal = domainPrice + laborTotal;
                 const advance = domainPrice + (laborTotal / 2);
                 
-                displayTotal.innerText = projectTotal.toLocaleString();
-                displayAdvance.innerText = Math.round(advance).toLocaleString();
-                displayBalance.innerText = Math.round(projectTotal - advance).toLocaleString();
+                document.getElementById('display-total').innerText = projectTotal.toLocaleString();
+                document.getElementById('display-advance').innerText = Math.round(advance).toLocaleString();
+                document.getElementById('display-balance').innerText = Math.round(projectTotal - advance).toLocaleString();
 
                 const maintenanceFee = document.getElementById('mgmt-check').checked ? 1500 : 0;
                 const monthlyAdsVal = (parseInt(dailyAdsInput.value) || 0) * 30;
-                displayMonthlyTotal.innerText = (maintenanceFee + monthlyAdsVal).toLocaleString();
-                monthlySummary.style.display = (maintenanceFee > 0 || monthlyAdsVal > 0) ? "block" : "none";
+                document.getElementById('display-monthly-total').innerText = (maintenanceFee + monthlyAdsVal).toLocaleString();
+                document.getElementById('monthly-summary').style.display = (maintenanceFee > 0 || monthlyAdsVal > 0) ? "block" : "none";
                 
-                if(noMgmtCheck.checked) {
-                    dailyAdsInput.value = "";
-                    dailyAdsInput.disabled = true;
-                    document.getElementById('ads-card').classList.add('disabled');
-                } else {
-                    dailyAdsInput.disabled = false;
-                    document.getElementById('ads-card').classList.remove('disabled');
-                }
+                const noMgmt = document.getElementById('no-mgmt-check').checked;
+                dailyAdsInput.disabled = noMgmt;
+                document.getElementById('ads-card').classList.toggle('disabled', noMgmt);
+                if(noMgmt) dailyAdsInput.value = "";
             }
 
             devChecks.forEach(c => c.addEventListener('change', () => {
