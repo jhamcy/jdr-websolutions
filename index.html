@@ -54,13 +54,28 @@
 
         main { flex: 1 0 auto; display: flex; flex-direction: column; }
 
-        /* --- VIDEO BACKGROUND UTILITY --- */
-        .video-bg-wrap { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; overflow: hidden; }
-        .video-bg-wrap video { width: 100%; height: 100%; object-fit: cover; }
+        /* --- OLD VIDEO WRAPPER DELETED (Removed duplicate loading) --- */
 
-        /* --- NAVIGATION --- */
-        nav { padding: 0.5rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(0,0,0,0.85); overflow: hidden; }
-        nav > * { position: relative; z-index: 1; }
+        /* --- NAVIGATION (Updated with static background image) --- */
+        nav { 
+            padding: 0.5rem 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 1px solid #222; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            right: 0; 
+            z-index: 1000; 
+            /* MODIFIED: Add background image */
+            background-image: url('tech-bg.png'); /* <<< UPDATE IMAGE PATH HERE */
+            background-size: cover;
+            background-position: center bottom; /* Adjust this position as needed */
+            overflow: hidden; 
+        }
+        
+        /* MODIFIED: Removed relative z-index logic from navigation child elements */
         
         .nav-brand { 
             display: flex !important; 
@@ -85,7 +100,7 @@
         @media (max-width: 768px) { .hamburger { display: flex; } }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
         
-        /* --- UPDATED HERO SECTION WITH VIDEO --- */
+        /* --- UPDATED HERO SECTION WITH VIDEO (Unchanged) --- */
         .hero { 
             position: relative;
             padding: 70px 5% 50px; 
@@ -158,9 +173,24 @@
             100% { transform: translateX(-50%); }
         }
         
-        /* --- FOOTER --- */
-        footer { flex-shrink: 0; padding: 20px 5%; text-align: center; border-top: 1px solid #333; color: #ddd; font-size: 0.8rem; position: relative; background-color: #000; overflow: hidden; }
-        footer > * { position: relative; z-index: 1; }
+        /* --- FOOTER (Updated with static background image) --- */
+        footer { 
+            flex-shrink: 0; 
+            padding: 20px 5%; 
+            text-align: center; 
+            border-top: 1px solid #333; 
+            color: #ddd; 
+            font-size: 0.8rem; 
+            position: relative; 
+            /* MODIFIED: Add background image */
+            background-image: url('tech-bg.png'); /* <<< UPDATE IMAGE PATH HERE */
+            background-size: cover;
+            background-position: center top; /* Flips the positioning from nav */
+            overflow: hidden; 
+        }
+        
+        /* MODIFIED: Removed relative z-index logic from footer child elements */
+        
         footer a { color: #fff; text-decoration: none; margin: 0 8px; font-weight: 600; }
         footer a:hover { color: var(--accent-orange); }
         .footer-nav { margin-bottom: 10px; }
@@ -186,9 +216,6 @@
 </head>
 <body>
     <nav>
-        <div class="video-bg-wrap" aria-hidden="true">
-            <video autoplay loop muted playsinline><source src="81092-574743664_medium.mp4" type="video/mp4"></video>
-        </div>
         <a href="index.html" class="nav-brand">
             <img src="logo.png" alt="JMCY Logo" class="nav-logo">
             <div>JMCY WEB SOLUTIONS<br><span>Real-Time Custom Web Development</span></div>
@@ -267,9 +294,6 @@
     </main>
 
     <footer>
-        <div class="video-bg-wrap" aria-hidden="true">
-            <video autoplay loop muted playsinline><source src="81092-574743664_medium.mp4" type="video/mp4"></video>
-        </div>
         <div class="footer-nav"><a href="index.html">Home</a> | <a href="about.html">About</a> | <a href="service.html">Services</a> | <a href="portfolio.html">Portfolio</a> | <a href="quote.html">Pricing</a> | <a href="contact.html">Get Started</a> | <a href="legal.html">Terms</a></div>
         <p>&copy; 2026 JMCY WEB SOLUTIONS. All Rights Reserved.</p>
         <div class="footer-badges">REAL-TIME WEB DEVELOPMENT • CUSTOM-BUILT SYSTEMS • GCASH VERIFIED</div>
