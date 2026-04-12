@@ -54,9 +54,7 @@
 
         main { flex: 1 0 auto; display: flex; flex-direction: column; }
 
-        /* --- OLD VIDEO WRAPPER DELETED (Removed duplicate loading) --- */
-
-        /* --- NAVIGATION (Updated with static background image) --- */
+        /* --- NAVIGATION --- */
         nav { 
             padding: 0.5rem 5%; 
             display: flex; 
@@ -68,14 +66,11 @@
             left: 0; 
             right: 0; 
             z-index: 1000; 
-            /* MODIFIED: Add background image */
-            background-image: url('tech-bg.png'); /* <<< UPDATE IMAGE PATH HERE */
+            background-image: url('tech-bg.png'); 
             background-size: cover;
-            background-position: center bottom; /* Adjust this position as needed */
+            background-position: center bottom;
             overflow: hidden; 
         }
-        
-        /* MODIFIED: Removed relative z-index logic from navigation child elements */
         
         .nav-brand { 
             display: flex !important; 
@@ -100,7 +95,7 @@
         @media (max-width: 768px) { .hamburger { display: flex; } }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
         
-        /* --- UPDATED HERO SECTION WITH VIDEO (Unchanged) --- */
+        /* --- HERO SECTION --- */
         .hero { 
             position: relative;
             padding: 70px 5% 50px; 
@@ -147,33 +142,27 @@
         .monitor-card h4 { color: var(--accent-orange); margin: 0 0 8px; font-size: 1rem; }
         .monitor-card p { font-size: 0.85rem; color: var(--muted-text); line-height: 1.5; margin: 0; }
 
+        /* --- PROCESS VIDEO STYLING --- */
+        .process-video { 
+            width: 100%; 
+            max-width: 600px; 
+            border-radius: 12px; 
+            border: 1px solid #333; 
+            margin: 0 auto;
+            display: block;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
         /* --- TESTIMONIALS --- */
         .testimonial-section { background: #000; padding: 40px 0 0 0; border-top: 1px solid #111; margin-top: auto; overflow: hidden; }
         .testimonial-slider { width: 100%; overflow: hidden; padding: 20px 0; position: relative; }
-        .testimonial-track { 
-            display: flex; 
-            width: max-content; 
-            gap: 15px; 
-            animation: marquee 25s linear infinite; 
-        }
+        .testimonial-track { display: flex; width: max-content; gap: 15px; animation: marquee 25s linear infinite; }
         .testimonial-track:hover { animation-play-state: paused; }
-        .testimonial-card-move { 
-            width: 240px; 
-            flex-shrink: 0; 
-            background: rgba(10, 88, 202, 0.05); 
-            padding: 15px; 
-            border-radius: 10px; 
-            border-left: 3px solid var(--primary-blue); 
-            white-space: normal; 
-            text-align: left; 
-        }
+        .testimonial-card-move { width: 240px; flex-shrink: 0; background: rgba(10, 88, 202, 0.05); padding: 15px; border-radius: 10px; border-left: 3px solid var(--primary-blue); white-space: normal; text-align: left; }
 
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         
-        /* --- FOOTER (Updated with static background image) --- */
+        /* --- FOOTER --- */
         footer { 
             flex-shrink: 0; 
             padding: 20px 5%; 
@@ -182,14 +171,11 @@
             color: #ddd; 
             font-size: 0.8rem; 
             position: relative; 
-            /* MODIFIED: Add background image */
-            background-image: url('tech-bg.png'); /* <<< UPDATE IMAGE PATH HERE */
+            background-image: url('tech-bg.png'); 
             background-size: cover;
-            background-position: center top; /* Flips the positioning from nav */
+            background-position: center top; 
             overflow: hidden; 
         }
-        
-        /* MODIFIED: Removed relative z-index logic from footer child elements */
         
         footer a { color: #fff; text-decoration: none; margin: 0 8px; font-weight: 600; }
         footer a:hover { color: var(--accent-orange); }
@@ -234,7 +220,7 @@
 
     <main>
         <section class="hero">
-            <video class="hero-video-bg" autoplay loop muted playsinline>
+            <video class="hero-video-bg" autoplay loop muted playsinline preload="auto" poster="tech-bg.png">
                 <source src="818026310.mp4" type="video/mp4">
             </video>
             <div class="hero-overlay"></div>
@@ -265,8 +251,13 @@
 
             <section style="padding:60px 0; background:#0C0D11; text-align:center;">
                 <h2 style="font-size:1.8rem; margin-bottom:15px; color: var(--primary-blue);">Our Development Process</h2>
-                <p style="color:var(--muted-text); font-size:0.9rem; max-width:550px; margin:0 auto 40px;">A streamlined workflow designed to give you full control at every stage.</p>
-                <div class="monitor-grid">
+                <p style="color:var(--muted-text); font-size:0.9rem; max-width:550px; margin:0 auto 25px;">A streamlined workflow designed to give you full control at every stage.</p>
+                
+                <video class="process-video" autoplay loop muted playsinline preload="auto" loading="lazy" poster="tech-bg.png">
+                    <source src="1000015986.mp4" type="video/mp4">
+                </video>
+
+                <div class="monitor-grid" style="margin-top: 40px;">
                     <div class="monitor-card"><h4>1. Quote Builder</h4><p>Customize your project by selecting features and functionality through our smart quote builder.</p></div>
                     <div class="monitor-card"><h4>2. Live Development</h4><p>Development starts immediately with real-time access to your private preview link.</p></div>
                     <div class="monitor-card"><h4>3. Review & Feedback</h4><p>Review progress live and request changes instantly while your website is being built.</p></div>
@@ -324,9 +315,7 @@
             document.addEventListener('click', (e) => { if ((!navMenu.contains(e.target) && !hamburger.contains(e.target)) || e.target.tagName === 'A') closeMenu(); });
 
             const track = document.getElementById('slider-track');
-            if (track) {
-                track.innerHTML += track.innerHTML; 
-            }
+            if (track) { track.innerHTML += track.innerHTML; }
         });
 
         function openApp(appUri, storeUrl) { const start = Date.now(); window.location.href = appUri; setTimeout(function() { if (Date.now() - start < 2500) window.location.href = storeUrl; }, 2000); }
