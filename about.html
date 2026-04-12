@@ -28,7 +28,6 @@
     <meta property="og:type" content="website">
 
     <style>
-        /* --- BRAND VARIABLES --- */
         :root {
             --primary-blue: #0A58CA;
             --accent-orange: #F98C15;
@@ -38,7 +37,6 @@
             --muted-text: #A0A0A0;
         }
 
-        /* --- GLOBAL STYLES --- */
         html, body { height: 100%; margin: 0; padding: 0; }
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -53,13 +51,22 @@
         
         main { flex: 1 0 auto; display: flex; flex-direction: column; }
 
-        /* --- VIDEO BACKGROUND UTILITY --- */
-        .video-bg-wrap { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; overflow: hidden; }
-        .video-bg-wrap video { width: 100%; height: 100%; object-fit: cover; }
-        
         /* --- NAVIGATION --- */
-        nav { padding: 0.5rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(0,0,0,0.85); overflow: hidden; }
-        nav > * { position: relative; z-index: 1; }
+        nav { 
+            padding: 0.5rem 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 1px solid #222; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            right: 0; 
+            z-index: 1000; 
+            background-image: url('tech-bg.png'); 
+            background-size: cover;
+            background-position: center bottom;
+        }
 
         .nav-brand { display: flex !important; align-items: center; font-size: 0.9rem; font-weight: 800; letter-spacing: 1px; color: var(--light-text); text-transform: uppercase; text-decoration: none; line-height: 1.2; }
         .nav-logo { height: 40px; width: auto; margin-right: 12px; vertical-align: middle; }
@@ -75,17 +82,17 @@
         @media (max-width: 768px) { .hamburger { display: flex; } }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
 
-        /* --- UPDATED ABOUT HERO (SYNCED WITH INDEX) --- */
+        /* --- HERO SECTION (MATCHED TO INDEX) --- */
         .about-hero { 
             position: relative;
-            padding: 120px 5% 120px; 
+            min-height: 80vh; /* Matched to Index.html */
+            width: 100%;
             text-align: center; 
             overflow: hidden;
             background: #000;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
         }
         .hero-video-bg {
             position: absolute;
@@ -95,7 +102,6 @@
             height: 100%;
             z-index: 1;
             object-fit: cover;
-            opacity: 1;
         }
         .hero-overlay {
             position: absolute;
@@ -106,50 +112,45 @@
             background: radial-gradient(circle, rgba(12,13,17,0.3) 0%, rgba(12,13,17,0.9) 100%);
             z-index: 2;
         }
-        .about-hero-content { position: relative; z-index: 3; }
-
-        .about-hero h1 { 
-            font-size: clamp(2rem, 8vw, 3.5rem); 
-            margin-bottom: 15px; 
-            font-weight: 900; 
-            line-height: 1.1; 
-            letter-spacing: -1px;
-            color: #fff;
-        }
-        .about-hero p { 
-            font-size: 1.1rem; 
-            color: #ccc; 
-            max-width: 700px; 
-            margin: 0 auto; 
-            line-height: 1.6; 
-        }
+        .about-hero-content { position: relative; z-index: 3; padding: 0 5%; }
+        .about-hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin-bottom: 20px; font-weight: 900; line-height: 1.1; color: #fff; }
+        .about-hero p { font-size: 1.2rem; color: #ccc; max-width: 750px; margin: 0 auto; line-height: 1.6; }
         
-        .container { max-width: 1000px; margin: 0 auto; padding: 60px 5% 80px; box-sizing: border-box; }
-
-        h2 { color: var(--primary-blue); margin-top: 40px; font-size: 1.4rem; font-weight: 800; }
-        .highlight-text { font-size: 1.05rem; color: var(--accent-orange); font-weight: 600; border-left: 3px solid var(--accent-orange); padding-left: 20px; margin: 40px 0; font-style: italic; line-height: 1.6; }
-        .philosophy-card { background: rgba(10, 88, 202, 0.05); padding: 30px 20px; border-radius: 12px; border: 1px solid rgba(10, 88, 202, 0.2); margin-top: 40px; }
+        /* --- CONTENT --- */
+        .container { max-width: 1000px; margin: 0 auto; padding: 80px 5%; box-sizing: border-box; }
+        h2 { color: var(--primary-blue); margin-top: 40px; font-size: 1.6rem; font-weight: 800; }
+        .highlight-text { font-size: 1.1rem; color: var(--accent-orange); font-weight: 600; border-left: 3px solid var(--accent-orange); padding-left: 20px; margin: 40px 0; font-style: italic; line-height: 1.6; }
+        .philosophy-card { background: rgba(10, 88, 202, 0.05); padding: 35px 25px; border-radius: 12px; border: 1px solid rgba(10, 88, 202, 0.2); margin-top: 40px; }
         
-        /* --- FAQ SECTION --- */
         .faq-section { margin-top: 60px; border-top: 1px solid #222; padding-top: 40px; }
         .faq-item { margin-bottom: 25px; }
         .faq-question { color: var(--accent-orange); font-weight: 700; font-size: 1rem; margin-bottom: 8px; display: block; }
-        .faq-answer { color: var(--muted-text); font-size: 0.9rem; line-height: 1.5; }
+        .faq-answer { color: var(--muted-text); font-size: 0.95rem; line-height: 1.5; }
         
         /* --- FOOTER --- */
-        footer { flex-shrink: 0; padding: 30px 5%; text-align: center; border-top: 1px solid #333; color: #ddd; font-size: 0.8rem; position: relative; background-color: #000; overflow: hidden; }
-        footer > * { position: relative; z-index: 1; }
+        footer { 
+            flex-shrink: 0; 
+            padding: 40px 5%; 
+            text-align: center; 
+            border-top: 1px solid #333; 
+            color: #ddd; 
+            font-size: 0.8rem; 
+            position: relative; 
+            background-image: url('tech-bg.png'); 
+            background-size: cover;
+            background-position: center top; 
+        }
         footer a { color: #fff; text-decoration: none; margin: 0 10px; font-weight: 600; }
         footer a:hover { color: var(--accent-orange); }
         .footer-nav { margin-bottom: 15px; }
         .footer-badges { margin-top: 15px; opacity: 0.8; font-size: 0.7rem; letter-spacing: 1.5px; color: var(--accent-orange); font-weight: 900; }
 
-        /* --- SMART FLOATING BUTTON --- */
+        /* --- FLOATING CONTACT --- */
         .floating-contact-wrap { position: fixed; bottom: 30px; right: 20px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; transition: transform 0.4s ease, opacity 0.3s ease; }
         body.is-scrolling .floating-contact-wrap { transform: translateX(100px); opacity: 0; pointer-events: none; }
-        .float-btn { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; color: white; box-shadow: 0 8px 20px rgba(0,0,0,0.6); transition: 0.3s; background-color: #25D366; }
-        .float-btn:hover { transform: scale(1.1) rotate(5deg); }
-        .float-btn svg { width: 30px; height: 30px; fill: white; }
+        .float-btn { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; color: white; box-shadow: 0 6px 16px rgba(0,0,0,0.6); transition: 0.2s; background-color: #25D366; }
+        .float-btn:hover { transform: scale(1.1); }
+        .float-btn svg { width: 28px; height: 28px; fill: white; }
 
         @media (max-width: 768px) {
             .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; flex-direction: column; width: 280px; transform: translateX(100%); transition: 0.4s; padding-top: 80px; border-left: 1px solid #222; align-items: flex-start; }
@@ -161,9 +162,6 @@
 </head>
 <body>
     <nav>
-        <div class="video-bg-wrap">
-            <video autoplay loop muted playsinline><source src="81092-574743664_medium.mp4" type="video/mp4"></video>
-        </div>
         <a href="index.html" class="nav-brand">
             <img src="logo.png" alt="JMCY Logo" class="nav-logo">
             <div>JMCY WEB SOLUTIONS<br><span>Real-Time Custom Web Development</span></div>
@@ -182,7 +180,7 @@
 
     <main>
         <section class="about-hero">
-            <video class="hero-video-bg" autoplay loop muted playsinline>
+            <video class="hero-video-bg" autoplay loop muted playsinline preload="auto" poster="tech-bg.png">
                 <source src="818026310.mp4" type="video/mp4">
             </video>
             <div class="hero-overlay"></div>
@@ -196,12 +194,12 @@
         <div class="container">
             <div style="text-align: center; margin-bottom: 50px;">
                 <h2 style="margin-top: 0; color: var(--primary-blue);">The Founder's Vision</h2>
-                <p style="font-size: 1.05rem; line-height: 1.6; color: var(--light-text); max-width: 700px; margin: 0 auto;">
+                <p style="font-size: 1.1rem; line-height: 1.7; color: var(--light-text); max-width: 750px; margin: 0 auto;">
                     Hi, I'm <strong>James Del Rosario</strong>. I started JMCY WEB SOLUTIONS to help businesses get fast, reliable websites without the confusion and hidden processes of traditional agencies. You deserve to see exactly how your website is built, how it performs, and what you're paying for — in real time.
                 </p>
             </div>
 
-            <p style="font-size: 0.95rem; color: var(--light-text); margin-top: 40px;">
+            <p style="font-size: 1rem; color: var(--light-text); margin-top: 40px;">
                 We specialize in <strong>Custom HTML websites</strong> — built for speed, clean code, and better search engine performance from day one. By avoiding heavy CMS platforms, your site loads faster, ranks better, and gives you full control over every detail.
             </p>
             
@@ -210,52 +208,43 @@
             </div>
             
             <h2>SEO-Driven Infrastructure</h2>
-            <p style="font-size: 0.95rem; color: var(--muted-text);">
-                We build SEO directly into your website from the ground up. From proper structure and metadata to fast loading speeds and mobile optimization, we build sites that are natively understood by search engine crawlers, giving you a competitive edge in local and global markets.
+            <p style="color: var(--muted-text);">
+                We build SEO directly into your website from the ground up. From proper structure and metadata to fast loading speeds and mobile optimization, we build sites that are natively understood by search engine crawlers, giving you a competitive edge.
             </p>
             
             <h2>Guaranteed Domain Sovereignty</h2>
-            <p style="font-size: 0.95rem; color: var(--muted-text);">
-                You always stay in control of your website. Unlike agencies that hold domains hostage, JMCY WEB SOLUTIONS ensures all clients retain <strong>100% ownership</strong> of their digital real estate. We handle the technical setup, but full ownership and access always remain with you.
+            <p style="color: var(--muted-text);">
+                You always stay in control of your website. Unlike agencies that hold domains hostage, JMCY WEB SOLUTIONS ensures all clients retain <strong>100% ownership</strong>. We handle the technical setup, but full ownership and access always remain with you.
             </p>
             
             <div class="philosophy-card">
-                <h3 style="margin-top: 0; color: var(--accent-orange); font-size: 1.1rem; font-weight: 800;">Real-Time Development Transparency</h3>
-                <p style="margin-bottom: 0; font-size: 0.9rem; color: var(--light-text); line-height: 1.6;">Watch your website being built live. Through your private live preview link, you can watch the technical build of your site in real-time, ensuring every meta tag and line of code meets your business requirements.</p>
+                <h3 style="margin-top: 0; color: var(--accent-orange); font-size: 1.2rem; font-weight: 800;">Real-Time Development Transparency</h3>
+                <p style="margin-bottom: 0; font-size: 1rem; color: var(--light-text); line-height: 1.6;">Watch your website being built live. Through your private live preview link, you can watch the technical build of your site in real-time, ensuring every meta tag and line of code meets your business requirements.</p>
             </div>
 
             <section class="faq-section">
                 <h2 style="text-align: center; margin-bottom: 30px;">Strategic Insights</h2>
-                
                 <div class="faq-item">
                     <span class="faq-question">How do you handle domain transfers?</span>
-                    <p class="faq-answer">You purchase your own domain to guarantee full ownership from the beginning. We simply handle the technical pointing and DNS records. Upon project completion, all hosting and code credentials are fully handed over.</p>
+                    <p class="faq-answer">You purchase your own domain to guarantee full ownership. We simply handle the technical pointing and DNS records. Upon project completion, all credentials are handed over.</p>
                 </div>
-
                 <div class="faq-item">
                     <span class="faq-question">Is custom code better for SEO?</span>
-                    <p class="faq-answer">Yes. Custom HTML avoids unnecessary code, which means faster loading speeds and better SEO performance.</p>
-                </div>
-                <div class="faq-item">
-                    <span class="faq-question">Why choose JMCY over traditional agencies?</span>
-                    <p class="faq-answer">Most agencies hide progress and limit access. We do the opposite — you get full visibility, real-time updates, and complete ownership of your website from start to finish.</p>
+                    <p class="faq-answer">Yes. Custom HTML avoids unnecessary "bloat" code, which means faster loading speeds and clearer indexing for Google.</p>
                 </div>
                 <div class="faq-item">
                     <span class="faq-question">Who owns the intellectual property?</span>
-                    <p class="faq-answer">Once final settlement is reached, the client owns the full source code and all related digital assets. We provide the technical expertise; you own the result.</p>
+                    <p class="faq-answer">Once final settlement is reached, the client owns the full source code and all related digital assets. We provide the expertise; you own the result.</p>
                 </div>
             </section>
             
             <div style="text-align: center; margin-top: 50px;">
-                <a href="quote.html" style="color: var(--primary-blue); text-decoration: none; font-weight: bold; font-size: 0.85rem; letter-spacing: 1px;">VIEW PROJECT PRICING &rarr;</a>
+                <a href="quote.html" style="color: var(--primary-blue); text-decoration: none; font-weight: bold; font-size: 0.9rem; letter-spacing: 1px;">VIEW PROJECT PRICING &rarr;</a>
             </div>
         </div>
     </main>
 
     <footer>
-        <div class="video-bg-wrap">
-            <video autoplay loop muted playsinline><source src="81092-574743664_medium.mp4" type="video/mp4"></video>
-        </div>
         <div class="footer-nav">
             <a href="index.html">Home</a> | <a href="about.html">About</a> | <a href="service.html">Services</a> | <a href="portfolio.html">Portfolio</a> | <a href="quote.html">Pricing</a> | <a href="contact.html">Get Started</a> | <a href="legal.html">Terms & Conditions</a>
         </div>
@@ -272,18 +261,40 @@
     </div>
 
     <script>
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('nav-active');
-        });
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            
+            // --- SCROLLING EFFECT (Floating Button) ---
+            let scrollTimer;
+            window.addEventListener('scroll', () => {
+                document.body.classList.add('is-scrolling');
+                clearTimeout(scrollTimer);
+                scrollTimer = setTimeout(() => { document.body.classList.remove('is-scrolling'); }, 400);
+            }, { passive: true });
 
-        let scrollTimer;
-        window.addEventListener('scroll', () => {
-            document.body.classList.add('is-scrolling');
-            clearTimeout(scrollTimer);
-            scrollTimer = setTimeout(() => { document.body.classList.remove('is-scrolling'); }, 400);
-        }, { passive: true });
+            // --- MENU FUNCTIONS ---
+            const closeMenu = () => { 
+                if (navMenu.classList.contains('nav-active')) {
+                    navMenu.classList.remove('nav-active'); 
+                }
+            };
+
+            hamburger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                navMenu.classList.toggle('nav-active');
+            });
+
+            // Auto-close on scroll
+            window.addEventListener('scroll', closeMenu, { passive: true });
+
+            // Auto-close on click outside or clicking a link
+            document.addEventListener('click', (e) => {
+                if ((!navMenu.contains(e.target) && !hamburger.contains(e.target)) || e.target.tagName === 'A') {
+                    closeMenu();
+                }
+            });
+        });
     </script>
 </body>
 </html>
