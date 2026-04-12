@@ -48,28 +48,6 @@
 
         .main-content { flex: 1 0 auto; }
 
-        .ad-container {
-            width: 90%;
-            max-width: 728px;
-            margin: 20px auto 10px;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px dashed #333;
-            text-align: center;
-            border-radius: 8px;
-            position: relative;
-            z-index: 1;
-            box-sizing: border-box;
-        }
-        .ad-label {
-            font-size: 0.6rem;
-            color: #555;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-            display: block;
-        }
-
         .sticky-wrapper {
             position: sticky;
             top: 0;
@@ -386,12 +364,6 @@
         <p>Build your custom digital solution</p>
     </header>
 
-    <div class="ad-container">
-        <span class="ad-label">Advertisement</span>
-        <script async="async" data-cfasync="false" src="//spreadpreferencetelevision.com/2646f115de46c4b4c5e833512708597e/invoke.js"></script>
-        <div id="container-2646f115de46c4b4c5e833512708597e"></div>
-    </div>
-
     <div class="form-container">
         <form id="inquiry-form">
             <span class="section-title">Client Details</span>
@@ -576,9 +548,9 @@
                 closeMenu();
             }
         });
+        calculate(); // Initialize calculation on load
     });
 
-    // FIXED: Using Public Anon Key to resolve JWS Protected Header error
     const SUPABASE_URL = 'https://rtpeofjlmtljwabmthsf.supabase.co';
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ0cGVvZmpsbXRsandhYm10aHNmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ4ODI5MjAsImV4cCI6MjA5MDQ1ODkyMH0.w8V7fORbWYnD2gXQ0v8lS_287OSrNKxoHZ6vuzRHodE';
     const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -610,7 +582,7 @@
     function selectRadio(id) { document.getElementById(id).checked = true; calculate(); }
     
     function calculate() {
-        let setup = parseInt(document.getElementById('domain-select').value);
+        let setup = parseInt(document.getElementById('domain-select').value) || 0;
         document.querySelectorAll('input[name="dev_package"]').forEach(opt => {
             const card = document.getElementById('card-' + opt.id);
             if(opt.checked) { setup += parseInt(opt.getAttribute('data-price')); card.classList.add('selected'); }
@@ -625,31 +597,27 @@
     }
     
     function updateAds() {
-        const slider = document.getElementById('ad-slider');
-        const daily = parseInt(slider.value);
-        const adSpend = daily * 30;
-        const mgmt = document.getElementById('maint1').checked ? 1500 : 0;
-        document.getElementById('daily-val').innerText = daily;
-        document.getElementById('ad-spend-val').innerText = adSpend.toLocaleString();
-        document.getElementById('display-monthly-total').innerText = (adSpend + mgmt).toLocaleString();
-        document.getElementById('display-traffic').innerText = Math.floor(adSpend / 20).toLocaleString() + " targeted visitors/mo";
+        const daily = parseInt(document.getElementById('ad-slider').value);
+        const monthly = daily * 30;
+        const totalMonthly = monthly + 1500;
+        document.getElementById('daily-val').innerText = daily.toLocaleString();
+        document.getElementById('ad-spend-val').innerText = monthly.toLocaleString();
+        document.getElementById('display-monthly-total').innerText = totalMonthly.toLocaleString();
+        document.getElementById('display-traffic').innerText = Math.round(monthly/20) + " visitors/mo";
     }
-    
+
     function toggleSubmit() { document.getElementById('submit-btn').disabled = !document.getElementById('terms-check').checked; }
 
     document.getElementById('inquiry-form').addEventListener('submit', async (e) => {
         e.preventDefault();
-        
         const myWhatsAppNumber = "639171234567"; 
 
         const btn = document.getElementById('submit-btn');
         const status = document.getElementById('status-msg');
         btn.disabled = true; 
-        btn.innerText = "SENDING TO WHATSAPP...";
+        btn.innerText = "SENDING...";
         status.style.display = "block"; 
-        status.style.background = "#30363d"; 
-        status.style.color = "#fff";
-        status.innerText = "Processing inquiry and opening WhatsApp...";
+        status.innerText = "Processing inquiry...";
 
         try {
             const name = document.getElementById('full-name').value;
@@ -722,44 +690,14 @@
                     `*TOTAL QUOTE:* ${total}\n` +
                     `*REQUIRED DEPOSIT:* ${advance}`;
 
-            const whatsappUrl = `https://wa.me/${myWhatsAppNumber}?text=${encodeURIComponent(text)}`;
-            
-            // FIXED: Removed .focus() and added fallback for mobile browsers blocking popups
-            const newWindow = window.open(whatsappUrl, '_blank');
-            if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
-                window.location.href = whatsappUrl;
-            }
-
-            status.style.display = "none";
-            document.getElementById('thx-modal').style.display = 'block';
-            document.getElementById('inquiry-form').reset();
-            document.getElementById('file-preview-list').innerHTML = "";
-            uploadedFilesArray = [];
-            calculate();
-
+            window.location.href = `https://wa.me/${myWhatsAppNumber}?text=${encodeURIComponent(text)}`;
         } catch (err) {
-            status.style.background = "#ff4d4d";
-            status.innerText = "Error: " + (err.message || "Submission failed");
-        } finally {
-            btn.innerText = "SUBMIT INQUIRY";
+            console.error(err);
+            status.innerText = "Error sending inquiry. Please try again.";
             btn.disabled = false;
+            btn.innerText = "Submit Inquiry";
         }
     });
-
-    calculate();
-    function closeThx() { document.getElementById('thx-modal').style.display = 'none'; }
 </script>
-
-<script src="https://spreadpreferencetelevision.com/25/63/6a/25636a97d0b10d79c797db1986a99856.js"></script>
-
-<div id="thx-modal" class="modal">
-    <div class="modal-content">
-        <span class="thx-icon">✓</span>
-        <h2 style="color: #fff; margin: 0;">Submission Success!</h2>
-        <p style="color: #8b949e; margin-top: 10px;">Your project blueprint has been sent to WhatsApp. JMCY WEB SOLUTIONS will contact you shortly to discuss the development phase.</p>
-        <button class="btn-close-thx" onclick="closeThx()">Continue</button>
-    </div>
-</div>
-
 </body>
 </html>
