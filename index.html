@@ -54,7 +54,9 @@
 
         main { flex: 1 0 auto; display: flex; flex-direction: column; }
 
-        /* --- NAVIGATION (Updated: Solid pattern, no zoom) --- */
+        /* --- OLD VIDEO WRAPPER DELETED (Removed duplicate loading) --- */
+
+        /* --- NAVIGATION (Updated with static background image) --- */
         nav { 
             padding: 0.5rem 5%; 
             display: flex; 
@@ -66,13 +68,14 @@
             left: 0; 
             right: 0; 
             z-index: 1000; 
-            /* MODIFIED: Background set to repeat and original size to prevent zoom */
-            background-image: url('tech-bg.png'); 
-            background-repeat: repeat;
-            background-size: auto; 
-            background-position: center;
+            /* MODIFIED: Add background image */
+            background-image: url('tech-bg.png'); /* <<< UPDATE IMAGE PATH HERE */
+            background-size: cover;
+            background-position: center bottom; /* Adjust this position as needed */
             overflow: hidden; 
         }
+        
+        /* MODIFIED: Removed relative z-index logic from navigation child elements */
         
         .nav-brand { 
             display: flex !important; 
@@ -97,7 +100,7 @@
         @media (max-width: 768px) { .hamburger { display: flex; } }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
         
-        /* --- HERO SECTION --- */
+        /* --- UPDATED HERO SECTION WITH VIDEO (Unchanged) --- */
         .hero { 
             position: relative;
             padding: 70px 5% 50px; 
@@ -131,7 +134,7 @@
         .cta-btn-main { background: var(--primary-blue); color: white; padding: 14px 32px; border-radius: 5px; text-decoration: none; display: inline-block; transition: 0.3s; font-size: 0.95rem; font-weight: bold; box-shadow: 0 4px 15px rgba(10, 88, 202, 0.4); }
         .cta-btn-main:hover { transform: translateY(-2px); background: #0d6efd; }
 
-        /* --- CONTAINER --- */
+        /* --- MAIN CONTAINER --- */
         .container { max-width: 800px; margin: 0 auto; padding: 40px 5% 80px; }
 
         /* --- MONITOR/GRID STYLES --- */
@@ -170,7 +173,7 @@
             100% { transform: translateX(-50%); }
         }
         
-        /* --- FOOTER (Updated: Solid pattern, no zoom) --- */
+        /* --- FOOTER (Updated with static background image) --- */
         footer { 
             flex-shrink: 0; 
             padding: 20px 5%; 
@@ -179,13 +182,14 @@
             color: #ddd; 
             font-size: 0.8rem; 
             position: relative; 
-            /* MODIFIED: Background set to repeat and original size to prevent zoom */
-            background-image: url('tech-bg.png'); 
-            background-repeat: repeat;
-            background-size: auto;
-            background-position: center;
+            /* MODIFIED: Add background image */
+            background-image: url('tech-bg.png'); /* <<< UPDATE IMAGE PATH HERE */
+            background-size: cover;
+            background-position: center top; /* Flips the positioning from nav */
             overflow: hidden; 
         }
+        
+        /* MODIFIED: Removed relative z-index logic from footer child elements */
         
         footer a { color: #fff; text-decoration: none; margin: 0 8px; font-weight: 600; }
         footer a:hover { color: var(--accent-orange); }
@@ -234,6 +238,7 @@
                 <source src="818026310.mp4" type="video/mp4">
             </video>
             <div class="hero-overlay"></div>
+            
             <div class="hero-content">
                 <h1><span style="color: var(--accent-orange);">Custom Websites Built Real-Time</span></h1>
                 <h2>Watch Your Site Being Developed in Real Time</h2>
@@ -260,6 +265,7 @@
 
             <section style="padding:60px 0; background:#0C0D11; text-align:center;">
                 <h2 style="font-size:1.8rem; margin-bottom:15px; color: var(--primary-blue);">Our Development Process</h2>
+                <p style="color:var(--muted-text); font-size:0.9rem; max-width:550px; margin:0 auto 40px;">A streamlined workflow designed to give you full control at every stage.</p>
                 <div class="monitor-grid">
                     <div class="monitor-card"><h4>1. Quote Builder</h4><p>Customize your project by selecting features and functionality through our smart quote builder.</p></div>
                     <div class="monitor-card"><h4>2. Live Development</h4><p>Development starts immediately with real-time access to your private preview link.</p></div>
@@ -273,6 +279,7 @@
             <div style="max-width: 800px; margin: 0 auto; padding: 0 5%;">
                 <div style="max-width: 400px; margin: 0 auto 40px; background: rgba(255,255,255,0.02); padding: 30px 20px; border-radius: 12px; border: 1px solid #222; text-align: center;">
                     <h2 style="font-size: 1.2rem; margin-bottom: 10px;">Rate Our <span style="color: var(--accent-orange);">Service</span></h2>
+                    <p style="font-size: 0.8rem; color: var(--muted-text); margin-bottom: 25px; line-height: 1.6;">Your insights are vital in maintaining our high technical standards.</p>
                     <button onclick="submitRating()" id="submit-btn" style="background: var(--accent-orange); color: black; border: none; padding: 14px 20px; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 0.85rem; transition: 0.3s; width: 100%; text-transform: uppercase; letter-spacing: 1px;">Submit Rating & Review</button>
                 </div>
             </div>
@@ -280,6 +287,7 @@
                 <div class="testimonial-track" id="slider-track">
                     <div class="testimonial-card-move"><div style="color: var(--accent-orange); font-size: 0.8rem; margin-bottom: 5px;">★★★★★</div><p style="font-size: 0.75rem; color: var(--light-text); font-style: italic; margin-bottom: 8px;">"The GitHub Live link was a game changer."</p><span style="font-size: 0.7rem; color: var(--muted-text); font-weight: bold;">— TechStart <span style="color:var(--primary-blue)">✔</span></span></div>
                     <div class="testimonial-card-move"><div style="color: var(--accent-orange); font-size: 0.8rem; margin-bottom: 5px;">★★★★★</div><p style="font-size: 0.75rem; color: var(--light-text); font-style: italic; margin-bottom: 8px;">"Fast delivery and very clean code."</p><span style="font-size: 0.7rem; color: var(--muted-text); font-weight: bold;">— Creative Agency <span style="color:var(--primary-blue)">✔</span></span></div>
+                    <div class="testimonial-card-move"><div style="color: var(--accent-orange); font-size: 0.8rem; margin-bottom: 5px;">★★★★★</div><p style="font-size: 0.75rem; color: var(--light-text); font-style: italic; margin-bottom: 8px;">"Real-time monitoring made the process easy."</p><span style="font-size: 0.7rem; color: var(--muted-text); font-weight: bold;">— DevSolutions <span style="color:var(--primary-blue)">✔</span></span></div>
                 </div>
             </div>
         </section>
@@ -316,7 +324,9 @@
             document.addEventListener('click', (e) => { if ((!navMenu.contains(e.target) && !hamburger.contains(e.target)) || e.target.tagName === 'A') closeMenu(); });
 
             const track = document.getElementById('slider-track');
-            if (track) { track.innerHTML += track.innerHTML; }
+            if (track) {
+                track.innerHTML += track.innerHTML; 
+            }
         });
 
         function openApp(appUri, storeUrl) { const start = Date.now(); window.location.href = appUri; setTimeout(function() { if (Date.now() - start < 2500) window.location.href = storeUrl; }, 2000); }
