@@ -98,10 +98,14 @@
         /* --- HERO SECTION --- */
         .hero { 
             position: relative;
-            padding: 70px 5% 50px; 
+            min-height: 86vh;
+            width: 100%;
             text-align: center; 
             overflow: hidden;
             background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .hero-video-bg {
             position: absolute;
@@ -111,7 +115,6 @@
             height: 100%;
             z-index: 1;
             object-fit: cover;
-            opacity: 1;
         }
         .hero-overlay {
             position: absolute;
@@ -123,10 +126,10 @@
             z-index: 2;
         }
         .hero-content { position: relative; z-index: 3; }
-        .hero h1 { font-size: clamp(1.5rem, 6vw, 3rem); margin-bottom: 5px; font-weight: 800; line-height: 1.1;}
-        .hero h2 { font-size: clamp(1.1rem, 4vw, 1.8rem); margin-bottom: 20px; font-weight: 700; line-height: 1.2; color: #fff; }
-        .hero p { font-size: 1rem; color: #ccc; max-width: 750px; margin: 0 auto 30px; }
-        .cta-btn-main { background: var(--primary-blue); color: white; padding: 14px 32px; border-radius: 5px; text-decoration: none; display: inline-block; transition: 0.3s; font-size: 0.95rem; font-weight: bold; box-shadow: 0 4px 15px rgba(10, 88, 202, 0.4); }
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin-bottom: 30px; font-weight: 900; line-height: 1.1;}
+        .hero h2 { font-size: clamp(1.1rem, 4vw, 1.8rem); margin-bottom: 40px; font-weight: 700; line-height: 1.2; color: #fff; }
+        .hero p { font-size: 1.2rem; color: #ccc; max-width: 750px; margin: 0 auto 30px; }
+        .cta-btn-main { background: var(--primary-blue); color: white; padding: 14px 42px; border-radius: 5px; text-decoration: none; display: inline-block; transition: 0.3s; font-size: 0.95rem; font-weight: bold; box-shadow: 0 4px 15px rgba(10, 88, 202, 0.4); }
         .cta-btn-main:hover { transform: translateY(-2px); background: #0d6efd; }
 
         /* --- MAIN CONTAINER --- */
