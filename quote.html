@@ -14,12 +14,8 @@
     
     <title>Web Development Pricing & Instant Quote | JMCY WEB SOLUTIONS</title>
     <meta name="description" content="Calculate your custom web development costs instantly. Transparent pricing for landing pages, corporate sites, SEO, and Google Ads management.">
-    <meta name="keywords" content="web development price philippines, website cost calculator, JMCY Web Solutions quote, affordable web design, SEO pricing">
-    <link rel="canonical" href="https://jmcywebsolutions.com/quote.html">
-
     <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#0A58CA">
 
     <style>
         /* --- BRAND VARIABLES --- */
@@ -30,7 +26,6 @@
             --card-bg: rgba(23, 25, 30, 0.9);
             --light-text: #F4F4F4;
             --muted-text: #A0A0A0;
-            --header-bg: #000000;
         }
 
         /* --- GLOBAL STYLES --- */
@@ -48,38 +43,44 @@
         
         main { flex: 1 0 auto; display: flex; flex-direction: column; }
 
-        /* --- VIDEO BACKGROUND --- */
-        .video-bg-wrap { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; overflow: hidden; }
-        .video-bg-wrap video { width: 100%; height: 100%; object-fit: cover; }
-
-        /* --- NAVIGATION --- */
-        nav { padding: 0.5rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(0,0,0,0.85); overflow: hidden; }
-        nav > * { position: relative; z-index: 1; }
-
-        .nav-brand { display: flex !important; align-items: center; font-size: 0.9rem; font-weight: 800; letter-spacing: 1px; color: var(--light-text); text-transform: uppercase; text-decoration: none; line-height: 1.2; }
-        .nav-logo { height: 40px; width: auto; margin-right: 12px; vertical-align: middle; }
-        .nav-brand span { color: var(--accent-orange); font-size: 0.65rem; display: block; margin-top: 2px; letter-spacing: 0.5px; }
+        /* --- NAVIGATION (Synced with tech-bg) --- */
+        nav { 
+            padding: 0.5rem 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 1px solid #222; 
+            position: fixed; 
+            top: 0; left: 0; right: 0; 
+            z-index: 1000; 
+            background-image: url('tech-bg.png'); 
+            background-size: cover;
+            background-position: center bottom;
+        }
+        
+        .nav-brand { display: flex !important; align-items: center; font-size: 0.9rem; font-weight: 800; color: var(--light-text); text-transform: uppercase; text-decoration: none; line-height: 1.2; }
+        .nav-logo { height: 40px; width: auto; margin-right: 12px; }
+        .nav-brand span { color: var(--accent-orange); font-size: 0.65rem; display: block; margin-top: 2px; }
 
         .nav-links { display: flex; list-style: none; margin: 0; padding: 0; align-items: center; }
         .nav-links li { margin-left: 18px; }
-        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; display: inline-block; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; }
         .nav-links a:hover, .active-link { color: var(--accent-orange) !important; }
         .nav-quote-btn { border: 1px solid var(--accent-orange); padding: 5px 12px; border-radius: 4px; color: var(--accent-orange) !important; font-weight: 800 !important; }
 
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
 
-        /* --- SYNCED HERO SECTION (MATCHED TO BRAND STANDARD) --- */
+        /* --- HERO (Locked to 80vh for Consistency) --- */
         .quote-hero { 
             position: relative;
-            padding: 130px 5% 155px; 
+            height: 80vh; 
             text-align: center; 
             background: #000; 
             overflow: hidden;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
         }
         .hero-video-bg {
             position: absolute;
@@ -92,38 +93,35 @@
             background: radial-gradient(circle, rgba(12,13,17,0.3) 0%, rgba(12,13,17,0.9) 100%);
             z-index: 2;
         }
-        .hero-content { position: relative; z-index: 3; }
+        .hero-content { position: relative; z-index: 3; padding: 0 5%; }
 
         .quote-hero h1 { 
-            font-size: clamp(2rem, 8vw, 3.5rem); 
+            font-size: clamp(2.2rem, 8vw, 4rem); 
             margin-bottom: 10px; 
             font-weight: 900; 
             line-height: 1.1; 
-            letter-spacing: -1px;
             color: #fff;
         }
         .quote-hero p { 
-            font-size: 1.1rem; 
+            font-size: 1.2rem; 
             color: #ccc; 
-            max-width: 750px; 
+            max-width: 800px; 
             margin: 0 auto; 
             line-height: 1.6; 
         }
 
-        /* --- QUOTE BUILDER CONTAINER --- */
+        /* --- QUOTE BUILDER --- */
         .builder-container {
             max-width: 1100px; 
-            margin: -40px auto 80px; /* Pull up slightly over hero */
+            margin: -60px auto 80px; 
             background: var(--card-bg); 
             border-radius: 20px;
             padding: 40px; 
             display: grid; 
             grid-template-columns: 1fr 340px;
             gap: 40px; 
-            text-align: left; 
             backdrop-filter: blur(15px);
             border: 1px solid rgba(255,255,255,0.05);
-            box-sizing: border-box;
             position: relative;
             z-index: 10;
         }
@@ -146,71 +144,59 @@
         }
         .option-item.selected .check-indicator {
             border-color: var(--accent-orange); background: var(--accent-orange);
-            box-shadow: 0 0 10px rgba(249, 140, 21, 0.3);
         }
         .option-item.selected .check-indicator::after { content: ''; width: 6px; height: 6px; background: white; border-radius: 50%; }
 
-        .option-item strong { font-size: 0.9rem; line-height: 1.2; display: block; margin-bottom: 8px; color: #fff; }
-        .option-item p { font-size: 0.75rem; color: var(--muted-text); margin: 0 0 10px 0; }
+        .option-item strong { font-size: 0.9rem; color: #fff; display: block; margin-bottom: 8px; }
+        .option-item p { font-size: 0.75rem; color: var(--muted-text); margin: 0; }
 
-        summary { font-size: 0.75rem; color: var(--primary-blue); cursor: pointer; font-weight: 800; text-transform: uppercase; }
+        summary { font-size: 0.75rem; color: var(--primary-blue); cursor: pointer; font-weight: 800; margin-top: 10px; }
         .detail-content { font-size: 0.75rem; color: #bbb; padding-top: 8px; line-height: 1.5; }
 
         /* --- SUMMARY BOX --- */
         .summary-box {
             background: #000; padding: 30px; border-radius: 15px;
             border: 1px solid var(--primary-blue); height: fit-content;
-            position: sticky; top: 100px; display: flex; flex-direction: column;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            position: sticky; top: 100px;
         }
-        .total-price { font-size: 2.5rem; color: var(--accent-orange); font-weight: 900; letter-spacing: -1px; margin: 10px 0; }
-        .payment-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.95rem; }
+        .total-price { font-size: 2.5rem; color: var(--accent-orange); font-weight: 900; margin: 10px 0; }
+        .payment-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.9rem; }
         .cta-button {
             display: block; background: var(--primary-blue); color: white;
             text-align: center; padding: 15px; border-radius: 6px; text-decoration: none;
-            font-weight: 800; margin-top: 20px; transition: 0.3s; text-transform: uppercase;
-            letter-spacing: 1px;
+            font-weight: 800; margin-top: 20px; transition: 0.3s;
         }
-        .cta-button:hover { background: #0849aa; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(10, 88, 202, 0.2); }
+        .cta-button:hover { background: #0849aa; transform: translateY(-2px); }
 
-        .ads-calculator-card {
-            margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.05);
-            border: 1px dashed #444; border-radius: 10px;
-        }
+        .ads-calculator-card { margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 10px; }
         .ads-calculator-card.disabled { opacity: 0.3; pointer-events: none; }
         .ads-input-row { display: flex; justify-content: space-between; align-items: center; }
-        .ads-input-row input {
-            width: 90px; background: #111; border: 1px solid #333; color: #fff;
-            padding: 8px; border-radius: 4px; font-size: 0.8rem; text-align: right; font-weight: bold;
-        }
+        .ads-input-row input { width: 90px; background: #111; border: 1px solid #333; color: #fff; padding: 8px; border-radius: 4px; text-align: right; }
 
-        /* --- FOOTER --- */
-        footer { flex-shrink: 0; padding: 30px 5%; text-align: center; border-top: 1px solid #333; color: #ddd; font-size: 0.8rem; position: relative; background-color: #000; overflow: hidden; }
-        footer > * { position: relative; z-index: 1; }
+        /* --- FOOTER (Synced with tech-bg) --- */
+        footer { 
+            flex-shrink: 0; padding: 40px 5%; text-align: center; border-top: 1px solid #333; color: #ddd; font-size: 0.8rem; 
+            position: relative; background-image: url('tech-bg.png'); background-size: cover; background-position: center top; 
+        }
         footer a { color: #fff; text-decoration: none; margin: 0 10px; font-weight: 600; }
         footer a:hover { color: var(--accent-orange); }
-        .footer-nav { margin-bottom: 15px; }
-        .footer-badges { margin-top: 15px; opacity: 0.8; font-size: 0.7rem; letter-spacing: 1.5px; color: var(--accent-orange); font-weight: 900; }
+        .footer-badges { margin-top: 15px; color: var(--accent-orange); font-weight: 900; letter-spacing: 1.5px; }
 
         @media (max-width: 768px) {
-            .quote-hero { padding: 100px 5% 80px; }
+            .hamburger { display: flex; }
             .builder-container { grid-template-columns: 1fr; padding: 25px; margin-top: 0; }
             .option-grid { grid-template-columns: 1fr; }
             .summary-box { position: static; margin-top: 20px; }
-            .hamburger { display: flex; }
-            .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; flex-direction: column; width: 280px; transform: translateX(100%); transition: 0.4s; padding-top: 80px; border-left: 1px solid #222; align-items: flex-start; }
-            .nav-links.nav-active { transform: translateX(0%); }
+            .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background: #000; flex-direction: column; width: 280px; transform: translateX(100%); transition: 0.4s; padding-top: 80px; }
+            .nav-active { transform: translateX(0%); }
             .nav-links li { width: 100%; margin: 0; }
-            .nav-links a { display: block; width: 100%; padding: 22px 35px; font-size: 1rem; border-bottom: 1px solid #111; }
+            .nav-links a { display: block; padding: 20px 30px; border-bottom: 1px solid #111; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="video-bg-wrap" aria-hidden="true">
-            <video autoplay loop muted playsinline><source src="81092-574743664_medium.mp4" type="video/mp4"></video>
-        </div>
         <a href="index.html" class="nav-brand">
             <img src="logo.png" alt="JMCY Logo" class="nav-logo">
             <div>JMCY WEB SOLUTIONS<br><span>Real-Time Custom Web Development</span></div>
@@ -220,8 +206,8 @@
             <li><a href="about.html">About Us</a></li>
             <li><a href="service.html">Services</a></li>
             <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="legal.html">Terms & Conditions</a></li>
-            <li><a href="quote.html" class="active-link">Projects / Pricing</a></li>
+            <li><a href="legal.html">Terms</a></li>
+            <li><a href="quote.html" class="active-link">Pricing</a></li>
             <li><a href="contact.html" class="nav-quote-btn">Get Started</a></li>
         </ul>
         <div class="hamburger" id="hamburger"><div></div><div></div><div></div></div>
@@ -233,7 +219,6 @@
                 <source src="818026310.mp4" type="video/mp4">
             </video>
             <div class="hero-overlay"></div>
-            
             <div class="hero-content">
                 <h1>Estimate Your <span style="color: var(--accent-orange);">Digital Investment</span></h1>
                 <p>Select your infrastructure and development tier to get an instant breakdown of your project costs.</p>
@@ -243,12 +228,12 @@
         <div class="builder-container">
             <div class="options">
                 <h3>1. Domain & Infrastructure</h3>
-                <select id="domain-select" style="width: 100%; padding: 15px; background: #1a1c23; color: white; border: 1px solid #444; border-radius: 8px; margin-bottom: 10px; font-size: 0.9rem;">
+                <select id="domain-select" style="width: 100%; padding: 15px; background: #1a1c23; color: white; border: 1px solid #444; border-radius: 8px; margin-bottom: 10px;">
                     <option value="1200">New Standard .com Registration (₱1,200/yr)</option>
                     <option value="3500">New Local .ph / .com.ph (₱3,500/yr)</option>
                     <option value="0">Use My Existing Domain (₱0)</option>
                 </select>
-                <p style="font-size: 0.7rem; color: var(--muted-text); margin-bottom: 30px;">* Clients retain full ownership and administrative control of all purchased domains.</p>
+                <p style="font-size: 0.7rem; color: var(--muted-text); margin-bottom: 30px;">* Clients retain full ownership and control of all purchased domains.</p>
 
                 <h3>2. Single-Page Development</h3>
                 <div class="option-grid">
@@ -257,14 +242,14 @@
                         <input type="checkbox" class="price-trigger dev-group" data-price="10000">
                         <strong>Essential Code [₱10,000]</strong>
                         <p>Lightweight Custom Landing Page.</p>
-                        <details><summary>Details</summary><div class="detail-content">Hand-coded HTML/CSS/JS, mobile-first design, and contact form integration.</div></details>
+                        <details><summary>Details</summary><div class="detail-content">Hand-coded HTML/CSS/JS, mobile-first design, and contact form.</div></details>
                     </label>
                     <label class="option-item">
                         <div class="check-indicator"></div>
                         <input type="checkbox" class="price-trigger dev-group" data-price="15000">
                         <strong>Full Ecosystem [₱15,000]</strong>
                         <p>Landing Page + Business Visibility.</p>
-                        <details><summary>Details</summary><div class="detail-content">Includes Google Business setup, local map integration, and SEO foundations.</div></details>
+                        <details><summary>Details</summary><div class="detail-content">Includes Google Business setup and SEO foundations.</div></details>
                     </label>
                 </div>
 
@@ -275,14 +260,14 @@
                         <input type="checkbox" class="price-trigger dev-group" data-price="20000">
                         <strong>Essential Suite [₱20,000]</strong>
                         <p>Professional Corporate Presence.</p>
-                        <details><summary>Details</summary><div class="detail-content">Standard 4-page architecture (Home, About, Services, Contact) with custom UI.</div></details>
+                        <details><summary>Details</summary><div class="detail-content">Standard 4-page architecture with custom UI.</div></details>
                     </label>
                     <label class="option-item">
                         <div class="check-indicator"></div>
                         <input type="checkbox" class="price-trigger dev-group" data-price="28000">
                         <strong>Full Ecosystem [₱28,000]</strong>
                         <p>Multi-Page + Advanced Lead Stack.</p>
-                        <details><summary>Details</summary><div class="detail-content">Full site architecture + Technical SEO, Ad bridge, and priority staging.</div></details>
+                        <details><summary>Details</summary><div class="detail-content">Full site architecture + Technical SEO and Ad bridge.</div></details>
                     </label>
                 </div>
 
@@ -304,7 +289,7 @@
             </div>
 
             <div class="summary-box">
-                <div style="font-size: 0.8rem; color: var(--primary-blue); font-weight: 900; text-transform: uppercase; letter-spacing: 1px;">Estimated Project Value</div>
+                <div style="font-size: 0.8rem; color: var(--primary-blue); font-weight: 900; text-transform: uppercase;">Project Value</div>
                 <div class="total-price">₱<span id="display-total">1,200</span></div>
                 
                 <div class="payment-row" style="margin-top:20px; border-top: 1px solid #222; padding-top: 15px;">
@@ -316,18 +301,15 @@
                     <span>₱<span id="display-balance">0</span></span>
                 </div>
 
-                <div id="monthly-summary" style="display: none; background: rgba(249, 140, 21, 0.1); padding: 20px; border-radius: 8px; margin-top: 20px; border: 1px solid var(--accent-orange);">
-                    <div style="font-size: 0.75rem; font-weight: 900; color: var(--light-text); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">Monthly Commitment</div>
-                    <div style="display: flex; justify-content: space-between; font-size: 1.1rem; font-weight: 900; color: var(--accent-orange);">
-                        <span>RECURRING:</span>
-                        <span>₱<span id="display-monthly-total">0</span></span>
-                    </div>
+                <div id="monthly-summary" style="display: none; background: rgba(249, 140, 21, 0.1); padding: 15px; border-radius: 8px; margin-top: 20px; border: 1px solid var(--accent-orange);">
+                    <div style="font-size: 0.75rem; font-weight: 900; color: #fff;">MONTHLY RECURRING:</div>
+                    <div style="font-size: 1.2rem; font-weight: 900; color: var(--accent-orange);">₱<span id="display-monthly-total">0</span></div>
                 </div>
 
                 <div class="ads-calculator-card" id="ads-card">
-                    <h4 style="font-size: 0.75rem; color: var(--accent-orange); margin: 0 0 12px 0; font-weight: 800; text-transform: uppercase;">Optional Ads Budget</h4>
+                    <h4 style="font-size: 0.75rem; color: var(--accent-orange); margin: 0 0 10px 0; font-weight: 800;">DAILY AD BUDGET</h4>
                     <div class="ads-input-row">
-                        <label style="font-size: 0.75rem;">Daily Ad Spend (₱):</label>
+                        <label style="font-size: 0.75rem;">Budget (₱):</label>
                         <input type="number" id="daily-ads-input" placeholder="0" min="0">
                     </div>
                 </div>
@@ -338,20 +320,18 @@
     </main>
 
     <footer>
-        <div class="video-bg-wrap" aria-hidden="true"><video autoplay loop muted playsinline><source src="81092-574743664_medium.mp4" type="video/mp4"></video></div>
-        <div class="footer-nav"><a href="index.html">Home</a> | <a href="about.html">About</a> | <a href="service.html">Services</a> | <a href="portfolio.html">Portfolio</a> | <a href="quote.html">Pricing</a> | <a href="contact.html">Get Started</a> | <a href="legal.html">Terms</a></div>
+        <div class="footer-nav">
+            <a href="index.html">Home</a> | <a href="about.html">About</a> | <a href="service.html">Services</a> | <a href="portfolio.html">Portfolio</a> | <a href="quote.html">Pricing</a> | <a href="contact.html">Get Started</a> | <a href="legal.html">Terms</a>
+        </div>
         <p>&copy; 2026 JMCY WEB SOLUTIONS. All Rights Reserved.</p>
-        <div class="footer-badges">REAL-TIME WEB ARCHITECTURE • SEO-OPTIMIZED SYSTEMS • 100% OWNERSHIP</div>
+        <div class="footer-badges">REAL-TIME WEB ARCHITECTURE • SEO-OPTIMIZED SYSTEMS</div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('nav-menu');
-
-            hamburger.addEventListener('click', () => {
-                navMenu.classList.toggle('nav-active');
-            });
+            hamburger.addEventListener('click', () => navMenu.classList.toggle('nav-active'));
 
             const devChecks = document.querySelectorAll('.dev-group');
             const maintChecks = document.querySelectorAll('.maint-group');
@@ -366,7 +346,7 @@
                     if(cb.checked) {
                         laborTotal += parseInt(cb.dataset.price);
                         cb.closest('.option-item').classList.add('selected');
-                    } else { cb.closest('.option-item').classList.remove('selected'); }
+                    } else cb.closest('.option-item').classList.remove('selected');
                 });
 
                 maintChecks.forEach(cb => {

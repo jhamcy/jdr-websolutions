@@ -27,7 +27,6 @@
             --card-bg: rgba(23, 25, 30, 0.6);
             --light-text: #F4F4F4;
             --muted-text: #A0A0A0;
-            --header-bg: #000000;
         }
 
         /* --- GLOBAL STYLES --- */
@@ -45,38 +44,43 @@
 
         main { flex: 1 0 auto; display: flex; flex-direction: column; }
 
-        /* --- VIDEO BACKGROUND UTILITY --- */
-        .video-bg-wrap { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; overflow: hidden; }
-        .video-bg-wrap video { width: 100%; height: 100%; object-fit: cover; }
-
-        /* --- NAVIGATION --- */
-        nav { padding: 0.5rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(0,0,0,0.85); overflow: hidden; }
-        nav > * { position: relative; z-index: 1; }
+        /* --- NAVIGATION (Updated with tech-bg) --- */
+        nav { 
+            padding: 0.5rem 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 1px solid #222; 
+            position: fixed; 
+            top: 0; left: 0; right: 0; 
+            z-index: 1000; 
+            background-image: url('tech-bg.png'); 
+            background-size: cover;
+            background-position: center bottom;
+        }
         
-        .nav-brand { display: flex !important; align-items: center; font-size: 0.9rem; font-weight: 800; letter-spacing: 1px; color: var(--light-text); text-transform: uppercase; text-decoration: none; line-height: 1.2; }
-        .nav-logo { height: 40px; width: auto; margin-right: 12px; vertical-align: middle; }
-        .nav-brand span { color: var(--accent-orange); font-size: 0.65rem; display: block; margin-top: 2px; letter-spacing: 0.5px; }
+        .nav-brand { display: flex !important; align-items: center; font-size: 0.9rem; font-weight: 800; color: var(--light-text); text-transform: uppercase; text-decoration: none; line-height: 1.2; }
+        .nav-logo { height: 40px; width: auto; margin-right: 12px; }
+        .nav-brand span { color: var(--accent-orange); font-size: 0.65rem; display: block; margin-top: 2px; }
         
         .nav-links { display: flex; list-style: none; margin: 0; padding: 0; align-items: center; }
         .nav-links li { margin-left: 18px; }
-        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; display: inline-block; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; }
         .nav-links a:hover, .active-link { color: var(--accent-orange) !important; }
         .nav-quote-btn { border: 1px solid var(--accent-orange); padding: 5px 12px; border-radius: 4px; color: var(--accent-orange) !important; font-weight: 800 !important; }
         
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
-        @media (max-width: 768px) { .hamburger { display: flex; } }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
 
-        /* --- SYNCED HERO SECTION (MATCHED TO ABOUT.HTML) --- */
+        /* --- HERO (Locked to 80vh like About.html) --- */
         .legal-hero { 
             position: relative;
-            padding: 100px 5% 85px; 
+            height: 80vh; 
             text-align: center; 
             background: #000; 
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             overflow: hidden;
         }
         .hero-video-bg {
@@ -90,53 +94,54 @@
             background: radial-gradient(circle, rgba(12,13,17,0.3) 0%, rgba(12,13,17,0.9) 100%);
             z-index: 2;
         }
-        .legal-hero-content { position: relative; z-index: 3; }
+        .legal-hero-content { position: relative; z-index: 3; padding: 0 5%; }
 
         .legal-hero h1 { 
-            font-size: clamp(2rem, 8vw, 3.5rem); 
+            font-size: clamp(2.2rem, 8vw, 4rem); 
             margin-bottom: 10px; 
             font-weight: 900; 
             line-height: 1.1; 
-            letter-spacing: -1px;
             color: #fff;
         }
         .legal-hero h2 { 
             font-size: clamp(1rem, 4vw, 1.5rem); 
-            margin-bottom: 15px; 
+            margin-bottom: 20px; 
             font-weight: 500; 
             color: var(--primary-blue);
             text-transform: uppercase;
             letter-spacing: 2px;
         }
         .legal-hero p { 
-            font-size: 1.1rem; 
+            font-size: 1.2rem; 
             color: #ccc; 
-            max-width: 750px; 
+            max-width: 800px; 
             margin: 0 auto; 
             line-height: 1.6; 
         }
 
         /* --- CONTENT CONTAINER --- */
-        .container { max-width: 900px; margin: 0 auto; padding: 60px 5% 80px; box-sizing: border-box; }
+        .container { max-width: 900px; margin: 0 auto; padding: 80px 5%; box-sizing: border-box; }
 
         /* --- LEGAL CARD STYLES --- */
-        .legal-card { background: rgba(10, 88, 202, 0.05); padding: 40px; border-radius: 12px; border: 1px solid rgba(10, 88, 202, 0.2); backdrop-filter: blur(10px); }
-        .legal-section { margin-bottom: 40px; }
+        .legal-card { background: rgba(10, 88, 202, 0.05); padding: 50px; border-radius: 12px; border: 1px solid rgba(10, 88, 202, 0.2); backdrop-filter: blur(10px); }
+        .legal-section { margin-bottom: 45px; }
         .legal-section:last-child { margin-bottom: 0; }
         .legal-section h4 { color: var(--accent-orange); margin: 0 0 15px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; border-bottom: 1px solid #222; padding-bottom: 10px; }
-        .legal-section p { font-size: 0.95rem; color: var(--light-text); line-height: 1.7; margin: 0; }
+        .legal-section p { font-size: 1rem; color: var(--light-text); line-height: 1.7; margin: 0; }
 
-        /* --- FOOTER --- */
-        footer { flex-shrink: 0; padding: 30px 5%; text-align: center; border-top: 1px solid #333; color: #ddd; font-size: 0.8rem; position: relative; background-color: #000; overflow: hidden; }
-        footer > * { position: relative; z-index: 1; }
+        /* --- FOOTER (Updated with tech-bg) --- */
+        footer { 
+            flex-shrink: 0; padding: 40px 5%; text-align: center; border-top: 1px solid #333; color: #ddd; font-size: 0.8rem; 
+            position: relative; background-image: url('tech-bg.png'); background-size: cover; background-position: center top; 
+        }
         footer a { color: #fff; text-decoration: none; margin: 0 10px; font-weight: 600; }
         footer a:hover { color: var(--accent-orange); }
         .footer-nav { margin-bottom: 15px; }
-        .footer-badges { margin-top: 15px; opacity: 0.8; font-size: 0.7rem; letter-spacing: 1.5px; color: var(--accent-orange); font-weight: 900; }
+        .footer-badges { margin-top: 15px; font-size: 0.7rem; letter-spacing: 1.5px; color: var(--accent-orange); font-weight: 900; }
 
         @media (max-width: 768px) {
-            .legal-hero { padding: 100px 5% 80px; }
-            .legal-card { padding: 25px; }
+            .hamburger { display: flex; }
+            .legal-card { padding: 30px; }
             .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; flex-direction: column; width: 280px; transform: translateX(100%); transition: 0.4s; padding-top: 80px; border-left: 1px solid #222; align-items: flex-start; }
             .nav-links li { width: 100%; margin: 0; }
             .nav-links a { display: block; width: 100%; padding: 22px 35px; font-size: 1rem; border-bottom: 1px solid #111; }
@@ -146,9 +151,6 @@
 </head>
 <body>
     <nav>
-        <div class="video-bg-wrap" aria-hidden="true">
-            <video autoplay loop muted playsinline><source src="81092-574743664_medium.mp4" type="video/mp4"></video>
-        </div>
         <a href="index.html" class="nav-brand">
             <img src="logo.png" alt="JMCY Logo" class="nav-logo">
             <div>JMCY WEB SOLUTIONS<br><span>Real-Time Custom Web Development</span></div>
@@ -225,9 +227,6 @@
     </main>
 
     <footer>
-        <div class="video-bg-wrap" aria-hidden="true">
-            <video autoplay loop muted playsinline><source src="81092-574743664_medium.mp4" type="video/mp4"></video>
-        </div>
         <div class="footer-nav">
             <a href="index.html">Home</a> | <a href="about.html">About</a> | <a href="service.html">Services</a> | <a href="portfolio.html">Portfolio</a> | <a href="quote.html">Pricing</a> | <a href="contact.html">Get Started</a> | <a href="legal.html">Terms</a>
         </div>
