@@ -48,44 +48,19 @@
 
         .main-content { flex: 1 0 auto; }
 
-        .sticky-wrapper {
+        /* --- UPDATED NAVBAR & FOOTER BACKGROUND --- */
+        .tech-bg-header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('tech-bg.png');
+            background-size: cover;
+            background-position: center;
+            border-bottom: 1px solid #222;
             position: sticky;
             top: 0;
             z-index: 1000;
-            width: 100%;
-            overflow: hidden;
-            border-bottom: 1px solid #222;
-            background: transparent;
-        }
-
-        .video-wrapper {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        .bg-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            z-index: 0;
-            object-fit: cover;
-            opacity: 1;
-        }
-
-        .layer-content {
-            position: relative;
-            z-index: 1;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1));
         }
 
         nav { 
-            padding: 0.7rem 5%; 
+            padding: 1rem 5%; 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
@@ -289,26 +264,13 @@
         .terms-text { font-size: 0.75rem; line-height: 1.4; color: #8b949e; }
         .terms-text span { color: var(--accent-orange); text-decoration: underline; cursor: pointer; font-weight: 600; }
 
-        .modal { 
-            display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; 
-            background-color: rgba(0,0,0,0.85); backdrop-filter: blur(5px);
-        }
-        .modal-content { 
-            background-color: var(--card-bg); margin: 15vh auto; padding: 30px; border: 1px solid var(--border); 
-            width: 85%; max-width: 450px; border-radius: 12px; color: white; text-align: center; animation: modalFade 0.3s ease-out;
-        }
-        @keyframes modalFade { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-        .btn-close-thx { background: var(--primary-blue); border: none; color: white; padding: 10px 20px; border-radius: 4px; margin-top: 20px; cursor: pointer; }
-        .thx-icon { font-size: 3rem; color: var(--accent-orange); display: block; margin-bottom: 10px; }
-
         footer {
-            flex-shrink: 0; padding: 20px 5%; text-align: center;
+            flex-shrink: 0; padding: 40px 5%; text-align: center;
             border-top: 1px solid #333; color: #ddd; font-size: 0.8rem;
-            position: relative; 
-            background: transparent;
-            overflow: hidden;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('tech-bg.png');
+            background-size: cover;
+            background-position: center;
         }
-        footer > * { position: relative; z-index: 1; }
         footer a { color: #fff; text-decoration: none; margin: 0 8px; font-weight: 600; }
         footer a:hover { color: var(--accent-orange); }
         .footer-nav { margin-bottom: 10px; }
@@ -334,29 +296,24 @@
 <body>
 
 <div class="main-content">
-    <div class="sticky-wrapper">
-        <div class="video-wrapper">
-            <video autoplay muted loop playsinline class="bg-video">
-                <source src="81092-574743664_medium.mp4" type="video/mp4">
-            </video>
-            <nav class="layer-content">
-                <a href="index.html" class="nav-brand">
-                    JMCY WEB SOLUTIONS<br><span>Real-Time Custom Web Development</span>
-                </a>
-                <ul class="nav-links" id="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="service.html">Services</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="legal.html">Terms & Conditions</a></li>
-                    <li><a href="quote.html">Projects / Pricing</a></li>                  
-                    <li><a href="contact.html" class="active-link nav-quote-btn">Get Started</a></li>
-                </ul>
-                <div class="hamburger" id="hamburger">
-                    <div class="line1"></div><div class="line2"></div><div class="line3"></div>
-                </div>
-            </nav>
-        </div>
+    <div class="tech-bg-header">
+        <nav>
+            <a href="index.html" class="nav-brand">
+                JMCY WEB SOLUTIONS<br><span>Real-Time Custom Web Development</span>
+            </a>
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="legal.html">Terms & Conditions</a></li>
+                <li><a href="quote.html">Projects / Pricing</a></li>                   
+                <li><a href="contact.html" class="active-link nav-quote-btn">Get Started</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <div class="line1"></div><div class="line2"></div><div class="line3"></div>
+            </div>
+        </nav>
     </div>
 
     <header class="page-header">
@@ -508,26 +465,21 @@
     </div>
 </div>
 
-<div class="video-wrapper">
-    <video autoplay muted loop playsinline class="bg-video">
-        <source src="81092-574743664_medium.mp4" type="video/mp4">
-    </video>
-    <footer class="layer-content">
-        <div class="footer-nav">
-            <a href="index.html">Home</a> | 
-            <a href="about.html">About</a> | 
-            <a href="service.html">Services</a> | 
-            <a href="portfolio.html">Portfolio</a> | 
-            <a href="quote.html">Pricing</a> | 
-            <a href="contact.html">Get Started</a> | 
-            <a href="legal.html">Terms & Conditions</a>
-        </div>
-        <p>&copy; 2026 JMCY WEB SOLUTIONS. All Rights Reserved.</p>
-        <div class="footer-badges">
-            SEO OPTIMIZED ARCHITECTURE • CLIENT DOMAIN CONTROL • 50% SECURE DOWNPAYMENT
-        </div>
-    </footer>
-</div>
+<footer>
+    <div class="footer-nav">
+        <a href="index.html">Home</a> | 
+        <a href="about.html">About</a> | 
+        <a href="service.html">Services</a> | 
+        <a href="portfolio.html">Portfolio</a> | 
+        <a href="quote.html">Projects / Pricing</a> | 
+        <a href="contact.html">Get Started</a> | 
+        <a href="legal.html">Terms & Conditions</a>
+    </div>
+    <p>&copy; 2026 JMCY WEB SOLUTIONS. All Rights Reserved.</p>
+    <div class="footer-badges">
+        SEO OPTIMIZED ARCHITECTURE • CLIENT DOMAIN CONTROL • 50% SECURE DOWNPAYMENT
+    </div>
+</footer>
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -548,7 +500,7 @@
                 closeMenu();
             }
         });
-        calculate(); // Initialize calculation on load
+        calculate(); 
     });
 
     const SUPABASE_URL = 'https://rtpeofjlmtljwabmthsf.supabase.co';

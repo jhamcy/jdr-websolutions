@@ -190,7 +190,21 @@
             .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background: #000; flex-direction: column; width: 280px; transform: translateX(100%); transition: 0.4s; padding-top: 80px; }
             .nav-active { transform: translateX(0%); }
             .nav-links li { width: 100%; margin: 0; }
-            .nav-links a { display: block; padding: 20px 30px; border-bottom: 1px solid #111; }
+            
+            /* UPDATED: Hamburger Menu Text Styling to match about.html */
+            .nav-links a { 
+                display: block; 
+                padding: 20px 30px; 
+                border-bottom: 1px solid #111; 
+                font-size: 1rem;       /* Increased to match standard page text */
+                font-weight: 400;     /* Matching about.html normal weight */
+                letter-spacing: normal; 
+            }
+            .nav-quote-btn { 
+                margin: 20px 30px; 
+                text-align: center; 
+                font-weight: 700 !important; 
+            }
         }
     </style>
 </head>
@@ -206,8 +220,8 @@
             <li><a href="about.html">About Us</a></li>
             <li><a href="service.html">Services</a></li>
             <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="legal.html">Terms</a></li>
-            <li><a href="quote.html" class="active-link">Pricing</a></li>
+            <li><a href="legal.html">Terms & Conditions</a></li>
+            <li><a href="quote.html" class="active-link">Projects / Pricing</a></li>
             <li><a href="contact.html" class="nav-quote-btn">Get Started</a></li>
         </ul>
         <div class="hamburger" id="hamburger"><div></div><div></div><div></div></div>
@@ -321,7 +335,7 @@
 
     <footer>
         <div class="footer-nav">
-            <a href="index.html">Home</a> | <a href="about.html">About</a> | <a href="service.html">Services</a> | <a href="portfolio.html">Portfolio</a> | <a href="quote.html">Pricing</a> | <a href="contact.html">Get Started</a> | <a href="legal.html">Terms</a>
+            <a href="index.html">Home</a> | <a href="about.html">About</a> | <a href="service.html">Services</a> | <a href="portfolio.html">Portfolio</a> | <a href="quote.html">Projects / Pricing</a> | <a href="contact.html">Get Started</a> | <a href="legal.html">Terms & Conditions</a>
         </div>
         <p>&copy; 2026 JMCY WEB SOLUTIONS. All Rights Reserved.</p>
         <div class="footer-badges">REAL-TIME WEB ARCHITECTURE • SEO-OPTIMIZED SYSTEMS</div>
