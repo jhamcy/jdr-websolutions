@@ -35,21 +35,22 @@
             --primary-blue: #0A58CA;
             --accent-orange: #F98C15;
             --dark-bg: #0C0D11;
+            --card-bg: rgba(23, 25, 30, 0.6);
             --light-text: #F4F4F4;
             --muted-text: #A0A0A0;
-            --header-bg: #000000;
+            --nav-height: 60px;
         }
 
         html, body { height: 100%; margin: 0; padding: 0; }
         body { 
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-            background-color: var(--dark-bg); 
-            color: var(--light-text); 
-            line-height: 1.4; 
-            display: flex; 
-            flex-direction: column; 
-            min-height: 100vh; 
-            padding-top: 60px; 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding-top: var(--nav-height); 
         }
 
         main { flex: 1 0 auto; display: flex; flex-direction: column; }
@@ -83,6 +84,7 @@
             text-decoration: none; 
             line-height: 1.2; 
         }
+        .nav-brand { display: flex !important; align-items: center; font-size: 0.9rem; font-weight: 800; letter-spacing: 1px; color: var(--light-text); text-transform: uppercase; text-decoration: none; line-height: 1.2; }
         .nav-logo { height: 40px; width: auto; margin-right: 12px; vertical-align: middle; }
         .nav-brand span { color: var(--accent-orange); font-size: 0.65rem; display: block; margin-top: 2px; letter-spacing: 0.5px; }
         
@@ -92,7 +94,6 @@
         .nav-links a:hover, .active-link { color: var(--accent-orange) !important; }
         .nav-quote-btn { border: 1px solid var(--accent-orange); padding: 5px 12px; border-radius: 4px; color: var(--accent-orange) !important; font-weight: 800 !important; }
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
-        @media (max-width: 768px) { .hamburger { display: flex; } }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
         
         /* --- HERO SECTION --- */
@@ -203,10 +204,14 @@
         .float-label { font-size: 0.65rem; font-weight: bold; color: #ccc; background: rgba(0,0,0,0.8); padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
 
         @media (max-width: 768px) {
+            .hamburger { display: flex; }
             .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; flex-direction: column; width: 260px; transform: translateX(100%); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding-top: 70px; border-left: 1px solid #222; align-items: flex-start; }
             .nav-links li { width: 100%; margin: 0; }
             .nav-links a { display: block; width: 100%; padding: 20px 30px; font-size: 0.95rem; border-bottom: 1px solid #111; box-sizing: border-box; }
             .nav-active { transform: translateX(0%); }
+            .hamburger.toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
+            .hamburger.toggle .line2 { opacity: 0; }
+            .hamburger.toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
         }
     </style>
 </head>
