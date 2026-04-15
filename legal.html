@@ -19,7 +19,6 @@
     <link rel="manifest" href="manifest.json">
 
     <style>
-        /* --- BRAND VARIABLES --- */
         :root {
             --primary-blue: #0A58CA;
             --accent-orange: #F98C15;
@@ -27,9 +26,9 @@
             --card-bg: rgba(23, 25, 30, 0.6);
             --light-text: #F4F4F4;
             --muted-text: #A0A0A0;
+            --nav-height: 60px;
         }
 
-        /* --- GLOBAL STYLES --- */
         html, body { height: 100%; margin: 0; padding: 0; }
         body { 
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
@@ -39,14 +38,15 @@
             display: flex; 
             flex-direction: column; 
             min-height: 100vh; 
-            padding-top: 60px; 
+            padding-top: var(--nav-height); 
         }
 
         main { flex: 1 0 auto; display: flex; flex-direction: column; }
 
-        /* --- NAVIGATION (Updated with tech-bg) --- */
+        /* --- NAVIGATION --- */
         nav { 
-            padding: 0.5rem 5%; 
+            height: var(--nav-height);
+            padding: 0 5%; 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
@@ -57,22 +57,23 @@
             background-image: url('tech-bg.png'); 
             background-size: cover;
             background-position: center bottom;
+            overflow: hidden;
         }
         
-        .nav-brand { display: flex !important; align-items: center; font-size: 0.9rem; font-weight: 800; color: var(--light-text); text-transform: uppercase; text-decoration: none; line-height: 1.2; }
-        .nav-logo { height: 40px; width: auto; margin-right: 12px; }
-        .nav-brand span { color: var(--accent-orange); font-size: 0.65rem; display: block; margin-top: 2px; }
+        .nav-brand { display: flex !important; align-items: center; font-size: 0.9rem; font-weight: 800; letter-spacing: 1px; color: var(--light-text); text-transform: uppercase; text-decoration: none; line-height: 1.2; }
+        .nav-logo { height: 40px; width: auto; margin-right: 12px; vertical-align: middle; }
+        .nav-brand span { color: var(--accent-orange); font-size: 0.65rem; display: block; margin-top: 2px; letter-spacing: 0.5px; }
         
         .nav-links { display: flex; list-style: none; margin: 0; padding: 0; align-items: center; }
         .nav-links li { margin-left: 18px; }
-        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; display: inline-block; }
         .nav-links a:hover, .active-link { color: var(--accent-orange) !important; }
         .nav-quote-btn { border: 1px solid var(--accent-orange); padding: 5px 12px; border-radius: 4px; color: var(--accent-orange) !important; font-weight: 800 !important; }
         
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
 
-        /* --- HERO (Locked to 80vh like About.html) --- */
+        /* --- HERO (Standardized to 80vh) --- */
         .legal-hero { 
             position: relative;
             height: 80vh; 
@@ -129,23 +130,35 @@
         .legal-section h4 { color: var(--accent-orange); margin: 0 0 15px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; border-bottom: 1px solid #222; padding-bottom: 10px; }
         .legal-section p { font-size: 1rem; color: var(--light-text); line-height: 1.7; margin: 0; }
 
-        /* --- FOOTER (Updated with tech-bg) --- */
+        /* --- FOOTER --- */
         footer { 
-            flex-shrink: 0; padding: 40px 5%; text-align: center; border-top: 1px solid #333; color: #ddd; font-size: 0.8rem; 
+            flex-shrink: 0; padding: 20px 5%; text-align: center; border-top: 1px solid #333; color: #ddd; font-size: 0.8rem; 
             position: relative; background-image: url('tech-bg.png'); background-size: cover; background-position: center top; 
+            overflow: hidden;
         }
-        footer a { color: #fff; text-decoration: none; margin: 0 10px; font-weight: 600; }
-        footer a:hover { color: var(--accent-orange); }
-        .footer-nav { margin-bottom: 15px; }
-        .footer-badges { margin-top: 15px; font-size: 0.7rem; letter-spacing: 1.5px; color: var(--accent-orange); font-weight: 900; }
+        footer a { color: #fff; text-decoration: none; margin: 0 8px; font-weight: 600; }
+        .footer-nav { margin-bottom: 10px; }
+        .footer-badges { margin-top: 10px; color: var(--accent-orange); font-weight: bold; font-size: 0.65rem; letter-spacing: 1px; }
+
+        /* --- FLOATING CONTACT --- */
+        .floating-contact-wrap { position: fixed; bottom: 30px; right: 20px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; transition: transform 0.4s ease, opacity 0.3s ease; }
+        body.is-scrolling .floating-contact-wrap { transform: translateX(100px); opacity: 0; pointer-events: none; }
+        .float-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+        .float-btn { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; color: white; box-shadow: 0 6px 16px rgba(0,0,0,0.6); transition: 0.2s; background-color: #25D366; }
+        .float-btn:hover { transform: scale(1.1); }
+        .float-btn svg { width: 28px; height: 28px; fill: white; }
+        .float-label { font-size: 0.65rem; font-weight: bold; color: #ccc; background: rgba(0,0,0,0.8); padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
 
         @media (max-width: 768px) {
             .hamburger { display: flex; }
             .legal-card { padding: 30px; }
-            .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; flex-direction: column; width: 280px; transform: translateX(100%); transition: 0.4s; padding-top: 80px; border-left: 1px solid #222; align-items: flex-start; }
+            .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; flex-direction: column; width: 260px; transform: translateX(100%); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding-top: 70px; border-left: 1px solid #222; align-items: flex-start; }
             .nav-links li { width: 100%; margin: 0; }
-            .nav-links a { display: block; width: 100%; padding: 22px 35px; font-size: 1rem; border-bottom: 1px solid #111; }
+            .nav-links a { display: block; width: 100%; padding: 20px 30px; font-size: 0.95rem; border-bottom: 1px solid #111; box-sizing: border-box; }
             .nav-active { transform: translateX(0%); }
+            .hamburger.toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
+            .hamburger.toggle .line2 { opacity: 0; }
+            .hamburger.toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
         }
     </style>
 </head>
@@ -164,7 +177,7 @@
             <li><a href="quote.html">Projects / Pricing</a></li>
             <li><a href="contact.html" class="nav-quote-btn">Get Started</a></li>
         </ul>
-        <div class="hamburger" id="hamburger"><div></div><div></div><div></div></div>
+        <div class="hamburger" id="hamburger"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div>
     </nav>
 
     <main>
@@ -234,12 +247,43 @@
         <div class="footer-badges">REAL-TIME WEB ARCHITECTURE • SEO-OPTIMIZED SYSTEMS • 100% OWNERSHIP</div>
     </footer>
 
+    <div class="floating-contact-wrap">
+        <div class="float-item">
+            <a href="whatsapp://send?phone=09091297422" class="float-btn">
+                <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.652zm6.599-3.835c1.53.909 3.039 1.389 4.625 1.39 5.25.001 9.522-4.271 9.524-9.521.001-2.544-.992-4.935-2.793-6.738-1.802-1.803-4.195-2.795-6.738-2.796-5.251 0-9.522 4.271-9.524 9.521-.001 1.688.45 3.336 1.306 4.773l-.991 3.618 3.706-.972zm10.165-6.843c-.277-.139-1.641-.809-1.894-.901-.253-.093-.438-.139-.623.139-.185.277-.714.901-.875 1.086-.161.185-.323.208-.6.069-.277-.139-1.171-.432-2.231-1.378-.824-.735-1.38-1.643-1.541-1.921-.162-.277-.017-.427.121-.565.125-.124.277-.323.416-.485.139-.161.185-.277.277-.462.093-.185.046-.347-.023-.485-.069-.139-.623-1.501-.853-2.057-.225-.542-.454-.469-.623-.477-.16-.007-.344-.008-.528-.008s-.485.069-.739.347c-.253.277-.97 0.948-.97 2.311 0 1.363.993 2.679 1.131 2.864.139.185 1.954 2.985 4.733 4.184.661.285 1.177.455 1.579.583.664.211 1.268.181 1.745.11.532-.079 1.641-.671 1.872-1.32.231-.648.231-1.202.161-1.32-.069-.118-.253-.185-.53-.324z"/></svg>
+            </a>
+            <span class="float-label">WhatsApp</span>
+        </div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('nav-menu');
-            hamburger.addEventListener('click', () => {
+            
+            const closeMenu = () => {
+                navMenu.classList.remove('nav-active');
+                hamburger.classList.remove('toggle');
+            };
+
+            hamburger.addEventListener('click', (e) => {
+                e.stopPropagation();
                 navMenu.classList.toggle('nav-active');
+                hamburger.classList.toggle('toggle');
+            });
+
+            let scrollTimer;
+            window.addEventListener('scroll', () => {
+                document.body.classList.add('is-scrolling');
+                closeMenu();
+                clearTimeout(scrollTimer);
+                scrollTimer = setTimeout(() => { document.body.classList.remove('is-scrolling'); }, 400);
+            }, { passive: true });
+
+            document.addEventListener('click', (e) => {
+                if ((!navMenu.contains(e.target) && !hamburger.contains(e.target)) || e.target.tagName === 'A') {
+                    closeMenu();
+                }
             });
         });
     </script>
