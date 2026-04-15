@@ -6,20 +6,13 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
-      gtag('config', 'G-31P3617CQT', {
-        'send_page_view': true,
-        'cookie_flags': 'SameSite=None;Secure'
-      });
+      gtag('config', 'G-31P3617CQT', { 'send_page_view': true, 'cookie_flags': 'SameSite=None;Secure' });
     </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Web Development Services | JMCY WEB SOLUTIONS Philippines</title>
-    <meta name="description" content="Get a high-converting website for your business in the Philippines. Fast, mobile-first, and 100% owned by you. No lock-ins. Get your custom quote today.">
-    <meta name="keywords" content="web development Philippines, custom website, HTML5, CSS3, JMCY Web Solutions, domain ownership, mobile-first web design">
-    <link rel="canonical" href="https://jmcywebsolutions.com/service.html">
+    <meta name="description" content="Get a high-converting website for your business. Fast, mobile-first, and 100% owned by you. Custom HTML architecture by JMCY WEB SOLUTIONS.">
 
     <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
     <link rel="icon" type="image/png" sizes="16x16" href="logo.png">
@@ -27,14 +20,7 @@
     <link rel="apple-touch-icon" href="logo.png">
     <link rel="manifest" href="manifest.json">
 
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://jmcywebsolutions.com/service.html">
-    <meta property="og:title" content="Expert Web Development Services | JMCY WEB SOLUTIONS">
-    <meta property="og:description" content="High-performance, mobile-first engineering for the modern Philippine web. No templates, no bloat—just pure code.">
-    <meta property="og:image" content="https://jmcywebsolutions.com/logo.png">
-
     <style>
-        /* --- BRAND VARIABLES --- */
         :root {
             --primary-blue: #0A58CA;
             --accent-orange: #F98C15;
@@ -42,15 +28,9 @@
             --card-bg: rgba(23, 25, 30, 0.6);
             --light-text: #F4F4F4;
             --muted-text: #A0A0A0;
-            --header-bg: #000000;
         }
 
-        /* --- GLOBAL STYLES --- */
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
+        html, body { height: 100%; margin: 0; padding: 0; }
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--dark-bg);
@@ -62,208 +42,136 @@
             padding-top: 60px; 
         }
         
-        main {
-            flex: 1 0 auto;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* --- VIDEO BACKGROUND UTILITY --- */
-        .video-bg-wrap {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            overflow: hidden;
-        }
-        .video-bg-wrap video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        main { flex: 1 0 auto; display: flex; flex-direction: column; }
 
         /* --- NAVIGATION --- */
-        nav {
-            padding: 0.5rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #222;
+        nav { 
+            padding: 0.5rem 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 1px solid #222; 
             position: fixed; 
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(0,0,0,0.85); 
-            overflow: hidden;
+            top: 0; left: 0; right: 0; 
+            z-index: 1000; 
+            background-image: url('tech-bg.png'); 
+            background-size: cover;
+            background-position: center bottom;
         }
-        nav > * { position: relative; z-index: 1; }
 
-        .nav-brand {
-            display: flex !important;
-            align-items: center;
-            font-size: 0.9rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-            color: var(--light-text);
-            text-transform: uppercase;
-            text-decoration: none;
-            line-height: 1.2;
-        }
+        .nav-brand { display: flex !important; align-items: center; font-size: 0.9rem; font-weight: 800; letter-spacing: 1px; color: var(--light-text); text-transform: uppercase; text-decoration: none; line-height: 1.2; }
         .nav-logo { height: 40px; width: auto; margin-right: 12px; vertical-align: middle; }
-        .nav-brand span { 
-            color: var(--accent-orange); 
-            font-size: 0.65rem; 
-            display: block; 
-            margin-top: 2px;
-            letter-spacing: 0.5px;
-        }
+        .nav-brand span { color: var(--accent-orange); font-size: 0.65rem; display: block; margin-top: 2px; letter-spacing: 0.5px; }
+        
         .nav-links { display: flex; list-style: none; margin: 0; padding: 0; align-items: center; }
         .nav-links li { margin-left: 18px; }
         .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; display: inline-block; }
         .nav-links a:hover, .active-link { color: var(--accent-orange) !important; }
-        .nav-quote-btn {
-            border: 1px solid var(--accent-orange);
-            padding: 5px 12px;
-            border-radius: 4px;
-            color: var(--accent-orange) !important;
-            font-weight: 800 !important;
-        }
+        .nav-quote-btn { border: 1px solid var(--accent-orange); padding: 5px 12px; border-radius: 4px; color: var(--accent-orange) !important; font-weight: 800 !important; }
+        
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
-        @media (max-width: 768px) { .hamburger { display: flex; } }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
 
-        /* --- UPDATED SERVICES HERO (SYNCED treatment) --- */
+        /* --- HERO SECTION --- */
         .services-hero { 
             position: relative;
-            padding: 120px 5% 120px; 
+            min-height: 95vh;
+            width: 100%;
             text-align: center; 
             overflow: hidden;
             background: #000;
-            min-height: 40vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            box-sizing: border-box;
+            justify-content: center;
         }
         .hero-video-bg {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            object-fit: cover;
-            opacity: 1;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1; object-fit: cover;
         }
         .hero-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background: radial-gradient(circle, rgba(12,13,17,0.3) 0%, rgba(12,13,17,0.9) 100%);
             z-index: 2;
         }
-        .services-hero-content { position: relative; z-index: 3; }
+        .hero-content { position: relative; z-index: 3; padding: 0 5%; }
+        .hero-content h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin-bottom: 20px; font-weight: 900; line-height: 1.1; color: #fff; }
+        .hero-content p { font-size: 1.2rem; color: #ccc; max-width: 750px; margin: 0 auto; line-height: 1.6; }
 
-        .services-hero h1 { 
-            font-size: clamp(2rem, 8vw, 3.5rem); 
-            margin-bottom: 20px; 
-            font-weight: 900; 
-            line-height: 1.1;
-            letter-spacing: -1px;
-            color: #fff;
-        }
-        
-        .trust-badge-bar {
-            text-align: center; 
-            margin-top: 20px; 
-            font-size: 0.75rem; 
-            color: #aaa;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        /* --- CONTENT --- */
+        .container { max-width: 1000px; margin: 0 auto; padding: 80px 5%; box-sizing: border-box; }
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        .detail-card { background: var(--card-bg); padding: 35px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05); transition: 0.3s; }
+        .detail-card:hover { border-color: var(--primary-blue); background: rgba(10, 88, 202, 0.05); }
+        .detail-card h3 { color: var(--accent-orange); margin-top: 0; font-size: 1.3rem; margin-bottom: 15px; }
+        .detail-card p { color: var(--muted-text); font-size: 0.95rem; line-height: 1.6; }
 
-        .container { 
-            max-width: 1000px; 
-            margin: 0 auto; 
-            padding: 60px 5% 80px; 
-            box-sizing: border-box;
-        }
-
-        .service-detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px; }
-        .detail-card { background: var(--card-bg); padding: 30px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.3s ease; }
-        .detail-card:hover { border-color: var(--primary-blue); transform: translateY(-5px); background: rgba(10, 88, 202, 0.05); }
-        .detail-card h3 { color: var(--accent-orange); margin-top: 0; font-size: 1.1rem; }
-        .detail-card p { color: var(--muted-text); font-size: 0.85rem; line-height: 1.6; }
-
-        .advantage-box { margin-top: 60px; background: rgba(10, 88, 202, 0.02); padding: 40px; border-radius: 15px; border: 1px solid rgba(10, 88, 202, 0.2); }
+        .advantage-box { margin-top: 60px; background: rgba(10, 88, 202, 0.05); padding: 45px; border-radius: 15px; border: 1px solid rgba(10, 88, 202, 0.2); }
         .advantage-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 30px; }
-        .advantage-item h4 { color: var(--primary-blue); margin-bottom: 8px; font-size: 1rem; }
-        .advantage-item p { font-size: 0.8rem; color: var(--muted-text); line-height: 1.5; }
+        .advantage-item h4 { color: var(--primary-blue); margin-bottom: 10px; font-size: 1.1rem; font-weight: 800; }
+        .advantage-item p { font-size: 0.9rem; color: var(--muted-text); }
 
-        .cta-container { text-align: center; margin-top: 60px; padding: 50px 40px; background: linear-gradient(135deg, rgba(249, 140, 21, 0.05) 0%, rgba(12, 13, 17, 1) 100%); border-radius: 15px; border: 1px solid rgba(249, 140, 21, 0.1); }
-        .btn-primary { background: var(--accent-orange); color: white; padding: 15px 35px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.9rem; transition: 0.3s; display: inline-block; }
-        .btn-primary:hover { transform: translateY(-2px); background: #ff9d2e; }
+        .cta-box { text-align: center; margin-top: 80px; padding: 60px 40px; background: linear-gradient(135deg, rgba(249, 140, 21, 0.1) 0%, rgba(12, 13, 17, 1) 100%); border-radius: 15px; border: 1px solid rgba(249, 140, 21, 0.2); }
+        .btn-primary { background: var(--accent-orange); color: white; padding: 18px 40px; border-radius: 6px; text-decoration: none; font-weight: 800; font-size: 1rem; transition: 0.3s; display: inline-block; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(249, 140, 21, 0.2); }
 
         /* --- FOOTER --- */
-        footer {
-            flex-shrink: 0;
-            padding: 20px 5%;
-            text-align: center;
-            border-top: 1px solid #333;
-            color: #ddd;
-            font-size: 0.8rem;
-            position: relative;
-            background-color: #000;
-            overflow: hidden;
+        footer { 
+            flex-shrink: 0; padding: 40px 5%; text-align: center; border-top: 1px solid #333; color: #ddd; font-size: 0.8rem; position: relative; 
+            background-image: url('tech-bg.png'); background-size: cover; background-position: center top; 
         }
-        footer > * { position: relative; z-index: 1; }
-        footer a { color: #fff; text-decoration: none; margin: 0 8px; font-weight: 600; }
+        footer a { color: #fff; text-decoration: none; margin: 0 10px; font-weight: 600; }
         footer a:hover { color: var(--accent-orange); }
-        .footer-nav { margin-bottom: 10px; }
-        .footer-badges { 
-            margin-top: 10px; 
-            opacity: 0.8; 
-            font-size: 0.65rem; 
-            letter-spacing: 1px; 
-            color: var(--accent-orange);
-            font-weight: bold;
-        }
+        .footer-badges { margin-top: 15px; color: var(--accent-orange); font-weight: 900; font-size: 0.7rem; letter-spacing: 1.5px; }
 
-        /* --- FLOATING CONTACT --- */
-        .floating-contact-wrap { position: fixed; bottom: 30px; right: 20px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; transition: transform 0.4s ease, opacity 0.3s ease; }
-        body.is-scrolling .floating-contact-wrap { transform: translateX(100px); opacity: 0; pointer-events: none; }
-        .float-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-        .float-btn { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; color: white; box-shadow: 0 6px 16px rgba(0,0,0,0.6); transition: 0.2s; cursor: pointer; border: none; }
+        /* --- FLOATING CONTACT (MATCHED TO ABOUT.HTML) --- */
+        .floating-contact-wrap { 
+            position: fixed; 
+            bottom: 30px; 
+            right: 20px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
+            z-index: 9999; 
+            transition: transform 0.4s ease, opacity 0.3s ease; 
+        }
+        body.is-scrolling .floating-contact-wrap { 
+            transform: translateX(100px); 
+            opacity: 0; 
+            pointer-events: none; 
+        }
+        .float-btn { 
+            width: 56px; 
+            height: 56px; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-decoration: none; 
+            color: white; 
+            box-shadow: 0 6px 16px rgba(0,0,0,0.6); 
+            transition: 0.2s; 
+            background-color: #25D366; 
+        }
         .float-btn:hover { transform: scale(1.1); }
-        .float-whatsapp { background-color: #25D366; }
         .float-btn svg { width: 28px; height: 28px; fill: white; }
-        .float-label { font-size: 0.65rem; font-weight: bold; color: #ccc; background: rgba(0,0,0,0.8); padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
 
         @media (max-width: 768px) {
-            .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; flex-direction: column; width: 260px; transform: translateX(100%); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding-top: 70px; border-left: 1px solid #222; align-items: flex-start; }
-            .nav-links li { width: 100%; margin: 0; }
-            .nav-links a { display: block; width: 100%; padding: 20px 30px; font-size: 0.95rem; border-bottom: 1px solid #111; box-sizing: border-box; }
+            .hamburger { display: flex; }
+            .nav-links { 
+                position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; 
+                flex-direction: column; width: 280px; transform: translateX(100%); 
+                transition: 0.4s; padding-top: 80px; border-left: 1px solid #222; align-items: flex-start; 
+            }
             .nav-active { transform: translateX(0%); }
-            .toggle .line1 { transform: rotate(-45deg) translate(-4px, 5px); }
-            .toggle .line2 { opacity: 0; }
-            .toggle .line3 { transform: rotate(45deg) translate(-4px, -5px); }
+            .nav-links li { width: 100%; margin: 0; }
+            .nav-links a { display: block; width: 100%; padding: 22px 35px; font-size: 1rem; border-bottom: 1px solid #111; }
         }
     </style>
 </head>
 <body>
     <nav>
-        <div class="video-bg-wrap">
-            <video autoplay loop muted playsinline>
-                <source src="81092-574743664_medium.mp4" type="video/mp4">
-            </video>
-        </div>
         <a href="index.html" class="nav-brand">
             <img src="logo.png" alt="JMCY Logo" class="nav-logo">
             <div>JMCY WEB SOLUTIONS<br><span>Real-Time Custom Web Development</span></div>
@@ -277,160 +185,110 @@
             <li><a href="quote.html">Projects / Pricing</a></li>
             <li><a href="contact.html" class="nav-quote-btn">Get Started</a></li>
         </ul>
-        <div class="hamburger" id="hamburger">
-            <div class="line1"></div><div class="line2"></div><div class="line3"></div>
-        </div>
+        <div class="hamburger" id="hamburger"><div></div><div></div><div></div></div>
     </nav>
 
     <main>
         <section class="services-hero">
-            <video class="hero-video-bg" autoplay loop muted playsinline>
+            <video class="hero-video-bg" autoplay loop muted playsinline preload="auto" poster="image_0.png">
                 <source src="818026310.mp4" type="video/mp4">
             </video>
             <div class="hero-overlay"></div>
-
-            <div class="services-hero-content">
-                <h1>Websites That Turn Visitors Into Paying Customers</h1>
-                <p style="color: #ccc; max-width: 600px; margin: 0 auto; font-size: 1rem; line-height: 1.6;">
-                    We build fast, mobile-first websites designed to increase inquiries, sales, and conversions—without bloated code or hidden ownership traps.
-                </p>
+            <div class="hero-content">
+                <h1>Web <span style="color: var(--accent-orange);">Engineering</span></h1>
+                <p>High-performance, custom HTML architecture designed for speed, SEO, and absolute client ownership.</p>
             </div>
         </section>
 
-        <div class="trust-badge-bar">
-            ✔ 100% Ownership &nbsp; • &nbsp;
-            ✔ No Monthly Fees &nbsp; • &nbsp;
-            ✔ Fast Delivery &nbsp; • &nbsp;
-            ✔ Direct Developer Access
-        </div>
-
         <div class="container">
-            <div class="service-detail-grid">
+            <div class="service-grid">
                 <div class="detail-card">
-                    <h3>01. Lightning-Fast Websites</h3>
-                    <p>Your customers won’t wait. We build ultra-fast websites that load instantly on mobile—reducing bounce rates and increasing conversions.</p>
+                    <h3>Lightning-Fast Core</h3>
+                    <p>We build without heavy CMS "bloat." By using pure HTML/CSS, your site loads instantly on mobile—improving both user experience and Google rankings.</p>
                 </div>
-
                 <div class="detail-card">
-                    <h3>02. Real-Time Project Transparency</h3>
-                    <p>No guessing, no delays. Track your website live through our private GitHub system and request changes anytime during development.</p>
+                    <h3>Live Build Tracking</h3>
+                    <p>Watch your project come to life. Access a private preview link to monitor our real-time technical progress, from structural tags to final polish.</p>
                 </div>
-
                 <div class="detail-card">
-                    <h3>03. 100% Ownership — No Lock-In</h3>
-                    <p>You fully own your website, domain, and code. No monthly traps, no hidden control—just complete freedom after launch.</p>
+                    <h3>SEO Infrastructure</h3>
+                    <p>We don't just "add" SEO; we build it into the skeleton. Proper metadata, semantic tags, and optimized asset delivery are standard in every build.</p>
                 </div>
             </div>
 
             <div class="advantage-box">
-                <h2 style="color: var(--accent-orange); text-align: center; margin-top: 0; font-size: 1.4rem;">Why Businesses Choose JMCY WEB SOLUTIONS</h2>
+                <h2 style="color: var(--primary-blue); text-align: center; margin-top: 0;">Our Promise to You</h2>
                 <div class="advantage-grid">
                     <div class="advantage-item">
-                        <h4>No More Developer Ghosting</h4>
-                        <p>See real progress anytime. Every step is tracked and visible—so you're never left wondering what's happening with your project.</p>
+                        <h4>Zero-Lock-In Ownership</h4>
+                        <p>Your domain, your code, your control. We handle the engineering, but the keys always remain in your hand. No hidden fees or "hostage" contracts.</p>
                     </div>
-
                     <div class="advantage-item">
-                        <h4>Risk-Free Payment System</h4>
-                        <p>Pay only when satisfied. Our milestone-based setup ensures you only complete payment when your website is fully delivered.</p>
-                    </div>
-
-                    <div class="advantage-item">
-                        <h4>Built for Growth, Not Just Design</h4>
-                        <p>We don’t just make websites look good—we build them to generate leads, sales, and long-term business growth.</p>
+                        <h4>Milestone Transparency</h4>
+                        <p>We work in clear cycles. You approve progress at every stage, ensuring the final product aligns perfectly with your business goals.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="cta-container">
-                <h2 style="margin-top: 0; font-size: 1.6rem;">
-                    Ready to Get More Customers From Your Website?
-                </h2>
-                <p style="color: var(--muted-text); margin-bottom: 25px; font-size: 0.95rem;">
-                    Get a custom-built website tailored to your business goals. Limited project slots available each month to ensure quality.
-                </p>
+            <div class="cta-box">
+                <h2 style="margin-top: 0; color: #fff;">Start Your Custom Build</h2>
+                <p style="color: var(--muted-text); margin-bottom: 30px;">Request a custom quote and get a dedicated developer link within 24 hours.</p>
                 <a href="quote.html" class="btn-primary">Get Your Custom Quote →</a>
             </div>
         </div>
     </main>
 
     <footer>
-        <div class="video-bg-wrap">
-            <video autoplay loop muted playsinline>
-                <source src="81092-574743664_medium.mp4" type="video/mp4">
-            </video>
-        </div>
         <div class="footer-nav">
-            <a href="index.html">Home</a> | 
-            <a href="about.html">About</a> | 
-            <a href="service.html">Services</a> | 
-            <a href="portfolio.html">Portfolio</a> | 
-            <a href="quote.html">Pricing</a> | 
-            <a href="contact.html">Get Started</a> | 
-            <a href="legal.html">Terms & Conditions</a>
+            <a href="index.html">Home</a> | <a href="about.html">About</a> | <a href="service.html">Services</a> | <a href="portfolio.html">Portfolio</a> | <a href="quote.html">Pricing</a> | <a href="contact.html">Get Started</a> | <a href="legal.html">Terms & Conditions</a>
         </div>
         <p>&copy; 2026 JMCY WEB SOLUTIONS. All Rights Reserved.</p>
         <div class="footer-badges">
-            CUSTOM HTML ARCHITECTURE • GITHUB WORKFLOWS • GCASH VERIFIED BUSINESS
+            REAL-TIME DEVELOPMENT • SEO-OPTIMIZED SYSTEMS • 100% CLIENT OWNERSHIP
         </div>
     </footer>
 
     <div class="floating-contact-wrap">
-        <div class="float-item">
-            <button class="float-btn float-whatsapp" onclick="openApp('whatsapp://send?phone=09091297422', 'https://play.google.com/store/apps/details?id=com.whatsapp')">
-                <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.652zm6.599-3.835c1.53.909 3.039 1.389 4.625 1.39 5.25.001 9.522-4.271 9.524-9.521.001-2.544-.992-4.935-2.793-6.738-1.802-1.803-4.195-2.795-6.738-2.796-5.251 0-9.522 4.271-9.524 9.521-.001 1.688.45 3.336 1.306 4.773l-.991 3.618 3.706-.972zm10.165-6.843c-.277-.139-1.641-.809-1.894-.901-.253-.093-.438-.139-.623.139-.185.277-.714.901-.875 1.086-.161.185-.323.208-.6.069-.277-.139-1.171-.432-2.231-1.378-.824-.735-1.38-1.643-1.541-1.921-.162-.277-.017-.427.121-.565.125-.124.277-.323.416-.485.139-.161.185-.277.277-.462.093-.185.046-.347-.023-.485-.069-.139-.623-1.501-.853-2.057-.225-.542-.454-.469-.623-.477-.16-.007-.344-.008-.528-.008s-.485.069-.739.347c-.253.277-.97 0.948-.97 2.311 0 1.363.993 2.679 1.131 2.864.139.185 1.954 2.985 4.733 4.184.661.285 1.177.455 1.579.583.664.211 1.268.181 1.745.11.532-.079 1.641-.671 1.872-1.32.231-.648.231-1.202.161-1.32-.069-.118-.253-.185-.53-.324z"/></svg>
-            </button>
-            <span class="float-label">WhatsApp</span>
-        </div>
+        <a href="whatsapp://send?phone=09091297422" class="float-btn">
+            <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.652zm6.599-3.835c1.53.909 3.039 1.389 4.625 1.39 5.25.001 9.522-4.271 9.524-9.521.001-2.544-.992-4.935-2.793-6.738-1.802-1.803-4.195-2.795-6.738-2.796-5.251 0-9.522 4.271-9.524 9.521-.001 1.688.45 3.336 1.306 4.773l-.991 3.618 3.706-.972zm10.165-6.843c-.277-.139-1.641-.809-1.894-.901-.253-.093-.438-.139-.623.139-.185.277-.714.901-.875 1.086-.161.185-.323.208-.6.069-.277-.139-1.171-.432-2.231-1.378-.824-.735-1.38-1.643-1.541-1.921-.162-.277-.017-.427.121-.565.125-.124.277-.323.416-.485.139-.161.185-.277.277-.462.093-.185.046-.347-.023-.485-.069-.139-.623-1.501-.853-2.057-.225-.542-.454-.469-.623-.477-.16-.007-.344-.008-.528-.008s-.485.069-.739.347c-.253.277-.97 0.948-.97 2.311 0 1.363.993 2.679 1.131 2.864.139.185 1.954 2.985 4.733 4.184.661.285 1.177.455 1.579.583.664.211 1.268.181 1.745.11.532-.079 1.641-.671 1.872-1.32.231-.648.231-1.202.161-1.32-.069-.118-.253-.185-.53-.324z"/></svg>
+        </a>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('nav-menu');
+            
+            // --- SCROLLING EFFECT (Floating Button) ---
             let scrollTimer;
-
             window.addEventListener('scroll', () => {
                 document.body.classList.add('is-scrolling');
                 clearTimeout(scrollTimer);
-                scrollTimer = setTimeout(() => {
-                    document.body.classList.remove('is-scrolling');
-                }, 400);
+                scrollTimer = setTimeout(() => { document.body.classList.remove('is-scrolling'); }, 400);
             }, { passive: true });
 
-            const closeMenu = () => {
+            // --- MENU FUNCTIONS ---
+            const closeMenu = () => { 
                 if (navMenu.classList.contains('nav-active')) {
-                    navMenu.classList.remove('nav-active');
-                    hamburger.classList.remove('toggle');
+                    navMenu.classList.remove('nav-active'); 
                 }
             };
 
             hamburger.addEventListener('click', (e) => {
                 e.stopPropagation();
                 navMenu.classList.toggle('nav-active');
-                hamburger.classList.toggle('toggle');
             });
 
+            // Auto-close on scroll
             window.addEventListener('scroll', closeMenu, { passive: true });
-            
+
+            // Auto-close on click outside or clicking a link
             document.addEventListener('click', (e) => {
-                const isClickInsideMenu = navMenu.contains(e.target);
-                const isHamburger = hamburger.contains(e.target);
-                if ((!isClickInsideMenu && !isHamburger) || e.target.tagName === 'A') {
+                if ((!navMenu.contains(e.target) && !hamburger.contains(e.target)) || e.target.tagName === 'A') {
                     closeMenu();
                 }
             });
         });
-
-        function openApp(appUri, storeUrl) {
-            const start = Date.now();
-            window.location.href = appUri;
-            setTimeout(function() {
-                if (Date.now() - start < 2500) {
-                    window.location.href = storeUrl;
-                }
-            }, 2000);
-        }
     </script>
 </body>
 </html>
