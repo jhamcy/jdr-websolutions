@@ -40,31 +40,41 @@
 
         main { flex: 1 0 auto; display: flex; flex-direction: column; }
 
-        /* --- NAVIGATION --- */
-        nav { padding: 0.5rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(0,0,0,0.85); overflow: hidden; }
-        nav > * { position: relative; z-index: 1; }
+        /* --- NAVIGATION (Updated with tech-bg) --- */
+        nav { 
+            padding: 0.5rem 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 1px solid #222; 
+            position: fixed; 
+            top: 0; left: 0; right: 0; 
+            z-index: 1000; 
+            background-image: url('tech-bg.png'); 
+            background-size: cover;
+            background-position: center bottom;
+        }
         
         .nav-brand { display: flex !important; align-items: center; font-size: 0.9rem; font-weight: 800; letter-spacing: 1px; color: var(--light-text); text-transform: uppercase; text-decoration: none; line-height: 1.2; }
-        .nav-logo { height: 40px; width: auto; margin-right: 12px; vertical-align: middle; }
-        .nav-brand span { color: var(--accent-orange); font-size: 0.65rem; display: block; margin-top: 2px; letter-spacing: 0.5px; }
+        .nav-logo { height: 40px; width: auto; margin-right: 12px; }
+        .nav-brand span { color: var(--accent-orange); font-size: 0.65rem; display: block; margin-top: 2px; }
         
         .nav-links { display: flex; list-style: none; margin: 0; padding: 0; align-items: center; }
         .nav-links li { margin-left: 18px; }
-        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; display: inline-block; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; }
         .nav-links a:hover, .active-link { color: var(--accent-orange) !important; }
         .nav-quote-btn { border: 1px solid var(--accent-orange); padding: 5px 12px; border-radius: 4px; color: var(--accent-orange) !important; font-weight: 800 !important; }
         
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
-        @media (max-width: 768px) { .hamburger { display: flex; } }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
 
-        /* --- SYNCED PORTFOLIO HERO (MATCHED TO ABOUT.HTML) --- */
+        /* --- HERO (Synced to 80vh like About.html) --- */
         .portfolio-hero { 
             position: relative;
-            padding: 120px 5% 120px; /* Sized to About.html */
+            height: 80vh; /* Locked height */
+            width: 100%; 
             text-align: center; 
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             overflow: hidden;
@@ -73,90 +83,66 @@
 
         .video-bg-wrap { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
         .video-bg-wrap video { width: 100%; height: 100%; object-fit: cover; }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(12,13,17,0.3) 0%, rgba(12,13,17,0.9) 100%); z-index: 2; }
+        .hero-content { position: relative; z-index: 3; padding: 0 5%; }
+        .hero-content h1 { font-size: clamp(2.2rem, 8vw, 4rem); margin-bottom: 20px; font-weight: 900; line-height: 1.1; color: #fff; }
+        .hero-content p { font-size: 1.2rem; color: #ccc; max-width: 800px; margin: 0 auto; line-height: 1.6; }
 
-        .hero-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, rgba(12,13,17,0.3) 0%, rgba(12,13,17,0.9) 100%);
-            z-index: 2;
-        }
-
-        .hero-content { position: relative; z-index: 3; max-width: 850px; }
-        .hero-content h1 { 
-            font-size: clamp(2rem, 8vw, 3.5rem); /* Synced sizing */
-            margin-bottom: 15px; 
-            font-weight: 900; 
-            line-height: 1.1; 
-            letter-spacing: -1px;
-            color: #fff;
-        }
-        .hero-content p { 
-            font-size: 1.1rem; 
-            color: #ccc; 
-            line-height: 1.6;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* --- MAIN CONTENT AREA --- */
-        .container { max-width: 850px; margin: 0 auto; padding: 60px 5% 100px; width: 100%; box-sizing: border-box; }
-
-        .portfolio-grid { display: flex; flex-direction: column; gap: 60px; width: 100%; }
+        /* --- MAIN CONTENT --- */
+        .container { max-width: 900px; margin: 0 auto; padding: 80px 5%; width: 100%; box-sizing: border-box; }
+        .portfolio-grid { display: flex; flex-direction: column; gap: 60px; }
         .portfolio-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; overflow: hidden; transition: 0.4s; backdrop-filter: blur(10px); }
-        .portfolio-card:hover { border-color: var(--primary-blue); transform: translateY(-8px); box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+        .portfolio-card:hover { border-color: var(--primary-blue); transform: translateY(-8px); }
         
-        .preview-area { height: 350px; background-color: #111; background-size: cover; background-position: top center; position: relative; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .status-badge { position: absolute; top: 20px; right: 20px; background: #000; padding: 6px 16px; border-radius: 30px; font-size: 0.7rem; color: #28a745; border: 1px solid #28a745; z-index: 5; font-weight: 900; letter-spacing: 1px; }
+        .preview-area { height: 400px; background-color: #111; background-size: cover; background-position: top center; position: relative; }
+        .status-badge { position: absolute; top: 20px; right: 20px; background: #000; padding: 6px 16px; border-radius: 30px; font-size: 0.7rem; color: #28a745; border: 1px solid #28a745; z-index: 5; font-weight: 900; }
         
-        .card-body { padding: 45px; }
-        .card-body h3 { color: var(--accent-orange); margin: 0 0 12px; font-size: 2rem; font-weight: 900; }
-        .card-body p { font-size: 1.05rem; color: var(--muted-text); margin-bottom: 25px; line-height: 1.6; }
+        .card-body { padding: 40px; }
+        .card-body h3 { color: var(--accent-orange); margin: 0 0 15px; font-size: 2rem; font-weight: 900; }
+        .card-body p { font-size: 1rem; color: var(--muted-text); margin-bottom: 25px; line-height: 1.7; }
         
-        .tag-list { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 30px; }
+        .tag-list { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 25px; }
         .tag { font-size: 0.7rem; background: rgba(10, 88, 202, 0.2); color: #8bb9ff; padding: 6px 14px; border-radius: 6px; border: 1px solid rgba(10, 88, 202, 0.4); font-weight: 800; }
         
-        .btn-live { display: block; text-decoration: none; padding: 18px; border-radius: 12px; font-weight: 900; font-size: 1rem; text-align: center; background: var(--primary-blue); color: white; transition: 0.3s; text-transform: uppercase; letter-spacing: 1.5px; border: none; }
-        .btn-live:hover { background: #0c63e4; box-shadow: 0 0 20px rgba(10, 88, 202, 0.4); }
+        .btn-live { display: block; text-decoration: none; padding: 18px; border-radius: 12px; font-weight: 900; font-size: 1rem; text-align: center; background: var(--primary-blue); color: white; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+        .btn-live:hover { background: #0c63e4; }
 
         /* --- SLIDER --- */
         .slider-container { position: relative; width: 100%; height: 100%; overflow: hidden; }
         .slider-wrapper { display: flex; transition: transform 0.7s cubic-bezier(0.19, 1, 0.22, 1); height: 100%; }
         .slide { min-width: 100%; height: 100%; background-size: cover; background-position: top center; }
-        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.8); color: white; border: 1px solid rgba(255,255,255,0.1); width: 50px; height: 50px; cursor: pointer; border-radius: 50%; z-index: 10; font-size: 1.2rem; transition: 0.3s; display: flex; align-items: center; justify-content: center; }
-        .slider-btn:hover { background: var(--primary-blue); border-color: transparent; }
+        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.8); color: white; border: none; width: 50px; height: 50px; cursor: pointer; border-radius: 50%; z-index: 10; display: flex; align-items: center; justify-content: center; }
+        .slider-btn:hover { background: var(--primary-blue); }
         .prev-btn { left: 20px; } .next-btn { right: 20px; }
 
-        /* --- FOOTER --- */
-        footer { flex-shrink: 0; padding: 40px 5%; text-align: center; border-top: 1px solid #222; color: #ddd; font-size: 0.85rem; position: relative; background-color: #000; overflow: hidden; }
-        footer .video-bg-wrap { opacity: 0.5; }
-        footer > * { position: relative; z-index: 1; }
-        footer a { color: #fff; text-decoration: none; margin: 0 12px; font-weight: 600; }
+        /* --- FOOTER (Updated with tech-bg) --- */
+        footer { 
+            flex-shrink: 0; padding: 40px 5%; text-align: center; border-top: 1px solid #333; color: #ddd; font-size: 0.8rem; 
+            position: relative; background-image: url('tech-bg.png'); background-size: cover; background-position: center top; 
+        }
+        footer a { color: #fff; text-decoration: none; margin: 0 10px; font-weight: 600; }
         footer a:hover { color: var(--accent-orange); }
-        .footer-nav { margin-bottom: 20px; }
-        .footer-badges { margin-top: 20px; font-size: 0.75rem; letter-spacing: 2px; color: var(--accent-orange); font-weight: 900; }
+        .footer-nav { margin-bottom: 15px; }
+        .footer-badges { margin-top: 15px; opacity: 0.8; font-size: 0.7rem; letter-spacing: 1.5px; color: var(--accent-orange); font-weight: 900; }
 
-        /* --- WHATSAPP --- */
-        .floating-contact-wrap { position: fixed; bottom: 30px; right: 20px; z-index: 9999; transition: transform 0.4s ease, opacity 0.3s ease; }
+        /* --- FLOATING CONTACT --- */
+        .floating-contact-wrap { position: fixed; bottom: 30px; right: 20px; z-index: 9999; transition: 0.4s; }
         body.is-scrolling .floating-contact-wrap { transform: translateX(100px); opacity: 0; }
-        .float-btn { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background-color: #25D366; box-shadow: 0 10px 25px rgba(0,0,0,0.5); transition: 0.3s; }
-        .float-btn:hover { transform: scale(1.15); }
+        .float-btn { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background-color: #25D366; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
         .float-btn svg { width: 32px; height: 32px; fill: white; }
 
         @media (max-width: 768px) {
-            .portfolio-hero { padding: 80px 5% 80px; }
-            .preview-area { height: 250px; }
+            .hamburger { display: flex; }
             .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; flex-direction: column; width: 280px; transform: translateX(100%); transition: 0.4s; padding-top: 80px; border-left: 1px solid #222; align-items: flex-start; }
             .nav-links.nav-active { transform: translateX(0%); }
             .nav-links li { width: 100%; margin: 0; }
             .nav-links a { display: block; width: 100%; padding: 22px 35px; font-size: 1rem; border-bottom: 1px solid #111; }
+            .preview-area { height: 280px; }
         }
     </style>
 </head>
 <body>
     <nav>
-        <div class="video-bg-wrap" aria-hidden="true">
-            <video autoplay loop muted playsinline><source src="81092-574743664_medium.mp4" type="video/mp4"></video>
-        </div>
         <a href="index.html" class="nav-brand">
             <img src="logo.png" alt="JMCY Logo" class="nav-logo">
             <div>JMCY WEB SOLUTIONS<br><span>Real-Time Custom Web Development</span></div>
@@ -176,9 +162,7 @@
     <main>
         <section class="portfolio-hero">
             <div class="video-bg-wrap">
-                <video autoplay loop muted playsinline>
-                    <source src="818026310.mp4" type="video/mp4">
-                </video>
+                <video autoplay loop muted playsinline><source src="818026310.mp4" type="video/mp4"></video>
             </div>
             <div class="hero-overlay"></div>
             <div class="hero-content">
@@ -233,9 +217,6 @@
     </main>
 
     <footer>
-        <div class="video-bg-wrap">
-            <video autoplay loop muted playsinline><source src="81092-574743664_medium.mp4" type="video/mp4"></video>
-        </div>
         <div class="footer-nav">
             <a href="index.html">Home</a> | <a href="about.html">About</a> | <a href="service.html">Services</a> | <a href="portfolio.html">Portfolio</a> | <a href="quote.html">Pricing</a> | <a href="contact.html">Get Started</a> | <a href="legal.html">Terms</a>
         </div>
