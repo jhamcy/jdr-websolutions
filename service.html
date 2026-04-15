@@ -11,13 +11,9 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Development Services | JMCY WEB SOLUTIONS Philippines</title>
-    <meta name="description" content="Get a high-converting website for your business. Fast, mobile-first, and 100% owned by you. Custom HTML architecture by JMCY WEB SOLUTIONS.">
-
-    <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="logo.png">
-    <link rel="shortcut icon" href="logo.png">
-    <link rel="apple-touch-icon" href="logo.png">
+    <title>Detailed Web Services | JMCY WEB SOLUTIONS</title>
+    
+    <link rel="icon" type="image/png" href="logo.png">
     <link rel="manifest" href="manifest.json">
 
     <style>
@@ -28,6 +24,7 @@
             --card-bg: rgba(23, 25, 30, 0.6);
             --light-text: #F4F4F4;
             --muted-text: #A0A0A0;
+            --border-color: rgba(255, 255, 255, 0.08);
         }
 
         html, body { height: 100%; margin: 0; padding: 0; }
@@ -35,14 +32,14 @@
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--dark-bg);
             color: var(--light-text);
-            line-height: 1.4;
+            line-height: 1.6;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
             padding-top: 60px; 
         }
         
-        main { flex: 1 0 auto; display: flex; flex-direction: column; }
+        main { flex: 1 0 auto; }
 
         /* --- NAVIGATION --- */
         nav { 
@@ -58,115 +55,100 @@
             background-size: cover;
             background-position: center bottom;
         }
-
-        .nav-brand { display: flex !important; align-items: center; font-size: 0.9rem; font-weight: 800; letter-spacing: 1px; color: var(--light-text); text-transform: uppercase; text-decoration: none; line-height: 1.2; }
-        .nav-logo { height: 40px; width: auto; margin-right: 12px; vertical-align: middle; }
-        .nav-brand span { color: var(--accent-orange); font-size: 0.65rem; display: block; margin-top: 2px; letter-spacing: 0.5px; }
-        
+        .nav-brand { display: flex !important; align-items: center; font-size: 0.9rem; font-weight: 800; color: var(--light-text); text-transform: uppercase; text-decoration: none; line-height: 1.2; }
+        .nav-logo { height: 40px; width: auto; margin-right: 12px; }
+        .nav-brand span { color: var(--accent-orange); font-size: 0.65rem; display: block; margin-top: 2px; }
         .nav-links { display: flex; list-style: none; margin: 0; padding: 0; align-items: center; }
         .nav-links li { margin-left: 18px; }
-        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; display: inline-block; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; font-size: 0.75rem; transition: 0.3s; }
         .nav-links a:hover, .active-link { color: var(--accent-orange) !important; }
         .nav-quote-btn { border: 1px solid var(--accent-orange); padding: 5px 12px; border-radius: 4px; color: var(--accent-orange) !important; font-weight: 800 !important; }
-        
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO (Aligned Height to About.html) --- */
         .services-hero { 
-            position: relative;
-            min-height: 95vh;
-            width: 100%;
+            position: relative; 
+            height: 80vh; /* Fixed height matching about.html */
+            width: 100%; 
             text-align: center; 
-            overflow: hidden;
-            background: #000;
-            display: flex;
-            align-items: center;
+            overflow: hidden; 
+            background: #000; 
+            display: flex; 
+            align-items: center; 
             justify-content: center;
         }
-        .hero-video-bg {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 1; object-fit: cover;
+        .hero-video-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; object-fit: cover; }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(12,13,17,0.3) 0%, rgba(12,13,17,0.9) 100%); z-index: 2; }
+        .services-hero-content { position: relative; z-index: 3; padding: 0 5%; }
+        .services-hero h1 { font-size: clamp(2.2rem, 8vw, 4rem); margin-bottom: 25px; font-weight: 900; line-height: 1.1; color: #fff; }
+
+        /* --- CONTENT WRAPPERS --- */
+        .container { max-width: 1100px; margin: 0 auto; padding: 80px 5%; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { color: var(--primary-blue); font-size: 2rem; font-weight: 900; margin-bottom: 15px; }
+        .section-header p { color: var(--muted-text); font-size: 1.1rem; max-width: 800px; margin: 0 auto; }
+
+        /* --- SERVICE DETAIL CARDS --- */
+        .service-block { margin-bottom: 100px; }
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .detail-card { 
+            background: var(--card-bg); 
+            padding: 45px; 
+            border-radius: 15px; 
+            border: 1px solid var(--border-color); 
+            transition: 0.4s; 
+            display: flex; 
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
         }
-        .hero-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, rgba(12,13,17,0.3) 0%, rgba(12,13,17,0.9) 100%);
-            z-index: 2;
+        .detail-card::before { content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--primary-blue); opacity: 0; transition: 0.3s; }
+        .detail-card:hover::before { opacity: 1; }
+        .detail-card:hover { transform: translateY(-10px); border-color: rgba(10, 88, 202, 0.3); box-shadow: 0 15px 35px rgba(0,0,0,0.4); }
+        
+        .detail-card h3 { color: var(--accent-orange); font-size: 1.4rem; font-weight: 800; margin-top: 0; margin-bottom: 20px; }
+        .detail-card ul { list-style: none; padding: 0; margin: 0 0 30px 0; }
+        .detail-card ul li { position: relative; padding-left: 25px; margin-bottom: 12px; font-size: 0.95rem; color: var(--light-text); }
+        .detail-card ul li::before { content: "✓"; position: absolute; left: 0; color: var(--accent-orange); font-weight: 900; }
+        
+        .btn-card { 
+            margin-top: auto;
+            display: inline-block; 
+            background: var(--primary-blue); 
+            color: white; 
+            text-decoration: none; 
+            padding: 12px 25px; 
+            border-radius: 6px; 
+            font-size: 0.9rem; 
+            font-weight: 700; 
+            text-align: center;
+            transition: 0.3s;
         }
-        .hero-content { position: relative; z-index: 3; padding: 0 5%; }
-        .hero-content h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin-bottom: 20px; font-weight: 900; line-height: 1.1; color: #fff; }
-        .hero-content p { font-size: 1.2rem; color: #ccc; max-width: 750px; margin: 0 auto; line-height: 1.6; }
+        .btn-card:hover { background: #0849a3; transform: translateY(-2px); }
 
-        /* --- CONTENT --- */
-        .container { max-width: 1000px; margin: 0 auto; padding: 80px 5%; box-sizing: border-box; }
-        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
-        .detail-card { background: var(--card-bg); padding: 35px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05); transition: 0.3s; }
-        .detail-card:hover { border-color: var(--primary-blue); background: rgba(10, 88, 202, 0.05); }
-        .detail-card h3 { color: var(--accent-orange); margin-top: 0; font-size: 1.3rem; margin-bottom: 15px; }
-        .detail-card p { color: var(--muted-text); font-size: 0.95rem; line-height: 1.6; }
-
-        .advantage-box { margin-top: 60px; background: rgba(10, 88, 202, 0.05); padding: 45px; border-radius: 15px; border: 1px solid rgba(10, 88, 202, 0.2); }
-        .advantage-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 30px; }
-        .advantage-item h4 { color: var(--primary-blue); margin-bottom: 10px; font-size: 1.1rem; font-weight: 800; }
-        .advantage-item p { font-size: 0.9rem; color: var(--muted-text); }
-
-        .cta-box { text-align: center; margin-top: 80px; padding: 60px 40px; background: linear-gradient(135deg, rgba(249, 140, 21, 0.1) 0%, rgba(12, 13, 17, 1) 100%); border-radius: 15px; border: 1px solid rgba(249, 140, 21, 0.2); }
-        .btn-primary { background: var(--accent-orange); color: white; padding: 18px 40px; border-radius: 6px; text-decoration: none; font-weight: 800; font-size: 1rem; transition: 0.3s; display: inline-block; }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(249, 140, 21, 0.2); }
+        /* --- PROCESS TIMELINE --- */
+        .process-box { background: rgba(10, 88, 202, 0.03); padding: 60px 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); }
+        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center; }
+        .process-step { padding: 20px; }
+        .step-num { font-size: 2.5rem; font-weight: 900; color: rgba(249, 140, 21, 0.2); margin-bottom: -20px; display: block; }
+        .process-step h4 { color: var(--light-text); margin-bottom: 10px; font-size: 1.1rem; }
+        .process-step p { font-size: 0.85rem; color: var(--muted-text); }
 
         /* --- FOOTER --- */
         footer { 
-            flex-shrink: 0; padding: 40px 5%; text-align: center; border-top: 1px solid #333; color: #ddd; font-size: 0.8rem; position: relative; 
+            padding: 40px 5%; text-align: center; border-top: 1px solid #333; color: #ddd; font-size: 0.8rem; 
             background-image: url('tech-bg.png'); background-size: cover; background-position: center top; 
         }
         footer a { color: #fff; text-decoration: none; margin: 0 10px; font-weight: 600; }
-        footer a:hover { color: var(--accent-orange); }
-        .footer-badges { margin-top: 15px; color: var(--accent-orange); font-weight: 900; font-size: 0.7rem; letter-spacing: 1.5px; }
-
-        /* --- FLOATING CONTACT (MATCHED TO ABOUT.HTML) --- */
-        .floating-contact-wrap { 
-            position: fixed; 
-            bottom: 30px; 
-            right: 20px; 
-            display: flex; 
-            flex-direction: column; 
-            gap: 15px; 
-            z-index: 9999; 
-            transition: transform 0.4s ease, opacity 0.3s ease; 
-        }
-        body.is-scrolling .floating-contact-wrap { 
-            transform: translateX(100px); 
-            opacity: 0; 
-            pointer-events: none; 
-        }
-        .float-btn { 
-            width: 56px; 
-            height: 56px; 
-            border-radius: 50%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            text-decoration: none; 
-            color: white; 
-            box-shadow: 0 6px 16px rgba(0,0,0,0.6); 
-            transition: 0.2s; 
-            background-color: #25D366; 
-        }
-        .float-btn:hover { transform: scale(1.1); }
-        .float-btn svg { width: 28px; height: 28px; fill: white; }
+        .footer-badges { margin-top: 15px; color: var(--accent-orange); font-weight: 900; letter-spacing: 1.5px; }
 
         @media (max-width: 768px) {
             .hamburger { display: flex; }
-            .nav-links { 
-                position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; 
-                flex-direction: column; width: 280px; transform: translateX(100%); 
-                transition: 0.4s; padding-top: 80px; border-left: 1px solid #222; align-items: flex-start; 
-            }
-            .nav-active { transform: translateX(0%); }
+            .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; flex-direction: column; width: 280px; transform: translateX(100%); transition: 0.4s; padding-top: 80px; border-left: 1px solid #222; align-items: flex-start; }
             .nav-links li { width: 100%; margin: 0; }
             .nav-links a { display: block; width: 100%; padding: 22px 35px; font-size: 1rem; border-bottom: 1px solid #111; }
+            .nav-active { transform: translateX(0%); }
         }
     </style>
 </head>
@@ -190,50 +172,89 @@
 
     <main>
         <section class="services-hero">
-            <video class="hero-video-bg" autoplay loop muted playsinline preload="auto" poster="image_0.png">
-                <source src="818026310.mp4" type="video/mp4">
-            </video>
+            <video class="hero-video-bg" autoplay loop muted playsinline><source src="818026310.mp4" type="video/mp4"></video>
             <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <h1>Web <span style="color: var(--accent-orange);">Engineering</span></h1>
-                <p>High-performance, custom HTML architecture designed for speed, SEO, and absolute client ownership.</p>
+            <div class="services-hero-content">
+                <h1>Our Professional <span style="color: var(--accent-orange);">Scope</span></h1>
+                <p style="max-width: 850px; margin: 0 auto; color: #ddd; line-height: 1.6;">
+                    Providing high-tier technical architecture for businesses that require speed, security, and absolute digital control. We specialize in manual code, not generic templates.
+                </p>
             </div>
         </section>
 
         <div class="container">
+            <div class="section-header">
+                <h2>Technical Core Capabilities</h2>
+                <p>We solve the common frustrations of web development—slow load times, lack of ownership, and developer ghosting—through a rigorous code-first approach.</p>
+            </div>
+
             <div class="service-grid">
                 <div class="detail-card">
-                    <h3>Lightning-Fast Core</h3>
-                    <p>We build without heavy CMS "bloat." By using pure HTML/CSS, your site loads instantly on mobile—improving both user experience and Google rankings.</p>
+                    <h3>01. Custom Infrastructure</h3>
+                    <p style="color: var(--muted-text); font-size: 0.9rem;">We build using a "Zero-Bloat" philosophy. Every script and style is hand-written for your specific business needs.</p>
+                    <ul>
+                        <li>HTML5 Semantic Architecture for better SEO crawling.</li>
+                        <li>High-Performance CSS3 Flexbox & Grid layouts.</li>
+                        <li>Native JavaScript for interactive UI (No heavy libraries).</li>
+                        <li>Automated Image Compression for instant loading.</li>
+                    </ul>
+                    <a href="contact.html" class="btn-card">Get Started</a>
                 </div>
+
                 <div class="detail-card">
-                    <h3>Live Build Tracking</h3>
-                    <p>Watch your project come to life. Access a private preview link to monitor our real-time technical progress, from structural tags to final polish.</p>
+                    <h3>02. Real-Time Tracking</h3>
+                    <p style="color: var(--muted-text); font-size: 0.9rem;">Our workflow is completely open. You watch the site grow from a basic skeleton to a finished product.</p>
+                    <ul>
+                        <li>Live Staging Server: Track updates in real-time.</li>
+                        <li>Direct Logic Feedback: Approve site flows as they are coded.</li>
+                        <li>Continuous Deployment: See changes instantly.</li>
+                        <li>Project Management via private WhatsApp/Email.</li>
+                    </ul>
+                    <a href="contact.html" class="btn-card">Get Started</a>
                 </div>
+
                 <div class="detail-card">
-                    <h3>SEO Infrastructure</h3>
-                    <p>We don't just "add" SEO; we build it into the skeleton. Proper metadata, semantic tags, and optimized asset delivery are standard in every build.</p>
+                    <h3>03. SEO & Connectivity</h3>
+                    <p style="color: var(--muted-text); font-size: 0.9rem;">We integrate advanced tracking and SEO schemas to ensure your business is visible to the right audience.</p>
+                    <ul>
+                        <li>Google G-Tag & Analytics full integration.</li>
+                        <li>Technical Sitemap & Manifest.json generation.</li>
+                        <li>WhatsApp Business API floating buttons.</li>
+                        <li>Advanced Meta-Tagging for Social Media sharing.</li>
+                    </ul>
+                    <a href="contact.html" class="btn-card">Get Started</a>
                 </div>
             </div>
 
-            <div class="advantage-box">
-                <h2 style="color: var(--primary-blue); text-align: center; margin-top: 0;">Our Promise to You</h2>
-                <div class="advantage-grid">
-                    <div class="advantage-item">
-                        <h4>Zero-Lock-In Ownership</h4>
-                        <p>Your domain, your code, your control. We handle the engineering, but the keys always remain in your hand. No hidden fees or "hostage" contracts.</p>
+            <div class="process-box" style="margin-top: 80px;">
+                <h3 style="text-align: center; color: var(--accent-orange); margin-top: 0; font-size: 1.5rem; margin-bottom: 40px;">The Development Pipeline</h3>
+                <div class="process-grid">
+                    <div class="process-step">
+                        <span class="step-num">01</span>
+                        <h4>Consultation</h4>
+                        <p>Detailed analysis of your business goals and technical needs.</p>
                     </div>
-                    <div class="advantage-item">
-                        <h4>Milestone Transparency</h4>
-                        <p>We work in clear cycles. You approve progress at every stage, ensuring the final product aligns perfectly with your business goals.</p>
+                    <div class="process-step">
+                        <span class="step-num">02</span>
+                        <h4>Wireframe</h4>
+                        <p>Defining the user journey and information architecture.</p>
+                    </div>
+                    <div class="process-step">
+                        <span class="step-num">03</span>
+                        <h4>Live Code</h4>
+                        <p>Your site is built live on a staging link for your review.</p>
+                    </div>
+                    <div class="process-step">
+                        <span class="step-num">04</span>
+                        <h4>Transfer</h4>
+                        <p>Full code handover and 100% domain sovereignty.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="cta-box">
-                <h2 style="margin-top: 0; color: #fff;">Start Your Custom Build</h2>
-                <p style="color: var(--muted-text); margin-bottom: 30px;">Request a custom quote and get a dedicated developer link within 24 hours.</p>
-                <a href="quote.html" class="btn-primary">Get Your Custom Quote →</a>
+            <div style="text-align: center; margin-top: 60px;">
+                <p style="color: var(--muted-text);">Ready to secure your business's digital future?</p>
+                <a href="quote.html" style="color: var(--primary-blue); text-decoration: none; font-weight: 900; font-size: 1rem; letter-spacing: 1px;">VIEW DETAILED PRICING &rarr;</a>
             </div>
         </div>
     </main>
@@ -248,44 +269,19 @@
         </div>
     </footer>
 
-    <div class="floating-contact-wrap">
-        <a href="whatsapp://send?phone=09091297422" class="float-btn">
-            <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.652zm6.599-3.835c1.53.909 3.039 1.389 4.625 1.39 5.25.001 9.522-4.271 9.524-9.521.001-2.544-.992-4.935-2.793-6.738-1.802-1.803-4.195-2.795-6.738-2.796-5.251 0-9.522 4.271-9.524 9.521-.001 1.688.45 3.336 1.306 4.773l-.991 3.618 3.706-.972zm10.165-6.843c-.277-.139-1.641-.809-1.894-.901-.253-.093-.438-.139-.623.139-.185.277-.714.901-.875 1.086-.161.185-.323.208-.6.069-.277-.139-1.171-.432-2.231-1.378-.824-.735-1.38-1.643-1.541-1.921-.162-.277-.017-.427.121-.565.125-.124.277-.323.416-.485.139-.161.185-.277.277-.462.093-.185.046-.347-.023-.485-.069-.139-.623-1.501-.853-2.057-.225-.542-.454-.469-.623-.477-.16-.007-.344-.008-.528-.008s-.485.069-.739.347c-.253.277-.97 0.948-.97 2.311 0 1.363.993 2.679 1.131 2.864.139.185 1.954 2.985 4.733 4.184.661.285 1.177.455 1.579.583.664.211 1.268.181 1.745.11.532-.079 1.641-.671 1.872-1.32.231-.648.231-1.202.161-1.32-.069-.118-.253-.185-.53-.324z"/></svg>
-        </a>
-    </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('nav-menu');
             
-            // --- SCROLLING EFFECT (Floating Button) ---
-            let scrollTimer;
-            window.addEventListener('scroll', () => {
-                document.body.classList.add('is-scrolling');
-                clearTimeout(scrollTimer);
-                scrollTimer = setTimeout(() => { document.body.classList.remove('is-scrolling'); }, 400);
-            }, { passive: true });
-
-            // --- MENU FUNCTIONS ---
-            const closeMenu = () => { 
-                if (navMenu.classList.contains('nav-active')) {
-                    navMenu.classList.remove('nav-active'); 
-                }
-            };
-
             hamburger.addEventListener('click', (e) => {
                 e.stopPropagation();
                 navMenu.classList.toggle('nav-active');
             });
 
-            // Auto-close on scroll
-            window.addEventListener('scroll', closeMenu, { passive: true });
-
-            // Auto-close on click outside or clicking a link
             document.addEventListener('click', (e) => {
                 if ((!navMenu.contains(e.target) && !hamburger.contains(e.target)) || e.target.tagName === 'A') {
-                    closeMenu();
+                    navMenu.classList.remove('nav-active');
                 }
             });
         });
