@@ -48,35 +48,52 @@
 
         .main-content { flex: 1 0 auto; }
 
-        /* --- UPDATED NAVBAR & FOOTER BACKGROUND --- */
+        /* HEADER STYLING */
         .tech-bg-header {
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('tech-bg.png');
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
             border-bottom: 1px solid #222;
             position: sticky;
             top: 0;
             z-index: 1000;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
         }
 
         nav { 
-            padding: 1rem 5%; 
+            width: 100%;
+            padding: 0 5%; 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
         }
 
-        .nav-brand { 
+        .nav-brand-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-logo {
+            height: 45px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-brand-text { 
             font-size: 0.9rem; 
             font-weight: 800; 
             letter-spacing: 1px; 
             color: #fff; 
             text-transform: uppercase; 
-            text-decoration: none; 
             line-height: 1.2; 
         }
 
-        .nav-brand span { 
+        .nav-brand-text span { 
             color: var(--accent-orange); 
             font-size: 0.65rem; 
             display: block; 
@@ -92,21 +109,27 @@
             align-items: center; 
         }
 
-        .nav-links li { margin-left: 18px; }
+        .nav-links li { 
+            margin-left: 20px; 
+            display: flex;
+            align-items: center;
+        }
 
         .nav-links a { 
             color: white; 
             text-decoration: none; 
             font-weight: 500; 
-            font-size: 0.75rem; 
+            font-size: 0.85rem;
             transition: 0.3s; 
+            display: inline-block;
+            padding: 5px 0;
         }
 
         .nav-links a:hover, .active-link { color: var(--accent-orange) !important; }
 
         .nav-quote-btn { 
             border: 1px solid var(--accent-orange); 
-            padding: 5px 12px; 
+            padding: 5px 12px !important; 
             border-radius: 4px; 
             color: var(--accent-orange) !important; 
             font-weight: 800; 
@@ -128,6 +151,7 @@
             transition: 0.3s; 
         }
 
+        /* FORM STYLING */
         .page-header {
             text-align: center;
             padding: 40px 5% 20px;
@@ -206,38 +230,10 @@
             font-size: 0.9rem; 
         }
 
-        .file-upload-container { margin-bottom: 15px; }
-        .file-input-wrapper {
-            position: relative;
-            width: 100%;
-            height: 45px;
-            background: #0d1117;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            padding: 0 12px;
-            cursor: pointer;
-            overflow: hidden;
-        }
-        .file-input-wrapper input[type="file"] {
-            position: absolute;
-            left: 0; top: 0; opacity: 0;
-            width: 100%; height: 100%; cursor: pointer;
-        }
-        .file-input-label { font-size: 0.85rem; color: #8b949e; }
-        .file-preview-list { margin-top: 10px; display: flex; flex-direction: column; gap: 5px; }
-        .file-preview-item {
-            background: #1c2128; border: 1px solid var(--border);
-            padding: 8px 12px; border-radius: 4px;
-            display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem;
-        }
-        .file-remove-btn { color: #ff4d4d; font-weight: bold; cursor: pointer; padding: 0 5px; font-size: 1rem; }
-
         .option-card { 
             background: var(--card-bg); padding: 12px; border-radius: 8px; cursor: pointer; 
             display: flex; align-items: center; flex-direction: row; gap: 8px; border: 1px solid var(--border); 
-            min-height: 60px; 
+            min-height: 60px; transition: 0.2s;
         }
         .option-card.selected { background: rgba(10, 88, 202, 0.2); border-color: var(--primary-blue); }
         .option-card input[type="radio"] { flex-shrink: 0; accent-color: var(--accent-orange); margin: 0; width: 16px; height: 16px; }
@@ -251,10 +247,11 @@
             background: #000; padding: 20px; border-radius: 10px; border: 1px solid var(--primary-blue); margin-top: 15px; 
         }
         .total-price { font-size: 1.8rem; color: var(--accent-orange); font-weight: 800; }
+        
         .btn-submit { 
             width: 100%; padding: 16px; background: var(--primary-blue); color: #fff; border: none; border-radius: 6px; 
             font-weight: 800; cursor: pointer; display: flex; justify-content: center; align-items: center; margin-top: 15px; 
-            font-size: 1rem; text-transform: uppercase; transition: opacity 0.3s, cursor 0.3s;
+            font-size: 1rem; text-transform: uppercase; transition: opacity 0.3s;
         }
         .btn-submit:disabled { opacity: 0.4; cursor: not-allowed; }
         #status-msg { margin-top: 15px; padding: 10px; text-align: center; font-size: 0.85rem; border-radius: 6px; display: none; }
@@ -277,6 +274,7 @@
         .footer-badges { margin-top: 10px; opacity: 0.8; font-size: 0.65rem; color: var(--accent-orange); font-weight: bold; }
 
         @media (max-width: 768px) {
+            .tech-bg-header { min-height: 70px; }
             .hamburger { display: flex; }
             .nav-links { 
                 position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; flex-direction: column; width: 260px; 
@@ -290,6 +288,9 @@
             .toggle .line2 { opacity: 0; }
             .toggle .line3 { transform: rotate(45deg) translate(-4px, -5px); }
             .page-header h1 { font-size: 1.5rem; }
+            .option-grid { grid-template-columns: 1fr; }
+            .nav-logo { height: 35px; }
+            .nav-brand-text { font-size: 0.75rem; }
         }        
     </style>
 </head>
@@ -298,8 +299,11 @@
 <div class="main-content">
     <div class="tech-bg-header">
         <nav>
-            <a href="index.html" class="nav-brand">
-                JMCY WEB SOLUTIONS<br><span>Real-Time Custom Web Development</span>
+            <a href="index.html" class="nav-brand-container">
+                <img src="logo.png" alt="JMCY Logo" class="nav-logo">
+                <div class="nav-brand-text">
+                    JMCY WEB SOLUTIONS<br><span>Real-Time Custom Web Development</span>
+                </div>
             </a>
             <ul class="nav-links" id="nav-menu">
                 <li><a href="index.html">Home</a></li>
@@ -307,7 +311,7 @@
                 <li><a href="service.html">Services</a></li>
                 <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="legal.html">Terms & Conditions</a></li>
-                <li><a href="quote.html">Projects / Pricing</a></li>                   
+                <li><a href="quote.html">Projects / Pricing</a></li>                     
                 <li><a href="contact.html" class="active-link nav-quote-btn">Get Started</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
@@ -346,7 +350,7 @@
             </div>
             <div class="flex-row">
                 <div class="flex-item">
-                    <label for="contact-method">Contact Method</label>
+                    <label for="contact-method">Preferred Contact</label>
                     <select id="contact-method">
                         <option value="WhatsApp">WhatsApp</option>
                         <option value="Viber">Viber</option>
@@ -354,23 +358,13 @@
                         <option value="SMS">SMS/Call</option>
                     </select>
                 </div>
-                <div class="flex-item">
-                    <label>Brand Assets (Logo/Items)</label>
-                    <div class="file-upload-container">
-                        <div class="file-input-wrapper">
-                            <span class="file-input-label" id="file-label">+ Add images/files...</span>
-                            <input type="file" id="brand-assets" multiple accept="image/*, .pdf, .zip">
-                        </div>
-                        <div id="file-preview-list" class="file-preview-list"></div>
-                    </div>
-                </div>
             </div>
             
             <label for="project-desc">Project Description</label>
             <textarea id="project-desc" required rows="3" placeholder="Describe your project goals..."></textarea>
 
-            <span class="section-title">1. Infrastructure (Client Ownership Policy)</span>
-            <p style="font-size: 0.7rem; color: #8b949e; margin-bottom: 10px;">Domains are registered under your name. You retain 100% administrative control.</p>
+            <span class="section-title">1. Infrastructure (Client Ownership)</span>
+            <p style="font-size: 0.7rem; color: #8b949e; margin-bottom: 10px;">Domains are registered under your name for 100% control.</p>
             <select id="domain-select" onchange="calculate()">
                 <option value="1200">Standard .com Domain (₱1,200/yr)</option>
                 <option value="3500">Premium .ph Domain (₱3,500/yr)</option>
@@ -408,7 +402,7 @@
                     <div class="card-text">
                         <span class="card-title">Elite Ecosystem</span>
                         <span class="price-tag">₱28,000</span>
-                        <span class="card-desc">Multi-Page + Advanced SEO & Lead Stack.</span>
+                        <span class="card-desc">Multi-Page + Advanced SEO & Leads.</span>
                     </div>
                 </div>
             </div>
@@ -420,7 +414,7 @@
                     <div class="card-text">
                         <span class="card-title">Managed Growth</span>
                         <span class="price-tag">₱1,500/mo</span>
-                        <span class="card-desc">SEO Tuning, Security & Ad Management.</span>
+                        <span class="card-desc">SEO Tuning, Security & Ads.</span>
                     </div>
                 </div>
                 <div class="option-card" id="card-maint2" onclick="selectRadio('maint2')">
@@ -482,67 +476,66 @@
 </footer>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
-        const closeMenu = () => {
-            navMenu.classList.remove('nav-active');
-            hamburger.classList.remove('toggle');
-        };
-        hamburger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            navMenu.classList.toggle('nav-active');
-            hamburger.classList.toggle('toggle');
-        });
-        window.addEventListener('scroll', closeMenu, { passive: true });
-        document.addEventListener('click', (e) => {
-            if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-                closeMenu();
-            }
-        });
-        calculate(); 
-    });
-
     const SUPABASE_URL = 'https://rtpeofjlmtljwabmthsf.supabase.co';
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ0cGVvZmpsbXRsandhYm10aHNmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ4ODI5MjAsImV4cCI6MjA5MDQ1ODkyMH0.w8V7fORbWYnD2gXQ0v8lS_287OSrNKxoHZ6vuzRHodE';
     const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    
     const EJS_SERVICE_ID = 'service_9azfmgp';
     const EJS_TEMPLATE_ID = 'template_rug054q';
     const EJS_PUBLIC_KEY = '9HgNOjgLcMRk-oJgf';
     emailjs.init(EJS_PUBLIC_KEY);
 
-    let uploadedFilesArray = [];
-    document.getElementById('brand-assets').addEventListener('change', function(e) {
-        const previewList = document.getElementById('file-preview-list');
-        const newFiles = Array.from(e.target.files);
-        newFiles.forEach(file => {
-            uploadedFilesArray.push(file);
-            const fileItem = document.createElement('div');
-            fileItem.className = 'file-preview-item';
-            fileItem.innerHTML = `<span>${file.name}</span><span class="file-remove-btn" onclick="removeFile('${file.name}', this)">×</span>`;
-            previewList.appendChild(fileItem);
+    document.addEventListener('DOMContentLoaded', () => {
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navMenu.classList.toggle('nav-active');
+            hamburger.classList.toggle('toggle');
         });
-        this.value = "";
-    });
 
-    function removeFile(fileName, element) {
-        element.parentElement.remove();
-        uploadedFilesArray = uploadedFilesArray.filter(f => f.name !== fileName);
-    }
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                navMenu.classList.remove('nav-active');
+                hamburger.classList.remove('toggle');
+            }
+        });
+        calculate(); 
+    });
 
     function openTerms() { window.location.href = 'legal.html'; }
     function selectRadio(id) { document.getElementById(id).checked = true; calculate(); }
     
     function calculate() {
         let setup = parseInt(document.getElementById('domain-select').value) || 0;
+        
         document.querySelectorAll('input[name="dev_package"]').forEach(opt => {
             const card = document.getElementById('card-' + opt.id);
-            if(opt.checked) { setup += parseInt(opt.getAttribute('data-price')); card.classList.add('selected'); }
-            else card.classList.remove('selected');
+            if(opt.checked) { 
+                setup += parseInt(opt.getAttribute('data-price')); 
+                card.classList.add('selected'); 
+            } else {
+                card.classList.remove('selected');
+            }
         });
+
         const isSelf = document.getElementById('maint2').checked;
-        document.getElementById('monthly-section').style.display = isSelf ? 'none' : 'block';
-        document.getElementById('monthly-title').style.display = isSelf ? 'none' : 'block';
+        const maintenanceCard = document.getElementById('card-maint2');
+        const managedCard = document.getElementById('card-maint1');
+
+        if(isSelf) {
+            maintenanceCard.classList.add('selected');
+            managedCard.classList.remove('selected');
+            document.getElementById('monthly-section').style.display = 'none';
+            document.getElementById('monthly-title').style.display = 'none';
+        } else {
+            managedCard.classList.add('selected');
+            maintenanceCard.classList.remove('selected');
+            document.getElementById('monthly-section').style.display = 'block';
+            document.getElementById('monthly-title').style.display = 'block';
+        }
+
         document.getElementById('display-total').innerText = "₱" + setup.toLocaleString();
         document.getElementById('display-advance').innerText = "₱" + (setup * 0.5).toLocaleString();
         updateAds();
@@ -558,11 +551,13 @@
         document.getElementById('display-traffic').innerText = Math.round(monthly/20) + " visitors/mo";
     }
 
-    function toggleSubmit() { document.getElementById('submit-btn').disabled = !document.getElementById('terms-check').checked; }
+    function toggleSubmit() { 
+        document.getElementById('submit-btn').disabled = !document.getElementById('terms-check').checked; 
+    }
 
     document.getElementById('inquiry-form').addEventListener('submit', async (e) => {
         e.preventDefault();
-        const myWhatsAppNumber = "639171234567"; 
+        const myWhatsAppNumber = "639171234567";
 
         const btn = document.getElementById('submit-btn');
         const status = document.getElementById('status-msg');
@@ -589,15 +584,6 @@
             const monthlyTotal = document.getElementById('display-monthly-total').innerText;
             const trafficEst = document.getElementById('display-traffic').innerText;
 
-            let publicUrls = [];
-            for (const file of uploadedFilesArray) {
-                const fileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
-                const { error: upErr } = await _supabase.storage.from('project-files').upload(fileName, file);
-                if (upErr) throw upErr;
-                const url = _supabase.storage.from('project-files').getPublicUrl(fileName).data.publicUrl;
-                publicUrls.push(url);
-            }
-
             const formData = {
                 name: name,
                 email: email,
@@ -606,34 +592,28 @@
                 contact_method: method,
                 description: desc,
                 total_cost: total,
-                attachment: publicUrls.length > 0 ? publicUrls.join(", ") : "None provided"
+                package: selectedPackage,
+                domain: selectedDomain
             };
 
             await _supabase.from('inquiries').insert([formData]);
             await emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, formData);
 
             let text = `*NEW PROJECT INQUIRY*\n` +
-                       `--------------------------\n` +
-                       `*Client:* ${name}\n` +
-                       `*Email:* ${email}\n` +
-                       `*Web Name:* ${webName}\n` +
-                       `*Phone:* ${phone}\n` +
-                       `--------------------------\n` +
-                       `*SELECTED OPTIONS:*\n` +
-                       `• Domain: ${selectedDomain}\n` +
-                       `• Package: ${selectedPackage}\n` +
-                       `• Plan: ${selectedMaint}\n`;
+                        `--------------------------\n` +
+                        `*Client:* ${name}\n` +
+                        `*Email:* ${email}\n` +
+                        `*Web Name:* ${webName}\n` +
+                        `*Phone:* ${phone}\n` +
+                        `--------------------------\n` +
+                        `*OPTIONS:*\n` +
+                        `• Domain: ${selectedDomain}\n` +
+                        `• Package: ${selectedPackage}\n` +
+                        `• Plan: ${selectedMaint}\n`;
 
             if(isManaged) {
                 text += `• Monthly SEO Budget: ₱${monthlyTotal}\n` +
                         `• Est. Traffic: ${trafficEst}\n`;
-            }
-
-            if(publicUrls.length > 0) {
-                text += `--------------------------\n*ATTACHED ASSETS:*\n`;
-                publicUrls.forEach((link, idx) => {
-                    text += `File ${idx + 1}: ${link}\n`;
-                });
             }
 
             text += `--------------------------\n` +
@@ -643,6 +623,7 @@
                     `*REQUIRED DEPOSIT:* ${advance}`;
 
             window.location.href = `https://wa.me/${myWhatsAppNumber}?text=${encodeURIComponent(text)}`;
+            
         } catch (err) {
             console.error(err);
             status.innerText = "Error sending inquiry. Please try again.";
