@@ -25,7 +25,6 @@
             --light-text: #F4F4F4;
             --muted-text: #A0A0A0;
             --nav-height: 60px;
-            --border: #333;
         }
 
         html, body { height: 100%; margin: 0; padding: 0; }
@@ -57,15 +56,16 @@
             background-image: url('tech-bg.png'); 
             background-size: cover;
             background-position: center bottom;
+            overflow: hidden;
         }
 
         .nav-brand { display: flex !important; align-items: center; font-size: 0.9rem; font-weight: 800; letter-spacing: 1px; color: var(--light-text); text-transform: uppercase; text-decoration: none; line-height: 1.2; }
-        .nav-logo { height: 40px; width: auto; margin-right: 12px; }
-        .nav-brand span { color: var(--accent-orange); font-size: 0.65rem; display: block; margin-top: 2px; }
+        .nav-logo { height: 40px; width: auto; margin-right: 12px; vertical-align: middle; }
+        .nav-brand span { color: var(--accent-orange); font-size: 0.65rem; display: block; margin-top: 2px; letter-spacing: 0.5px; }
         
         .nav-links { display: flex; list-style: none; margin: 0; padding: 0; align-items: center; }
         .nav-links li { margin-left: 18px; }
-        .nav-links a { color: white; text-decoration: none; font-weight: 500; font-size: 0.75rem; transition: 0.3s; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.75rem; display: inline-block; }
         .nav-links a:hover, .active-link { color: var(--accent-orange) !important; }
         .nav-quote-btn { border: 1px solid var(--accent-orange); padding: 5px 12px; border-radius: 4px; color: var(--accent-orange) !important; font-weight: 800 !important; }
         
@@ -75,7 +75,7 @@
         /* --- HERO SECTION --- */
         .about-hero { 
             position: relative;
-            min-height: 50vh;
+            min-height: 80vh;
             width: 100%;
             text-align: center; 
             overflow: hidden;
@@ -103,7 +103,7 @@
         .about-hero p { font-size: 1.1rem; color: var(--accent-orange); max-width: 750px; margin: 0 auto; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
 
         /* --- FORM STYLING --- */
-        .form-container { max-width: 900px; margin: -50px auto 60px; position: relative; z-index: 10; padding: 0 5%; width: 100%; box-sizing: border-box; }
+        .form-container { max-width: 900px; margin: 10px auto 50px; position: relative; z-index: 10; padding: 0 5%; width: 100%; box-sizing: border-box; }
         .flex-row { display: flex; flex-wrap: nowrap; gap: 10px; margin-bottom: 10px; }
         .flex-item { flex: 1; }
         
