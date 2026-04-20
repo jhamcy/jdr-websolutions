@@ -423,28 +423,76 @@
         e.preventDefault();
         const btn = document.getElementById('submit-btn');
         const status = document.getElementById('status-msg');
-        btn.disabled = true; btn.innerText = "SENDING...";
-        status.style.display = "block"; status.innerText = "Processing...";
+        
+        btn.disabled = true; 
+        btn.innerText = "SENDING...";
+        status.style.display = "block"; 
+        status.innerText = "Processing...";
+
+        // 1. Gather all dynamic data
+        const name = document.getElementById('full-name').value;
+        const email = document.getElementById('email-address').value;
+        const phone = document.getElementById('phone-input').value;
+        const webName = document.getElementById('web-name').value;
+        const desc = document.getElementById('project-desc').value;
+        const contactMethod = document.getElementById('contact-method').value;
+        
+        const domainText = document.getElementById('domain-select').options[document.getElementById('domain-select').selectedIndex].text;
+        const packageSelected = document.querySelector('input[name="dev_package"]:checked').value;
+        const packagePrice = document.getElementById('detail-package-price').innerText;
+        
+        const maintenance = document.querySelector('input[name="maintenance"]:checked').value;
+        const adSpend = (maintenance === "Managed") ? `\n- Monthly Ad Spend: ₱${document.getElementById('ad-spend-val').innerText}` : "";
+        
+        const total = document.getElementById('display-total').innerText;
+        const downpayment = document.getElementById('display-advance').innerText;
+
+        const formData = {
+            name: name,
+            email: email,
+            phone: phone,
+            web_name: webName,
+            description: desc,
+            total_cost: total,
+            package: packageSelected
+        };
 
         try {
-            const formData = {
-                name: document.getElementById('full-name').value,
-                email: document.getElementById('email-address').value,
-                phone: document.getElementById('phone-input').value,
-                web_name: document.getElementById('web-name').value,
-                description: document.getElementById('project-desc').value,
-                total_cost: document.getElementById('display-total').innerText,
-                package: document.querySelector('input[name="dev_package"]:checked').value
-            };
-            
+            // 2. Save to Supabase & EmailJS
             await _supabase.from('inquiries').insert([formData]);
             await emailjs.send('service_9azfmgp', 'template_rug054q', formData);
             
-            const waText = `*NEW INQUIRY*\nName: ${formData.name}\nWeb: ${formData.web_name}\nQuote: ${formData.total_cost}`;
-            window.location.href = `https://wa.me/639091297422?text=${encodeURIComponent(waText)}`;
+            // 3. Construct the Full WhatsApp Message
+            const waMessage = 
+                `*🚀 NEW PROJECT INQUIRY*\n\n` +
+                `*— CLIENT INFO —*\n` +
+                `👤 Name: ${name}\n` +
+                `📧 Email: ${email}\n` +
+                `📞 Phone: ${phone}\n` +
+                `🌐 Web Name: ${webName}\n` +
+                `💬 Preferred: ${contactMethod}\n\n` +
+                `*— PROJECT DETAILS —*\n` +
+                `📦 Package: ${packageSelected} (${packagePrice})\n` +
+                `🌍 Infrastructure: ${domainText}\n` +
+                `🛠 Maintenance: ${maintenance}${adSpend}\n` +
+                `📝 Desc: ${desc}\n\n` +
+                `*— FINANCIAL SUMMARY —*\n` +
+                `💰 *Total Quote: ${total}*\n` +
+                `💳 *Downpayment (50%): ${downpayment}*`;
+
+            // 4. THE UNIVERSAL LINK (Works for Mobile App, Desktop App, and Web)
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=639091297422&text=${encodeURIComponent(waMessage)}`;
+            
+            window.open(whatsappUrl, '_blank');
+            
+            status.innerText = "Success! Redirecting to WhatsApp...";
+            btn.innerText = "SUBMITTED";
+
         } catch (err) {
-            status.innerText = "Error. Please message us on WhatsApp.";
+            console.error(err);
+            status.innerText = "Error. Please message us on WhatsApp directly.";
             btn.disabled = false;
+            btn.innerText = "Confirm & Submit Inquiry";
         }
     });
 </script>
