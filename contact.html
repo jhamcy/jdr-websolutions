@@ -145,6 +145,22 @@
         .terms-text { font-size: 0.75rem; line-height: 1.4; color: var(--muted-text); }
         .terms-text span { color: var(--accent-orange); text-decoration: underline; cursor: pointer; }
 
+        /* --- THANK YOU MESSAGE --- */
+        #thank-you-message {
+            display: none;
+            text-align: center;
+            background: rgba(12, 13, 17, 0.95);
+            padding: 50px;
+            border-radius: 12px;
+            border: 1px solid var(--primary-blue);
+        }
+        #thank-you-message h2 { color: var(--accent-orange); font-size: 2rem; margin-bottom: 10px; }
+        #thank-you-message p { color: #fff; margin-bottom: 20px; }
+        .btn-reset { 
+            padding: 10px 20px; background: var(--primary-blue); color: #fff; border: none; 
+            border-radius: 4px; cursor: pointer; text-transform: uppercase; font-weight: bold;
+        }
+
         /* --- FOOTER --- */
         footer { 
             flex-shrink: 0; padding: 20px 5%; text-align: center; border-top: 1px solid #333; color: #ddd; font-size: 0.8rem; position: relative; 
@@ -331,6 +347,12 @@
                 <button type="submit" class="btn-submit" id="submit-btn" disabled>Confirm & Submit Inquiry</button>
             </div>
         </form>
+
+        <div id="thank-you-message">
+            <h2>Thank You!</h2>
+            <p>Your inquiry has been sent successfully. We've redirected you to WhatsApp to start our conversation.</p>
+            <button class="btn-reset" onclick="resetFormView()">Send Another Inquiry</button>
+        </div>
     </div>
 </main>
 
@@ -395,11 +417,22 @@
     
     function toggleSubmit() { document.getElementById('submit-btn').disabled = !document.getElementById('terms-check').checked; }
 
+    function resetFormView() {
+        document.getElementById('inquiry-form').reset();
+        document.getElementById('inquiry-form').style.display = 'block';
+        document.getElementById('thank-you-message').style.display = 'none';
+        document.getElementById('status-msg').style.display = 'none';
+        document.getElementById('submit-btn').innerText = "Confirm & Submit Inquiry";
+        calculate();
+        toggleSubmit();
+    }
+
     document.getElementById('inquiry-form').addEventListener('submit', async (e) => {
         e.preventDefault();
         const form = e.target;
         const btn = document.getElementById('submit-btn');
         const status = document.getElementById('status-msg');
+        const thankYou = document.getElementById('thank-you-message');
         
         btn.disabled = true; 
         btn.innerText = "SENDING...";
@@ -454,13 +487,9 @@
             
             window.open(whatsappUrl, '_blank');
             
-            status.innerText = "Success! Form cleared.";
-            btn.innerText = "SUBMITTED";
-
-            // Clear the form fields after sending
-            form.reset();
-            calculate(); // Recalculate totals for the fresh form
-            toggleSubmit(); // Disable button again
+            // UI Transition
+            form.style.display = 'none';
+            thankYou.style.display = 'block';
 
         } catch (err) {
             console.error(err);
