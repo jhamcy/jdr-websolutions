@@ -69,7 +69,7 @@
         .nav-links a:hover, .active-link { color: var(--accent-orange) !important; }
         .nav-quote-btn { border: 1px solid var(--accent-orange); padding: 5px 12px; border-radius: 4px; color: var(--accent-orange) !important; font-weight: 800 !important; }
         
-        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; }
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 10px; z-index: 1001; }
         .hamburger div { width: 20px; height: 2px; background-color: white; transition: 0.3s; }
 
         /* --- HERO SECTION --- */
@@ -172,11 +172,13 @@
 
         @media (max-width: 768px) {
             .hamburger { display: flex; }
-            .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; flex-direction: column; width: 260px; transform: translateX(100%); transition: 0.4s; padding-top: 70px; }
+            .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background-color: #000; flex-direction: column; width: 260px; transform: translateX(100%); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding-top: 70px; border-left: 1px solid #222; align-items: flex-start; }
+            .nav-links li { width: 100%; margin: 0; }
+            .nav-links a { display: block; width: 100%; padding: 20px 30px; font-size: 0.95rem; border-bottom: 1px solid #111; box-sizing: border-box; }
             .nav-active { transform: translateX(0%); }
-            .option-grid { grid-template-columns: 1fr; }
-            .flex-row { flex-direction: column; }
-            .form-container { margin-top: 20px; }
+            .hamburger.toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
+            .hamburger.toggle .line2 { opacity: 0; }
+            .hamburger.toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
         }
     </style>
 </head>
