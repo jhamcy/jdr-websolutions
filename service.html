@@ -141,13 +141,22 @@
 
         /* --- FOOTER (Standardized) --- */
         footer { 
-            padding: 20px 5%; text-align: center; border-top: 1px solid #333; color: #ddd; font-size: 0.8rem; 
-            background-image: url('tech-bg.png'); background-size: cover; background-position: center top; 
+            flex-shrink: 0; 
+            padding: 20px 5%; 
+            text-align: center; 
+            border-top: 1px solid #333; 
+            color: #ddd; 
+            font-size: 0.8rem; 
+            position: relative; 
+            background-image: url('tech-bg.png'); 
+            background-size: cover;
+            background-position: center top; 
             overflow: hidden;
         }
         footer a { color: #fff; text-decoration: none; margin: 0 8px; font-weight: 600; }
+        footer a:hover { color: var(--accent-orange); }
         .footer-nav { margin-bottom: 10px; }
-        .footer-badges { margin-top: 10px; color: var(--accent-orange); font-weight: bold; font-size: 0.65rem; letter-spacing: 1px; }
+        .footer-badges { margin-top: 10px; opacity: 0.8; font-size: 0.65rem; letter-spacing: 1px; color: var(--accent-orange); font-weight: bold; }
 
         /* --- FLOATING CONTACT --- */
         .floating-contact-wrap { position: fixed; bottom: 30px; right: 20px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; transition: transform 0.4s ease, opacity 0.3s ease; }
@@ -246,8 +255,8 @@
                 </div>
             </div>
 
-            <div class="process-box" style="margin-top: 80px;">
-                <h3 style="text-align: center; color: var(--accent-orange); margin-top: 0; font-size: 1.5rem; margin-bottom: 40px;">The Development Pipeline</h3>
+            <div class="process-box" style="margin-top: 50px;">
+                <h3 style="text-align: center; color: var(--accent-orange); margin-top: 0; font-size: 1.5rem; margin-bottom: 20px;">The Development Pipeline</h3>
                 <div class="process-grid">
                     <div class="process-step">
                         <span class="step-num">01</span>
@@ -272,7 +281,7 @@
                 </div>
             </div>
 
-            <div style="text-align: center; margin-top: 60px;">
+            <div style="text-align: center; margin-top: 30px;">
                 <p style="color: var(--muted-text);">Ready to secure your business's digital future?</p>
                 <a href="quote.html" style="color: var(--primary-blue); text-decoration: none; font-weight: 900; font-size: 1rem; letter-spacing: 1px;">VIEW DETAILED PRICING &rarr;</a>
             </div>
