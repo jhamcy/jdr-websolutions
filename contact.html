@@ -374,13 +374,28 @@
     const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
     emailjs.init('9HgNOjgLcMRk-oJgf');
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('nav-active');
-            hamburger.classList.toggle('toggle');
-        });
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+const closeMenu = () => { 
+                if (navMenu.classList.contains('nav-active')) { 
+                    navMenu.classList.remove('nav-active'); 
+                    hamburger.classList.remove('toggle'); 
+                } 
+            };
+            hamburger.addEventListener('click', (e) => { 
+                e.stopPropagation(); 
+                navMenu.classList.toggle('nav-active'); 
+                hamburger.classList.toggle('toggle'); 
+            });
+
+            // Auto-close on scroll
+            window.addEventListener('scroll', closeMenu, { passive: true });
+            document.addEventListener('click', (e) => { 
+                if ((!navMenu.contains(e.target) && !hamburger.contains(e.target)) || e.target.tagName === 'A') {
+                    closeMenu();
+                } 
+            });
         calculate();
     });
 
